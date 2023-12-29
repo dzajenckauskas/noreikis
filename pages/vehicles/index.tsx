@@ -3,6 +3,7 @@ import { getItems } from '@/app/utils'
 import { GetServerSideProps } from 'next'
 import { Inter } from 'next/font/google'
 import Head from 'next/head'
+import Link from 'next/link'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -13,10 +14,12 @@ export default function Vehicles({ vehicles }: Props) {
     const renderVehicles = vehicles?.data?.map((vehicle) => {
         return (
             <div key={vehicle.id}>
-                {vehicle.attributes?.make},
-                {vehicle.attributes?.model},
-                {vehicle.attributes?.firstRegDate},
-                {vehicle.attributes?.engineCapacityCC}
+                <Link href={'/vehicles/' + vehicle?.attributes?.slug} passHref>
+                    {vehicle.attributes?.make},
+                    {vehicle.attributes?.model},
+                    {vehicle.attributes?.firstRegDate},
+                    {vehicle.attributes?.engineCapacityCC}
+                </Link>
             </div>
         )
     })

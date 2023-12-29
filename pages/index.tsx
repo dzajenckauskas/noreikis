@@ -1,17 +1,9 @@
-import Head from 'next/head'
-import Image from 'next/image'
 import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
-import { getItems } from '@/app/utils'
-import { GetServerSideProps } from 'next'
-import { VehiclesType } from '@/app/VehiclesType'
+import Head from 'next/head'
 
 const inter = Inter({ subsets: ['latin'] })
 
-type Props = {
-  vehicles: VehiclesType[];
-}
-export default function Home({ vehicles }: Props) {
+export default function Home() {
   return (
     <>
       <Head>
@@ -21,18 +13,8 @@ export default function Home({ vehicles }: Props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={`${inter.className}`}>
-        {JSON.stringify(vehicles)}
+        HOME
       </main>
     </>
   )
-}
-
-export const getServerSideProps: GetServerSideProps = async () => {
-  const vehicles = await getItems('vehicles')
-
-  return {
-    props: {
-      vehicles: vehicles,
-    }
-  }
 }
