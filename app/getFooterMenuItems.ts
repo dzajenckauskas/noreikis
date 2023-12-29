@@ -1,8 +1,5 @@
 export const getFooterMenuItems = () => {
     return [
-        { slug: '', name: 'Home' },
-        { slug: '/about', name: 'About us' },
-        { slug: '/vehicles', name: 'Vehicles' },
-        { slug: '/contacts', name: 'Contacts' },
+        { slug: '/privacy-policy', name: 'Privacy policy' },
     ]
 }
