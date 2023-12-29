@@ -1,30 +1,34 @@
+import { getFooterMenuItems } from '@/app/getFooterMenuItems'
+import { getHeaderMenuItems } from '@/app/getHeaderMenuItems'
 import EmailIcon from '@mui/icons-material/Email'
 import FacebookIcon from '@mui/icons-material/Facebook'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 import PhoneIcon from '@mui/icons-material/Phone'
+import PinDropIcon from '@mui/icons-material/PinDrop'
 import { Stack, Typography } from '@mui/material'
 import Link from 'next/link'
 import { theme } from './Theme'
-import PinDropIcon from '@mui/icons-material/PinDrop';
-
 
 const Footer = () => {
     const dateNow = new Date()
 
-    // const renderNavLinks = headerMenuItems?.map(link =>
-    //     <Link href={`/${locale}/${link.slug?.slug}`} key={link.id}>
-    //         <Typography variant='body2' color={theme.palette.info.main}>
-    //             {link.name}
-    //         </Typography>
-    //     </Link>
-    // )
-    // const renderFooterLinks = footerMenuItems?.map(link =>
-    //     <Link href={`/${locale}/${link.slug?.slug}`} key={link.id}>
-    //         <Typography variant='body2' color={theme.palette.info.main}>
-    //             {link.name}
-    //         </Typography>
-    //     </Link>
-    // )
+    const headerMenuItems = getHeaderMenuItems()
+    const footerMenuItems = getFooterMenuItems()
+
+    const renderNavLinks = headerMenuItems?.map(link =>
+        <Link href={`/${link.slug}`} key={link.name}>
+            <Typography variant='body2' color={theme.palette.info.main}>
+                {link.name}
+            </Typography>
+        </Link>
+    )
+    const renderFooterLinks = footerMenuItems?.map(link =>
+        <Link href={`/${link.slug}`} key={link.name}>
+            <Typography variant='body2' color={theme.palette.info.main}>
+                {link.name}
+            </Typography>
+        </Link>
+    )
     return (
         <>
             <Stack sx={{
@@ -99,13 +103,13 @@ const Footer = () => {
                                 <Typography variant='subtitle1' letterSpacing={4} fontWeight={700} component={'p'} color={theme.palette.info.main}>
                                     {'Quick links'.toUpperCase()}
                                 </Typography>
-                                {/* {renderNavLinks} */}
+                                {renderNavLinks}
                             </Stack>
                             <Stack spacing={2} pt={1} width={'100%'}>
                                 <Typography variant='subtitle1' letterSpacing={4} fontWeight={700} component={'p'} color={theme.palette.info.main}>
                                     {'Useful links'.toUpperCase()}
                                 </Typography>
-                                {/* {renderFooterLinks} */}
+                                {renderFooterLinks}
                             </Stack>
                         </Stack>
                     </Stack>
@@ -127,7 +131,6 @@ const Footer = () => {
                         <Typography variant='body2' color={'#fff'} alignSelf={'center'}>
                             {process.env.NEXT_PUBLIC_COMPANY_NAME?.toUpperCase()} © {dateNow.getFullYear()}
                         </Typography>
-
                     </Stack>
                 </Stack>
             </Stack>

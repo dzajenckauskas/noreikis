@@ -13,6 +13,7 @@ import Link from 'next/link'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 import LocaleSwitcher from './LocaleSwitcher'
+import { getHeaderMenuItems } from '@/app/getHeaderMenuItems'
 
 const Header = () => {
     const [openMobileMenu, setOpenMobileMenu] = useState(false)
@@ -20,12 +21,7 @@ const Header = () => {
     const toggleMobileMenu = () => {
         setOpenMobileMenu(!openMobileMenu)
     }
-    const headerMenuItems = [
-        { slug: '', name: 'Home' },
-        { slug: '/about', name: 'About us' },
-        { slug: '/vehicles', name: 'Vehicles' },
-        { slug: '/contacts', name: 'Contacts' },
-    ]
+    const headerMenuItems = getHeaderMenuItems()
     const renderNavLinks = headerMenuItems?.map(link => {
         return (
             <Link href={`/${link.slug}`} key={link.name}>
