@@ -1,10 +1,9 @@
 import { VehicleType } from '@/app/VehiclesType'
 import { getItemBySlug } from '@/app/utils'
+import Layout from '@/components/layout/Layout'
+import { Typography } from '@mui/material'
 import { GetServerSideProps } from 'next'
-import { Inter } from 'next/font/google'
 import Head from 'next/head'
-
-const inter = Inter({ subsets: ['latin'] })
 
 type Props = {
   vehicle?: VehicleType;
@@ -18,14 +17,14 @@ export default function Home({ vehicle }: Props) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={`${inter.className}`}>
-        <div key={vehicle?.id}>
+      <Layout>
+        <Typography key={vehicle?.id}>
           {vehicle?.attributes?.make},
           {vehicle?.attributes?.model},
           {vehicle?.attributes?.firstRegDate},
           {vehicle?.attributes?.engineCapacityCC}
-        </div>
-      </main>
+        </Typography>
+      </Layout>
     </>
   )
 }

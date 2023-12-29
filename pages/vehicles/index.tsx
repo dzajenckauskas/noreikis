@@ -1,11 +1,10 @@
 import { VehiclesType } from '@/app/VehiclesType'
 import { getItems } from '@/app/utils'
+import Layout from '@/components/layout/Layout'
+import { Typography } from '@mui/material'
 import { GetServerSideProps } from 'next'
-import { Inter } from 'next/font/google'
 import Head from 'next/head'
 import Link from 'next/link'
-
-const inter = Inter({ subsets: ['latin'] })
 
 type Props = {
     vehicles?: VehiclesType;
@@ -13,14 +12,14 @@ type Props = {
 export default function Vehicles({ vehicles }: Props) {
     const renderVehicles = vehicles?.data?.map((vehicle) => {
         return (
-            <div key={vehicle.id}>
+            <Typography key={vehicle.id}>
                 <Link href={'/vehicles/' + vehicle?.attributes?.slug} passHref>
                     {vehicle.attributes?.make},
                     {vehicle.attributes?.model},
                     {vehicle.attributes?.firstRegDate},
                     {vehicle.attributes?.engineCapacityCC}
                 </Link>
-            </div>
+            </Typography>
         )
     })
     return (
@@ -31,9 +30,9 @@ export default function Vehicles({ vehicles }: Props) {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <main className={`${inter.className}`}>
+            <Layout>
                 {renderVehicles}
-            </main>
+            </Layout>
         </>
     )
 }
