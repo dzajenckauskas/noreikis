@@ -1,5 +1,5 @@
 import { VehicleType } from '@/app/VehiclesType'
-import { getItem, getItemBySlug } from '@/app/utils'
+import { getItemBySlug } from '@/app/utils'
 import { GetServerSideProps } from 'next'
 import { Inter } from 'next/font/google'
 import Head from 'next/head'
