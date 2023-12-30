@@ -14,21 +14,25 @@ import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 import LocaleSwitcher from './LocaleSwitcher'
 import { getHeaderMenuItems } from '@/app/getHeaderMenuItems'
+import { useRouter } from 'next/router'
+import { getFooterMenuItems } from '@/app/getFooterMenuItems'
 
 const Header = () => {
     const [openMobileMenu, setOpenMobileMenu] = useState(false)
+    const router = useRouter()
 
     const toggleMobileMenu = () => {
         setOpenMobileMenu(!openMobileMenu)
     }
     const headerMenuItems = getHeaderMenuItems()
+    const footerMenuItems = getFooterMenuItems()
     const renderNavLinks = headerMenuItems?.map(link => {
         return (
-            <Link href={`/${link.slug}`} key={link.name}>
+            <Link href={`${link.slug}`} key={link.name}>
                 <Typography variant='body2'
                     sx={{
-                        // color: pathname === slug ? theme.palette.secondary.main : theme.palette.text.secondary,
-                        // fontWeight: pathname === slug ? 600 : 'inherit',
+                        color: router.pathname === link.slug ? theme.palette.secondary.main : theme.palette.text.secondary,
+                        fontWeight: router.pathname === link.slug ? 600 : 'inherit',
                         ":hover": {
                             color: theme.palette.secondary.main,
                         }
@@ -39,6 +43,15 @@ const Header = () => {
         )
     }
     )
+
+    const renderFooterLinks = footerMenuItems?.map(link =>
+        <Link href={`${link.slug}`} key={link.name}>
+            <Typography variant='caption' color={theme.palette.text.secondary}>
+                {link.name}
+            </Typography>
+        </Link>
+    )
+
     return (
         <>
             <Stack sx={{
@@ -139,7 +152,7 @@ const Header = () => {
                                 <LocaleSwitcher />
                             </Stack>
                             <Stack spacing={2} pt={2}>
-                                {/* {renderFooterLinks} */}
+                                {renderFooterLinks}
                             </Stack>
                             <Stack direction={'row'} spacing={4}>
                                 <Stack direction={'row'} spacing={1} sx={{ alignItems: 'center' }}>
