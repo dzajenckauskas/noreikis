@@ -1,14 +1,18 @@
 import { VehicleType } from '@/app/types/VehiclesType'
 import { getItemBySlug } from '@/app/utils'
 import Layout from '@/components/layout/Layout'
-import { Typography } from '@mui/material'
+import { Stack, Typography } from '@mui/material'
 import { GetServerSideProps } from 'next'
 import Head from 'next/head'
+import Image from 'next/image'
 
 type Props = {
   vehicle?: VehicleType;
 }
 export default function Home({ vehicle }: Props) {
+  const image = vehicle?.attributes?.images?.data?.[0]?.attributes?.formats
+  const imageSrc = `${process.env.NEXT_PUBLIC_API_URL}${image?.large.url}`
+
   return (
     <>
       <Head>
@@ -18,15 +22,22 @@ export default function Home({ vehicle }: Props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <Typography variant='h4' fontWeight={600}>
-          VEHICLE
-        </Typography>
-        <Typography key={vehicle?.id}>
-          {vehicle?.attributes?.make},
-          {vehicle?.attributes?.model},
-          {vehicle?.attributes?.firstRegDate},
-          {vehicle?.attributes?.engineCapacityCC}
-        </Typography>
+        <Stack direction={'row'} spacing={1} alignItems={'center'}>
+          <Typography variant='h6'>
+            {vehicle?.attributes?.make}
+          </Typography>
+          <Typography variant='h6'>
+            {vehicle?.attributes?.model}
+          </Typography>
+          <Typography variant='body1'>
+            {vehicle?.attributes?.discountPrice ? vehicle?.attributes?.discountPrice : vehicle?.attributes?.price} {process.env.NEXT_PUBLIC_DEFAULT_CURRENCY}
+          </Typography>
+        </Stack>
+
+        <Stack key={vehicle?.id}>
+          <Image priority alt={vehicle?.attributes?.images?.data?.[0]?.attributes?.alternativeText ?? ''}
+            width={image?.large.width} height={image?.large.height} src={imageSrc} layout='responsive' />
+        </Stack>
       </Layout>
     </>
   )

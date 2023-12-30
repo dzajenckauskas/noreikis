@@ -22,7 +22,7 @@ export type VehicleAtributesType = {
     firstRegDate: string;
     fuelType: string;
     gearbox: string;
-    images: ImagesType;
+    images?: ImagesType;
     instalmentPriceFrom: number;
     locale: string;
     make: string;

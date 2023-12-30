@@ -1,10 +1,10 @@
 export type ImagesType = {
-    data: ImageType[];
+    data?: ImageType[];
 }
 
 export type ImageType = {
     id: number;
-    attributes: ImageAttributesType;
+    attributes?: ImageAttributesType;
 }
 
 export type ImageAttributesType = {
