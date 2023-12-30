@@ -18,6 +18,9 @@ export default function Home({ vehicle }: Props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
+        <Typography variant='h4' fontWeight={600}>
+          VEHICLE
+        </Typography>
         <Typography key={vehicle?.id}>
           {vehicle?.attributes?.make},
           {vehicle?.attributes?.model},

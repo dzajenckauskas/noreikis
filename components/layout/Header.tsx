@@ -116,18 +116,18 @@ const Header = () => {
                                 </Typography>
                             </Stack>
                         </Link>
-                        <Stack direction={'row'} spacing={3} sx={{ textTransform: 'uppercase', alignItems: 'center', display: { lg: 'flex', xs: 'none' } }}>
+                        <Stack direction={'row'} spacing={3} sx={{ textTransform: 'uppercase', alignItems: 'center', display: { md: 'flex', xs: 'none' } }}>
                             {renderNavLinks}
                             <Stack direction={'row'} spacing={2} pl={2}>
                                 <LocaleSwitcher />
                             </Stack>
                         </Stack>
-                        {!openMobileMenu && <Stack direction={'row'} spacing={3} sx={{ textTransform: 'uppercase', alignItems: 'center', display: { lg: 'none', xs: 'flex' } }}>
+                        {!openMobileMenu && <Stack direction={'row'} spacing={3} sx={{ textTransform: 'uppercase', alignItems: 'center', display: { md: 'none', xs: 'flex' } }}>
                             <Button size='small' variant='outlined' color='secondary' sx={{ p: .5, minWidth: 0 }} onClick={toggleMobileMenu}>
                                 <MenuRoundedIcon sx={{ color: theme.palette.secondary.main }} />
                             </Button>
                         </Stack>}
-                        {openMobileMenu && <Stack direction={'row'} spacing={3} sx={{ textTransform: 'uppercase', alignItems: 'center', display: { lg: 'none', xs: 'flex' } }}>
+                        {openMobileMenu && <Stack direction={'row'} spacing={3} sx={{ textTransform: 'uppercase', alignItems: 'center', display: { md: 'none', xs: 'flex' } }}>
                             <Button size='small' variant='outlined' color='secondary' sx={{ p: .5, minWidth: 0 }} onClick={toggleMobileMenu}>
                                 <CloseRoundedIcon sx={{ color: theme.palette.secondary.main }} />
                             </Button>
@@ -139,7 +139,7 @@ const Header = () => {
             {openMobileMenu &&
                 <ClickAwayListener onClickAway={toggleMobileMenu}>
                     <Stack sx={{
-                        display: { lg: 'none', xs: 'flex' }, position: 'fixed', zIndex: 12,
+                        display: { md: 'none', xs: 'flex' }, position: 'fixed', zIndex: 12,
                         top: 74, width: { md: 500, sm: 400, xs: '100% ' }, right: 0,
                         pt: 4,
                         backgroundColor: '#fff',

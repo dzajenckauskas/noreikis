@@ -31,6 +31,9 @@ export default function Vehicles({ vehicles }: Props) {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Layout>
+                <Typography variant='h4' fontWeight={600}>
+                    VEHICLES
+                </Typography>
                 {renderVehicles}
             </Layout>
         </>
