@@ -47,14 +47,16 @@ export const theme = createTheme({
     },
     palette: {
         primary: {
-            light: '#606CBD',
-            main: '#3A4AB0',
-            dark: '#2B3996'
+            main: '#000'
+            // light: '#606CBD',
+            // main: '#3A4AB0',
+            // dark: '#2B3996'
         },
         secondary: {
-            light: '#E14385',
-            main: '#E70E69',
-            dark: '#D50B5F'
+            main: '#00F'
+            // light: '#E14385',
+            // main: '#E70E69',
+            // dark: '#D50B5F'
         },
         info: {
             main: '#ffffff'
