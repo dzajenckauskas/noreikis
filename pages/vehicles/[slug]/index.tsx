@@ -1,4 +1,4 @@
-import { VehicleType } from '@/app/VehiclesType'
+import { VehicleType } from '@/app/types/VehiclesType'
 import { getItemBySlug } from '@/app/utils'
 import Layout from '@/components/layout/Layout'
 import { Typography } from '@mui/material'

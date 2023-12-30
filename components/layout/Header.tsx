@@ -28,7 +28,7 @@ const Header = () => {
     const footerMenuItems = getFooterMenuItems()
     const renderNavLinks = headerMenuItems?.map(link => {
         return (
-            <Link href={`${link.slug}`} key={link.name}>
+            <Link href={`/${link.slug}`} key={link.name}>
                 <Typography variant='body2'
                     sx={{
                         color: router.pathname === link.slug ? theme.palette.secondary.main : theme.palette.text.secondary,
@@ -45,7 +45,7 @@ const Header = () => {
     )
 
     const renderFooterLinks = footerMenuItems?.map(link =>
-        <Link href={`${link.slug}`} key={link.name}>
+        <Link href={`/${link.slug}`} key={link.name}>
             <Typography variant='caption' color={theme.palette.text.secondary}>
                 {link.name}
             </Typography>

@@ -1,7 +1,9 @@
-import { VehiclesType } from '@/app/VehiclesType'
+import { VehiclesType } from '@/app/types/VehiclesType'
 import { getItems } from '@/app/utils'
 import Layout from '@/components/layout/Layout'
-import { Typography } from '@mui/material'
+import VehicleCard from '@/components/vehicles/VehicleCard'
+import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
 import { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
@@ -12,14 +14,7 @@ type Props = {
 export default function Vehicles({ vehicles }: Props) {
     const renderVehicles = vehicles?.data?.map((vehicle) => {
         return (
-            <Typography key={vehicle.id}>
-                <Link href={'/vehicles/' + vehicle?.attributes?.slug} passHref>
-                    {vehicle.attributes?.make},
-                    {vehicle.attributes?.model},
-                    {vehicle.attributes?.firstRegDate},
-                    {vehicle.attributes?.engineCapacityCC}
-                </Link>
-            </Typography>
+            <VehicleCard key={vehicle.id} vehicle={vehicle} />
         )
     })
     return (

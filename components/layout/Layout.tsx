@@ -1,7 +1,6 @@
 'use client'
-// import { MenuItemType, SettingsType } from '@idcms/store'
 import Stack from '@mui/material/Stack'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Footer from './Footer'
 import Header from './Header'
 import { theme } from './Theme'
@@ -11,22 +10,9 @@ type Props = {
 }
 
 const Layout = ({ children, }: Props) => {
-    const [showChild, setShowChild] = useState(false)
-    useEffect(() => {
-        setShowChild(true)
-    }, [])
-
-    if (!showChild) {
-        return null
-    }
-
-
     return (
         <>
             <Header />
-            {/* <Stack minHeight={'75vh'}>
-                {children}
-            </Stack> */}
             <Stack minHeight={'70vh'} sx={{
                 backgroundColor: theme.palette.info.main + 'A0',
                 justifyContent: 'space-between',
