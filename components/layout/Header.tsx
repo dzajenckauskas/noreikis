@@ -14,21 +14,25 @@ import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 import LocaleSwitcher from './LocaleSwitcher'
 import { getHeaderMenuItems } from '@/app/getHeaderMenuItems'
+import { useRouter } from 'next/router'
+import { getFooterMenuItems } from '@/app/getFooterMenuItems'
 
 const Header = () => {
     const [openMobileMenu, setOpenMobileMenu] = useState(false)
+    const router = useRouter()
 
     const toggleMobileMenu = () => {
         setOpenMobileMenu(!openMobileMenu)
     }
     const headerMenuItems = getHeaderMenuItems()
+    const footerMenuItems = getFooterMenuItems()
     const renderNavLinks = headerMenuItems?.map(link => {
         return (
             <Link href={`/${link.slug}`} key={link.name}>
                 <Typography variant='body2'
                     sx={{
-                        // color: pathname === slug ? theme.palette.secondary.main : theme.palette.text.secondary,
-                        // fontWeight: pathname === slug ? 600 : 'inherit',
+                        color: router.pathname === link.slug ? theme.palette.secondary.main : theme.palette.text.secondary,
+                        fontWeight: router.pathname === link.slug ? 600 : 'inherit',
                         ":hover": {
                             color: theme.palette.secondary.main,
                         }
@@ -39,6 +43,15 @@ const Header = () => {
         )
     }
     )
+
+    const renderFooterLinks = footerMenuItems?.map(link =>
+        <Link href={`/${link.slug}`} key={link.name}>
+            <Typography variant='caption' color={theme.palette.text.secondary}>
+                {link.name}
+            </Typography>
+        </Link>
+    )
+
     return (
         <>
             <Stack sx={{
@@ -103,18 +116,18 @@ const Header = () => {
                                 </Typography>
                             </Stack>
                         </Link>
-                        <Stack direction={'row'} spacing={3} sx={{ textTransform: 'uppercase', alignItems: 'center', display: { lg: 'flex', xs: 'none' } }}>
+                        <Stack direction={'row'} spacing={3} sx={{ textTransform: 'uppercase', alignItems: 'center', display: { md: 'flex', xs: 'none' } }}>
                             {renderNavLinks}
                             <Stack direction={'row'} spacing={2} pl={2}>
                                 <LocaleSwitcher />
                             </Stack>
                         </Stack>
-                        {!openMobileMenu && <Stack direction={'row'} spacing={3} sx={{ textTransform: 'uppercase', alignItems: 'center', display: { lg: 'none', xs: 'flex' } }}>
+                        {!openMobileMenu && <Stack direction={'row'} spacing={3} sx={{ textTransform: 'uppercase', alignItems: 'center', display: { md: 'none', xs: 'flex' } }}>
                             <Button size='small' variant='outlined' color='secondary' sx={{ p: .5, minWidth: 0 }} onClick={toggleMobileMenu}>
                                 <MenuRoundedIcon sx={{ color: theme.palette.secondary.main }} />
                             </Button>
                         </Stack>}
-                        {openMobileMenu && <Stack direction={'row'} spacing={3} sx={{ textTransform: 'uppercase', alignItems: 'center', display: { lg: 'none', xs: 'flex' } }}>
+                        {openMobileMenu && <Stack direction={'row'} spacing={3} sx={{ textTransform: 'uppercase', alignItems: 'center', display: { md: 'none', xs: 'flex' } }}>
                             <Button size='small' variant='outlined' color='secondary' sx={{ p: .5, minWidth: 0 }} onClick={toggleMobileMenu}>
                                 <CloseRoundedIcon sx={{ color: theme.palette.secondary.main }} />
                             </Button>
@@ -126,7 +139,7 @@ const Header = () => {
             {openMobileMenu &&
                 <ClickAwayListener onClickAway={toggleMobileMenu}>
                     <Stack sx={{
-                        display: { lg: 'none', xs: 'flex' }, position: 'fixed', zIndex: 12,
+                        display: { md: 'none', xs: 'flex' }, position: 'fixed', zIndex: 12,
                         top: 74, width: { md: 500, sm: 400, xs: '100% ' }, right: 0,
                         pt: 4,
                         backgroundColor: '#fff',
@@ -139,7 +152,7 @@ const Header = () => {
                                 <LocaleSwitcher />
                             </Stack>
                             <Stack spacing={2} pt={2}>
-                                {/* {renderFooterLinks} */}
+                                {renderFooterLinks}
                             </Stack>
                             <Stack direction={'row'} spacing={4}>
                                 <Stack direction={'row'} spacing={1} sx={{ alignItems: 'center' }}>

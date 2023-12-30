@@ -1,26 +1,24 @@
-'use client';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { Button, Menu, MenuItem, MenuProps } from '@mui/material';
 import { alpha, styled } from '@mui/material/styles';
-// import { useLocale } from 'next-intl';
-import React, { useTransition } from 'react';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
-import { usePathname } from 'next/navigation';
-// import { locales } from '@/middleware';
-// import { usePathname, useRouter } from '@/navigation';
+import React from 'react';
 
 export default function LocaleSwitcher() {
-  const [isPending, startTransition] = useTransition();
-  // const locale = useLocale();
+  // const [isPending, startTransition] = useTransition();
   const router = useRouter();
-  // const pathname = usePathname();
+  const { i18n } = useTranslation()
 
-  function onSelectChange(nextLocale: string) {
-    startTransition(() => {
-      // router.replace(pathname, { locale: nextLocale.toLowerCase() });
-    });
+  function onSelectChange(newLocale: string) {
+    // startTransition(() => {
+    const { pathname, asPath, query } = router
+    newLocale = newLocale.toLocaleLowerCase()
+    i18n.changeLanguage(newLocale)
+    router.push({ pathname, query }, asPath, { locale: newLocale })
+    // });
   }
-  const locale = 'lt'
+  const locale = i18n.language
   const locales = ['lt', 'en']
   const renderLanguages = locales.filter((l) => l !== locale).map((lang) => {
     return (
@@ -94,7 +92,7 @@ export default function LocaleSwitcher() {
         color={'primary'}
         disableElevation
         onClick={handleClick}
-        disabled={isPending}
+        // disabled={isPending}
         endIcon={<KeyboardArrowDownIcon />}
       >
         {locale}

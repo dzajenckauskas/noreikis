@@ -1,25 +1,28 @@
+import { ImagesType } from './ImageTypes'
+import { MetaType } from './MetaTypes'
+
 export type VehiclesType = {
     data: VehicleType[];
     meta: MetaType;
 }
+
 export type VehicleType = {
     id: number;
     attributes?: VehicleAtributesType
 }
+
 export type VehicleAtributesType = {
     bodyType: string;
     color: string;
     createdAt: string;
     damage: string | null;
     description: any[];
-    // [{…}]
     discountPrice: string;
     engineCapacityCC: string
     firstRegDate: string;
     fuelType: string;
     gearbox: string;
-    images: any;
-    // {data: Array(3)}
+    images?: ImagesType;
     instalmentPriceFrom: number;
     locale: string;
     make: string;
@@ -34,12 +37,4 @@ export type VehicleAtributesType = {
     updatedAt: string;
     vin: string;
 }
-export type MetaType = {
-    pagination: PaginationType;
-}
-export type PaginationType = {
-    page: number;
-    pageSize: number;
-    pageCount: number;
-    total: number;
-}
+

@@ -1,4 +1,5 @@
 import Layout from '@/components/layout/Layout'
+import Typography from '@mui/material/Typography'
 import Head from 'next/head'
 
 
@@ -12,7 +13,9 @@ export default function About() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        ABOUT
+        <Typography variant='h4' fontWeight={600}>
+          ABOUT
+        </Typography>
       </Layout>
     </>
   )

@@ -1,5 +1,5 @@
 export const getFooterMenuItems = () => {
     return [
-        { slug: '/privacy-policy', name: 'Privacy policy' },
+        { slug: 'privacy-policy', name: 'Privacy policy' },
     ]
 }

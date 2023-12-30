@@ -1,4 +1,5 @@
 import Layout from '@/components/layout/Layout'
+import Typography from '@mui/material/Typography'
 import Head from 'next/head'
 
 
@@ -12,7 +13,9 @@ export default function Contacts() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        CONTACTS
+        <Typography variant='h4' fontWeight={600}>
+          CONTACTS
+        </Typography>
       </Layout>
     </>
   )
