@@ -1,3 +1,4 @@
+import { CounterSection } from '@/components/CounterSection'
 import Layout from '@/components/layout/Layout'
 import Typography from '@mui/material/Typography'
 import Head from 'next/head'
@@ -16,6 +17,7 @@ export default function Home() {
         <Typography variant='h4' fontWeight={600}>
           HOME
         </Typography>
+        <CounterSection />
       </Layout>
     </>
   )

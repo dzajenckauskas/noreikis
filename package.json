@@ -5,18 +5,26 @@
   "scripts": {
     "dev": "next dev -p 3003",
     "build": "next build",
+<<<<<<< HEAD
     "start": "next start -p 3003",
     "lint": "next lint"    
  },
+=======
+    "start": "next start -p 3002",
+    "lint": "next lint"
+  },
+>>>>>>> 6bf54ec134472e886df2257f0dd42263a6d8656d
   "dependencies": {
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.15.2",
     "@mui/material": "^5.15.2",
     "axios": "^1.6.3",
+    "date-fns": "^3.0.6",
     "next": "14.0.4",
     "next-i18next": "^15.1.1",
     "react": "^18",
+    "react-countup": "^6.5.0",
     "react-dom": "^18"
   },
   "devDependencies": {
