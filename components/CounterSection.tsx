@@ -59,7 +59,6 @@ export const CounterSection = () => {
                         Metai patirties
                     </Typography>
                 </Stack>
-
             </Stack>
         </Stack>
     )
