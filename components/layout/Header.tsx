@@ -12,7 +12,7 @@ import { theme } from './Theme'
 import Link from 'next/link'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
-import LocaleSwitcher from './LocaleSwitcher'
+// import LocaleSwitcher from './LocaleSwitcher'
 import { getHeaderMenuItems } from '@/app/getHeaderMenuItems'
 import { useRouter } from 'next/router'
 import { getFooterMenuItems } from '@/app/getFooterMenuItems'
@@ -118,9 +118,9 @@ const Header = () => {
                         </Link>
                         <Stack direction={'row'} spacing={3} sx={{ textTransform: 'uppercase', alignItems: 'center', display: { md: 'flex', xs: 'none' } }}>
                             {renderNavLinks}
-                            <Stack direction={'row'} spacing={2} pl={2}>
+                            {/* <Stack direction={'row'} spacing={2} pl={2}>
                                 <LocaleSwitcher />
-                            </Stack>
+                            </Stack> */}
                         </Stack>
                         {!openMobileMenu && <Stack direction={'row'} spacing={3} sx={{ textTransform: 'uppercase', alignItems: 'center', display: { md: 'none', xs: 'flex' } }}>
                             <Button size='small' variant='outlined' color='secondary' sx={{ p: .5, minWidth: 0 }} onClick={toggleMobileMenu}>
@@ -148,9 +148,9 @@ const Header = () => {
                     }}>
                         <Stack spacing={3} sx={{ position: 'fixed', textTransform: 'uppercase', pl: { sm: 4, xs: 2 }, pr: { md: 4, xs: 2 }, py: 4 }}>
                             {renderNavLinks}
-                            <Stack pt={3}>
+                            {/* <Stack pt={3}>
                                 <LocaleSwitcher />
-                            </Stack>
+                            </Stack> */}
                             <Stack spacing={2} pt={2}>
                                 {renderFooterLinks}
                             </Stack>
