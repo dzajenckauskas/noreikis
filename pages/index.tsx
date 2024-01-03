@@ -1,8 +1,17 @@
 import { CounterSection } from '@/components/CounterSection'
 import Layout from '@/components/layout/Layout'
+import { theme } from '@/components/layout/Theme'
+import { Button } from '@mui/material'
+import Grid from '@mui/material/Grid'
+import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import Head from 'next/head'
-
+import Image from 'next/image'
+import SubdirectoryArrowRightIcon from '@mui/icons-material/SubdirectoryArrowRight';
+import Link from 'next/link'
+import EmailIcon from '@mui/icons-material/Email'
+import FacebookIcon from '@mui/icons-material/Facebook'
+import LinkedInIcon from '@mui/icons-material/LinkedIn'
 
 export default function Home() {
   return (
@@ -14,9 +23,55 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <Typography variant='h4' fontWeight={600}>
-          HOME
-        </Typography>
+        <Grid container direction={'row'} justifyContent={'space-between'} width={'100%'}>
+          <Grid item sm={6} >
+            <Stack spacing={4} height={'100%'} alignItems={'flex-start'} position={'relative'}
+              justifyContent={'center'} alignContent={'flex-start'}>
+              <Typography variant='h1' fontWeight={800}>
+                <span style={{ color: theme.palette.secondary.main }}>Kiekvienus</span> namus parduodu kaip savus
+              </Typography>
+              <Typography variant='body1'>
+                Jūsų atstovas visais nekilnojamojo turto klausimais. Susisiekime jūsų poreikių ir turto įvertinimui, ir kartu ieškokime geriausios sprendimo dėl jūsų nekilnojamojo turto.
+              </Typography>
+              <Button variant='contained' color='secondary'>
+                Nemokamas turto vertinimas
+              </Button>
+              <Stack direction={'row'} spacing={{ md: 1, xs: .5 }} pt={.3} sx={{ alignItems: 'center' }}>
+                <Link passHref href={`${process.env.NEXT_PUBLIC_FACEBOOK_URL}`} aria-label="facebook">
+                  <FacebookIcon sx={{ color: theme.palette.primary.dark, fontSize: 22 }} />
+                </Link>
+                <Link passHref href={`${process.env.NEXT_PUBLIC_LINKEDIN_URL}`} aria-label="linkedin">
+                  <LinkedInIcon sx={{ color: theme.palette.primary.dark, fontSize: 22 }} />
+                </Link>
+              </Stack>
+              <Stack direction={'row'} spacing={{ md: 1, xs: .5 }} sx={{ pt: 4, position: 'absolute', bottom: 0 }}>
+                <SubdirectoryArrowRightIcon sx={{ color: theme.palette.secondary.main, fontSize: 18, }} />
+                <Link passHref href={`/parduodami`}>
+                  <Typography variant='body1' color={theme.palette.secondary.main} sx={{ ":hover": { textDecoration: 'underline' } }}>
+                    {'Parduodami objektai'}
+                  </Typography>
+                </Link>
+              </Stack>
+            </Stack>
+            {/* <Stack direction={'row'} spacing={{ md: 1, xs: .5 }} sx={{ alignItems: 'center' }}>
+                                    <EmailIcon sx={{ color: "#fff", fontSize: 18 }} />
+                                    <Link passHref href={`mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL}`}>
+                                        <Typography variant='caption' color={'#fff'}>
+                                            {process.env.NEXT_PUBLIC_CONTACT_EMAIL}
+                                        </Typography>
+                                    </Link>
+                                </Stack> */}
+          </Grid>
+          <Grid item sm={6}>
+            <Stack sx={{ position: 'relative', width: '100%', height: 800 }}>
+              <Image priority alt={"Ernestas Noreikis NT nekilnojamas turtas brokeris"}
+                layout='fill' objectFit='cover' objectPosition='top' src={'/assets/images/ernestas-noreikis-NT-brokeris.avif'} />
+              {/* <Typography variant='h1' fontWeight={600}>
+                Kiekvienus namus parduodu kaip savus
+              </Typography> */}
+            </Stack>
+          </Grid>
+        </Grid>
         <CounterSection />
       </Layout>
     </>

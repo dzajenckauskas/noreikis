@@ -13,7 +13,7 @@ export const CounterSection = () => {
     const { t } = useTranslation('home')
     return (
         <Stack sx={{
-            mt: 10, backgroundColor: theme.palette.info.main, width: '100%', py: 10,
+            mt: 6, backgroundColor: theme.palette.info.main, width: '100%', py: 10,
             position: 'relative', zIndex: 10, top: '-1px', alignContent: 'center', px: { sm: 6, xs: 4 }
         }}>
             <Stack direction={{ md: 'row', xs: 'column' }} alignItems={'center'} spacing={{ md: 2, xs: 6 }} sx={{ maxWidth: 'lg', mx: 'auto', width: '100%', justifyContent: 'space-evenly' }}>
