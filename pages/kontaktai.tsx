@@ -1,4 +1,6 @@
+import ContactForm from '@/components/ContactForm'
 import Layout from '@/components/layout/Layout'
+import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import Head from 'next/head'
 
@@ -14,8 +16,11 @@ export default function Contacts() {
       </Head>
       <Layout>
         <Typography variant='h4' fontWeight={600}>
-          CONTACTS
+          Kontaktai
         </Typography>
+        <Stack pt={2}>
+          <ContactForm />
+        </Stack>
       </Layout>
     </>
   )
