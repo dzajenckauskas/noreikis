@@ -6,14 +6,23 @@ import Grid from '@mui/material/Grid'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import Head from 'next/head'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import SubdirectoryArrowRightIcon from '@mui/icons-material/SubdirectoryArrowRight';
 import Link from 'next/link'
 import EmailIcon from '@mui/icons-material/Email'
 import FacebookIcon from '@mui/icons-material/Facebook'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
+import { GetServerSideProps } from 'next'
+import { getItems } from '@/app/utils'
+import { RecommendationsType } from '@/app/types/RecommendationsType'
+import { ReccomendationsSection } from '@/components/ReccomendationsSection'
 
-export default function Home() {
+type Props = {
+  recommendations: RecommendationsType;
+}
+
+export default function Home({ recommendations }: Props) {
+
   return (
     <>
       <Head>
@@ -73,7 +82,17 @@ export default function Home() {
           </Grid>
         </Grid>
         <CounterSection />
+        <ReccomendationsSection recommendations={recommendations} />
       </Layout>
     </>
   )
+}
+export const getServerSideProps: GetServerSideProps = async () => {
+  const recommendations = await getItems('recommendations', '*') ?? null
+
+  return {
+    props: {
+      recommendations: recommendations ?? null,
+    }
+  }
 }

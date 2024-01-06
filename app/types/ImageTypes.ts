@@ -1,6 +1,9 @@
 export type ImagesType = {
     data?: ImageType[];
 }
+export type SingleImageType = {
+    data?: ImageType;
+}
 
 export type ImageType = {
     id: number;

@@ -10,8 +10,6 @@ type Props = {
 }
 
 const ObjectCard = ({ object }: Props) => {
-    console.log(object, "object");
-
     const image = object?.attributes?.images?.data?.[0]?.attributes?.formats
     const imageSrc = `${process.env.NEXT_PUBLIC_API_URL}${image?.thumbnail.url}`
     return (
