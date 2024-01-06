@@ -47,7 +47,7 @@ export default function Objects({ objects }: Props) {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-    const objects = await getItems('objects', 'images') ?? null
+    const objects = await getItems('objects', 'populate=deep') ?? null
 
     return {
         props: {

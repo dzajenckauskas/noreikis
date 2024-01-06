@@ -60,7 +60,7 @@ export default function Home({ object }: Props) {
 export const getServerSideProps: GetServerSideProps = async (context: any) => {
   const { slug } = context.params
 
-  const object = await getItemBySlug('objects', slug, undefined, 'images')
+  const object = await getItemBySlug('objects', slug, undefined, 'populate=deep')
 
   return {
     props: {
