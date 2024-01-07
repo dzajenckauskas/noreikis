@@ -27,11 +27,8 @@ type Props = {
     categories: ActionType;
 }
 const PriceInquiryForm = ({ categories }: Props) => {
-    console.log(categories, "categories");
-
     const theme = useTheme()
     const [sent, setSent] = useState(false)
-    // const [categories, setCategories] = useState<ActionType[]>()
     const [error, setError] = useState<string | undefined>()
 
     const submit: SubmitHandler<PriceInquiryFormInputType> = async (data) => {
@@ -72,7 +69,7 @@ const PriceInquiryForm = ({ categories }: Props) => {
         city: yup.string().required(`${'Įveskite NT objekto miestą'}`),
         address: yup.string().required(`${'Įveskite NT objekto adresą'}`),
         category: yup.object().required(`${'Pasirinkite NT objekto tipą'}`),
-        comment: yup.string().required(`${'Įveskite žinutę'}`),
+        comment: yup.string(),
 
     }).required();
 
@@ -178,22 +175,17 @@ const PriceInquiryForm = ({ categories }: Props) => {
                     {sent &&
                         <Stack direction={'row'} justifyContent={'center'} mb={2}>
                             <Typography textAlign={'left'} fontWeight={500} color={theme.palette.primary.dark} >
-                                {/* {t("form.requestSent", { ns: 'contact' })} */}
-                                Žinutė išsiųsta
+                                Turto vertinimo užklausa išsiųsta
                             </Typography>
                         </Stack>}
                     {!sent &&
                         <Button variant="contained" color="secondary" type={'submit'}>
-                            Siųsti žinutę
-                            {/* // <CustomButton medium submit text={`${t("actions.send", { ns: 'contact' })}`} /> */}
+                            Siųsti užklausą
                         </Button>
                     }
                     {sent &&
                         <Button variant="outlined" color="secondary" onClick={() => { setSent(false) }}>
                             Siųsti dar kartą
-                            {/* // <CustomButton medium submit text={`${t("actions.send", { ns: 'contact' })}`} /> */}
-                            {/* // <CustomButton medium secondary text={`${t("actions.sendAgain", { ns: 'contact' })}`} */}
-                            {/* //     onClick={() => { setSent(false) }}></CustomButton> */}
                         </Button>
                     }
                 </Stack>

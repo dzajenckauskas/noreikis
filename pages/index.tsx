@@ -45,7 +45,7 @@ export default function Home({ recommendations, categories }: Props) {
               <Typography variant='body1'>
                 Jūsų atstovas visais nekilnojamojo turto klausimais. Susisiekime jūsų poreikių ir turto įvertinimui, ir kartu ieškokime geriausios sprendimo dėl jūsų nekilnojamojo turto.
               </Typography>
-              <Button variant='contained' color='secondary'>
+              <Button variant='contained' color='secondary' href='#priceInquiryForm'>
                 Nemokamas turto vertinimas
               </Button>
               <Stack direction={'row'} spacing={{ md: 1, xs: .5 }} pt={.3} sx={{ alignItems: 'center' }}>
@@ -89,7 +89,19 @@ export default function Home({ recommendations, categories }: Props) {
         </Grid>
         <CounterSection />
         <ReccomendationsSection recommendations={recommendations} />
-        <PriceInquiryForm categories={categories} />
+        <Stack py={4} id={'priceInquiryForm'} direction={'row'}>
+          <Stack pb={2} width={'50%'}>
+            <Typography variant='h4' color={theme.palette.secondary.main} fontWeight={600}>
+              {'Nemokamas turto kainos įvertinimas'}
+            </Typography>
+            <Typography variant='body1' color={theme.palette.primary.main}>
+              {'Nemokamas turto kainos įvertinimas'}
+            </Typography>
+          </Stack>
+          <Stack width={'50%'}>
+            <PriceInquiryForm categories={categories} />
+          </Stack>
+        </Stack>
       </Layout>
     </>
   )

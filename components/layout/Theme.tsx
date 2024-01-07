@@ -15,7 +15,14 @@ export const theme = createTheme({
                     backgroundColor: theme.palette.info.main
                 })
             }
-        }
+        },
+        MuiFormLabel: {
+            styleOverrides: {
+                root: ({ theme }) => theme.unstable_sx({
+                    color: `${theme.palette.primary.dark}`,
+                }),
+            }
+        },
     },
     typography: {
         h1: {
