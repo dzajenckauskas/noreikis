@@ -11,6 +11,7 @@ import axios from "axios";
 import { useState } from 'react';
 import { SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form";
 import * as yup from "yup";
+import ErrorBox from "./ErrorBox";
 
 
 type ContactFormInputType = {
@@ -26,6 +27,7 @@ type ContactFormInputType = {
 const ContactForm = () => {
     const theme = useTheme()
     const [sent, setSent] = useState(false)
+    const [error, setError] = useState<string | undefined>()
 
     const submit: SubmitHandler<ContactFormInputType> = async (data) => {
         const inputData = {
@@ -39,30 +41,21 @@ const ContactForm = () => {
             }
         }
         let url = `${process.env.NEXT_PUBLIC_API_URL}/api/contact-forms`
-        axios.post(url, inputData)
-            .catch((error) => {
+        await axios.post(url, inputData)
+            .catch((error: any) => {
                 console.log(error);
+                if (error?.message) {
+                    setError(error.message)
+                }
             })
-            .then((response) => {
+            .then((response: any) => {
                 console.log(response);
+                if (response?.data) {
+                    setError(undefined)
+                    setSent(true)
+                    reset()
+                }
             })
-
-        // })
-        // send({
-        //     variables: {
-        //         data: {
-        //             email: data.email,
-        //             name: data.name,
-        //             message: data.message,
-        //             url: url,
-        //             contents: JSON.stringify(data),
-        //         }
-        //     },
-        //     onCompleted: () => {
-        //         setSent(!!(!loading && !error))
-        //         reset()
-        //     }
-        // })
     }
 
     const contactFormSchema = yup.object({
@@ -148,7 +141,7 @@ const ContactForm = () => {
                         </Button>
                     }
                     {sent &&
-                        <Button>
+                        <Button variant="outlined" color="secondary" onClick={() => { setSent(false) }}>
                             Siųsti dar kartą
                             {/* // <CustomButton medium submit text={`${t("actions.send", { ns: 'contact' })}`} /> */}
                             {/* // <CustomButton medium secondary text={`${t("actions.sendAgain", { ns: 'contact' })}`} */}
@@ -156,7 +149,7 @@ const ContactForm = () => {
                         </Button>
                     }
                 </Stack>
-                {/* {error && <ErrorBox errors={error} />} */}
+                {error && <ErrorBox errors={error} />}
             </Stack>
         </form>
     )
