@@ -1,4 +1,4 @@
-import ContactForm from '@/components/ContactForm'
+import ContactForm from '@/components/forms/ContactForm'
 import Layout from '@/components/layout/Layout'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'

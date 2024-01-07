@@ -1,5 +1,5 @@
 export type ActionType = {
-    data: ActionDataType;
+    data: ActionDataType[];
 }
 
 export type ActionDataType = {

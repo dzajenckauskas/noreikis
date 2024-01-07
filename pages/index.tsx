@@ -1,7 +1,9 @@
+import { ActionType } from '@/app/types/ActionType'
 import { RecommendationsType } from '@/app/types/RecommendationsType'
 import { getItems } from '@/app/utils'
 import { AruodasIcon } from '@/components/AruodasIcon'
 import { CounterSection } from '@/components/CounterSection'
+import PriceInquiryForm from '@/components/forms/PriceInquiryForm'
 import { ReccomendationsSection } from '@/components/ReccomendationsSection'
 import Layout from '@/components/layout/Layout'
 import { theme } from '@/components/layout/Theme'
@@ -19,9 +21,10 @@ import Link from 'next/link'
 
 type Props = {
   recommendations: RecommendationsType;
+  categories: ActionType;
 }
 
-export default function Home({ recommendations }: Props) {
+export default function Home({ recommendations, categories }: Props) {
 
   return (
     <>
@@ -86,16 +89,19 @@ export default function Home({ recommendations }: Props) {
         </Grid>
         <CounterSection />
         <ReccomendationsSection recommendations={recommendations} />
+        <PriceInquiryForm categories={categories} />
       </Layout>
     </>
   )
 }
 export const getServerSideProps: GetServerSideProps = async () => {
   const recommendations = await getItems('recommendations', 'populate=deep') ?? null
+  const categories = await getItems('categories') ?? null
 
   return {
     props: {
       recommendations: recommendations ?? null,
+      categories: categories ?? null
     }
   }
 }
