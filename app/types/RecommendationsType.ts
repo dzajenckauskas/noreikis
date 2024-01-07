@@ -1,4 +1,4 @@
-import { ActionType } from './ActionType';
+import { ActionDataType } from './ActionType';
 import { SingleImageType } from './ImageTypes';
 import { MetaType } from './MetaTypes';
 
@@ -14,7 +14,9 @@ export type RecommendationType = {
 
 
 export type RecommendationAtributesType = {
-    action: ActionType;
+    action: {
+        data: ActionDataType;
+    }
     createdAt: Date;
     customer: string;
     image: SingleImageType;

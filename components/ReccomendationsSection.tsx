@@ -47,7 +47,7 @@ export const ReccomendationsSection = ({ recommendations }: Props) => {
                             </Typography>
                             <Typography variant='caption' lineHeight={1.2} fontWeight={300}
                                 textAlign={'right'} color={theme.palette.primary.dark}>
-                                {item.attributes?.action.data.attributes.title}
+                                {item.attributes?.action.data?.attributes.title}
                             </Typography>
                         </Stack>
                     </Stack>
