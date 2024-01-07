@@ -11,9 +11,9 @@ import { getTheme } from './layout/Theme';
 const handleDragStart = (e: any) => e.preventDefault();
 const responsive = {
     0: { items: 1 },
-    600: { items: 2 },
-    1000: { items: 3 },
-    1200: { items: 4 },
+    600: { items: 1 },
+    1000: { items: 1 },
+    1200: { items: 1 },
 };
 
 type Props = {
@@ -30,7 +30,7 @@ export const ReccomendationsSection = ({ recommendations }: Props) => {
 
         return (
             <Grid item key={item.id} lg={3} md={3} sm={6} xs={12}>
-                <Stack onDragStart={handleDragStart} sx={{ width: '100%' }} spacing={1} alignItems={'center'} py={8} px={{ lg: 5, sm: 4, xs: 8 }}>
+                <Stack maxWidth={'md'} mx={'auto'} onDragStart={handleDragStart} sx={{ width: '100%' }} spacing={1} alignItems={'center'} pt={4} px={{ lg: 5, sm: 4, xs: 8 }}>
                     {src ? <Image style={{ borderRadius: '50%' }} priority objectFit='cover' src={src} alt={item.attributes?.text} width={100} height={100} /> : <Box width={100} height={100}></Box>}
                     <Stack spacing={0}>
                         <Stack direction={'row'} alignContent={'center'}>
@@ -40,14 +40,14 @@ export const ReccomendationsSection = ({ recommendations }: Props) => {
                                 <FormatQuoteIcon sx={{ position: 'fixed', mt: -.25, color: theme.palette.secondary.dark, alignSelf: 'flex-end' }} />
                             </Typography>
                         </Stack>
-                        <Stack pt={3}>
-                            <Typography variant='caption' lineHeight={1.2} fontWeight={300}
+                        <Stack pt={3} >
+                            <Typography variant='caption' lineHeight={1.2} fontWeight={400} letterSpacing={2}
+                                textAlign={'right'} color={theme.palette.primary.dark}>
+                                {item.attributes?.action.data?.attributes.title.toUpperCase()}
+                            </Typography>
+                            <Typography variant='body1' lineHeight={1.2} fontWeight={300} pt={.5}
                                 textAlign={'right'} color={theme.palette.primary.dark}>
                                 {item.attributes?.customer}
-                            </Typography>
-                            <Typography variant='caption' lineHeight={1.2} fontWeight={300}
-                                textAlign={'right'} color={theme.palette.primary.dark}>
-                                {item.attributes?.action.data?.attributes.title}
                             </Typography>
                         </Stack>
                     </Stack>
@@ -70,9 +70,9 @@ export const ReccomendationsSection = ({ recommendations }: Props) => {
                         px: { sm: 4, xs: 2 }, backgroundColor: '#f5f5f5',
                         overflow: 'hidden'
                     }}>
-                        <Stack>
+                        <Stack py={2}>
                             <AliceCarousel disableSlideInfo animationType={'fadeout'} autoPlayInterval={4000}
-                                mouseTracking keyboardNavigation autoPlay disableDotsControls disableButtonsControls infinite
+                                mouseTracking keyboardNavigation autoPlay disableButtonsControls infinite
                                 responsive={responsive} items={items} />
                         </Stack>
                         {/* <Grid container direction={'row'} sx={{ display: { lg: 'flex', xs: 'none' } }}>
