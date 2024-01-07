@@ -16,6 +16,7 @@ import Button from '@mui/material/Button'
 import { getHeaderMenuItems } from '@/app/getHeaderMenuItems'
 import { useRouter } from 'next/router'
 import { getFooterMenuItems } from '@/app/getFooterMenuItems'
+import { AruodasIcon } from '../AruodasIcon'
 
 const Header = () => {
     const [openMobileMenu, setOpenMobileMenu] = useState(false)
@@ -88,6 +89,9 @@ const Header = () => {
                                 </Stack>
                             </Stack>
                             <Stack direction={'row'} spacing={{ md: 1, xs: .5 }} pt={.3} sx={{ alignItems: 'center' }}>
+                                <Link passHref href={`${process.env.NEXT_PUBLIC_ARUODAS_URL}`} aria-label="aruodas">
+                                    <AruodasIcon bgColor='#fff' />
+                                </Link>
                                 <Link passHref href={`${process.env.NEXT_PUBLIC_FACEBOOK_URL}`} aria-label="facebook">
                                     <FacebookIcon sx={{ color: "#fff", fontSize: 22 }} />
                                 </Link>

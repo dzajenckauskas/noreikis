@@ -8,6 +8,7 @@ import PinDropIcon from '@mui/icons-material/PinDrop'
 import { Stack, Typography } from '@mui/material'
 import Link from 'next/link'
 import { theme } from './Theme'
+import { AruodasIcon } from '../AruodasIcon'
 
 const Footer = () => {
     const dateNow = new Date()
@@ -56,6 +57,9 @@ const Footer = () => {
                                         </Stack>
                                     </Link>
                                     <Stack direction={'row'} spacing={1} sx={{ alignItems: 'center', width: '100%', justifyContent: 'flex-start' }}>
+                                        <Link passHref href={`${process.env.NEXT_PUBLIC_ARUODAS_URL}`} aria-label="aruodas">
+                                            <AruodasIcon bgColor='#fff' />
+                                        </Link>
                                         <Link passHref href={`${process.env.NEXT_PUBLIC_FACEBOOK_URL}`} aria-label="facebook">
                                             <FacebookIcon sx={{ color: theme.palette.info.main, fontSize: 20 }} />
                                         </Link>
