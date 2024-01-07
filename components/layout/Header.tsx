@@ -116,6 +116,9 @@ const Header = () => {
                             <Stack direction={'row'} spacing={1} sx={{ alignItems: 'center' }}>
                                 {/* <Image src={'/assets/images/mentorfm-icon-colorful-filled.svg'} width={40} height={40} alt='mentorfm logo' /> */}
                                 <Typography variant='h5' component={'p'} color={theme.palette.secondary.main} sx={{ letterSpacing: 2, fontSize: 22, fontWeight: 600, }}>
+                                    {"ERNESTAS"}
+                                </Typography>
+                                <Typography variant='h5' component={'p'} color={theme.palette.primary.main} sx={{ letterSpacing: 2, fontSize: 22, fontWeight: 600, }}>
                                     {process.env.NEXT_PUBLIC_COMPANY_NAME?.toUpperCase()}
                                 </Typography>
                             </Stack>
