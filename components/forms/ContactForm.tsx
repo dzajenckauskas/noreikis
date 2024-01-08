@@ -75,7 +75,7 @@ const ContactForm = () => {
         console.log('invalid', data, form.getValues())
     }
     return (
-        <form onSubmit={handleSubmit(submit, onInvalid)} id={'contact-form'} style={{ width: '100%', scrollMarginTop: '300px', }}>
+        <form onSubmit={handleSubmit(submit, onInvalid)} noValidate id={'contact-form'} style={{ width: '100%', scrollMarginTop: '300px', }}>
             <Stack direction={'column'} spacing={3} sx={{ width: '100%' }} pt={1}>
                 <Stack direction={{ sm: 'row', xs: 'column' }} spacing={3} width={'100%'} alignItems={'flex-end'}>
                     <TextField disabled={sent} size="small"

@@ -1,6 +1,6 @@
 import { ActionDataType, ActionType } from "@/app/types/ActionType";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Autocomplete, Button, TextField } from '@mui/material';
+import { Autocomplete, Button, Checkbox, FormControlLabel, FormHelperText, Grid, TextField } from '@mui/material';
 import FormLabel from "@mui/material/FormLabel";
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
@@ -23,15 +23,21 @@ type PriceInquiryFormInputType = {
     email: string;
     city: string;
     address: string;
+    floorNumber: number;
+    floorsTotal: number;
+    roomsNumber: number;
+    areaSqM: number;
+    houseBuildYear: string;
+    landArea: number;
     category: ActionDataType;
+    objectPurpose: ActionDataType;
+    objectState: ActionDataType;
+    houseType: ActionDataType;
     comment: string;
     contents: string;
+    renovatedHouse: boolean;
 }
-
-type Props = {
-    categories: ActionType;
-}
-const PriceInquiryForm = ({ categories }: Props) => {
+const PriceInquiryForm = () => {
 
 
 
@@ -42,13 +48,7 @@ const PriceInquiryForm = ({ categories }: Props) => {
     const submit: SubmitHandler<PriceInquiryFormInputType> = async (data) => {
         const inputData = {
             data: {
-                name: data.name,
-                email: data.email,
-                phone: data.phone,
-                category: data.category,
-                city: data.city,
-                address: data.address,
-                comment: data.comment,
+                ...data,
                 contents: JSON.stringify(data),
             }
         }
@@ -76,12 +76,53 @@ const PriceInquiryForm = ({ categories }: Props) => {
         email: yup.string().nullable().email(`${'Įveskite teisingą el. paštą'}`).required(`${'El. pašto adresas yra privalomas'}`),
         city: yup.string().required(`${'Įveskite NT objekto miestą'}`),
         address: yup.string().required(`${'Įveskite NT objekto adresą'}`),
-        category: yup.object().required(`${'Pasirinkite NT objekto tipą'}`),
+        category: yup.object().required(`${'Pasirinkite objekto kategoriją'}`),
+        objectPurpose: yup.object().when("category.attributes.value", {
+            is: (value: string) => (value !== "flats"),
+            then: () => yup.object().required(`${'Pasirinkite objekto paskirtį'}`),
+        }),
+        houseType: yup.object().when("category.attributes.value", {
+            is: (value: string) => (value !== "land"),
+            then: () => yup.object().required(`${'Pasirinkite namo tipą'}`),
+        }),
+        objectState: yup.object().when("category.attributes.value", {
+            is: (value: string) => (value !== "land"),
+            then: () => yup.object().required(`${'Pasirinkite objekto būseną'}`),
+        }),
         comment: yup.string(),
+        floorNumber: yup.number().when("category.attributes.value", {
+            is: (value: string) => (value === "flat"),
+            then: () => yup.number().required(`${'Nurodykite buto aukštą'}`),
+        }),
+        floorsTotal: yup.number().when("category.attributes.value", {
+            is: (value: string) => (value !== "land"),
+            then: () => yup.number().required(`${'Nurodykite namo aukštų skaičių'}`),
+        }),
+        roomsNumber: yup.number().when("category.attributes.value", {
+            is: (value: string) => (value !== "land"),
+            then: () => yup.number().required(`${'Nurodykite kambarių skaičių'}`),
+        }),
+        areaSqM: yup.number().when("category.attributes.value", {
+            is: (value: string) => (value !== "land"),
+            then: () => yup.number().required(`${'Nurodykite objeto plotą'}`),
+        }),
+        landArea: yup.number().when("category.attributes.value", {
+            is: (value: string) => (value !== "flats"),
+            then: () => yup.number().required(`${'Nurodykite sklypo plotą'}`),
+        }),
+        houseBuildYear: yup.string().when("category.attributes.value", {
+            is: (value: string) => (value !== "land"),
+            then: () => yup.string().required(`${'Nurodykite pastato statybos metus'}`),
+        }),
+        renovatedHouse: yup.boolean().when("category.attributes.value", {
+            is: (value: string) => (value !== "land"),
+            then: () => yup.boolean().required(`${'Nurodykite ar namas renovuotas'}`),
+        }),
 
     }).required();
 
     const form = useForm<PriceInquiryFormInputType>({
+        mode: 'all',
         resolver: yupResolver(priceInquiryFormSchema as any),
     });
 
@@ -89,12 +130,16 @@ const PriceInquiryForm = ({ categories }: Props) => {
     const onInvalid: SubmitErrorHandler<PriceInquiryFormInputType> = (data) => {
         console.log('invalid', data, form.getValues())
     }
+    const category = form.watch('category.attributes.value')
+    const renovatedHouse = form.watch('renovatedHouse')
 
 
     return (
-        <form onSubmit={handleSubmit(submit, onInvalid)} id={'contact-form'} style={{ width: '100%', scrollMarginTop: '300px', }}>
-            <Stack direction={'column'} spacing={3} sx={{ width: '100%' }} pt={1}>
-                <Stack direction={{ sm: 'row', xs: 'column' }} spacing={3} width={'100%'} alignItems={'flex-end'}>
+        <form onSubmit={handleSubmit(submit, onInvalid)} noValidate id={'contact-form'} style={{ width: '100%', scrollMarginTop: '400px', }}>
+            {/* <Stack direction={'column'} spacing={3} sx={{ width: '100%' }} pt={1}>
+                <Stack direction={{ sm: 'row', xs: 'column' }} spacing={3} width={'100%'} alignItems={'flex-end'}> */}
+            <Grid container spacing={2} pb={3} >
+                <Grid item xs={12} sm={6} md={6} lg={4}>
                     <TextField disabled={sent} size="small"
                         label={<Typography component={FormLabel} required variant='body1'
                             color={errors.name?.message ? 'error' : theme.palette.primary.dark}   >
@@ -105,7 +150,8 @@ const PriceInquiryForm = ({ categories }: Props) => {
                         error={!!errors.name?.message} helperText={errors.name?.message}
                         fullWidth
                     />
-
+                </Grid>
+                <Grid item xs={12} sm={6} md={6} lg={4}>
                     <TextField disabled={sent} size="small"
                         label={<Typography component={FormLabel} required variant='body1'
                             color={errors.email?.message ? 'error' : theme.palette.primary.dark}   >
@@ -116,10 +162,11 @@ const PriceInquiryForm = ({ categories }: Props) => {
                         error={!!errors.email?.message} helperText={errors.email?.message}
                         fullWidth
                     />
-
+                </Grid>
+                <Grid item xs={12} sm={6} md={6} lg={4}>
                     <TextField disabled={sent} size="small"
                         label={<Typography component={FormLabel} required variant='body1'
-                            color={errors.email?.message ? 'error' : theme.palette.primary.dark}   >
+                            color={errors.phone?.message ? 'error' : theme.palette.primary.dark}   >
                             {/* {t('form.phone', { ns: 'contact' })} */}
                             Tel. Nr.
                         </Typography>}
@@ -127,126 +174,193 @@ const PriceInquiryForm = ({ categories }: Props) => {
                         error={!!errors.phone?.message} helperText={errors.phone?.message}
                         fullWidth
                     />
-                </Stack>
+                </Grid>
 
+                <Grid item xs={12} sm={6} md={6} lg={6}>
+                    <TextField disabled={sent}
+                        label={<Typography component={FormLabel} required variant='body1' color={errors.city?.message ? theme.palette.error.main : theme.palette.primary.dark}  >
+                            {/* {t("form.message", { ns: 'contact' })} */}
+                            Miestas
+                        </Typography>}
+                        size='small'
+                        {...register("city")}
+                        helperText={errors.city?.message}
+                        error={!!errors.city}
+                        fullWidth
+                    />
+                </Grid>
+                <Grid item xs={12} sm={6} md={6} lg={6}>
+                    <TextField disabled={sent}
+                        label={<Typography component={FormLabel} required variant='body1' color={errors.address?.message ? theme.palette.error.main : theme.palette.primary.dark}  >
+                            {/* {t("form.message", { ns: 'contact' })} */}
+                            Tikslus adresas
+                        </Typography>}
+                        size='small'
+                        {...register("address")}
+                        helperText={errors.address?.message}
+                        error={!!errors.address}
+                        fullWidth
+                    />
+                </Grid>
+                <Grid item xs={12} sm={12} md={12} lg={12}>
+                    <CategoryAutocomplete form={form} />
+                </Grid>
+                {category && category !== 'flats' &&
+                    <Grid item xs={12} sm={6} md={6} lg={6}>
+                        <ObjectPurposeAutocomplete form={form} />
+                    </Grid>}
+                {category && category !== 'land' &&
+                    <>
+                        <Grid item xs={12} sm={6} md={6} lg={6}>
+                            <TextField disabled={sent}
+                                // required
+                                label={<Typography required component={FormLabel} variant='body1' color={errors.areaSqM?.message ? theme.palette.error.main : theme.palette.primary.dark}  >
+                                    {/* {t("form.message", { ns: 'contact' })} */}
+                                    Plotas, m&sup2;
+                                </Typography>}
+                                size='small'
+                                {...register("areaSqM")}
+                                helperText={errors.areaSqM?.message}
+                                error={!!errors.areaSqM}
+                                fullWidth
+                            />
+                        </Grid>
+                        <Grid item xs={12} sm={6} md={6} lg={6}>
+                            <TextField disabled={sent}
+                                label={<Typography component={FormLabel} required variant='body1' color={errors.roomsNumber?.message ? theme.palette.error.main : theme.palette.primary.dark}  >
+                                    {/* {t("form.message", { ns: 'contact' })} */}
+                                    Kambarių skaičius
+                                </Typography>}
+                                type="number"
+                                size='small'
+                                {...register("roomsNumber")}
+                                helperText={errors.roomsNumber?.message}
+                                error={!!errors.roomsNumber}
+                                fullWidth
+                            />
+                        </Grid>
+                        {category === 'flats' && <Grid item xs={12} sm={6} md={6} lg={6}>
+                            <TextField disabled={sent}
+                                label={<Typography component={FormLabel} required variant='body1' color={errors.floorNumber?.message ? theme.palette.error.main : theme.palette.primary.dark}  >
+                                    {/* {t("form.message", { ns: 'contact' })} */}
+                                    Buto aukštas
+                                </Typography>}
+                                type="number"
+                                size='small'
+                                {...register("floorNumber")}
+                                helperText={errors.floorNumber?.message}
+                                error={!!errors.floorNumber}
+                                fullWidth
+                            />
+                        </Grid>}
+                        <Grid item xs={12} sm={6} md={6} lg={6}>
+                            <TextField disabled={sent}
+                                label={<Typography component={FormLabel} required variant='body1' color={errors.floorsTotal?.message ? theme.palette.error.main : theme.palette.primary.dark}  >
+                                    {/* {t("form.message", { ns: 'contact' })} */}
+                                    Namo aukštų skaičius
+                                </Typography>}
+                                type="number"
+                                size='small'
+                                {...register("floorsTotal")}
+                                helperText={errors.floorsTotal?.message}
+                                error={!!errors.floorsTotal}
+                                fullWidth
+                            />
+                        </Grid>
+                        <Grid item xs={12} sm={6} md={6} lg={6}>
+                            <TextField disabled={sent}
+                                label={<Typography component={FormLabel} required variant='body1' color={errors.houseBuildYear?.message ? theme.palette.error.main : theme.palette.primary.dark}  >
+                                    {/* {t("form.message", { ns: 'contact' })} */}
+                                    Namo statybos metai
+                                </Typography>}
+                                size='small'
+                                {...register("houseBuildYear")}
+                                helperText={errors.houseBuildYear?.message}
+                                error={!!errors.houseBuildYear}
+                                fullWidth
+                            />
+                        </Grid>
+                        <Grid item xs={12} sm={6} md={6} lg={6} >
+                            <Stack position={'relative'} alignItems={'flex-start'} width={'100%'}>
+                                <FormControlLabel
+                                    label={<Typography component={FormLabel} sx={{ cursor: 'pointer' }} onClick={() => form.setValue('renovatedHouse', !renovatedHouse)} required textAlign={'left'} color={errors.renovatedHouse?.message ? 'error' : theme.palette.primary.dark} >
+                                        {/* {t('form.renovatedHouse', { ns: 'auditPriceForm' })} */}
+                                        Namas renovuotas
+                                    </Typography>}
+                                    htmlFor={'renovatedHouse'}
+                                    control={
+                                        <Checkbox disableRipple sx={{ cursor: 'pointer' }}
+                                            checked={renovatedHouse}
+                                            id={"renovatedHouse"}
+                                            {...register('renovatedHouse')}
+                                        />
+                                    }
+                                />
+                                {errors.renovatedHouse && <Stack direction={'row'} mt={-1}>
+                                    <FormHelperText sx={{ color: theme.palette.error.main }}>
+                                        {errors.renovatedHouse?.message}
+                                    </FormHelperText>
+                                </Stack>}
+                            </Stack>
+                        </Grid>
+                        <Grid item xs={12} sm={6} md={6} lg={6} >
+                            <ObjectHouseTypeAutocomplete form={form} />
+                        </Grid>
+                        <Grid item xs={12} sm={6} md={6} lg={6}>
+                            <ObjectStateAutocomplete form={form} />
+                        </Grid>
+                    </>}
 
-                <TextField disabled={sent}
-                    label={<Typography component={FormLabel} required variant='body1' color={errors.city?.message ? theme.palette.error.main : theme.palette.primary.dark}  >
-                        {/* {t("form.message", { ns: 'contact' })} */}
-                        Miestas
-                    </Typography>}
-                    size='small'
-                    {...register("city")}
-                    helperText={errors.city?.message}
-                    error={!!errors.city}
-                    fullWidth
-                />
-                <TextField disabled={sent}
-                    label={<Typography component={FormLabel} required variant='body1' color={errors.address?.message ? theme.palette.error.main : theme.palette.primary.dark}  >
-                        {/* {t("form.message", { ns: 'contact' })} */}
-                        Tikslus adresas
-                    </Typography>}
-                    size='small'
-                    {...register("address")}
-                    helperText={errors.address?.message}
-                    error={!!errors.address}
-                    fullWidth
-                />
-                <CategoryAutocomplete form={form} />
-                <ObjectPurposeAutocomplete form={form} />
-                <ObjectStateAutocomplete form={form} />
-                <ObjectHouseTypeAutocomplete form={form} />
+                {category && category !== 'flats' &&
+                    <Grid item xs={12} sm={6} md={6} lg={6}>
+                        <TextField disabled={sent}
+                            label={<Typography component={FormLabel} required variant='body1' color={errors.landArea?.message ? theme.palette.error.main : theme.palette.primary.dark}  >
+                                {/* {t("form.message", { ns: 'contact' })} */}
+                                Sklypo plotas, a
+                            </Typography>}
+                            size='small'
+                            {...register("landArea")}
+                            helperText={errors.landArea?.message}
+                            error={!!errors.landArea}
+                            fullWidth
+                        />
+                    </Grid>}
+                <Grid item xs={12} sm={12} md={12} lg={12}>
+                    <TextField disabled={sent}
+                        label={<Typography component={FormLabel} variant='body1' color={errors.comment?.message ? theme.palette.error.main : theme.palette.primary.dark}  >
+                            {/* {t("form.message", { ns: 'contact' })} */}
+                            Komentaras
+                        </Typography>}
+                        size='small'
+                        multiline
+                        rows={4}
+                        {...register("comment")}
+                        helperText={errors.comment?.message}
+                        error={!!errors.comment}
+                        fullWidth
+                    />
+                </Grid>
+            </Grid>
 
-                <TextField disabled={sent}
-                    label={<Typography component={FormLabel} required variant='body1' color={errors.address?.message ? theme.palette.error.main : theme.palette.primary.dark}  >
-                        {/* {t("form.message", { ns: 'contact' })} */}
-                        Buto aukštas
-                    </Typography>}
-                    size='small'
-                    {...register("address")}
-                    helperText={errors.address?.message}
-                    error={!!errors.address}
-                    fullWidth
-                />
-                <TextField disabled={sent}
-                    label={<Typography component={FormLabel} required variant='body1' color={errors.address?.message ? theme.palette.error.main : theme.palette.primary.dark}  >
-                        {/* {t("form.message", { ns: 'contact' })} */}
-                        Namo aukštų skaičius
-                    </Typography>}
-                    size='small'
-                    {...register("address")}
-                    helperText={errors.address?.message}
-                    error={!!errors.address}
-                    fullWidth
-                />
-                <TextField disabled={sent}
-                    label={<Typography component={FormLabel} required variant='body1' color={errors.address?.message ? theme.palette.error.main : theme.palette.primary.dark}  >
-                        {/* {t("form.message", { ns: 'contact' })} */}
-                        Kambarių skaičius
-                    </Typography>}
-                    size='small'
-                    {...register("address")}
-                    helperText={errors.address?.message}
-                    error={!!errors.address}
-                    fullWidth
-                />
-                <TextField disabled={sent}
-                    label={<Typography component={FormLabel} required variant='body1' color={errors.address?.message ? theme.palette.error.main : theme.palette.primary.dark}  >
-                        {/* {t("form.message", { ns: 'contact' })} */}
-                        Plotas m2
-                    </Typography>}
-                    size='small'
-                    {...register("address")}
-                    helperText={errors.address?.message}
-                    error={!!errors.address}
-                    fullWidth
-                />
-                <TextField disabled={sent}
-                    label={<Typography component={FormLabel} required variant='body1' color={errors.address?.message ? theme.palette.error.main : theme.palette.primary.dark}  >
-                        {/* {t("form.message", { ns: 'contact' })} */}
-                        Namo statybos metai
-                    </Typography>}
-                    size='small'
-                    {...register("address")}
-                    helperText={errors.address?.message}
-                    error={!!errors.address}
-                    fullWidth
-                />
-
-                <TextField disabled={sent}
-                    label={<Typography component={FormLabel} variant='body1' color={errors.comment?.message ? theme.palette.error.main : theme.palette.primary.dark}  >
-                        {/* {t("form.message", { ns: 'contact' })} */}
-                        Komentaras
-                    </Typography>}
-                    size='small'
-                    multiline
-                    rows={4}
-                    {...register("comment")}
-                    helperText={errors.comment?.message}
-                    error={!!errors.comment}
-                    fullWidth
-                />
-
-                <Stack width={'100%'} direction={'column'} justifyContent={'center'} >
-                    {sent &&
-                        <Stack direction={'row'} justifyContent={'center'} mb={2}>
-                            <Typography textAlign={'left'} fontWeight={500} color={theme.palette.primary.dark} >
-                                Turto vertinimo užklausa išsiųsta
-                            </Typography>
-                        </Stack>}
-                    {!sent &&
-                        <Button variant="contained" color="secondary" type={'submit'}>
-                            Siųsti užklausą
-                        </Button>
-                    }
-                    {sent &&
-                        <Button variant="outlined" color="secondary" onClick={() => { setSent(false) }}>
-                            Siųsti dar kartą
-                        </Button>
-                    }
-                </Stack>
+            <Stack width={'100%'} direction={'column'} justifyContent={'center'} >
+                {sent &&
+                    <Stack direction={'row'} justifyContent={'center'} mb={2}>
+                        <Typography textAlign={'left'} fontWeight={500} color={theme.palette.primary.dark} >
+                            Turto vertinimo užklausa išsiųsta
+                        </Typography>
+                    </Stack>}
+                {!sent &&
+                    <Button variant="contained" color="secondary" type={'submit'}>
+                        Siųsti užklausą
+                    </Button>
+                }
+                {sent &&
+                    <Button variant="outlined" color="secondary" onClick={() => { setSent(false) }}>
+                        Siųsti dar kartą
+                    </Button>
+                }
             </Stack>
-        </form>
+        </form >
     )
 }
 

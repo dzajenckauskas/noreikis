@@ -21,10 +21,9 @@ import Link from 'next/link'
 
 type Props = {
   recommendations: RecommendationsType;
-  categories: ActionType;
 }
 
-export default function Home({ recommendations, categories }: Props) {
+export default function Home({ recommendations }: Props) {
 
   return (
     <>
@@ -99,7 +98,7 @@ export default function Home({ recommendations, categories }: Props) {
             </Typography>
           </Stack>
           <Stack width={'50%'}>
-            <PriceInquiryForm categories={categories} />
+            <PriceInquiryForm />
           </Stack>
         </Stack>
       </Layout>
