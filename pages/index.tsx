@@ -108,12 +108,12 @@ export default function Home({ recommendations, categories }: Props) {
 }
 export const getServerSideProps: GetServerSideProps = async () => {
   const recommendations = await getItems('recommendations', 'populate=deep') ?? null
-  const categories = await getItems('categories') ?? null
+  // const categories = await getItems('categories') ?? null
 
   return {
     props: {
       recommendations: recommendations ?? null,
-      categories: categories ?? null
+      // categories: categories ?? null
     }
   }
 }

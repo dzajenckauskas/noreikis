@@ -1,11 +1,12 @@
-import { yupResolver } from "@hookform/resolvers/yup";
 import { ActionDataType, ActionType } from "@/app/types/ActionType";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { Autocomplete, Button, TextField } from '@mui/material';
 import FormLabel from "@mui/material/FormLabel";
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { useTheme } from '@mui/material/styles';
 import axios from "axios";
+import useAxios from "axios-hooks";
 import { useState } from 'react';
 import { SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form";
 import * as yup from "yup";
@@ -27,9 +28,27 @@ type Props = {
     categories: ActionType;
 }
 const PriceInquiryForm = ({ categories }: Props) => {
+
+    const [{ data, loading, error }, get] = useAxios<ActionType>(
+        {
+            method: 'GET',
+            url: `${process.env.NEXT_PUBLIC_API_URL}/api/categories`
+        },
+    )
+
+    const asyncGet = async () => {
+        try {
+            const response = await get();
+            return response
+        } catch (err) {
+            console.log(err)
+        }
+    }
+    console.log(data, "data");
+
     const theme = useTheme()
     const [sent, setSent] = useState(false)
-    const [error, setError] = useState<string | undefined>()
+    // const [error, setError] = useState<string | undefined>()
 
     const submit: SubmitHandler<PriceInquiryFormInputType> = async (data) => {
         const inputData = {
@@ -49,13 +68,13 @@ const PriceInquiryForm = ({ categories }: Props) => {
             .catch((error: any) => {
                 console.log(error);
                 if (error?.message) {
-                    setError(error.message)
+                    // setError(error.message)
                 }
             })
             .then((response: any) => {
                 console.log(response);
                 if (response?.data) {
-                    setError(undefined)
+                    // setError(undefined)
                     setSent(true)
                     reset()
                 }
@@ -121,10 +140,12 @@ const PriceInquiryForm = ({ categories }: Props) => {
                     />
                 </Stack>
                 <Autocomplete
+                    loading={loading}
                     size="small"
                     fullWidth
                     disablePortal
-                    options={categories.data ?? []}
+                    options={data?.data ?? []}
+                    onClick={() => asyncGet()}
                     onChange={(_e, v) => {
                         console.log(v)
                         if (v)
