@@ -1,20 +1,18 @@
-import { ActionDataType, ActionType } from "@/app/types/ActionType";
+import { ActionDataType } from "@/app/types/ActionType";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Autocomplete, Button, Checkbox, FormControlLabel, FormHelperText, Grid, TextField } from '@mui/material';
+import { Button, Checkbox, FormControlLabel, FormHelperText, Grid, TextField } from '@mui/material';
 import FormLabel from "@mui/material/FormLabel";
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { useTheme } from '@mui/material/styles';
 import axios from "axios";
-import useAxios from "axios-hooks";
 import { useState } from 'react';
-import { SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form";
+import { SubmitErrorHandler, SubmitHandler, useForm, useWatch } from "react-hook-form";
 import * as yup from "yup";
-import ErrorBox from "../ErrorBox";
 import { CategoryAutocomplete } from "./CategoryAutocomplete";
+import { ObjectHouseTypeAutocomplete } from "./ObjectHouseTypeAutocomplete";
 import { ObjectPurposeAutocomplete } from "./ObjectPurposeAutocomplete";
 import { ObjectStateAutocomplete } from "./ObjectStateAutocomplete";
-import { ObjectHouseTypeAutocomplete } from "./ObjectHouseTypeAutocomplete";
 
 
 type PriceInquiryFormInputType = {
@@ -23,12 +21,12 @@ type PriceInquiryFormInputType = {
     email: string;
     city: string;
     address: string;
-    floorNumber: number;
-    floorsTotal: number;
-    roomsNumber: number;
-    areaSqM: number;
+    floorNumber: string;
+    floorsTotal: string;
+    roomsNumber: string;
+    areaSqM: string;
     houseBuildYear: string;
-    landArea: number;
+    landArea: string;
     category: ActionDataType;
     objectPurpose: ActionDataType;
     objectState: ActionDataType;
@@ -57,13 +55,11 @@ const PriceInquiryForm = () => {
             .catch((error: any) => {
                 console.log(error);
                 if (error?.message) {
-                    // setError(error.message)
                 }
             })
             .then((response: any) => {
                 console.log(response);
                 if (response?.data) {
-                    // setError(undefined)
                     setSent(true)
                     reset()
                 }
@@ -76,48 +72,74 @@ const PriceInquiryForm = () => {
         email: yup.string().nullable().email(`${'Įveskite teisingą el. paštą'}`).required(`${'El. pašto adresas yra privalomas'}`),
         city: yup.string().required(`${'Įveskite NT objekto miestą'}`),
         address: yup.string().required(`${'Įveskite NT objekto adresą'}`),
-        category: yup.object().required(`${'Pasirinkite objekto kategoriją'}`),
+        category: yup.object()
+            .required(`${'Pasirinkite objekto kategoriją'}`)
+            .typeError(`${'Pasirinkite objekto kategoriją'}`),
         objectPurpose: yup.object().when("category.attributes.value", {
             is: (value: string) => (value !== "flats"),
-            then: () => yup.object().required(`${'Pasirinkite objekto paskirtį'}`),
+            then: () => yup.object()
+                .required(`${'Pasirinkite objekto paskirtį'}`)
+                .typeError(`${'Pasirinkite objekto paskirtį'}`),
         }),
         houseType: yup.object().when("category.attributes.value", {
             is: (value: string) => (value !== "land"),
-            then: () => yup.object().required(`${'Pasirinkite namo tipą'}`),
+            then: () => yup.object().required(`${'Pasirinkite namo tipą'}`)
+                .typeError(`${'Pasirinkite namo tipą'}`),
         }),
         objectState: yup.object().when("category.attributes.value", {
             is: (value: string) => (value !== "land"),
-            then: () => yup.object().required(`${'Pasirinkite objekto būseną'}`),
+            then: () => yup.object()
+                .required(`${'Pasirinkite objekto būseną'}`)
+                .typeError(`${'Pasirinkite objekto būseną'}`),
         }),
         comment: yup.string(),
-        floorNumber: yup.number().when("category.attributes.value", {
-            is: (value: string) => (value === "flat"),
-            then: () => yup.number().required(`${'Nurodykite buto aukštą'}`),
-        }),
-        floorsTotal: yup.number().when("category.attributes.value", {
-            is: (value: string) => (value !== "land"),
-            then: () => yup.number().required(`${'Nurodykite namo aukštų skaičių'}`),
-        }),
-        roomsNumber: yup.number().when("category.attributes.value", {
-            is: (value: string) => (value !== "land"),
-            then: () => yup.number().required(`${'Nurodykite kambarių skaičių'}`),
-        }),
-        areaSqM: yup.number().when("category.attributes.value", {
-            is: (value: string) => (value !== "land"),
-            then: () => yup.number().required(`${'Nurodykite objeto plotą'}`),
-        }),
-        landArea: yup.number().when("category.attributes.value", {
-            is: (value: string) => (value !== "flats"),
-            then: () => yup.number().required(`${'Nurodykite sklypo plotą'}`),
-        }),
+        floorNumber: yup.string()
+            .transform((value) => Number.isNaN(value) ? null : value)
+            .when("category.attributes.value", {
+                is: (value: string) => (value === "flat"),
+                then: () => yup.string()
+                    .transform((value) => Number.isNaN(value) ? null : value)
+                    .required(`${'Nurodykite buto aukštą'}`),
+            }),
+        floorsTotal: yup.string()
+            .transform((value) => Number.isNaN(value) ? null : value)
+            .when("category.attributes.value", {
+                is: (value: string) => (value !== "land"),
+                then: () => yup.string()
+                    .transform((value) => Number.isNaN(value) ? null : value)
+                    .required(`${'Nurodykite namo aukštų skaičių'}`),
+            }),
+        roomsNumber: yup.string()
+            .transform((value) => Number.isNaN(value) ? null : value)
+            .when("category.attributes.value", {
+                is: (value: string) => (value !== "land"),
+                then: () => yup.string()
+                    .transform((value) => Number.isNaN(value) ? null : value)
+                    .required(`${'Nurodykite kambarių skaičių'}`),
+            }),
+        areaSqM: yup.string()
+            .transform((value) => Number.isNaN(value) ? null : value)
+            .when("category.attributes.value", {
+                is: (value: string) => (value !== "land"),
+                then: () => yup.string()
+                    .transform((value) => Number.isNaN(value) ? null : value)
+                    .required(`${'Nurodykite objeto plotą'}`),
+            }),
+        landArea: yup.string()
+            .transform((value) => Number.isNaN(value) ? null : value)
+            .when("category.attributes.value", {
+                is: (value: string) => (value !== "flats"),
+                then: () => yup.string()
+                    .transform((value) => Number.isNaN(value) ? null : value)
+                    .required(`${'Nurodykite sklypo plotą'}`),
+            }),
         houseBuildYear: yup.string().when("category.attributes.value", {
             is: (value: string) => (value !== "land"),
-            then: () => yup.string().required(`${'Nurodykite pastato statybos metus'}`),
+            then: () => yup.string()
+                .required(`${'Nurodykite pastato statybos metus'}`)
+                .typeError(`${'Nurodykite pastato statybos metus'}`),
         }),
-        renovatedHouse: yup.boolean().when("category.attributes.value", {
-            is: (value: string) => (value !== "land"),
-            then: () => yup.boolean().required(`${'Nurodykite ar namas renovuotas'}`),
-        }),
+        renovatedHouse: yup.boolean()
 
     }).required();
 
@@ -126,12 +148,21 @@ const PriceInquiryForm = () => {
         resolver: yupResolver(priceInquiryFormSchema as any),
     });
 
-    const { reset, register, handleSubmit, formState: { errors } } = form
+    const { reset, register, handleSubmit, formState: { errors }, control } = form
     const onInvalid: SubmitErrorHandler<PriceInquiryFormInputType> = (data) => {
         console.log('invalid', data, form.getValues())
     }
-    const category = form.watch('category.attributes.value')
-    const renovatedHouse = form.watch('renovatedHouse')
+
+    const category = useWatch({
+        control,
+        name: "category.attributes.value",
+        defaultValue: undefined,
+    })
+    const renovatedHouse = useWatch({
+        control,
+        name: "renovatedHouse",
+        defaultValue: undefined,
+    })
 
 
     return (
@@ -218,6 +249,7 @@ const PriceInquiryForm = () => {
                                     {/* {t("form.message", { ns: 'contact' })} */}
                                     Plotas, m&sup2;
                                 </Typography>}
+                                type="'number"
                                 size='small'
                                 {...register("areaSqM")}
                                 helperText={errors.areaSqM?.message}
@@ -283,7 +315,9 @@ const PriceInquiryForm = () => {
                         <Grid item xs={12} sm={6} md={6} lg={6} >
                             <Stack position={'relative'} alignItems={'flex-start'} width={'100%'}>
                                 <FormControlLabel
-                                    label={<Typography component={FormLabel} sx={{ cursor: 'pointer' }} onClick={() => form.setValue('renovatedHouse', !renovatedHouse)} required textAlign={'left'} color={errors.renovatedHouse?.message ? 'error' : theme.palette.primary.dark} >
+                                    label={<Typography component={FormLabel} sx={{ cursor: 'pointer' }}
+                                        onClick={() => form.setValue('renovatedHouse', !renovatedHouse)}
+                                        textAlign={'left'} color={errors.renovatedHouse?.message ? 'error' : theme.palette.primary.dark} >
                                         {/* {t('form.renovatedHouse', { ns: 'auditPriceForm' })} */}
                                         Namas renovuotas
                                     </Typography>}
