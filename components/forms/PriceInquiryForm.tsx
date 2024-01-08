@@ -11,6 +11,10 @@ import { useState } from 'react';
 import { SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form";
 import * as yup from "yup";
 import ErrorBox from "../ErrorBox";
+import { CategoryAutocomplete } from "./CategoryAutocomplete";
+import { ObjectPurposeAutocomplete } from "./ObjectPurposeAutocomplete";
+import { ObjectStateAutocomplete } from "./ObjectStateAutocomplete";
+import { ObjectHouseTypeAutocomplete } from "./ObjectHouseTypeAutocomplete";
 
 
 type PriceInquiryFormInputType = {
@@ -29,22 +33,7 @@ type Props = {
 }
 const PriceInquiryForm = ({ categories }: Props) => {
 
-    const [{ data, loading, error }, get] = useAxios<ActionType>(
-        {
-            method: 'GET',
-            url: `${process.env.NEXT_PUBLIC_API_URL}/api/categories`
-        },
-    )
 
-    const asyncGet = async () => {
-        try {
-            const response = await get();
-            return response
-        } catch (err) {
-            console.log(err)
-        }
-    }
-    console.log(data, "data");
 
     const theme = useTheme()
     const [sent, setSent] = useState(false)
@@ -139,21 +128,6 @@ const PriceInquiryForm = ({ categories }: Props) => {
                         fullWidth
                     />
                 </Stack>
-                <Autocomplete
-                    loading={loading}
-                    size="small"
-                    fullWidth
-                    disablePortal
-                    options={data?.data ?? []}
-                    onClick={() => asyncGet()}
-                    onChange={(_e, v) => {
-                        console.log(v)
-                        if (v)
-                            form.setValue('category', v)
-                    }}
-                    getOptionLabel={(o) => `${o.attributes.title ?? ''}`}
-                    renderInput={(params) => <TextField {...params} required label="Objekto tipas" />}
-                />
 
 
                 <TextField disabled={sent}
@@ -178,6 +152,67 @@ const PriceInquiryForm = ({ categories }: Props) => {
                     error={!!errors.address}
                     fullWidth
                 />
+                <CategoryAutocomplete form={form} />
+                <ObjectPurposeAutocomplete form={form} />
+                <ObjectStateAutocomplete form={form} />
+                <ObjectHouseTypeAutocomplete form={form} />
+
+                <TextField disabled={sent}
+                    label={<Typography component={FormLabel} required variant='body1' color={errors.address?.message ? theme.palette.error.main : theme.palette.primary.dark}  >
+                        {/* {t("form.message", { ns: 'contact' })} */}
+                        Buto aukštas
+                    </Typography>}
+                    size='small'
+                    {...register("address")}
+                    helperText={errors.address?.message}
+                    error={!!errors.address}
+                    fullWidth
+                />
+                <TextField disabled={sent}
+                    label={<Typography component={FormLabel} required variant='body1' color={errors.address?.message ? theme.palette.error.main : theme.palette.primary.dark}  >
+                        {/* {t("form.message", { ns: 'contact' })} */}
+                        Namo aukštų skaičius
+                    </Typography>}
+                    size='small'
+                    {...register("address")}
+                    helperText={errors.address?.message}
+                    error={!!errors.address}
+                    fullWidth
+                />
+                <TextField disabled={sent}
+                    label={<Typography component={FormLabel} required variant='body1' color={errors.address?.message ? theme.palette.error.main : theme.palette.primary.dark}  >
+                        {/* {t("form.message", { ns: 'contact' })} */}
+                        Kambarių skaičius
+                    </Typography>}
+                    size='small'
+                    {...register("address")}
+                    helperText={errors.address?.message}
+                    error={!!errors.address}
+                    fullWidth
+                />
+                <TextField disabled={sent}
+                    label={<Typography component={FormLabel} required variant='body1' color={errors.address?.message ? theme.palette.error.main : theme.palette.primary.dark}  >
+                        {/* {t("form.message", { ns: 'contact' })} */}
+                        Plotas m2
+                    </Typography>}
+                    size='small'
+                    {...register("address")}
+                    helperText={errors.address?.message}
+                    error={!!errors.address}
+                    fullWidth
+                />
+                <TextField disabled={sent}
+                    label={<Typography component={FormLabel} required variant='body1' color={errors.address?.message ? theme.palette.error.main : theme.palette.primary.dark}  >
+                        {/* {t("form.message", { ns: 'contact' })} */}
+                        Namo statybos metai
+                    </Typography>}
+                    size='small'
+                    {...register("address")}
+                    helperText={errors.address?.message}
+                    error={!!errors.address}
+                    fullWidth
+                />
+
                 <TextField disabled={sent}
                     label={<Typography component={FormLabel} variant='body1' color={errors.comment?.message ? theme.palette.error.main : theme.palette.primary.dark}  >
                         {/* {t("form.message", { ns: 'contact' })} */}
@@ -185,7 +220,7 @@ const PriceInquiryForm = ({ categories }: Props) => {
                     </Typography>}
                     size='small'
                     multiline
-                    rows={8}
+                    rows={4}
                     {...register("comment")}
                     helperText={errors.comment?.message}
                     error={!!errors.comment}
@@ -210,7 +245,6 @@ const PriceInquiryForm = ({ categories }: Props) => {
                         </Button>
                     }
                 </Stack>
-                {error && <ErrorBox errors={error} />}
             </Stack>
         </form>
     )
