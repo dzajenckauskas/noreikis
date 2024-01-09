@@ -2,9 +2,11 @@ import { getItemBySlug } from '@/app/utils'
 import Layout from '@/components/layout/Layout'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
+import { BlocksRenderer } from '@strapi/blocks-react-renderer'
 import { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
 
 type Props = {
   blogPost: any
@@ -13,6 +15,7 @@ type Props = {
 export default function UsefulInformation({ blogPost }: Props) {
   const image = blogPost?.attributes?.images?.data?.[0]?.attributes?.formats
   const imageSrc = `${process.env.NEXT_PUBLIC_API_URL}${image?.medium?.url}`
+  console.log(JSON.stringify(blogPost.attributes.content));
 
   return (
     <>
@@ -29,11 +32,42 @@ export default function UsefulInformation({ blogPost }: Props) {
               layout='fill' objectFit='cover' src={imageSrc} />
           </Stack>
 
-          <Typography variant='h6'>
+          <Typography variant='h4' py={4}>
             {blogPost.attributes.title}
           </Typography>
           <Typography>
-            {blogPost.attributes.shortContent}
+            <BlocksRenderer
+              content={blogPost.attributes.content}
+              blocks={{
+                // You can use the default components to set class names...
+                paragraph: ({ children }) => <Typography variant="body1">{children}</Typography>,
+                // ...or point to a design system
+                heading: ({ children, level }) => {
+                  console.log(children, level);
+                  switch (level) {
+                    case 1:
+                      return <Typography variant="h1">{children}</Typography>
+                    case 2:
+                      return <Typography variant="h2">{children}</Typography>
+                    case 3:
+                      return <Typography variant="h3">{children}</Typography>
+                    case 4:
+                      return <Typography variant="h4">{children}</Typography>
+                    case 5:
+                      return <Typography variant="h5">{children}</Typography>
+                    case 6:
+                      return <Typography variant="h6" pt={2} fontWeight={500}>{children}</Typography>
+                    default:
+                      return <Typography variant="h1">{children}</Typography>
+                  }
+                },
+                link: ({ children, url }) => <Link href={url}>{children}</Link>,
+              }}
+              modifiers={{
+                bold: ({ children }) => <>{children}</>,
+                italic: ({ children }) => <i>{children}</i>,
+              }}
+            />
           </Typography>
         </Stack>
       </Layout>
