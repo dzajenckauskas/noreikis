@@ -39,11 +39,8 @@ export default function UsefulInformation({ blogPost }: Props) {
             <BlocksRenderer
               content={blogPost.attributes.content}
               blocks={{
-                // You can use the default components to set class names...
                 paragraph: ({ children }) => <Typography variant="body1">{children}</Typography>,
-                // ...or point to a design system
                 heading: ({ children, level }) => {
-                  console.log(children, level);
                   switch (level) {
                     case 1:
                       return <Typography variant="h1">{children}</Typography>
