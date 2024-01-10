@@ -32,6 +32,7 @@ export const BlocksRendererComponent = ({ content }: Props) => {
                     }
                 },
                 link: ({ children, url }) => <Link href={url}>{children}</Link>,
+                list: ({ children }) => <Typography>{children}</Typography>
             }}
             modifiers={{
                 bold: ({ children }) => <>{children}</>,
