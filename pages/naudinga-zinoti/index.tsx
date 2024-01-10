@@ -18,8 +18,8 @@ export default function UsefulInformation({ blogPosts }: Props) {
     const imageSrc = `${process.env.NEXT_PUBLIC_API_URL}${image?.medium.url}`
 
     return (
-      <Stack key={post.id} pt={4} direction={'row'} spacing={2}>
-        <Stack sx={{ position: 'relative', width: 600, height: 200 }}>
+      <Stack key={post.id} pt={4} direction={{ xs: 'column', md: 'row' }} spacing={2}>
+        <Stack sx={{ position: 'relative', minWidth: { xs: '100%', md: 300 }, height: { xs: 300, md: 300 } }}>
           <Image priority alt={post?.attributes?.images?.data?.[0]?.attributes?.alternativeText ?? ''}
             layout='fill' objectFit='cover' src={imageSrc} />
         </Stack>

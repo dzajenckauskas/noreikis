@@ -12,7 +12,8 @@ type Props = {
 }
 export default function Home({ object }: Props) {
   const image = object?.attributes?.images?.data?.[0]?.attributes?.formats
-  const imageSrc = `${process.env.NEXT_PUBLIC_API_URL}${image?.large.url}`
+  const imageSrc = `${process.env.NEXT_PUBLIC_API_URL}${image?.large?.url ?? image?.medium?.url}`
+  console.log(image);
 
   return (
     <>
@@ -26,9 +27,9 @@ export default function Home({ object }: Props) {
 
         <Stack key={object?.id}>
           {/* <Link href={'/parduodami/' + object?.attributes?.slug} passHref> */}
-          <Stack sx={{ position: 'relative', width: { xs: '100%', sm: '100%', md: '50%', xl: '50%' }, height: 600 }}>
+          <Stack sx={{ position: 'relative', width: { xs: '100%', sm: '100%', md: '100%', xl: '100%' }, height: 600 }}>
             <Image priority alt={object?.attributes?.images?.data?.[0]?.attributes?.alternativeText ?? ''}
-              layout='fill' objectFit='cover' src={imageSrc} />
+              layout='fill' objectFit='cover' src={imageSrc ?? '/'} />
           </Stack>
 
           <Stack direction={'row'} spacing={1} pt={1}>
