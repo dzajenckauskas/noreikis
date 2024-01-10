@@ -15,7 +15,6 @@ type Props = {
 export default function UsefulInformation({ blogPost }: Props) {
   const image = blogPost?.attributes?.images?.data?.[0]?.attributes?.formats
   const imageSrc = `${process.env.NEXT_PUBLIC_API_URL}${image?.medium?.url}`
-  console.log(JSON.stringify(blogPost.attributes.content));
 
   return (
     <>
@@ -32,7 +31,7 @@ export default function UsefulInformation({ blogPost }: Props) {
               layout='fill' objectFit='cover' src={imageSrc} />
           </Stack>
 
-          <Typography variant='h4' py={4}>
+          <Typography variant='h4' py={4} fontWeight={600}>
             {blogPost.attributes.title}
           </Typography>
           <Typography>
