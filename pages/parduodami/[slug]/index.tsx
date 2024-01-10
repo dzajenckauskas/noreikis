@@ -1,5 +1,6 @@
 import { ObjectType } from '@/app/types/ObjectsType'
 import { getItemBySlug } from '@/app/utils'
+import { BlocksRendererComponent } from '@/components/BlocksRendererComponent'
 import Layout from '@/components/layout/Layout'
 import { Stack, Typography } from '@mui/material'
 import { GetServerSideProps } from 'next'
@@ -51,6 +52,8 @@ export default function Home({ object }: Props) {
             </Typography>
           </Stack>
           {/* </Link> */}
+          <BlocksRendererComponent content={object?.attributes?.description} />
+
         </Stack>
 
       </Layout >

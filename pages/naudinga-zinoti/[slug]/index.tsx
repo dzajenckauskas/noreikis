@@ -1,12 +1,11 @@
 import { getItemBySlug } from '@/app/utils'
+import { BlocksRendererComponent } from '@/components/BlocksRendererComponent'
 import Layout from '@/components/layout/Layout'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import { BlocksRenderer } from '@strapi/blocks-react-renderer'
 import { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-import Link from 'next/link'
 
 type Props = {
   blogPost: any
@@ -35,35 +34,7 @@ export default function UsefulInformation({ blogPost }: Props) {
             {blogPost.attributes.title}
           </Typography>
           <Typography>
-            <BlocksRenderer
-              content={blogPost.attributes.content}
-              blocks={{
-                paragraph: ({ children }) => <Typography variant="body1">{children}</Typography>,
-                heading: ({ children, level }) => {
-                  switch (level) {
-                    case 1:
-                      return <Typography variant="h1">{children}</Typography>
-                    case 2:
-                      return <Typography variant="h2">{children}</Typography>
-                    case 3:
-                      return <Typography variant="h3">{children}</Typography>
-                    case 4:
-                      return <Typography variant="h4">{children}</Typography>
-                    case 5:
-                      return <Typography variant="h5">{children}</Typography>
-                    case 6:
-                      return <Typography variant="h6" pt={2} fontWeight={500}>{children}</Typography>
-                    default:
-                      return <Typography variant="h1">{children}</Typography>
-                  }
-                },
-                link: ({ children, url }) => <Link href={url}>{children}</Link>,
-              }}
-              modifiers={{
-                bold: ({ children }) => <>{children}</>,
-                italic: ({ children }) => <i>{children}</i>,
-              }}
-            />
+            <BlocksRendererComponent content={blogPost.attributes.content} />
           </Typography>
         </Stack>
       </Layout>
