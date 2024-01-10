@@ -51,6 +51,9 @@ const Footer = () => {
                                     <Link href={'/'} >
                                         <Stack direction={'row'} spacing={1.5} sx={{ alignItems: 'center' }}>
                                             {/* <Image src={'/assets/images/logo.svg'} width={40} height={40} alt={process.env.NEXT_PUBLIC_COMPANY_NAME?} /> */}
+                                            <Typography variant='h5' component={'p'} color={theme.palette.info.main} sx={{ letterSpacing: 2, fontSize: 22, fontWeight: 600, }}>
+                                                {"E."}
+                                            </Typography>
                                             <Typography variant='h5' component={'p'} color={theme.palette.info.main} sx={{ letterSpacing: 2, fontSize: 22, fontWeight: 600 }}>
                                                 {process.env.NEXT_PUBLIC_COMPANY_NAME?.toUpperCase()}
                                             </Typography>
@@ -61,10 +64,10 @@ const Footer = () => {
                                             <AruodasIcon bgColor='#fff' />
                                         </Link>
                                         <Link passHref href={`${process.env.NEXT_PUBLIC_FACEBOOK_URL}`} aria-label="facebook">
-                                            <FacebookIcon sx={{ color: theme.palette.info.main, fontSize: 20 }} />
+                                            <FacebookIcon sx={{ color: theme.palette.info.main, fontSize: 22 }} />
                                         </Link>
                                         <Link passHref href={`${process.env.NEXT_PUBLIC_LINKEDIN_URL}`} aria-label="linkedin">
-                                            <LinkedInIcon sx={{ color: theme.palette.info.main, fontSize: 20 }} />
+                                            <LinkedInIcon sx={{ color: theme.palette.info.main, fontSize: 22 }} />
                                         </Link>
                                     </Stack>
                                 </Stack>

@@ -52,11 +52,13 @@ export default function UsefulInformation({ blogPosts }: Props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <Typography variant='h4' fontWeight={600}>
-          NAUDINGA ŽINOTI
-        </Typography>
-        <Stack>
-          {renderPosts}
+        <Stack sx={{ px: { xl: 2, md: 4, xs: 2 }, pt: { xl: 2, md: 4, xs: 2 }, pb: 8 }}>
+          <Typography variant='h4' fontWeight={600}>
+            NAUDINGA ŽINOTI
+          </Typography>
+          <Stack>
+            {renderPosts}
+          </Stack>
         </Stack>
       </Layout>
     </>

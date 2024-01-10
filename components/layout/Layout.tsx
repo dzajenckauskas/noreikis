@@ -21,8 +21,8 @@ const Layout = ({ children, }: Props) => {
                 <Stack
                     sx={{
                         height: '100%',
-                        px: { xl: 2, md: 4, xs: 2 },
-                        width: '100%', maxWidth: 'xl', mx: 'auto', pb: 6, pt: 6
+                        // px: { xl: 2, md: 4, xs: 2 },
+                        width: '100%', maxWidth: 'xl', mx: 'auto'
                     }}>
                     {children}
                 </Stack>

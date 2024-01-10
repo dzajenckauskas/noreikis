@@ -24,18 +24,20 @@ export default function UsefulInformation({ blogPost }: Props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <Stack key={blogPost.id} pt={4}>
-          <Stack sx={{ position: 'relative', width: { xs: '100%', sm: '100%', md: '50%', xl: '50%' }, height: 600 }}>
+        <Stack key={blogPost.id} pb={8}>
+          <Stack sx={{ position: 'relative', width: { xs: '100%', sm: '100%', md: '100%', xl: '100%' }, height: 600 }}>
             <Image priority alt={blogPost?.attributes?.images?.data?.[0]?.attributes?.alternativeText ?? ''}
               layout='fill' objectFit='cover' src={imageSrc} />
           </Stack>
+          <Stack sx={{ px: { xl: 2, md: 4, xs: 2 }, }}>
 
-          <Typography variant='h4' py={4} fontWeight={600}>
-            {blogPost.attributes.title}
-          </Typography>
-          <Typography>
-            <BlocksRendererComponent content={blogPost.attributes.content} />
-          </Typography>
+            <Typography variant='h4' py={4} fontWeight={600}>
+              {blogPost.attributes.title}
+            </Typography>
+            <Typography>
+              <BlocksRendererComponent content={blogPost.attributes.content} />
+            </Typography>
+          </Stack>
         </Stack>
       </Layout>
     </>

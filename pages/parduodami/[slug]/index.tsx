@@ -33,27 +33,28 @@ export default function Home({ object }: Props) {
               layout='fill' objectFit='cover' src={imageSrc ?? '/'} />
           </Stack>
 
-          <Stack direction={'row'} spacing={1} pt={1}>
-            <Typography variant='h6'>
-              {object?.attributes?.region},&nbsp;
-              {/* {object?.attributes?.district}&nbsp; */}
-              {object?.attributes?.quartal},&nbsp;
-              {object?.attributes?.street}
-            </Typography>
+          <Stack sx={{ px: { xl: 2, md: 4, xs: 2 }, pt: { xl: 2, md: 4, xs: 2 }, pb: 8 }}>
+            <Stack direction={'row'} spacing={1} pt={1}>
+              <Typography variant='h6'>
+                {object?.attributes?.region},&nbsp;
+                {/* {object?.attributes?.district}&nbsp; */}
+                {object?.attributes?.quartal},&nbsp;
+                {object?.attributes?.street}
+              </Typography>
+            </Stack>
+            <Stack direction={'row'} spacing={1}>
+              <Typography variant='caption'>
+                {object?.attributes?.roomsNumber} k. | {object?.attributes?.areaSqM} m²
+              </Typography>
+            </Stack>
+            <Stack direction={'row'} spacing={1}>
+              <Typography variant='body1' fontWeight={600}>
+                {object?.attributes?.discountPrice ? object?.attributes?.discountPrice : object?.attributes?.price} {process.env.NEXT_PUBLIC_DEFAULT_CURRENCY}
+              </Typography>
+            </Stack>
+            {/* </Link> */}
+            <BlocksRendererComponent content={object?.attributes?.description} />
           </Stack>
-          <Stack direction={'row'} spacing={1}>
-            <Typography variant='caption'>
-              {object?.attributes?.roomsNumber} k. | {object?.attributes?.areaSqM} m²
-            </Typography>
-          </Stack>
-          <Stack direction={'row'} spacing={1}>
-            <Typography variant='body1' fontWeight={600}>
-              {object?.attributes?.discountPrice ? object?.attributes?.discountPrice : object?.attributes?.price} {process.env.NEXT_PUBLIC_DEFAULT_CURRENCY}
-            </Typography>
-          </Stack>
-          {/* </Link> */}
-          <BlocksRendererComponent content={object?.attributes?.description} />
-
         </Stack>
 
       </Layout >

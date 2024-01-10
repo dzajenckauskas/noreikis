@@ -27,20 +27,22 @@ export default function Objects({ objects }: Props) {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Layout>
-                <Stack pb={4}>
-                    <Typography variant='h4' fontWeight={600}>
-                        Parduodami
-                    </Typography>
+                <Stack sx={{ px: { xl: 2, md: 4, xs: 2 }, pt: { xl: 2, md: 4, xs: 2 }, pb: 8 }}>
+                    <Stack pb={4}>
+                        <Typography variant='h4' fontWeight={600}>
+                            Parduodami
+                        </Typography>
+                    </Stack>
+                    <Grid container direction={'row'} spacing={4} sx={{}}>
+                        {renderObjects}
+                        {renderObjects}
+                        {renderObjects}
+                        {renderObjects}
+                        {renderObjects}
+                        {renderObjects}
+                        {renderObjects}
+                    </Grid>
                 </Stack>
-                <Grid container direction={'row'} spacing={4} sx={{}}>
-                    {renderObjects}
-                    {renderObjects}
-                    {renderObjects}
-                    {renderObjects}
-                    {renderObjects}
-                    {renderObjects}
-                    {renderObjects}
-                </Grid>
             </Layout>
         </>
     )

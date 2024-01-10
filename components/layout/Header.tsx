@@ -113,10 +113,10 @@ const Header = () => {
                             width: '100%', maxWidth: 'xl', mx: 'auto', py: 2
                         }}>
                         <Link href={'/'} style={{ position: 'relative', zIndex: 20, cursor: 'pointer' }}>
-                            <Stack direction={'row'} spacing={1} sx={{ alignItems: 'center' }}>
+                            <Stack direction={'row'} spacing={0} sx={{ alignItems: 'center' }}>
                                 {/* <Image src={'/assets/images/mentorfm-icon-colorful-filled.svg'} width={40} height={40} alt='mentorfm logo' /> */}
                                 <Typography variant='h5' component={'p'} color={theme.palette.secondary.main} sx={{ letterSpacing: 2, fontSize: 22, fontWeight: 600, }}>
-                                    {"ERNESTAS"}
+                                    {"E."}
                                 </Typography>
                                 <Typography variant='h5' component={'p'} color={theme.palette.primary.main} sx={{ letterSpacing: 2, fontSize: 22, fontWeight: 600, }}>
                                     {process.env.NEXT_PUBLIC_COMPANY_NAME?.toUpperCase()}
@@ -180,6 +180,9 @@ const Header = () => {
                                 </Stack>
                             </Stack>
                             <Stack direction={'row'} spacing={1} pt={.3} sx={{ alignItems: 'center' }}>
+                                <Link passHref href={`${process.env.NEXT_PUBLIC_ARUODAS_URL}`} aria-label="aruodas">
+                                    <AruodasIcon bgColor={theme.palette.secondary.main} />
+                                </Link>
                                 <Link passHref href={`${process.env.NEXT_PUBLIC_FACEBOOK_URL}`} aria-label="facebook">
                                     <FacebookIcon sx={{ color: theme.palette.secondary.main, fontSize: 22 }} />
                                 </Link>
