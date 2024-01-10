@@ -88,7 +88,7 @@ export default function Home({ recommendations }: Props) {
         </Stack>
         <CounterSection />
         <ReccomendationsSection recommendations={recommendations} />
-        <Stack py={4} spacing={4} id={'priceInquiryForm'} direction={{ xs: 'column', md: 'row' }}>
+        <Stack py={8} spacing={2} id={'priceInquiryForm'} direction={{ xs: 'column', md: 'column' }}>
           <Stack pb={2} width={{ md: '50%', xs: '100%' }}>
             <Typography variant='h4' color={theme.palette.secondary.main} fontWeight={600}>
               {'Nemokamas turto kainos įvertinimas'}
