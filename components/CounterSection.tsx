@@ -42,7 +42,7 @@ export const CounterSection = () => {
                     <Stack alignItems={'flex-start'} maxWidth={180}>
                         <Stack direction={'row'} spacing={1} pb={1}>
                             {/* <PeopleIcon sx={{ color: theme.palette.secondary.main, fontSize: 48, position: 'relative', top: 7 }} fontSize="large" /> */}
-                            <Typography component={'p'} fontSize={60} lineHeight={1} color={theme.palette.primary.main} fontWeight={700}>
+                            <Typography component={'p'} fontSize={50} lineHeight={1} color={theme.palette.primary.main} fontWeight={700}>
                                 <CountUp enableScrollSpy duration={3} end={98} />%
                             </Typography>
                         </Stack>
@@ -56,7 +56,7 @@ export const CounterSection = () => {
                     <Stack alignItems={'flex-start'} maxWidth={180}>
                         <Stack direction={'row'} spacing={1} pb={1}>
                             {/* <WorkspacePremiumIcon sx={{ color: theme.palette.secondary.main, fontSize: 42, position: 'relative', top: 9 }} /> */}
-                            <Typography component={'p'} fontSize={60} lineHeight={1} color={theme.palette.primary.main} fontWeight={700}>
+                            <Typography component={'p'} fontSize={50} lineHeight={1} color={theme.palette.primary.main} fontWeight={700}>
                                 <CountUp enableScrollSpy duration={3} end={85} />%
                             </Typography>
                         </Stack>
@@ -70,7 +70,7 @@ export const CounterSection = () => {
                     <Stack alignItems={'flex-start'} maxWidth={180}>
                         <Stack direction={'row'} spacing={1} pb={1}>
                             {/* <CalendarMonthIcon sx={{ color: theme.palette.secondary.main, fontSize: 40, position: 'relative', top: 11 }} /> */}
-                            <Typography component={'p'} fontSize={60} lineHeight={1} color={theme.palette.primary.main} fontWeight={700}>
+                            <Typography component={'p'} fontSize={50} lineHeight={1} color={theme.palette.primary.main} fontWeight={700}>
                                 <CountUp enableScrollSpy duration={3} end={getCompanyAge()} />+
                             </Typography>
                         </Stack>
@@ -83,9 +83,11 @@ export const CounterSection = () => {
 
                 <Stack width={'70%'} direction={'row'} justifyContent={'space-between'} spacing={0}>
                     <Stack width={'100%'}>
-                        <Stack spacing={2} width={'100%'} minHeight={300} pb={8} sx={{ p: 8, ':hover': { boxShadow: 'rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;' } }}>
+                        <Stack spacing={2} width={'100%'} minHeight={500} pb={8}
+                            alignSelf={'flex-start'}
+                            sx={{ p: 8, ':hover': { boxShadow: 'rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;' } }}>
                             <CalendarMonthIcon sx={{ color: theme.palette.secondary.main, fontSize: 40, position: 'relative' }} />
-                            <Typography color={theme.palette.primary.main} fontWeight={600} variant='h5'>
+                            <Typography color={theme.palette.primary.main} fontWeight={600} variant='h4'>
                                 Atstovavimas parduodant nekilnojamąjį turtą
                             </Typography>
                             <Typography color={theme.palette.primary.main} variant='body1'>
@@ -104,9 +106,11 @@ export const CounterSection = () => {
                                 </Link>
                             </Stack>
                         </Stack>
-                        <Stack spacing={2} width={'100%'} minHeight={300} pb={8} sx={{ p: 8, ':hover': { boxShadow: 'rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;' } }}>
+                        <Stack spacing={2} width={'100%'} minHeight={500} pb={8}
+                            alignSelf={'flex-start'}
+                            sx={{ p: 8, ':hover': { boxShadow: 'rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;' } }}>
                             <CalendarMonthIcon sx={{ color: theme.palette.secondary.main, fontSize: 40, position: 'relative' }} />
-                            <Typography color={theme.palette.primary.main} fontWeight={600} variant='h5'>
+                            <Typography color={theme.palette.primary.main} fontWeight={600} variant='h4'>
                                 Nekilnojamojo turto dokumentacija
                             </Typography>
                             <Typography color={theme.palette.primary.main} variant='body1'>
@@ -127,9 +131,11 @@ export const CounterSection = () => {
                         </Stack>
                     </Stack>
                     <Stack width={'100%'}>
-                        <Stack spacing={2} width={'100%'} minHeight={300} pb={8} sx={{ p: 8, ':hover': { boxShadow: 'rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;' } }}>
+                        <Stack spacing={2} width={'100%'} minHeight={500} pb={8}
+                            alignSelf={'flex-start'}
+                            sx={{ p: 8, ':hover': { boxShadow: 'rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;' } }}>
                             <CalendarMonthIcon sx={{ color: theme.palette.secondary.main, fontSize: 40, position: 'relative' }} />
-                            <Typography color={theme.palette.primary.main} fontWeight={600} variant='h5'>
+                            <Typography color={theme.palette.primary.main} fontWeight={600} variant='h4'>
                                 Pagalba nuomojant nekilnojamąjį turtą
                             </Typography>
                             <Typography color={theme.palette.primary.main} variant='body1'>
@@ -148,9 +154,11 @@ export const CounterSection = () => {
                                 </Link>
                             </Stack>
                         </Stack>
-                        <Stack spacing={2} width={'100%'} minHeight={300} pb={8} sx={{ p: 8, ':hover': { boxShadow: 'rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;' } }}>
+                        <Stack spacing={2} width={'100%'} minHeight={500} pb={8}
+                            alignSelf={'flex-start'}
+                            sx={{ p: 8, ':hover': { boxShadow: 'rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;' } }}>
                             <CalendarMonthIcon sx={{ color: theme.palette.secondary.main, fontSize: 40, position: 'relative' }} />
-                            <Typography color={theme.palette.primary.main} fontWeight={600} variant='h5'>
+                            <Typography color={theme.palette.primary.main} fontWeight={600} variant='h4'>
                                 Nekilnojamojo turto paieška
                             </Typography>
                             <Typography color={theme.palette.primary.main} variant='body1'>
