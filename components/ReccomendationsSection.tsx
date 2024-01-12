@@ -54,17 +54,15 @@ export const ReccomendationsSection = ({ recommendations }: Props) => {
                     <Stack spacing={0} pt={4}>
                         <Stack direction={'row'}>
                             <Typography position={'relative'}
-                                variant='body1' fontWeight={300}
-                                lineHeight={1.3} color={theme.palette.primary.dark}>
+                                variant='body1' fontWeight={300} textAlign={'right'}
+                                lineHeight={1.5} color={theme.palette.primary.dark}>
                                 {/* <FormatQuoteIcon sx={{ position: 'relative', top: -8, color: theme.palette.secondary.dark, transform: 'scale(2)' }} /> */}
                                 {item.attributes?.text}
                                 {/* <FormatQuoteIcon sx={{ position: 'absolute', right: 0, mt: -.25, color: theme.palette.secondary.dark, transform: 'scale(2)', alignSelf: 'flex-end' }} /> */}
-
                             </Typography>
                         </Stack>
                         <Stack pt={6}>
                             {/* <FormatQuoteIcon sx={{ position: 'relative', mb: 2, color: theme.palette.secondary.dark, transform: 'scale(2)', alignSelf: 'flex-end' }} /> */}
-
                             <Typography variant='caption' fontWeight={200} letterSpacing={2}
                                 textAlign={'right'} color={theme.palette.primary.dark}>
                                 {item.attributes?.action.data?.attributes.title.toUpperCase()}

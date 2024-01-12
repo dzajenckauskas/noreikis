@@ -34,6 +34,14 @@ export const theme = createTheme({
                     textTransform: 'none',
                 })
             }
+        },
+        MuiAutocomplete: {
+            styleOverrides: {
+                paper: ({ theme }) => theme.unstable_sx({
+                    borderRadius: 0,
+                    // textTransform: 'none',
+                })
+            }
         }
     },
     typography: {
