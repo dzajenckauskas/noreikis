@@ -100,7 +100,8 @@ export const theme = createTheme({
             disabled: '#7d7c83',
         },
         error: {
-            main: '#ff4857',
+            // main: '#ff4857',
+            main: '#00F'
         }
         // yellow: '#ffc808',
         // green: '#5bbb58'
