@@ -9,6 +9,7 @@ export type ActionDataType = {
 
 export type ActionAttributesType = {
     title: string;
+    singularTitle?: string;
     locale: string;
     value: string;
 }

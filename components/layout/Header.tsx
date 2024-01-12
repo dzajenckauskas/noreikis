@@ -58,7 +58,7 @@ const Header = () => {
             <Stack sx={{
                 position: 'sticky', top: -28, width: '100%', zIndex: 20,
                 backgroundColor: '#fff',
-                boxShadow: 'rgba(0, 0, 0, 0.08) 0px 4px 12px;'
+                // boxShadow: 'rgba(0, 0, 0, 0.08) 0px 4px 12px;'
             }}>
                 <Stack sx={{ position: 'relative' }}>
                     <Stack sx={{

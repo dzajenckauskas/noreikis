@@ -1,4 +1,4 @@
-import { getFooterMenuItems } from '@/app/getFooterMenuItems'
+import { getFooterMenuItems, getServicesMenuItems } from '@/app/getFooterMenuItems'
 import { getHeaderMenuItems } from '@/app/getHeaderMenuItems'
 import EmailIcon from '@mui/icons-material/Email'
 import FacebookIcon from '@mui/icons-material/Facebook'
@@ -15,6 +15,7 @@ const Footer = () => {
 
     const headerMenuItems = getHeaderMenuItems()
     const footerMenuItems = getFooterMenuItems()
+    const servicesMenuItems = getServicesMenuItems()
 
     const renderNavLinks = headerMenuItems?.map(link =>
         <Link href={`/${link.slug}`} key={link.name}>
@@ -24,6 +25,13 @@ const Footer = () => {
         </Link>
     )
     const renderFooterLinks = footerMenuItems?.map(link =>
+        <Link href={`/${link.slug}`} key={link.name}>
+            <Typography variant='body2' color={theme.palette.info.main}>
+                {link.name}
+            </Typography>
+        </Link>
+    )
+    const renderServicesLinks = servicesMenuItems?.map(link =>
         <Link href={`/${link.slug}`} key={link.name}>
             <Typography variant='body2' color={theme.palette.info.main}>
                 {link.name}
@@ -41,7 +49,7 @@ const Footer = () => {
                 <Stack direction={'row'}
                     sx={{
                         px: { xl: 2, md: 4, xs: 2 },
-                        width: '100%', maxWidth: 'xl', mx: 'auto', py: 5
+                        width: '100%', maxWidth: 'xl', mx: 'auto', py: 5, pb: 15
                     }}>
                     <Stack direction={{ md: 'row', xs: 'column' }} spacing={{ md: 2, xs: 8 }} justifyContent={'space-between'} width={'100%'} alignItems={'self-start'} pb={1}>
 
@@ -75,7 +83,7 @@ const Footer = () => {
 
                             <Stack spacing={2} pt={1} width={'100%'}>
                                 <Typography variant='subtitle1' letterSpacing={4} fontWeight={700} component={'p'} color={theme.palette.info.main}>
-                                    {'Contact us'.toUpperCase()}
+                                    {'Susisiekime'.toUpperCase()}
                                 </Typography>
                                 <Stack direction={'row'} spacing={1} sx={{ alignItems: 'center' }}>
                                     <PhoneIcon sx={{ color: theme.palette.info.main, fontSize: 20 }} />
@@ -106,15 +114,21 @@ const Footer = () => {
                         </Stack>
 
                         <Stack direction={{ sm: 'row', xs: 'column' }} spacing={{ md: 2, xs: 8 }} justifyContent={'space-evenly'} width={'100%'}>
+                            {/* <Stack spacing={2} pt={1} width={'100%'}>
+                                <Typography variant='subtitle1' letterSpacing={4} fontWeight={700} component={'p'} color={theme.palette.info.main}>
+                                    {'Paslaugos'.toUpperCase()}
+                                </Typography>
+                                {renderServicesLinks}
+                            </Stack> */}
                             <Stack spacing={2} pt={1} width={'100%'}>
                                 <Typography variant='subtitle1' letterSpacing={4} fontWeight={700} component={'p'} color={theme.palette.info.main}>
-                                    {'Quick links'.toUpperCase()}
+                                    {'Paslaugos'.toUpperCase()}
                                 </Typography>
-                                {renderNavLinks}
+                                {renderServicesLinks}
                             </Stack>
                             <Stack spacing={2} pt={1} width={'100%'}>
                                 <Typography variant='subtitle1' letterSpacing={4} fontWeight={700} component={'p'} color={theme.palette.info.main}>
-                                    {'Useful links'.toUpperCase()}
+                                    {'Kita'.toUpperCase()}
                                 </Typography>
                                 {renderFooterLinks}
                             </Stack>

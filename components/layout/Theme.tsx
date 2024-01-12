@@ -8,6 +8,9 @@ export const theme = createTheme({
     components: {
         MuiOutlinedInput: {
             styleOverrides: {
+                root: ({ theme }) => theme.unstable_sx({
+                    borderRadius: 0
+                }),
                 input: ({ theme }) => theme.unstable_sx({
                     backgroundColor: theme.palette.info.main
                 }),
@@ -20,9 +23,18 @@ export const theme = createTheme({
             styleOverrides: {
                 root: ({ theme }) => theme.unstable_sx({
                     color: `${theme.palette.primary.dark}`,
+                    borderRadius: 0
                 }),
             }
         },
+        MuiButton: {
+            styleOverrides: {
+                root: ({ theme }) => theme.unstable_sx({
+                    borderRadius: 0,
+                    textTransform: 'none',
+                })
+            }
+        }
     },
     typography: {
         h1: {

@@ -44,7 +44,7 @@ export const CategoryAutocomplete = ({ form }: Props) => {
                     disablePortal
                     // filterSelectedOptions
                     // getOptionDisabled={(option) => option.disabled}
-                    getOptionLabel={(o) => `${o.attributes?.title ?? ''}`}
+                    getOptionLabel={(o) => `${o.attributes?.singularTitle ?? ''}`}
                     onChange={(_event, value) => field.onChange(value)}
                     isOptionEqualToValue={(option, value) => option?.attributes?.value === value?.attributes?.value}
                     options={data?.data ?? []}
@@ -53,7 +53,7 @@ export const CategoryAutocomplete = ({ form }: Props) => {
                             required
                             error={!!error}
                             helperText={error?.message}
-                            label="Kategorija"
+                            label="Objekto tipas"
                             name="category"
                             inputRef={ref}
                             {...params}
