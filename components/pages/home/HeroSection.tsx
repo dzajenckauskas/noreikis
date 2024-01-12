@@ -13,9 +13,15 @@ export const HeroSection = () => {
     return (
 
         <Stack sx={{
-            pt: { xl: 2, md: 4, xs: 2 },
+            // pt: { xl: 2, md: 4, xs: 2 },
+            mt: '-100px',
+            position: 'relative',
             px: { xl: 2, md: 4, xs: 2 },
-            width: '100%', maxWidth: 'xl', mx: 'auto'
+            width: '100%', maxWidth: 'xl', mx: 'auto',
+            backgroundColor: '#fafafa',
+            // backgroundColor: '#f5f5f5',
+            // backgroundColor: '#fff',
+            pb: 5
         }}>
             <Stack direction={{ xs: 'column', md: 'row' }} justifyContent={'space-between'} width={'100%'} spacing={4} >
                 <Stack width={{ xs: '100%', md: '50%' }}>
@@ -41,7 +47,7 @@ export const HeroSection = () => {
                                 <LinkedInIcon sx={{ color: theme.palette.primary.dark, fontSize: 22 }} />
                             </Link>
                         </Stack>
-                        <Stack direction={'row'} spacing={{ md: 1, xs: .5 }} sx={{ pt: 4, position: 'absolute', bottom: 0, right: { xs: 0, md: 'auto' } }}>
+                        <Stack direction={'row'} spacing={{ md: 1, xs: .5 }} sx={{ pt: 4, position: 'absolute', bottom: 20, right: { xs: 0, md: 'auto' } }}>
                             <SubdirectoryArrowRightIcon sx={{ color: theme.palette.secondary.main, fontSize: 18, }} />
                             <Link passHref href={`/parduodami`}>
                                 <Typography variant='body1' color={theme.palette.secondary.main} sx={{ ":hover": { textDecoration: 'underline' } }}>
@@ -59,8 +65,8 @@ export const HeroSection = () => {
                </Link>
            </Stack> */}
                 </Stack>
-                <Stack width={{ xs: '100%', md: '50%' }}>
-                    <Stack sx={{ position: 'relative', width: '100%', height: { xs: 500, md: 800 } }}>
+                <Stack width={{ xs: '100%', md: '40%' }} position={'relative'} zIndex={2}>
+                    <Stack sx={{ position: 'relative', width: '100%', height: { xs: 500, md: 800 }, positon: 'relative', top: 150 }}>
                         <Image priority alt={"Ernestas Noreikis NT nekilnojamas turtas brokeris"}
                             layout='fill' objectFit='cover' objectPosition='top' src={'/assets/images/ernestas-noreikis-NT-brokeris.avif'} />
                         {/* <Typography variant='h1' fontWeight={600}>

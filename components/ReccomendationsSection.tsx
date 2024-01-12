@@ -114,7 +114,7 @@ export const ReccomendationsSection = ({ recommendations }: Props) => {
                                     </span>
                                 </Typography>
 
-                                <Typography pt={2} variant='body2' width={'60%'}>
+                                <Typography pt={2} variant='body1' width={'60%'}>
                                     Klientų mintys ir atsiliepimai apie kartu nuveiktus darbus ir pasiekimus:
                                 </Typography>
 
@@ -127,7 +127,7 @@ export const ReccomendationsSection = ({ recommendations }: Props) => {
                         </Stack>
                         <Stack direction={'row'} spacing={{ md: 1, xs: .5 }} sx={{ pt: 4, alignSelf: 'flex-end' }}>
                             <SubdirectoryArrowRightIcon sx={{ color: theme.palette.secondary.main, fontSize: 18, }} />
-                            <Link passHref href={`https://m.aruodas.lt/read-recommendations/?broker_id=926705&return_url=%2Fernestas-noreikis%2F`}>
+                            <Link passHref target='_blank' href={`https://m.aruodas.lt/read-recommendations/?broker_id=926705&return_url=%2Fernestas-noreikis%2F`}>
                                 <Typography variant='body1' color={theme.palette.secondary.main} sx={{ ":hover": { textDecoration: 'underline' } }}>
                                     {'Kitos rekomendacijos'}
                                 </Typography>

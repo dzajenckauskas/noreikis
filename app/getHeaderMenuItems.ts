@@ -5,6 +5,6 @@ export const getHeaderMenuItems = () => {
         { slug: 'naujienos', name: 'Naujienos' },
         // { slug: 'parduoti', name: 'Parduoti' },
         // { slug: 'paslaugos', name: 'Paslaugos' },
-        { slug: 'kontaktai', name: 'Kontaktai' },
+        // { slug: 'kontaktai', name: 'Kontaktai' },
     ]
 }

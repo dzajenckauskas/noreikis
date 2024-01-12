@@ -30,10 +30,11 @@ const Header = () => {
     const renderNavLinks = headerMenuItems?.map(link => {
         return (
             <Link href={`/${link.slug}`} key={link.name}>
-                <Typography variant='body2'
+                <Typography variant='body1'
                     sx={{
-                        color: router.pathname === link.slug ? theme.palette.secondary.main : theme.palette.text.secondary,
+                        color: router.pathname === link.slug ? theme.palette.secondary.main : theme.palette.text.primary,
                         fontWeight: router.pathname === link.slug ? 600 : 'inherit',
+                        textTransform: 'none',
                         ":hover": {
                             color: theme.palette.secondary.main,
                         }
@@ -57,12 +58,13 @@ const Header = () => {
         <>
             <Stack sx={{
                 position: 'sticky', top: -28, width: '100%', zIndex: 20,
-                backgroundColor: '#fff',
+                // backgroundColor: '#fafafa',
                 // boxShadow: 'rgba(0, 0, 0, 0.08) 0px 4px 12px;'
             }}>
                 <Stack sx={{ position: 'relative' }}>
                     <Stack sx={{
                         backgroundColor: theme.palette.secondary.main,
+                        // backgroundColor: '#fafafa',
                         height: 28, justifyContent: 'center',
                     }}>
                         <Stack direction={'row'}
@@ -108,6 +110,7 @@ const Header = () => {
                         sx={{
                             minHeight: 74,
                             backgroundColor: '#fff',
+                            // backgroundColor: '#fafafa',
                             zIndex: 20,
                             px: { xl: 2, md: 4, xs: 2 }, alignItems: 'center', justifyContent: 'space-between',
                             width: '100%', maxWidth: 'xl', mx: 'auto', py: 2
@@ -128,6 +131,20 @@ const Header = () => {
                             {/* <Stack direction={'row'} spacing={2} pl={2}>
                                 <LocaleSwitcher />
                             </Stack> */}
+                            <Link href={`/${'kontaktai'}`}>
+                                <Button variant='contained'>
+                                    <Typography variant='body2'
+                                        sx={{
+                                            // color: router.pathname === link.slug ? theme.palette.secondary.main : theme.palette.text.secondary,
+                                            // fontWeight: router.pathname === link.slug ? 600 : 'inherit',
+                                            // ":hover": {
+                                            // color: theme.palette.secondary.main,
+                                            // }
+                                        }}>
+                                        {'Kontaktai'}
+                                    </Typography>
+                                </Button>
+                            </Link>
                         </Stack>
                         {!openMobileMenu && <Stack direction={'row'} spacing={3} sx={{ textTransform: 'uppercase', alignItems: 'center', display: { md: 'none', xs: 'flex' } }}>
                             <Button size='small' variant='outlined' color='secondary' sx={{ p: .5, minWidth: 0 }} onClick={toggleMobileMenu}>

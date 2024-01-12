@@ -1,6 +1,5 @@
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import PeopleIcon from '@mui/icons-material/People';
-import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
+// import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { useTranslation } from "next-i18next";
@@ -16,9 +15,12 @@ export const CounterSection = () => {
     const { t } = useTranslation('home')
     return (
         <Stack sx={{
-            mt: 6, backgroundColor: theme.palette.info.main, width: '100%', pt: 12, pb: 16,
-            position: 'relative', zIndex: 10, top: '-1px', alignContent: 'center',
-            px: { xl: 2, md: 4, xs: 2 },
+            mt: 6,
+            // backgroundColor: '#fafafa',
+            backgroundColor: '#fff',
+            width: '100%', pt: 12, pb: 16,
+            position: 'relative', zIndex: 0, top: '-1px', alignContent: 'center',
+            px: { xl: 2, md: 4, xs: 2 }
         }}>
             <Stack direction={'row'} justifyContent={"space-between"} pb={6}>
                 <Stack sx={{ width: { xs: '100%', md: '50%' } }}>
@@ -84,6 +86,7 @@ export const CounterSection = () => {
                 <Stack width={'70%'} direction={'row'} justifyContent={'space-between'} spacing={0}>
                     <Stack width={'100%'}>
                         <Stack spacing={2} width={'100%'} minHeight={500} pb={8}
+                            position={'relative'}
                             alignSelf={'flex-start'}
                             sx={{ p: 8, ':hover': { boxShadow: 'rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;' } }}>
                             <CalendarMonthIcon sx={{ color: theme.palette.secondary.main, fontSize: 40, position: 'relative' }} />
@@ -97,16 +100,17 @@ export const CounterSection = () => {
                                 parduodamas bendradarbiaujant
                                 profesionalų komandai
                             </Typography>
-                            <Stack direction={'row'} spacing={{ md: 1, xs: .5 }} sx={{ pt: 2 }}>
+                            <Stack direction={'row'} spacing={{ md: 1, xs: .5 }} sx={{ pt: 2, position: 'absolute', bottom: 60 }}>
                                 <SubdirectoryArrowRightIcon sx={{ color: theme.palette.secondary.main, fontSize: 18, }} />
                                 <Link passHref href={`/parduodami`}>
                                     <Typography variant='body1' color={theme.palette.secondary.main} sx={{ ":hover": { textDecoration: 'underline' } }}>
-                                        {'Parduodami objektai'}
+                                        {'Daugiau'}
                                     </Typography>
                                 </Link>
                             </Stack>
                         </Stack>
                         <Stack spacing={2} width={'100%'} minHeight={500} pb={8}
+                            position={'relative'}
                             alignSelf={'flex-start'}
                             sx={{ p: 8, ':hover': { boxShadow: 'rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;' } }}>
                             <CalendarMonthIcon sx={{ color: theme.palette.secondary.main, fontSize: 40, position: 'relative' }} />
@@ -120,11 +124,11 @@ export const CounterSection = () => {
                                 parduodamas bendradarbiaujant
                                 profesionalų komandai
                             </Typography>
-                            <Stack direction={'row'} spacing={{ md: 1, xs: .5 }} sx={{ pt: 2 }}>
+                            <Stack direction={'row'} spacing={{ md: 1, xs: .5 }} sx={{ pt: 2, position: 'absolute', bottom: 60 }}>
                                 <SubdirectoryArrowRightIcon sx={{ color: theme.palette.secondary.main, fontSize: 18, }} />
                                 <Link passHref href={`/parduodami`}>
                                     <Typography variant='body1' color={theme.palette.secondary.main} sx={{ ":hover": { textDecoration: 'underline' } }}>
-                                        {'Parduodami objektai'}
+                                        {'Daugiau'}
                                     </Typography>
                                 </Link>
                             </Stack>
@@ -132,6 +136,7 @@ export const CounterSection = () => {
                     </Stack>
                     <Stack width={'100%'}>
                         <Stack spacing={2} width={'100%'} minHeight={500} pb={8}
+                            position={'relative'}
                             alignSelf={'flex-start'}
                             sx={{ p: 8, ':hover': { boxShadow: 'rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;' } }}>
                             <CalendarMonthIcon sx={{ color: theme.palette.secondary.main, fontSize: 40, position: 'relative' }} />
@@ -145,16 +150,17 @@ export const CounterSection = () => {
                                 parduodamas bendradarbiaujant
                                 profesionalų komandai
                             </Typography>
-                            <Stack direction={'row'} spacing={{ md: 1, xs: .5 }} sx={{ pt: 2 }}>
+                            <Stack direction={'row'} spacing={{ md: 1, xs: .5 }} sx={{ pt: 2, position: 'absolute', bottom: 60 }}>
                                 <SubdirectoryArrowRightIcon sx={{ color: theme.palette.secondary.main, fontSize: 18, }} />
                                 <Link passHref href={`/parduodami`}>
                                     <Typography variant='body1' color={theme.palette.secondary.main} sx={{ ":hover": { textDecoration: 'underline' } }}>
-                                        {'Parduodami objektai'}
+                                        {'Daugiau'}
                                     </Typography>
                                 </Link>
                             </Stack>
                         </Stack>
                         <Stack spacing={2} width={'100%'} minHeight={500} pb={8}
+                            position={'relative'}
                             alignSelf={'flex-start'}
                             sx={{ p: 8, ':hover': { boxShadow: 'rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;' } }}>
                             <CalendarMonthIcon sx={{ color: theme.palette.secondary.main, fontSize: 40, position: 'relative' }} />
@@ -168,11 +174,11 @@ export const CounterSection = () => {
                                 parduodamas bendradarbiaujant
                                 profesionalų komandai
                             </Typography>
-                            <Stack direction={'row'} spacing={{ md: 1, xs: .5 }} sx={{ pt: 2 }}>
+                            <Stack direction={'row'} spacing={{ md: 1, xs: .5 }} sx={{ pt: 2, position: 'absolute', bottom: 60 }}>
                                 <SubdirectoryArrowRightIcon sx={{ color: theme.palette.secondary.main, fontSize: 18, }} />
                                 <Link passHref href={`/parduodami`}>
-                                    <Typography variant='body1' fontWeight={300} color={theme.palette.secondary.main} sx={{ ":hover": { textDecoration: 'underline' } }}>
-                                        {'Parduodami objektai'}
+                                    <Typography variant='body1' fontWeight={400} color={theme.palette.secondary.main} sx={{ ":hover": { textDecoration: 'underline' } }}>
+                                        {'Daugiau'}
                                     </Typography>
                                 </Link>
                             </Stack>
