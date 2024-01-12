@@ -21,7 +21,7 @@ export const HeroSection = () => {
                 <Stack width={{ xs: '100%', md: '50%' }}>
                     <Stack spacing={4} height={'100%'} alignItems={'flex-start'} position={'relative'}
                         justifyContent={'center'} alignContent={'flex-start'}>
-                        <Typography variant='h1' fontWeight={800}>
+                        <Typography variant='h1' fontWeight={600}>
                             <span style={{ color: theme.palette.secondary.main }}>Kiekvienus</span> namus parduodu kaip savus
                         </Typography>
                         <Typography variant='body1'>

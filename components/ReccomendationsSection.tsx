@@ -95,7 +95,7 @@ export const ReccomendationsSection = ({ recommendations }: Props) => {
                     // boxShadow: '0px 0px 20px #1E2F9729',
                     position: 'relative', mt: '-1px', zIndex: 3
                 }}>
-                    <Stack spacing={1} py={8} sx={{
+                    <Stack spacing={1} py={10} sx={{
                         justifyContent: 'space-between', width: '100%',
                         maxWidth: 'xl', mx: 'auto', position: 'relative',
                         px: { xl: 2, md: 4, xs: 2 },
@@ -105,7 +105,7 @@ export const ReccomendationsSection = ({ recommendations }: Props) => {
                         <Stack direction={'row'} justifyContent={"space-between"} >
                             <Stack sx={{ width: { xs: '100%', md: '50%' } }}>
                                 <Typography variant='h3'
-                                // sx={{ fontWeight: 600 }}
+                                    sx={{ fontWeight: 600 }}
                                 >
                                     Mano   klientai yra mano<br />
                                     {/* &nbsp; */}
@@ -115,7 +115,7 @@ export const ReccomendationsSection = ({ recommendations }: Props) => {
                                 </Typography>
 
                                 <Typography pt={2} variant='body2' width={'60%'}>
-                                    Klientų mintys ir atsiliepimai apie kartu nuveiktus darbus ir pasiekimus.
+                                    Klientų mintys ir atsiliepimai apie kartu nuveiktus darbus ir pasiekimus:
                                 </Typography>
 
                             </Stack>
