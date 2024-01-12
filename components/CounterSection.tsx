@@ -46,7 +46,7 @@ export const CounterSection = () => {
                     <Stack alignItems={'flex-start'} maxWidth={180}>
                         <Stack direction={'row'} spacing={1} pb={1}>
                             {/* <PeopleIcon sx={{ color: theme.palette.secondary.main, fontSize: 48, position: 'relative', top: 7 }} fontSize="large" /> */}
-                            <Typography component={'p'} fontSize={50} lineHeight={1} color={theme.palette.primary.main} fontWeight={700}>
+                            <Typography component={'p'} fontSize={50} lineHeight={1} color={theme.palette.secondary.main} fontWeight={700}>
                                 <CountUp enableScrollSpy duration={3} end={98} />%
                             </Typography>
                         </Stack>
@@ -60,7 +60,7 @@ export const CounterSection = () => {
                     <Stack alignItems={'flex-start'} maxWidth={180}>
                         <Stack direction={'row'} spacing={1} pb={1}>
                             {/* <WorkspacePremiumIcon sx={{ color: theme.palette.secondary.main, fontSize: 42, position: 'relative', top: 9 }} /> */}
-                            <Typography component={'p'} fontSize={50} lineHeight={1} color={theme.palette.primary.main} fontWeight={700}>
+                            <Typography component={'p'} fontSize={50} lineHeight={1} color={theme.palette.secondary.main} fontWeight={700}>
                                 <CountUp enableScrollSpy duration={3} end={85} />%
                             </Typography>
                         </Stack>
@@ -74,7 +74,7 @@ export const CounterSection = () => {
                     <Stack alignItems={'flex-start'} maxWidth={180}>
                         <Stack direction={'row'} spacing={1} pb={1}>
                             {/* <CalendarMonthIcon sx={{ color: theme.palette.secondary.main, fontSize: 40, position: 'relative', top: 11 }} /> */}
-                            <Typography component={'p'} fontSize={50} lineHeight={1} color={theme.palette.primary.main} fontWeight={700}>
+                            <Typography component={'p'} fontSize={50} lineHeight={1} color={theme.palette.secondary.main} fontWeight={700}>
                                 <CountUp enableScrollSpy duration={3} end={getCompanyAge()} />+
                             </Typography>
                         </Stack>
