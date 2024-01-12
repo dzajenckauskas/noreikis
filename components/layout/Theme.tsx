@@ -45,6 +45,12 @@ export const theme = createTheme({
             fontFamily: rubik.style.fontFamily,
             // fontSize: 52
         },
+        h3: {
+            fontFamily: rubik.style.fontFamily,
+        },
+        h4: {
+            fontFamily: rubik.style.fontFamily,
+        },
         h5: {
             fontFamily: rubik.style.fontFamily,
         },
