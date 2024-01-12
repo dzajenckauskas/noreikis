@@ -126,7 +126,7 @@ const Header = () => {
                                 </Typography>
                             </Stack>
                         </Link>
-                        <Stack direction={'row'} spacing={3} sx={{ textTransform: 'uppercase', alignItems: 'center', display: { md: 'flex', xs: 'none' } }}>
+                        <Stack direction={'row'} spacing={6} sx={{ textTransform: 'uppercase', alignItems: 'center', display: { md: 'flex', xs: 'none' } }}>
                             {renderNavLinks}
                             {/* <Stack direction={'row'} spacing={2} pl={2}>
                                 <LocaleSwitcher />
