@@ -17,6 +17,8 @@ export const CounterSection = () => {
         <Stack sx={{
             mt: 6,
             // backgroundColor: '#fafafa',
+            maxWidth: 'xl',
+            mx: 'auto',
             backgroundColor: '#fff',
             width: '100%', pt: 12, pb: 16,
             position: 'relative', zIndex: 0, top: '-1px', alignContent: 'center',
