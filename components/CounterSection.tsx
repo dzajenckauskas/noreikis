@@ -87,7 +87,7 @@ export const CounterSection = () => {
 
                 <Stack width={'70%'} direction={'row'} justifyContent={'space-between'} spacing={0}>
                     <Stack width={'100%'}>
-                        <Stack spacing={2} width={'100%'} minHeight={450} pb={8}
+                        <Stack spacing={2} width={'100%'} minHeight={350} pb={8}
                             position={'relative'}
                             alignSelf={'flex-start'}
                             sx={{ p: 8, ':hover': { boxShadow: 'rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;' } }}>
@@ -102,16 +102,16 @@ export const CounterSection = () => {
                                 parduodamas bendradarbiaujant
                                 profesionalų komandai
                             </Typography>
-                            <Stack direction={'row'} spacing={{ md: 1, xs: .5 }} sx={{ pt: 2, position: 'absolute', bottom: 60 }}>
+                            {/* <Stack direction={'row'} spacing={{ md: 1, xs: .5 }} sx={{ pt: 2, position: 'absolute', bottom: 60 }}>
                                 <SubdirectoryArrowRightIcon sx={{ color: theme.palette.secondary.main, fontSize: 18, }} />
                                 <Link passHref href={`/parduodami`}>
                                     <Typography variant='body1' color={theme.palette.secondary.main} sx={{ ":hover": { textDecoration: 'underline' } }}>
                                         {'Daugiau'}
                                     </Typography>
                                 </Link>
-                            </Stack>
+                            </Stack> */}
                         </Stack>
-                        <Stack spacing={2} width={'100%'} minHeight={450} pb={8}
+                        <Stack spacing={2} width={'100%'} minHeight={350} pb={8}
                             position={'relative'}
                             alignSelf={'flex-start'}
                             sx={{ p: 8, ':hover': { boxShadow: 'rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;' } }}>
@@ -126,18 +126,18 @@ export const CounterSection = () => {
                                 parduodamas bendradarbiaujant
                                 profesionalų komandai
                             </Typography>
-                            <Stack direction={'row'} spacing={{ md: 1, xs: .5 }} sx={{ pt: 2, position: 'absolute', bottom: 60 }}>
+                            {/* <Stack direction={'row'} spacing={{ md: 1, xs: .5 }} sx={{ pt: 2, position: 'absolute', bottom: 60 }}>
                                 <SubdirectoryArrowRightIcon sx={{ color: theme.palette.secondary.main, fontSize: 18, }} />
                                 <Link passHref href={`/parduodami`}>
                                     <Typography variant='body1' color={theme.palette.secondary.main} sx={{ ":hover": { textDecoration: 'underline' } }}>
                                         {'Daugiau'}
                                     </Typography>
                                 </Link>
-                            </Stack>
+                            </Stack> */}
                         </Stack>
                     </Stack>
                     <Stack width={'100%'}>
-                        <Stack spacing={2} width={'100%'} minHeight={450} pb={8}
+                        <Stack spacing={2} width={'100%'} minHeight={350} pb={8}
                             position={'relative'}
                             alignSelf={'flex-start'}
                             sx={{ p: 8, ':hover': { boxShadow: 'rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;' } }}>
@@ -152,16 +152,16 @@ export const CounterSection = () => {
                                 parduodamas bendradarbiaujant
                                 profesionalų komandai
                             </Typography>
-                            <Stack direction={'row'} spacing={{ md: 1, xs: .5 }} sx={{ pt: 2, position: 'absolute', bottom: 60 }}>
+                            {/* <Stack direction={'row'} spacing={{ md: 1, xs: .5 }} sx={{ pt: 2, position: 'absolute', bottom: 60 }}>
                                 <SubdirectoryArrowRightIcon sx={{ color: theme.palette.secondary.main, fontSize: 18, }} />
                                 <Link passHref href={`/parduodami`}>
                                     <Typography variant='body1' color={theme.palette.secondary.main} sx={{ ":hover": { textDecoration: 'underline' } }}>
                                         {'Daugiau'}
                                     </Typography>
                                 </Link>
-                            </Stack>
+                            </Stack> */}
                         </Stack>
-                        <Stack spacing={2} width={'100%'} minHeight={450} pb={8}
+                        <Stack spacing={2} width={'100%'} minHeight={350} pb={8}
                             position={'relative'}
                             alignSelf={'flex-start'}
                             sx={{ p: 8, ':hover': { boxShadow: 'rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;' } }}>
@@ -176,14 +176,14 @@ export const CounterSection = () => {
                                 parduodamas bendradarbiaujant
                                 profesionalų komandai
                             </Typography>
-                            <Stack direction={'row'} spacing={{ md: 1, xs: .5 }} sx={{ pt: 2, position: 'absolute', bottom: 60 }}>
+                            {/* <Stack direction={'row'} spacing={{ md: 1, xs: .5 }} sx={{ pt: 2, position: 'absolute', bottom: 60 }}>
                                 <SubdirectoryArrowRightIcon sx={{ color: theme.palette.secondary.main, fontSize: 18, }} />
                                 <Link passHref href={`/parduodami`}>
                                     <Typography variant='body1' fontWeight={400} color={theme.palette.secondary.main} sx={{ ":hover": { textDecoration: 'underline' } }}>
                                         {'Daugiau'}
                                     </Typography>
                                 </Link>
-                            </Stack>
+                            </Stack> */}
                         </Stack>
                     </Stack>
                 </Stack>
