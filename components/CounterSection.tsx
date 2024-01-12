@@ -87,12 +87,12 @@ export const CounterSection = () => {
 
                 <Stack width={'70%'} direction={'row'} justifyContent={'space-between'} spacing={0}>
                     <Stack width={'100%'}>
-                        <Stack spacing={2} width={'100%'} minHeight={500} pb={8}
+                        <Stack spacing={2} width={'100%'} minHeight={450} pb={8}
                             position={'relative'}
                             alignSelf={'flex-start'}
                             sx={{ p: 8, ':hover': { boxShadow: 'rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;' } }}>
                             <CalendarMonthIcon sx={{ color: theme.palette.secondary.main, fontSize: 40, position: 'relative' }} />
-                            <Typography color={theme.palette.primary.main} fontWeight={600} variant='h4'>
+                            <Typography color={theme.palette.primary.main} fontWeight={600} variant='h5'>
                                 Atstovavimas parduodant nekilnojamąjį turtą
                             </Typography>
                             <Typography color={theme.palette.primary.main} variant='body1'>
@@ -111,12 +111,12 @@ export const CounterSection = () => {
                                 </Link>
                             </Stack>
                         </Stack>
-                        <Stack spacing={2} width={'100%'} minHeight={500} pb={8}
+                        <Stack spacing={2} width={'100%'} minHeight={450} pb={8}
                             position={'relative'}
                             alignSelf={'flex-start'}
                             sx={{ p: 8, ':hover': { boxShadow: 'rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;' } }}>
                             <CalendarMonthIcon sx={{ color: theme.palette.secondary.main, fontSize: 40, position: 'relative' }} />
-                            <Typography color={theme.palette.primary.main} fontWeight={600} variant='h4'>
+                            <Typography color={theme.palette.primary.main} fontWeight={600} variant='h5'>
                                 Nekilnojamojo turto dokumentacija
                             </Typography>
                             <Typography color={theme.palette.primary.main} variant='body1'>
@@ -137,12 +137,12 @@ export const CounterSection = () => {
                         </Stack>
                     </Stack>
                     <Stack width={'100%'}>
-                        <Stack spacing={2} width={'100%'} minHeight={500} pb={8}
+                        <Stack spacing={2} width={'100%'} minHeight={450} pb={8}
                             position={'relative'}
                             alignSelf={'flex-start'}
                             sx={{ p: 8, ':hover': { boxShadow: 'rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;' } }}>
                             <CalendarMonthIcon sx={{ color: theme.palette.secondary.main, fontSize: 40, position: 'relative' }} />
-                            <Typography color={theme.palette.primary.main} fontWeight={600} variant='h4'>
+                            <Typography color={theme.palette.primary.main} fontWeight={600} variant='h5'>
                                 Pagalba nuomojant nekilnojamąjį turtą
                             </Typography>
                             <Typography color={theme.palette.primary.main} variant='body1'>
@@ -161,12 +161,12 @@ export const CounterSection = () => {
                                 </Link>
                             </Stack>
                         </Stack>
-                        <Stack spacing={2} width={'100%'} minHeight={500} pb={8}
+                        <Stack spacing={2} width={'100%'} minHeight={450} pb={8}
                             position={'relative'}
                             alignSelf={'flex-start'}
                             sx={{ p: 8, ':hover': { boxShadow: 'rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;' } }}>
                             <CalendarMonthIcon sx={{ color: theme.palette.secondary.main, fontSize: 40, position: 'relative' }} />
-                            <Typography color={theme.palette.primary.main} fontWeight={600} variant='h4'>
+                            <Typography color={theme.palette.primary.main} fontWeight={600} variant='h5'>
                                 Nekilnojamojo turto paieška
                             </Typography>
                             <Typography color={theme.palette.primary.main} variant='body1'>
