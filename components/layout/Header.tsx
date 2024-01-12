@@ -132,7 +132,7 @@ const Header = () => {
                                 <LocaleSwitcher />
                             </Stack> */}
                             <Link href={`/${'kontaktai'}`}>
-                                <Button variant='contained'>
+                                <Button variant='contained' size="large">
                                     <Typography variant='body2'
                                         sx={{
                                             // color: router.pathname === link.slug ? theme.palette.secondary.main : theme.palette.text.secondary,

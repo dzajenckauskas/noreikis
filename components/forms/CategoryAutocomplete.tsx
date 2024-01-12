@@ -36,7 +36,7 @@ export const CategoryAutocomplete = ({ form }: Props) => {
                     {...field}
                     fullWidth
                     onClick={() => asyncGet()}
-                    size='small'
+                    size='medium'
                     loading={loading}
                     noOptionsText={"Pasirinkimų nėra"}
                     loadingText={"Kraunama..."}

@@ -171,7 +171,7 @@ const PriceInquiryForm = () => {
                 <Stack direction={{ sm: 'row', xs: 'column' }} spacing={3} width={'100%'} alignItems={'flex-end'}> */}
             <Grid container spacing={2} pb={3} >
                 <Grid item xs={12} sm={6} md={6} lg={4}>
-                    <TextField disabled={sent} size="small"
+                    <TextField disabled={sent} size="medium"
                         label={<Typography component={FormLabel} required variant='body1'
                             color={errors.name?.message ? 'error' : theme.palette.primary.dark}   >
                             {/* {t('form.name', { ns: 'contact' })} */}
@@ -183,7 +183,7 @@ const PriceInquiryForm = () => {
                     />
                 </Grid>
                 <Grid item xs={12} sm={6} md={6} lg={4}>
-                    <TextField disabled={sent} size="small"
+                    <TextField disabled={sent} size="medium"
                         label={<Typography component={FormLabel} required variant='body1'
                             color={errors.email?.message ? 'error' : theme.palette.primary.dark}   >
                             {/* {t('form.email', { ns: 'contact' })} */}
@@ -195,7 +195,7 @@ const PriceInquiryForm = () => {
                     />
                 </Grid>
                 <Grid item xs={12} sm={6} md={6} lg={4}>
-                    <TextField disabled={sent} size="small"
+                    <TextField disabled={sent} size="medium"
                         label={<Typography component={FormLabel} required variant='body1'
                             color={errors.phone?.message ? 'error' : theme.palette.primary.dark}   >
                             {/* {t('form.phone', { ns: 'contact' })} */}
@@ -213,7 +213,7 @@ const PriceInquiryForm = () => {
                             {/* {t("form.message", { ns: 'contact' })} */}
                             Miestas
                         </Typography>}
-                        size='small'
+                        size='medium'
                         {...register("city")}
                         helperText={errors.city?.message}
                         error={!!errors.city}
@@ -226,7 +226,7 @@ const PriceInquiryForm = () => {
                             {/* {t("form.message", { ns: 'contact' })} */}
                             Tikslus adresas
                         </Typography>}
-                        size='small'
+                        size='medium'
                         {...register("address")}
                         helperText={errors.address?.message}
                         error={!!errors.address}
@@ -250,7 +250,7 @@ const PriceInquiryForm = () => {
                                     Plotas, m&sup2;
                                 </Typography>}
                                 type="'number"
-                                size='small'
+                                size='medium'
                                 {...register("areaSqM")}
                                 helperText={errors.areaSqM?.message}
                                 error={!!errors.areaSqM}
@@ -264,7 +264,7 @@ const PriceInquiryForm = () => {
                                     Kambarių skaičius
                                 </Typography>}
                                 type="number"
-                                size='small'
+                                size='medium'
                                 {...register("roomsNumber")}
                                 helperText={errors.roomsNumber?.message}
                                 error={!!errors.roomsNumber}
@@ -278,7 +278,7 @@ const PriceInquiryForm = () => {
                                     Buto aukštas
                                 </Typography>}
                                 type="number"
-                                size='small'
+                                size='medium'
                                 {...register("floorNumber")}
                                 helperText={errors.floorNumber?.message}
                                 error={!!errors.floorNumber}
@@ -292,7 +292,7 @@ const PriceInquiryForm = () => {
                                     Namo aukštų skaičius
                                 </Typography>}
                                 type="number"
-                                size='small'
+                                size='medium'
                                 {...register("floorsTotal")}
                                 helperText={errors.floorsTotal?.message}
                                 error={!!errors.floorsTotal}
@@ -305,7 +305,7 @@ const PriceInquiryForm = () => {
                                     {/* {t("form.message", { ns: 'contact' })} */}
                                     Namo statybos metai
                                 </Typography>}
-                                size='small'
+                                size='medium'
                                 {...register("houseBuildYear")}
                                 helperText={errors.houseBuildYear?.message}
                                 error={!!errors.houseBuildYear}
@@ -352,7 +352,7 @@ const PriceInquiryForm = () => {
                                 {/* {t("form.message", { ns: 'contact' })} */}
                                 Sklypo plotas, a
                             </Typography>}
-                            size='small'
+                            size='medium'
                             {...register("landArea")}
                             helperText={errors.landArea?.message}
                             error={!!errors.landArea}
@@ -365,7 +365,7 @@ const PriceInquiryForm = () => {
                             {/* {t("form.message", { ns: 'contact' })} */}
                             Komentaras
                         </Typography>}
-                        size='small'
+                        size='medium'
                         multiline
                         rows={4}
                         {...register("comment")}
@@ -384,12 +384,12 @@ const PriceInquiryForm = () => {
                         </Typography>
                     </Stack>}
                 {!sent &&
-                    <Button variant="contained" color="secondary" type={'submit'}>
+                    <Button size="large" variant="contained" color="secondary" type={'submit'}>
                         Siųsti užklausą
                     </Button>
                 }
                 {sent &&
-                    <Button variant="outlined" color="secondary" onClick={() => { setSent(false) }}>
+                    <Button size="large" variant="outlined" color="secondary" onClick={() => { setSent(false) }}>
                         Siųsti dar kartą
                     </Button>
                 }
