@@ -38,8 +38,9 @@ export const CounterSection = () => {
                 </Stack>
             </Stack>
 
-            <Stack direction={'row'} justifyContent={'space-between'}>
-                <Stack alignItems={'flex-start'} spacing={{ md: 8, xs: 6 }} sx={{ width: '30%', pt: 8 }}>
+            <Stack direction={{ xs: 'column', md: 'row' }} justifyContent={'space-between'}>
+                <Stack direction={{ xs: 'row', md: 'column' }} alignItems={'flex-start'}
+                    spacing={{ md: 8, xs: 6 }} sx={{ width: '30%', pt: 8 }}>
 
                     <Stack alignItems={'flex-start'} maxWidth={180}>
                         <Stack direction={'row'} spacing={1} pb={1}>
@@ -83,12 +84,14 @@ export const CounterSection = () => {
                     </Stack>
                 </Stack>
 
-                <Stack width={'70%'} direction={'row'} justifyContent={'space-between'} spacing={0}>
+                <Stack pt={{ md: 0, xs: 10 }} width={{ xs: '100%', md: '70%' }} direction={{ sm: 'row', xs: 'column' }}
+
+                    justifyContent={'space-between'} spacing={{ xs: 0, md: 0 }}>
                     <Stack width={'100%'}>
-                        <Stack spacing={2} width={'100%'} minHeight={350} pb={8}
+                        <Stack spacing={2} width={'100%'} minHeight={{ xs: 'none', sm: 400 }} pb={8}
                             position={'relative'}
                             alignSelf={'flex-start'}
-                            sx={{ p: 8, ':hover': { boxShadow: 'rgba(17, 12, 46, 0.05) 0px 48px 100px 0px;' } }}>
+                            sx={{ p: { xs: 2, sm: 4, lg: 8 }, py: { xs: 4, sm: 4, lg: 8 }, ':hover': { boxShadow: 'rgba(17, 12, 46, 0.05) 0px 48px 100px 0px;' } }}>
                             <HomeWorkIcon sx={{ color: theme.palette.secondary.main, fontSize: 40, position: 'relative' }} />
                             <Typography color={theme.palette.primary.main} fontWeight={600} variant='h5'>
                                 Atstovavimas <span style={{ color: theme.palette.secondary.main }}>parduodant</span> nekilnojamąjį turtą
@@ -109,10 +112,10 @@ export const CounterSection = () => {
                                 </Link>
                             </Stack> */}
                         </Stack>
-                        <Stack spacing={2} width={'100%'} minHeight={350} pb={8}
+                        <Stack spacing={2} width={'100%'} minHeight={{ xs: 'none', sm: 400 }} pb={8}
                             position={'relative'}
                             alignSelf={'flex-start'}
-                            sx={{ p: 8, ':hover': { boxShadow: 'rgba(17, 12, 46, 0.05) 0px 48px 100px 0px;' } }}>
+                            sx={{ p: { xs: 2, sm: 4, lg: 8 }, py: { xs: 4, sm: 4, lg: 8 }, ':hover': { boxShadow: 'rgba(17, 12, 46, 0.05) 0px 48px 100px 0px;' } }}>
                             <FeedIcon sx={{ color: theme.palette.secondary.main, fontSize: 40, position: 'relative' }} />
                             <Typography color={theme.palette.primary.main} fontWeight={600} variant='h5'>
                                 Nekilnojamojo turto <span style={{ color: theme.palette.secondary.main }}>dokumentacija</span>
@@ -135,10 +138,10 @@ export const CounterSection = () => {
                         </Stack>
                     </Stack>
                     <Stack width={'100%'}>
-                        <Stack spacing={2} width={'100%'} minHeight={350} pb={8}
+                        <Stack spacing={2} width={'100%'} minHeight={{ xs: 'none', sm: 400 }} pb={8}
                             position={'relative'}
                             alignSelf={'flex-start'}
-                            sx={{ p: 8, ':hover': { boxShadow: 'rgba(17, 12, 46, 0.05) 0px 48px 100px 0px;' } }}>
+                            sx={{ p: { xs: 2, sm: 4, lg: 8 }, py: { xs: 4, sm: 4, lg: 8 }, ':hover': { boxShadow: 'rgba(17, 12, 46, 0.05) 0px 48px 100px 0px;' } }}>
                             <ApartmentIcon sx={{ color: theme.palette.secondary.main, fontSize: 40, position: 'relative' }} />
                             <Typography color={theme.palette.primary.main} fontWeight={600} variant='h5'>
                                 Pagalba <span style={{ color: theme.palette.secondary.main }}>nuomojant</span> nekilnojamąjį turtą
@@ -159,10 +162,10 @@ export const CounterSection = () => {
                                 </Link>
                             </Stack> */}
                         </Stack>
-                        <Stack spacing={2} width={'100%'} minHeight={350} pb={8}
+                        <Stack spacing={2} width={'100%'} minHeight={{ xs: 'none', sm: 400 }} pb={8}
                             position={'relative'}
                             alignSelf={'flex-start'}
-                            sx={{ p: 8, ':hover': { boxShadow: 'rgba(17, 12, 46, 0.05) 0px 48px 100px 0px;' } }}>
+                            sx={{ p: { xs: 2, sm: 4, lg: 8 }, py: { xs: 4, sm: 4, lg: 8 }, ':hover': { boxShadow: 'rgba(17, 12, 46, 0.05) 0px 48px 100px 0px;' } }}>
                             <FindInPageIcon sx={{ color: theme.palette.secondary.main, fontSize: 40, position: 'relative' }} />
                             <Typography color={theme.palette.primary.main} fontWeight={600} variant='h5'>
                                 Nekilnojamojo turto <span style={{ color: theme.palette.secondary.main }}>paieška</span>

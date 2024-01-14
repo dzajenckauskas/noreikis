@@ -48,8 +48,8 @@ export const ContactsPage = ({ }: Props) => {
                             </Stack>
 
                         </Stack>
-                        <Stack py={6} width={'100%'} direction={'row'} justifyContent={'space-between'}>
-                            <Stack direction={'row'} spacing={{ md: 1, xs: .5 }} sx={{ pt: 4, alignSelf: 'flex-end' }}>
+                        <Stack py={6} width={'100%'} direction={{ xs: 'column', md: 'row' }} justifyContent={'space-between'}>
+                            <Stack direction={'row'} spacing={{ md: 1, xs: .5 }} sx={{ pt: 4, alignSelf: { xs: 'flex-start', md: 'flex-end' } }}>
                                 <Stack spacing={2} pt={1} width={'100%'}>
                                     <Stack direction={'row'} spacing={1} sx={{ alignItems: 'center', width: '100%', justifyContent: 'flex-start' }}>
                                         <Link passHref href={`${process.env.NEXT_PUBLIC_ARUODAS_URL}`} aria-label="aruodas">
@@ -89,7 +89,7 @@ export const ContactsPage = ({ }: Props) => {
 
                                 </Stack>
                             </Stack>
-                            <Stack width={'50%'}>
+                            <Stack pt={{ xs: 10 }} width={{ xs: '100%', md: '50%' }}>
                                 <ContactForm />
                             </Stack>
                         </Stack>

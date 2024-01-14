@@ -15,7 +15,7 @@ export const HeroSection = () => {
 
             <Stack sx={{
                 // pt: { xl: 2, md: 4, xs: 2 },
-                mt: '-80px',
+                // mt: { xs: '0', md: '-80px' },
                 position: 'relative',
                 px: { xl: 2, md: 4, xs: 2 },
                 width: '100%', maxWidth: 'xl', mx: 'auto',
@@ -24,8 +24,9 @@ export const HeroSection = () => {
                 // backgroundColor: '#fff',
                 pb: 5
             }}>
-                <Stack direction={{ xs: 'column', md: 'row' }} justifyContent={'space-between'} width={'100%'} spacing={4} >
-                    <Stack width={{ xs: '100%', md: '50%' }} pt={10}>
+                <Stack direction={{ xs: 'column', md: 'row' }} justifyContent={'space-between'}
+                    width={'100%'} spacing={4} >
+                    <Stack width={{ xs: '100%', md: '50%' }} pt={{ xs: 15, md: 10 }}>
                         <Stack spacing={4} height={'100%'} alignItems={'flex-start'} position={'relative'}
                             justifyContent={'center'} alignContent={'flex-start'}>
                             <Typography variant='h1' fontWeight={600}>
@@ -48,7 +49,10 @@ export const HeroSection = () => {
                                     <LinkedInIcon sx={{ color: theme.palette.primary.dark, fontSize: 22 }} />
                                 </Link>
                             </Stack>
-                            <Stack direction={'row'} spacing={{ md: 1, xs: .5 }} sx={{ pt: 4, position: 'absolute', bottom: 20, right: { xs: 0, md: 'auto' } }}>
+                            <Stack direction={'row'} spacing={{ md: 1, xs: .5 }} sx={{
+                                pt: 4, position: 'absolute',
+                                bottom: 0, right: { xs: 0, md: 'auto' }
+                            }}>
                                 <SubdirectoryArrowRightIcon sx={{ color: theme.palette.secondary.main, fontSize: 18, }} />
                                 <Link passHref href={`/parduodami`}>
                                     <Typography variant='body1' color={theme.palette.secondary.main} sx={{ ":hover": { textDecoration: 'underline' } }}>
@@ -66,8 +70,8 @@ export const HeroSection = () => {
                </Link>
            </Stack> */}
                     </Stack>
-                    <Stack width={{ xs: '100%', md: '40%' }} position={'relative'} zIndex={2}>
-                        <Stack sx={{ position: 'relative', width: '100%', height: { xs: 500, md: 800 }, positon: 'relative', top: 150 }}>
+                    <Stack width={{ xs: '100%', sm: '60%', md: '40%' }} position={'relative'} zIndex={2}>
+                        <Stack sx={{ position: 'relative', width: '100%', height: { xs: 500, md: 800 }, positon: 'relative', top: { xs: 50, md: 150 } }}>
                             <Image priority alt={"Ernestas Noreikis NT nekilnojamas turtas brokeris"}
                                 layout='fill' objectFit='cover' objectPosition='top' src={'/assets/images/ernestas-noreikis-NT-brokeris.avif'} />
                             {/* <Typography variant='h1' fontWeight={600}>

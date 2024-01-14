@@ -38,7 +38,7 @@ export const PriceInquirySection = () => {
                 overflow: 'hidden'
             }}>
                 <Stack direction={'row'} justifyContent={"space-between"} >
-                    <Stack sx={{ width: { xs: '100%', md: '50%' } }}>
+                    <Stack sx={{ width: { xs: '90%', md: '50%' } }}>
                         <Typography variant='h3'
                             sx={{ fontWeight: 600 }}
                         >
@@ -50,14 +50,14 @@ export const PriceInquirySection = () => {
 
                         </Typography>
 
-                        <Typography pt={2} variant='body1' width={'60%'}>
+                        <Typography pt={2} variant='body1' width={{ xs: '80%', sm: '60%' }}>
                             Užpildykite turto kainos vertinimo užklausą ir sužinokite savo nekilnojamojo turto vertę
                         </Typography>
 
                     </Stack>
                 </Stack>
-                <Stack py={4} width={'100%'} direction={'row'} justifyContent={'space-between'}>
-                    <Stack direction={'row'} spacing={{ md: 1, xs: .5 }} sx={{ pt: 4, alignSelf: 'flex-end' }}>
+                <Stack py={4} width={'100%'} direction={{ xs: 'column-reverse', md: 'row' }} justifyContent={'space-between'}>
+                    <Stack direction={'row'} spacing={{ md: 1, xs: .5 }} sx={{ pt: 4, alignSelf: { xs: 'flex-start', md: 'flex-end' } }}>
                         <SubdirectoryArrowRightIcon sx={{ color: theme.palette.secondary.main, fontSize: 18, }} />
                         <Link passHref target='_blank' href={`/kontaktai`}>
                             <Typography variant='body1' color={theme.palette.secondary.main} sx={{ ":hover": { textDecoration: 'underline' } }}>
@@ -65,7 +65,7 @@ export const PriceInquirySection = () => {
                             </Typography>
                         </Link>
                     </Stack>
-                    <Stack width={'50%'}>
+                    <Stack pb={{ xs: 6 }} width={{ xs: '100%', md: '50%' }}>
                         <PriceInquiryForm />
                     </Stack>
                 </Stack>
