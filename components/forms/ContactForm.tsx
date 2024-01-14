@@ -78,7 +78,7 @@ const ContactForm = () => {
         <form onSubmit={handleSubmit(submit, onInvalid)} noValidate id={'contact-form'} style={{ width: '100%', scrollMarginTop: '300px', }}>
             <Stack direction={'column'} spacing={3} sx={{ width: '100%' }} pt={1}>
                 <Stack direction={{ sm: 'row', xs: 'column' }} spacing={3} width={'100%'} alignItems={'flex-end'}>
-                    <TextField disabled={sent} size="small"
+                    <TextField disabled={sent} size="medium"
                         label={<Typography component={FormLabel} required variant='body1'
                             color={errors.name?.message ? 'error' : theme.palette.primary.dark}   >
                             {/* {t('form.name', { ns: 'contact' })} */}
@@ -89,7 +89,7 @@ const ContactForm = () => {
                         fullWidth
                     />
 
-                    <TextField disabled={sent} size="small"
+                    <TextField disabled={sent} size="medium"
                         label={<Typography component={FormLabel} required variant='body1'
                             color={errors.email?.message ? 'error' : theme.palette.primary.dark}   >
                             {/* {t('form.email', { ns: 'contact' })} */}
@@ -100,7 +100,7 @@ const ContactForm = () => {
                         fullWidth
                     />
 
-                    <TextField disabled={sent} size="small"
+                    <TextField disabled={sent} size="medium"
                         label={<Typography component={FormLabel} variant='body1'
                             color={errors.email?.message ? 'error' : theme.palette.primary.dark}   >
                             {/* {t('form.phone', { ns: 'contact' })} */}
@@ -135,13 +135,13 @@ const ContactForm = () => {
                             </Typography>
                         </Stack>}
                     {!sent &&
-                        <Button variant="contained" color="secondary" type={'submit'}>
+                        <Button size="large" variant="contained" color="secondary" type={'submit'}>
                             Siųsti žinutę
                             {/* // <CustomButton medium submit text={`${t("actions.send", { ns: 'contact' })}`} /> */}
                         </Button>
                     }
                     {sent &&
-                        <Button variant="outlined" color="secondary" onClick={() => { setSent(false) }}>
+                        <Button size="large" variant="outlined" color="secondary" onClick={() => { setSent(false) }}>
                             Siųsti dar kartą
                             {/* // <CustomButton medium submit text={`${t("actions.send", { ns: 'contact' })}`} /> */}
                             {/* // <CustomButton medium secondary text={`${t("actions.sendAgain", { ns: 'contact' })}`} */}

@@ -1,6 +1,6 @@
 import { RecommendationsType } from '@/app/types/RecommendationsType'
 import { getItems } from '@/app/utils'
-import { HomePage } from '@/components/pages/HomePage'
+import { HomePage } from '@/components/pages/home/HomePage'
 import { GetServerSideProps } from 'next'
 
 type Props = {

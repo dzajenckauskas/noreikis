@@ -9,7 +9,8 @@ export const theme = createTheme({
         MuiOutlinedInput: {
             styleOverrides: {
                 root: ({ theme }) => theme.unstable_sx({
-                    borderRadius: 0
+                    borderRadius: 0,
+                    backgroundColor: theme.palette.info.main
                 }),
                 input: ({ theme }) => theme.unstable_sx({
                     backgroundColor: theme.palette.info.main
@@ -23,7 +24,7 @@ export const theme = createTheme({
             styleOverrides: {
                 root: ({ theme }) => theme.unstable_sx({
                     color: `${theme.palette.primary.dark}`,
-                    borderRadius: 0
+                    borderRadius: 0,
                 }),
             }
         },
@@ -39,6 +40,7 @@ export const theme = createTheme({
             styleOverrides: {
                 paper: ({ theme }) => theme.unstable_sx({
                     borderRadius: 0,
+
                     // textTransform: 'none',
                 })
             }

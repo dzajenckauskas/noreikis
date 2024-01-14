@@ -2,9 +2,9 @@ import { RecommendationsType } from '@/app/types/RecommendationsType'
 import { CounterSection } from '@/components/CounterSection'
 import { ReccomendationsSection } from '@/components/ReccomendationsSection'
 import Layout from '@/components/layout/Layout'
-import { HeadComponent } from '../layout/HeadComponent'
-import { HeroSection } from './home/HeroSection'
-import { PriceInquirySection } from './home/PriceInquirySection'
+import { HeadComponent } from '../../layout/HeadComponent'
+import { HeroSection } from './HeroSection'
+import { PriceInquirySection } from './PriceInquirySection'
 
 type Props = {
     recommendations: RecommendationsType;

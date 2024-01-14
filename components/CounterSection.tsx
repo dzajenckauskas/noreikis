@@ -1,26 +1,20 @@
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-// import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
+import { getCompanyAge } from '@/app/getCompanyAge';
+import ApartmentIcon from '@mui/icons-material/Apartment';
+import FeedIcon from '@mui/icons-material/Feed';
+import FindInPageIcon from '@mui/icons-material/FindInPage';
+import HomeWorkIcon from '@mui/icons-material/HomeWork';
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { useTranslation } from "next-i18next";
 import CountUp from "react-countup";
 import { getTheme } from "./layout/Theme";
-import { getCompanyAge } from '@/app/getCompanyAge';
-import Link from 'next/link';
-import SubdirectoryArrowRightIcon from '@mui/icons-material/SubdirectoryArrowRight'
-import BackupTableIcon from '@mui/icons-material/BackupTable';
-import ManageSearchIcon from '@mui/icons-material/ManageSearch';
-import HomeWorkIcon from '@mui/icons-material/HomeWork';
-import ApartmentIcon from '@mui/icons-material/Apartment';
-import FeedIcon from '@mui/icons-material/Feed';
-import FindInPageIcon from '@mui/icons-material/FindInPage';
+
 export const CounterSection = () => {
     const theme = getTheme()
     const { t } = useTranslation('home')
     return (
         <Stack sx={{
             mt: 6,
-            // backgroundColor: '#fafafa',
             maxWidth: 'xl',
             mx: 'auto',
             backgroundColor: '#fff',
