@@ -8,8 +8,12 @@ import { getTheme } from "./layout/Theme";
 import { getCompanyAge } from '@/app/getCompanyAge';
 import Link from 'next/link';
 import SubdirectoryArrowRightIcon from '@mui/icons-material/SubdirectoryArrowRight'
-
-
+import BackupTableIcon from '@mui/icons-material/BackupTable';
+import ManageSearchIcon from '@mui/icons-material/ManageSearch';
+import HomeWorkIcon from '@mui/icons-material/HomeWork';
+import ApartmentIcon from '@mui/icons-material/Apartment';
+import FeedIcon from '@mui/icons-material/Feed';
+import FindInPageIcon from '@mui/icons-material/FindInPage';
 export const CounterSection = () => {
     const theme = getTheme()
     const { t } = useTranslation('home')
@@ -91,9 +95,9 @@ export const CounterSection = () => {
                             position={'relative'}
                             alignSelf={'flex-start'}
                             sx={{ p: 8, ':hover': { boxShadow: 'rgba(17, 12, 46, 0.05) 0px 48px 100px 0px;' } }}>
-                            <CalendarMonthIcon sx={{ color: theme.palette.secondary.main, fontSize: 40, position: 'relative' }} />
+                            <HomeWorkIcon sx={{ color: theme.palette.secondary.main, fontSize: 40, position: 'relative' }} />
                             <Typography color={theme.palette.primary.main} fontWeight={600} variant='h5'>
-                                Atstovavimas parduodant nekilnojamąjį turtą
+                                Atstovavimas <span style={{ color: theme.palette.secondary.main }}>parduodant</span> nekilnojamąjį turtą
                             </Typography>
                             <Typography color={theme.palette.primary.main} variant='body1'>
                                 Jūsų nekilnojamas turtas bus
@@ -115,9 +119,9 @@ export const CounterSection = () => {
                             position={'relative'}
                             alignSelf={'flex-start'}
                             sx={{ p: 8, ':hover': { boxShadow: 'rgba(17, 12, 46, 0.05) 0px 48px 100px 0px;' } }}>
-                            <CalendarMonthIcon sx={{ color: theme.palette.secondary.main, fontSize: 40, position: 'relative' }} />
+                            <FeedIcon sx={{ color: theme.palette.secondary.main, fontSize: 40, position: 'relative' }} />
                             <Typography color={theme.palette.primary.main} fontWeight={600} variant='h5'>
-                                Nekilnojamojo turto dokumentacija
+                                Nekilnojamojo turto <span style={{ color: theme.palette.secondary.main }}>dokumentacija</span>
                             </Typography>
                             <Typography color={theme.palette.primary.main} variant='body1'>
                                 Jūsų nekilnojamas turtas bus
@@ -141,9 +145,9 @@ export const CounterSection = () => {
                             position={'relative'}
                             alignSelf={'flex-start'}
                             sx={{ p: 8, ':hover': { boxShadow: 'rgba(17, 12, 46, 0.05) 0px 48px 100px 0px;' } }}>
-                            <CalendarMonthIcon sx={{ color: theme.palette.secondary.main, fontSize: 40, position: 'relative' }} />
+                            <ApartmentIcon sx={{ color: theme.palette.secondary.main, fontSize: 40, position: 'relative' }} />
                             <Typography color={theme.palette.primary.main} fontWeight={600} variant='h5'>
-                                Pagalba nuomojant nekilnojamąjį turtą
+                                Pagalba <span style={{ color: theme.palette.secondary.main }}>nuomojant</span> nekilnojamąjį turtą
                             </Typography>
                             <Typography color={theme.palette.primary.main} variant='body1'>
                                 Jūsų nekilnojamas turtas bus
@@ -165,9 +169,9 @@ export const CounterSection = () => {
                             position={'relative'}
                             alignSelf={'flex-start'}
                             sx={{ p: 8, ':hover': { boxShadow: 'rgba(17, 12, 46, 0.05) 0px 48px 100px 0px;' } }}>
-                            <CalendarMonthIcon sx={{ color: theme.palette.secondary.main, fontSize: 40, position: 'relative' }} />
+                            <FindInPageIcon sx={{ color: theme.palette.secondary.main, fontSize: 40, position: 'relative' }} />
                             <Typography color={theme.palette.primary.main} fontWeight={600} variant='h5'>
-                                Nekilnojamojo turto paieška
+                                Nekilnojamojo turto <span style={{ color: theme.palette.secondary.main }}>paieška</span>
                             </Typography>
                             <Typography color={theme.palette.primary.main} variant='body1'>
                                 Jūsų nekilnojamas turtas bus
