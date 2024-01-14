@@ -77,54 +77,57 @@ const ContactForm = () => {
     return (
         <form onSubmit={handleSubmit(submit, onInvalid)} noValidate id={'contact-form'} style={{ width: '100%', scrollMarginTop: '300px', }}>
             <Stack direction={'column'} spacing={3} sx={{ width: '100%' }} pt={1}>
-                <Stack direction={{ sm: 'row', xs: 'column' }} spacing={3} width={'100%'} alignItems={'flex-end'}>
-                    <TextField disabled={sent} size="medium"
-                        label={<Typography component={FormLabel} required variant='body1'
-                            color={errors.name?.message ? 'error' : theme.palette.primary.dark}   >
-                            {/* {t('form.name', { ns: 'contact' })} */}
-                            Vardas
-                        </Typography>}
-                        {...register("name")} name={"name"}
-                        error={!!errors.name?.message} helperText={errors.name?.message}
-                        fullWidth
-                    />
+                {!sent &&
+                    <Stack>
+                        <Stack direction={{ sm: 'row', xs: 'column' }} spacing={3} width={'100%'} alignItems={'flex-end'}>
+                            <TextField disabled={sent} size="medium"
+                                label={<Typography component={FormLabel} required variant='body1'
+                                    color={errors.name?.message ? 'error' : theme.palette.primary.dark}   >
+                                    {/* {t('form.name', { ns: 'contact' })} */}
+                                    Vardas
+                                </Typography>}
+                                {...register("name")} name={"name"}
+                                error={!!errors.name?.message} helperText={errors.name?.message}
+                                fullWidth
+                            />
 
-                    <TextField disabled={sent} size="medium"
-                        label={<Typography component={FormLabel} required variant='body1'
-                            color={errors.email?.message ? 'error' : theme.palette.primary.dark}   >
-                            {/* {t('form.email', { ns: 'contact' })} */}
-                            El. paštas
-                        </Typography>}
-                        {...register("email")} name={"email"}
-                        error={!!errors.email?.message} helperText={errors.email?.message}
-                        fullWidth
-                    />
+                            <TextField disabled={sent} size="medium"
+                                label={<Typography component={FormLabel} required variant='body1'
+                                    color={errors.email?.message ? 'error' : theme.palette.primary.dark}   >
+                                    {/* {t('form.email', { ns: 'contact' })} */}
+                                    El. paštas
+                                </Typography>}
+                                {...register("email")} name={"email"}
+                                error={!!errors.email?.message} helperText={errors.email?.message}
+                                fullWidth
+                            />
 
-                    <TextField disabled={sent} size="medium"
-                        label={<Typography component={FormLabel} variant='body1'
-                            color={errors.email?.message ? 'error' : theme.palette.primary.dark}   >
-                            {/* {t('form.phone', { ns: 'contact' })} */}
-                            Tel. Nr.
-                        </Typography>}
-                        {...register("phone")} name={"phone"}
-                        error={!!errors.phone?.message} helperText={errors.phone?.message}
-                        fullWidth
-                    />
-                </Stack>
+                            <TextField disabled={sent} size="medium"
+                                label={<Typography component={FormLabel} variant='body1'
+                                    color={errors.email?.message ? 'error' : theme.palette.primary.dark}   >
+                                    {/* {t('form.phone', { ns: 'contact' })} */}
+                                    Tel. Nr.
+                                </Typography>}
+                                {...register("phone")} name={"phone"}
+                                error={!!errors.phone?.message} helperText={errors.phone?.message}
+                                fullWidth
+                            />
+                        </Stack>
 
-                <TextField disabled={sent}
-                    label={<Typography component={FormLabel} required variant='body1' color={errors.message?.message ? theme.palette.error.main : theme.palette.primary.dark}  >
-                        {/* {t("form.message", { ns: 'contact' })} */}
-                        Žinutė
-                    </Typography>}
-                    size='small'
-                    multiline
-                    rows={8}
-                    {...register("message")}
-                    helperText={errors.message?.message}
-                    error={!!errors.message}
-                    fullWidth
-                />
+                        <TextField disabled={sent}
+                            label={<Typography component={FormLabel} required variant='body1' color={errors.message?.message ? theme.palette.error.main : theme.palette.primary.dark}  >
+                                {/* {t("form.message", { ns: 'contact' })} */}
+                                Žinutė
+                            </Typography>}
+                            size='small'
+                            multiline
+                            rows={8}
+                            {...register("message")}
+                            helperText={errors.message?.message}
+                            error={!!errors.message}
+                            fullWidth
+                        />
+                    </Stack>}
 
                 <Stack width={'100%'} direction={'column'} justifyContent={'center'} >
                     {sent &&

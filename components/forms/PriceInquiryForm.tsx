@@ -169,7 +169,7 @@ const PriceInquiryForm = () => {
         <form onSubmit={handleSubmit(submit, onInvalid)} noValidate id={'contact-form'} style={{ width: '100%', scrollMarginTop: '400px', }}>
             {/* <Stack direction={'column'} spacing={3} sx={{ width: '100%' }} pt={1}>
                 <Stack direction={{ sm: 'row', xs: 'column' }} spacing={3} width={'100%'} alignItems={'flex-end'}> */}
-            <Grid container spacing={2} pb={3} >
+            {!sent && <Grid container spacing={2} pb={3} >
                 <Grid item xs={12} sm={6} md={6} lg={4}>
                     <TextField disabled={sent} size="medium"
                         label={<Typography component={FormLabel} required variant='body1'
@@ -374,24 +374,29 @@ const PriceInquiryForm = () => {
                         fullWidth
                     />
                 </Grid>
-            </Grid>
+            </Grid>}
 
-            <Stack width={'100%'} direction={'column'} justifyContent={'center'} >
+            <Stack width={'100%'} direction={'column'} alignItems={'center'} >
                 {sent &&
-                    <Stack direction={'row'} justifyContent={'center'} mb={2}>
-                        <Typography textAlign={'left'} fontWeight={500} color={theme.palette.primary.dark} >
-                            Turto vertinimo užklausa išsiųsta
+                    <Stack direction={'row'} justifyContent={'center'} my={6} sx={{ maxWidth: '50%' }}>
+                        <Typography textAlign={'center'} fontWeight={500} color={theme.palette.secondary.main} >
+                            Turto vertinimo užklausa išsiųsta! Įvertinsiu turto kaina ir susisieksiu su Jumis!
                         </Typography>
                     </Stack>}
                 {!sent &&
-                    <Button size="large" variant="contained" color="secondary" type={'submit'}>
-                        Siųsti užklausą
-                    </Button>
+                    <Stack width={'100%'}>
+                        <Button size="large" variant="contained" color="secondary" type={'submit'}>
+                            Siųsti užklausą
+                        </Button>
+                    </Stack>
                 }
                 {sent &&
-                    <Button size="large" variant="outlined" color="secondary" onClick={() => { setSent(false) }}>
-                        Siųsti dar kartą
-                    </Button>
+                    <Stack width={'50%'}>
+                        <Button size="large" variant="outlined" color="secondary" onClick={() => { setSent(false) }}>
+                            Siųsti dar kartą
+                        </Button>
+                    </Stack>
+
                 }
             </Stack>
         </form >
