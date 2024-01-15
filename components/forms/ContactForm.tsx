@@ -79,7 +79,7 @@ const ContactForm = () => {
             <Stack direction={'column'} spacing={3} sx={{ width: '100%' }} pt={1}>
                 {!sent &&
                     <Stack>
-                        <Stack direction={{ sm: 'row', xs: 'column' }} spacing={3} width={'100%'} alignItems={'flex-end'}>
+                        <Stack direction={{ sm: 'row', xs: 'column' }} spacing={3} width={'100%'} pb={3} alignItems={'flex-end'}>
                             <TextField disabled={sent} size="medium"
                                 label={<Typography component={FormLabel} required variant='body1'
                                     color={errors.name?.message ? 'error' : theme.palette.primary.dark}   >

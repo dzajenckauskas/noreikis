@@ -39,13 +39,13 @@ export const CounterSection = () => {
             </Stack>
 
             <Stack direction={{ xs: 'column', md: 'row' }} justifyContent={'space-between'}>
-                <Stack direction={{ xs: 'row', md: 'column' }} alignItems={'flex-start'}
-                    spacing={{ md: 8, xs: 6 }} sx={{ width: '30%', pt: 8 }}>
+                <Stack direction={{ xs: 'column', sm: 'row', md: 'column' }} alignItems={{ xs: 'space-between', sm: 'flex-start' }}
+                    spacing={{ md: 8, sm: 8, xs: 4 }} sx={{ width: { xs: '100%', sm: '70%', md: '33%' }, pt: 8 }}>
 
-                    <Stack alignItems={'flex-start'} maxWidth={180}>
+                    <Stack alignItems={'flex-start'} maxWidth={{ xs: '60%', sm: '100%', md: '180px' }}>
                         <Stack direction={'row'} spacing={1} pb={1}>
                             {/* <PeopleIcon sx={{ color: theme.palette.secondary.main, fontSize: 48, position: 'relative', top: 7 }} fontSize="large" /> */}
-                            <Typography component={'p'} fontSize={50} lineHeight={1} color={theme.palette.secondary.main} fontWeight={700}>
+                            <Typography component={'p'} fontSize={{ xs: 40, sm: 50 }} lineHeight={1} color={theme.palette.secondary.main} fontWeight={700}>
                                 <CountUp enableScrollSpy duration={3} end={98} />%
                             </Typography>
                         </Stack>
@@ -56,10 +56,10 @@ export const CounterSection = () => {
                     </Stack>
 
 
-                    <Stack alignItems={'flex-start'} maxWidth={180}>
+                    <Stack alignItems={'flex-start'} maxWidth={{ xs: '60%', sm: '100%', md: '180px' }}>
                         <Stack direction={'row'} spacing={1} pb={1}>
                             {/* <WorkspacePremiumIcon sx={{ color: theme.palette.secondary.main, fontSize: 42, position: 'relative', top: 9 }} /> */}
-                            <Typography component={'p'} fontSize={50} lineHeight={1} color={theme.palette.secondary.main} fontWeight={700}>
+                            <Typography component={'p'} fontSize={{ xs: 40, sm: 50 }} lineHeight={1} color={theme.palette.secondary.main} fontWeight={700}>
                                 <CountUp enableScrollSpy duration={3} end={85} />%
                             </Typography>
                         </Stack>
@@ -70,10 +70,10 @@ export const CounterSection = () => {
                     </Stack>
 
 
-                    <Stack alignItems={'flex-start'} maxWidth={180}>
+                    <Stack alignItems={'flex-start'} maxWidth={{ xs: '60%', sm: '100%', md: '180px' }}>
                         <Stack direction={'row'} spacing={1} pb={1}>
                             {/* <CalendarMonthIcon sx={{ color: theme.palette.secondary.main, fontSize: 40, position: 'relative', top: 11 }} /> */}
-                            <Typography component={'p'} fontSize={50} lineHeight={1} color={theme.palette.secondary.main} fontWeight={700}>
+                            <Typography component={'p'} fontSize={{ xs: 40, sm: 50 }} lineHeight={1} color={theme.palette.secondary.main} fontWeight={700}>
                                 <CountUp enableScrollSpy duration={3} end={getCompanyAge()} />+
                             </Typography>
                         </Stack>

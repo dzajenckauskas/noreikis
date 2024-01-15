@@ -37,7 +37,9 @@ export const PriceInquirySection = () => {
                 backgroundColor: '#fafafa',
                 overflow: 'hidden'
             }}>
-                <Stack direction={'row'} justifyContent={"space-between"} >
+                <Stack direction={'row'} justifyContent={"space-between"} id={'priceInquiryForm'} sx={{
+                    scrollMarginTop: 400
+                }}>
                     <Stack sx={{ width: { xs: '90%', md: '50%' } }}>
                         <Typography variant='h3'
                             sx={{ fontWeight: 600 }}
@@ -58,12 +60,12 @@ export const PriceInquirySection = () => {
                 </Stack>
                 <Stack py={4} width={'100%'} direction={{ xs: 'column-reverse', md: 'row' }} justifyContent={'space-between'}>
                     <Stack direction={'row'} spacing={{ md: 1, xs: .5 }} sx={{ pt: 4, alignSelf: { xs: 'flex-start', md: 'flex-end' } }}>
-                        <SubdirectoryArrowRightIcon sx={{ color: theme.palette.secondary.main, fontSize: 18, }} />
+                        {/* <SubdirectoryArrowRightIcon sx={{ color: theme.palette.secondary.main, fontSize: 18, }} />
                         <Link passHref target='_blank' href={`/kontaktai`}>
                             <Typography variant='body1' color={theme.palette.secondary.main} sx={{ ":hover": { textDecoration: 'underline' } }}>
                                 {'Kontaktai'}
                             </Typography>
-                        </Link>
+                        </Link> */}
                     </Stack>
                     <Stack pb={{ xs: 6 }} width={{ xs: '100%', md: '50%' }}>
                         <PriceInquiryForm />

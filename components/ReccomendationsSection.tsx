@@ -10,6 +10,10 @@ import { getTheme } from './layout/Theme';
 import Link from 'next/link';
 import SubdirectoryArrowRightIcon from '@mui/icons-material/SubdirectoryArrowRight'
 import StarIcon from '@mui/icons-material/Star';
+import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
+import EastIcon from '@mui/icons-material/East';
+import WestIcon from '@mui/icons-material/West';
 
 const handleDragStart = (e: any) => e.preventDefault();
 const responsive = {
@@ -118,9 +122,12 @@ export const ReccomendationsSection = ({ recommendations }: Props) => {
 
                             </Stack>
                         </Stack>
-                        <Stack py={4}>
-                            <AliceCarousel disableSlideInfo animationType={'fadeout'} autoPlayInterval={4000}
-                                mouseTracking keyboardNavigation autoPlay disableButtonsControls infinite
+                        <Stack pt={4}>
+                            <AliceCarousel
+                                renderPrevButton={() => { return <WestIcon /> }}
+                                renderNextButton={() => { return <EastIcon /> }}
+                                disableSlideInfo animationType={'fadeout'} autoPlayInterval={4000}
+                                mouseTracking keyboardNavigation autoPlay infinite disableDotsControls
                                 responsive={responsive} items={items} />
                         </Stack>
                         <Stack direction={'row'} spacing={{ md: 1, xs: .5 }} sx={{ pt: 4, alignSelf: 'flex-end' }}>

@@ -20,3 +20,13 @@ a {
 a:hover {
   opacity: .8;
 }
+
+.alice-carousel__prev-btn {
+  padding-left: 25px !important;
+  padding-right: 25px !important;
+}
+
+.alice-carousel__next-btn {
+  padding-left: 25px !important;
+  padding-right: 25px !important;
+}
