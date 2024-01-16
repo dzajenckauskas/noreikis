@@ -9,7 +9,7 @@ import { useTranslation } from "next-i18next";
 import CountUp from "react-countup";
 import { getTheme } from "./layout/Theme";
 
-export const CounterSection = () => {
+export const ServicesSection = () => {
     const theme = getTheme()
     const { t } = useTranslation('home')
     return (
@@ -18,11 +18,14 @@ export const CounterSection = () => {
             maxWidth: 'xl',
             mx: 'auto',
             backgroundColor: '#fff',
-            width: '100%', pt: 12, pb: 16,
+            width: '100%', pt: 8, pb: 12,
             position: 'relative', zIndex: 0, top: '-1px', alignContent: 'center',
-            px: { xl: 2, md: 4, xs: 2 }
+            px: { xl: 2, md: 4, xs: 0 }
         }}>
-            <Stack direction={'row'} justifyContent={"space-between"} pb={6}>
+            <Stack direction={'row'} justifyContent={"space-between"} pb={6} id={'paslaugos'} sx={{
+                scrollMarginTop: 100,
+                px: { xs: 2 }
+            }}>
                 <Stack sx={{ width: { xs: '100%', md: '50%' } }}>
                     <Typography variant='h3'
                         sx={{ fontWeight: 600 }}
@@ -40,7 +43,7 @@ export const CounterSection = () => {
 
             <Stack direction={{ xs: 'column', md: 'row' }} justifyContent={'space-between'}>
                 <Stack direction={{ xs: 'column', sm: 'row', md: 'column' }} alignItems={{ xs: 'space-between', sm: 'flex-start' }}
-                    spacing={{ md: 8, sm: 8, xs: 4 }} sx={{ width: { xs: '100%', sm: '70%', md: '33%' }, pt: 8 }}>
+                    spacing={{ md: 8, sm: 8, xs: 4 }} sx={{ width: { xs: '100%', sm: '70%', md: '33%' }, pt: 8, px: { xs: 2 } }}>
 
                     <Stack alignItems={'flex-start'} maxWidth={{ xs: '60%', sm: '100%', md: '180px' }}>
                         <Stack direction={'row'} spacing={1} pb={1}>
@@ -88,7 +91,7 @@ export const CounterSection = () => {
 
                     justifyContent={'space-between'} spacing={{ xs: 0, md: 0 }}>
                     <Stack width={'100%'}>
-                        <Stack spacing={2} width={'100%'} minHeight={{ xs: 'none', sm: 400 }} pb={8}
+                        <Stack spacing={2} width={'100%'} minHeight={{ xs: 'none', sm: 550 }} pb={8}
                             position={'relative'}
                             alignSelf={'flex-start'}
                             sx={{ p: { xs: 2, sm: 4, lg: 8 }, py: { xs: 4, sm: 4, lg: 8 }, ':hover': { boxShadow: 'rgba(17, 12, 46, 0.05) 0px 48px 100px 0px;' } }}>
@@ -130,7 +133,7 @@ export const CounterSection = () => {
                         </Stack>
                     </Stack>
                     <Stack width={'100%'}>
-                        <Stack spacing={2} width={'100%'} minHeight={{ xs: 'none', sm: 400 }} pb={8}
+                        <Stack spacing={2} width={'100%'} minHeight={{ xs: 'none', sm: 550 }} pb={8}
                             position={'relative'}
                             alignSelf={'flex-start'}
                             sx={{ p: { xs: 2, sm: 4, lg: 8 }, py: { xs: 4, sm: 4, lg: 8 }, ':hover': { boxShadow: 'rgba(17, 12, 46, 0.05) 0px 48px 100px 0px;' } }}>

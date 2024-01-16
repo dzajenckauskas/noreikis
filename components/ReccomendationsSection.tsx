@@ -92,12 +92,13 @@ export const ReccomendationsSection = ({ recommendations }: Props) => {
     return (
         <>
             {recommendations && recommendations.data?.length > 0 &&
-                <Stack sx={{
+                <Stack id={'rekomendacijos'} sx={{
                     backgroundColor: '#f5f5f5',
+                    scrollMarginTop: 100,
                     // boxShadow: '0px 0px 20px #1E2F9729',
                     position: 'relative', mt: '-1px', zIndex: 3
                 }}>
-                    <Stack spacing={1} py={10} sx={{
+                    <Stack spacing={1} pt={10} pb={6} sx={{
                         justifyContent: 'space-between', width: '100%',
                         maxWidth: 'xl', mx: 'auto', position: 'relative',
                         px: { xl: 2, md: 4, xs: 2 },
@@ -122,7 +123,7 @@ export const ReccomendationsSection = ({ recommendations }: Props) => {
 
                             </Stack>
                         </Stack>
-                        <Stack pt={4}>
+                        <Stack pt={0}>
                             <AliceCarousel
                                 renderPrevButton={() => { return <WestIcon /> }}
                                 renderNextButton={() => { return <EastIcon /> }}

@@ -1,5 +1,5 @@
 import { RecommendationsType } from '@/app/types/RecommendationsType'
-import { CounterSection } from '@/components/CounterSection'
+import { ServicesSection } from '@/components/ServicesSection'
 import { ReccomendationsSection } from '@/components/ReccomendationsSection'
 import Layout from '@/components/layout/Layout'
 import { HeadComponent } from '../../layout/HeadComponent'
@@ -17,7 +17,7 @@ export const HomePage = ({ recommendations }: Props) => {
                 description={"Nekilnojamojo turto brokeris Ernestas Noreikis. Atstovauju Jūsų NT objektus perkant, parduodant ar nuomojant NT objektus Vilniuje, Kaune ir Palangoje. Dėl nemokamo turto vertinimo ar konsultacijos, susisiekime telefonu +37062429709 arba palikite žinutę info@noreikis.com"} />
             <Layout>
                 <HeroSection />
-                <CounterSection />
+                <ServicesSection />
                 <ReccomendationsSection recommendations={recommendations} />
                 <PriceInquirySection />
             </Layout>

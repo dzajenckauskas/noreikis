@@ -24,7 +24,7 @@ export default function UsefulInformation({ blogPosts }: Props) {
             layout='fill' objectFit='cover' src={imageSrc} />
         </Stack>
         <Stack>
-          <Link passHref href={'/naudinga-zinoti/' + post.attributes.slug}>
+          <Link passHref href={'/naujienos/' + post.attributes.slug}>
             <Typography variant='h6'>
               {post.attributes.title}
             </Typography>
@@ -33,7 +33,7 @@ export default function UsefulInformation({ blogPosts }: Props) {
             {post.attributes.shortContent}
           </Typography>
           <Stack pt={2}>
-            <Link passHref href={'/naudinga-zinoti/' + post.attributes.slug}>
+            <Link passHref href={'/naujienos/' + post.attributes.slug}>
               <Button variant='contained' >
                 Skaityti straipsnį
               </Button>
