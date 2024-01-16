@@ -97,11 +97,7 @@ export const CounterSection = () => {
                                 Atstovavimas <span style={{ color: theme.palette.secondary.main }}>parduodant</span> nekilnojamąjį turtą
                             </Typography>
                             <Typography color={theme.palette.primary.main} variant='body1'>
-                                Jūsų nekilnojamas turtas bus
-                                parduodamas bendradarbiaujant
-                                profesionalų komandai. Jūsų nekilnojamas turtas bus
-                                parduodamas bendradarbiaujant
-                                profesionalų komandai
+                                Procesas apima rinkos analizę, turto vertinimą, potencialių klientų paiešką bei intensyvias derybas dėl kainos ir sąlygų. Mano vaidmuo yra užtikrinti sėkmingą sandorio sudarymą, pasitelkiant gerus tarpininkavimo, pardavimų ir derybų įgūdžius. Esminis aspektas - suprasti klientų poreikius ir tinkamai juos atitikti, siekiant užtikrinti patenkinamą rezultatą visoms šalims.
                             </Typography>
                             {/* <Stack direction={'row'} spacing={{ md: 1, xs: .5 }} sx={{ pt: 2, position: 'absolute', bottom: 60 }}>
                                 <SubdirectoryArrowRightIcon sx={{ color: theme.palette.secondary.main, fontSize: 18, }} />
@@ -121,11 +117,7 @@ export const CounterSection = () => {
                                 Nekilnojamojo turto <span style={{ color: theme.palette.secondary.main }}>dokumentacija</span>
                             </Typography>
                             <Typography color={theme.palette.primary.main} variant='body1'>
-                                Jūsų nekilnojamas turtas bus
-                                parduodamas bendradarbiaujant
-                                profesionalų komandai. Jūsų nekilnojamas turtas bus
-                                parduodamas bendradarbiaujant
-                                profesionalų komandai
+                                Suteiksiu greitą ir kokybišką nekilnojamojo turto dokumentacijos paruošimą, apimančią pardavimo, pirkimo bei nuomos procesus. Be to, teiksiu nemokamą konsultaciją dėl visų susijusių klausimų, siekiant Jums suteikti visapusišką pagalbą.
                             </Typography>
                             {/* <Stack direction={'row'} spacing={{ md: 1, xs: .5 }} sx={{ pt: 2, position: 'absolute', bottom: 60 }}>
                                 <SubdirectoryArrowRightIcon sx={{ color: theme.palette.secondary.main, fontSize: 18, }} />
@@ -147,11 +139,7 @@ export const CounterSection = () => {
                                 Pagalba <span style={{ color: theme.palette.secondary.main }}>nuomojant</span> nekilnojamąjį turtą
                             </Typography>
                             <Typography color={theme.palette.primary.main} variant='body1'>
-                                Jūsų nekilnojamas turtas bus
-                                parduodamas bendradarbiaujant
-                                profesionalų komandai. Jūsų nekilnojamas turtas bus
-                                parduodamas bendradarbiaujant
-                                profesionalų komandai
+                                Nekilnojamojo turto nuoma prasideda nuodugnia rinkos analize, įvertinant esamų objektų kainodarą. Svarbu nustatyti maksimalią nuomos kainą, atsižvelgiant į rinkos tendencijas. Objekto pristatymui potencialiems nuomininkams reikia skirti ypatingą dėmesį, užtikrinant profesionalumą ir patrauklų pristatymą. Be to, būtina sudaryti aiškią nuomos sutartį ir paruošti visus reikiamus dokumentus, siekiant užtikrinti sklandų ir sėkmingą sandorį.
                             </Typography>
                             {/* <Stack direction={'row'} spacing={{ md: 1, xs: .5 }} sx={{ pt: 2, position: 'absolute', bottom: 60 }}>
                                 <SubdirectoryArrowRightIcon sx={{ color: theme.palette.secondary.main, fontSize: 18, }} />
@@ -171,11 +159,7 @@ export const CounterSection = () => {
                                 Nekilnojamojo turto <span style={{ color: theme.palette.secondary.main }}>paieška</span>
                             </Typography>
                             <Typography color={theme.palette.primary.main} variant='body1'>
-                                Jūsų nekilnojamas turtas bus
-                                parduodamas bendradarbiaujant
-                                profesionalų komandai. Jūsų nekilnojamas turtas bus
-                                parduodamas bendradarbiaujant
-                                profesionalų komandai
+                                Mano vaidmuo - rasti tinkamą nekilnojamąjį turtą pagal kliento poreikius, vykdyti derybas dėl kainos ir sąlygų bei užtikrinti sėkmingą sandorio sudarymą. Procesas apima nuodugnų rinkos tyrimą, turto vertinimą ir aktyvų bendradarbiavimą su klientais, siekiant pasiekti geriausius rezultatus pirkimo metu.
                             </Typography>
                             {/* <Stack direction={'row'} spacing={{ md: 1, xs: .5 }} sx={{ pt: 2, position: 'absolute', bottom: 60 }}>
                                 <SubdirectoryArrowRightIcon sx={{ color: theme.palette.secondary.main, fontSize: 18, }} />
