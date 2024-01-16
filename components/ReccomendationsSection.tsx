@@ -94,7 +94,7 @@ export const ReccomendationsSection = ({ recommendations }: Props) => {
             {recommendations && recommendations.data?.length > 0 &&
                 <Stack id={'rekomendacijos'} sx={{
                     backgroundColor: '#f5f5f5',
-                    scrollMarginTop: 100,
+                    scrollMarginTop: 50,
                     // boxShadow: '0px 0px 20px #1E2F9729',
                     position: 'relative', mt: '-1px', zIndex: 3
                 }}>
@@ -125,8 +125,8 @@ export const ReccomendationsSection = ({ recommendations }: Props) => {
                         </Stack>
                         <Stack pt={0}>
                             <AliceCarousel
-                                renderPrevButton={() => { return <WestIcon /> }}
-                                renderNextButton={() => { return <EastIcon /> }}
+                                renderPrevButton={() => { return <WestIcon sx={{ cursor: 'pointer' }} /> }}
+                                renderNextButton={() => { return <EastIcon sx={{ cursor: 'pointer' }} /> }}
                                 disableSlideInfo animationType={'fadeout'} autoPlayInterval={4000}
                                 mouseTracking keyboardNavigation autoPlay infinite disableDotsControls
                                 responsive={responsive} items={items} />

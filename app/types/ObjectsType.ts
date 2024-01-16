@@ -67,6 +67,8 @@ export type ObjectAtributesType = {
     publishedAt: Date | string;
     locale: string;
     description: any;
+    category: EntityDataType;
+    actionType: EntityDataType;
     //     {
     //         type: string;
     //         children: [
@@ -82,3 +84,17 @@ export type ObjectAtributesType = {
     images: ImagesType;
 }
 
+
+export type EntityDataType = {
+    data: EntityAttributesType;
+}
+export type EntityAttributesType = {
+    attributes: EntityType;
+    id: number;
+}
+export type EntityType = {
+    title: string;
+    singularTitle?: string;
+    locale: string;
+    value: string;
+}

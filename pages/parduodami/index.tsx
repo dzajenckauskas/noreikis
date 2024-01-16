@@ -1,11 +1,13 @@
 import { ObjectsType } from '@/app/types/ObjectsType'
 import { getItems } from '@/app/utils'
 import Layout from '@/components/layout/Layout'
+import { theme } from '@/components/layout/Theme'
 import ObjectCard from '@/components/objects/ObjectCard'
 import { Grid, Stack } from '@mui/material'
 import Typography from '@mui/material/Typography'
 import { GetServerSideProps } from 'next'
 import Head from 'next/head'
+import Link from 'next/link'
 
 type Props = {
     objects?: ObjectsType | null;
@@ -27,23 +29,31 @@ export default function Objects({ objects }: Props) {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Layout>
-                <Stack sx={{ px: { xl: 2, md: 4, xs: 2 }, pt: { xl: 2, md: 4, xs: 2 }, pb: 8 }}>
-                    <Stack pb={4}>
-                        <Typography variant='h4' fontWeight={600}>
-                            Parduodami
+                <Stack sx={{ width: '100%', maxWidth: 'xl', mx: 'auto', px: { xl: 2, md: 4, xs: 2 }, pt: { xl: 2, md: 4, xs: 2 }, pb: 8 }}>
+
+                    <Stack pt={4} sx={{ width: { xs: '100%', md: '50%' } }}>
+                        <Typography variant='h3'
+                            sx={{ fontWeight: 600 }}
+                        >
+                            Šiuo metu&nbsp;
+                            <span style={{ color: theme.palette.secondary.main }}>
+                                parduodama
+                            </span>
+                        </Typography>
+                        <Typography pt={2} variant='body1' width={'60%'}>
+                            Mano klientų parduodami nekilnojamojo turto objektai. Ieškote kažko kito?&nbsp;
+                            <Link passHref href={'kontaktai'}>
+                                <Typography component={'span'} sx={{ color: theme.palette.secondary.main, ":hover": { textDecoration: 'underline' } }}>
+                                    Susisiekime!
+                                </Typography>
+                            </Link>
                         </Typography>
                     </Stack>
-                    <Grid container direction={'row'} spacing={4} sx={{}}>
-                        {renderObjects}
-                        {renderObjects}
-                        {renderObjects}
-                        {renderObjects}
-                        {renderObjects}
-                        {renderObjects}
+                    <Grid container direction={'row'} spacing={4} sx={{ mt: 0 }}>
                         {renderObjects}
                     </Grid>
                 </Stack>
-            </Layout>
+            </Layout >
         </>
     )
 }

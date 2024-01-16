@@ -23,7 +23,7 @@ export const ServicesSection = () => {
             px: { xl: 2, md: 4, xs: 0 }
         }}>
             <Stack direction={'row'} justifyContent={"space-between"} pb={6} id={'paslaugos'} sx={{
-                scrollMarginTop: 100,
+                scrollMarginTop: 120,
                 px: { xs: 2 }
             }}>
                 <Stack sx={{ width: { xs: '100%', md: '50%' } }}>
