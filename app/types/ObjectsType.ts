@@ -67,8 +67,12 @@ export type ObjectAtributesType = {
     publishedAt: Date | string;
     locale: string;
     description: any;
+    landArea: string;
     category: EntityDataType;
     actionType: EntityDataType;
+    objectState: EntityDataType;
+    objectPurpose: EntityDataType;
+    heatingType: EntityDataType;
     //     {
     //         type: string;
     //         children: [
