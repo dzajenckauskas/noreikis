@@ -49,8 +49,8 @@ export default function Home({ object }: Props) {
             </Box>
           </Stack>
 
-          <Stack sx={{ pt: { xl: 2, md: 4, xs: 2 }, pb: 8 }} direction={'row'}>
-            <Stack width={'40%'}>
+          <Stack sx={{ pt: { xl: 2, md: 4, xs: 2 }, pb: 8 }} direction={{ md: 'row', xs: 'column' }} spacing={4}>
+            <Stack width={{ md: '40%', xs: "100%" }} >
               <Stack direction={'row'} spacing={1} pt={1}>
                 <Typography variant='h6'>
                   {object?.attributes?.region},&nbsp;
@@ -70,7 +70,7 @@ export default function Home({ object }: Props) {
                 </Typography>
               </Stack>
               <Stack pt={4} spacing={2}>
-                <Stack>
+                <Stack direction={{ xs: 'row', md: 'column' }} spacing={{ xs: 1, md: 0 }}>
                   <Typography variant='caption'>
                     {'Kvadrato kaina'}:
                   </Typography>
@@ -78,7 +78,7 @@ export default function Home({ object }: Props) {
                     {pricePerSqM?.toFixed(2)} {process.env.NEXT_PUBLIC_DEFAULT_CURRENCY}/m²
                   </Typography>
                 </Stack>
-                <Stack>
+                <Stack direction={{ xs: 'row', md: 'column' }} spacing={{ xs: 1, md: 0 }}>
                   <Typography variant='caption'>
                     {'Plotas'}:
                   </Typography>
@@ -86,7 +86,7 @@ export default function Home({ object }: Props) {
                     {object?.attributes?.areaSqM} m²
                   </Typography>
                 </Stack>
-                <Stack>
+                <Stack direction={{ xs: 'row', md: 'column' }} spacing={{ xs: 1, md: 0 }}>
                   <Typography variant='caption'>
                     {'Kambarių skaičius'}:
                   </Typography>
@@ -94,7 +94,7 @@ export default function Home({ object }: Props) {
                     {object?.attributes?.roomsNumber}
                   </Typography>
                 </Stack>
-                <Stack>
+                <Stack direction={{ xs: 'row', md: 'column' }} spacing={{ xs: 1, md: 0 }}>
                   <Typography variant='caption'>
                     {'Aukštas'}:
                   </Typography>
@@ -102,7 +102,7 @@ export default function Home({ object }: Props) {
                     {object?.attributes?.floorNumber} iš {object?.attributes?.totalFloors}
                   </Typography>
                 </Stack>
-                <Stack>
+                <Stack direction={{ xs: 'row', md: 'column' }} spacing={{ xs: 1, md: 0 }}>
                   <Typography variant='caption'>
                     {'Statybos metai'}:
                   </Typography>
@@ -110,7 +110,7 @@ export default function Home({ object }: Props) {
                     {object?.attributes?.buildYear}
                   </Typography>
                 </Stack>
-                <Stack>
+                <Stack direction={{ xs: 'row', md: 'column' }} spacing={{ xs: 1, md: 0 }}>
                   <Typography variant='caption'>
                     {'Įrengimas'}:
                   </Typography>
@@ -118,7 +118,7 @@ export default function Home({ object }: Props) {
                     {object?.attributes?.objectState.data.attributes.title}
                   </Typography>
                 </Stack>
-                <Stack>
+                <Stack direction={{ xs: 'row', md: 'column' }} spacing={{ xs: 1, md: 0 }}>
                   <Typography variant='caption'>
                     {'Šildymas'}:
                   </Typography>
@@ -129,7 +129,7 @@ export default function Home({ object }: Props) {
 
 
 
-                <Stack>
+                <Stack direction={{ xs: 'row', md: 'column' }} spacing={{ xs: 1, md: 0 }}>
                   <Typography variant='caption'>
                     {'Sklypo polotas'}:
                   </Typography>
@@ -141,7 +141,7 @@ export default function Home({ object }: Props) {
               </Stack>
             </Stack>
             {/* </Link> */}
-            <Stack width={'60%'}>
+            <Stack width={{ md: '60%', xs: "100%" }} >
               <BlocksRendererComponent content={object?.attributes?.description} />
             </Stack>
           </Stack>
