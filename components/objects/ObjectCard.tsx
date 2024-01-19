@@ -5,19 +5,18 @@ import Link from 'next/link';
 import React from 'react'
 import Image from 'next/image';
 import Box from '@mui/material/Box';
+import { getActionTypeText, getStatusTypeText } from '@/pages/parduodami/[slug]';
+import { theme } from '../layout/Theme';
 
 type Props = {
     object?: ObjectType;
 }
 
 const ObjectCard = ({ object }: Props) => {
-    const getActionTypeText = () => {
-        if (object?.attributes?.actionType.data.attributes.value == 'sale') return 'Parduodama'
-        if (object?.attributes?.actionType.data.attributes.value == 'rent') return 'Nuomojama'
-        //  object?.attributes?.actionType.data.attributes.value == 'sold' &&  'Nuomojama'
-        else return null
-    }
-    const action = getActionTypeText()
+
+    const action = getActionTypeText(object)
+    const status = getStatusTypeText(object)
+
     const pricePerSqM = ((Number(object?.attributes?.discountPrice) || Number(object?.attributes?.price)) / Number(object?.attributes?.areaSqM))
     const image = object?.attributes?.images?.data?.[0]?.attributes?.formats
     const imageSrc = `${process.env.NEXT_PUBLIC_API_URL}${image?.small?.url ?? image?.medium?.url}`
@@ -33,6 +32,12 @@ const ObjectCard = ({ object }: Props) => {
                         {action}
                     </Typography>
                 </Box>
+                {status &&
+                    <Box sx={{ backgroundColor: theme.palette.secondary.main, width: 'max-content', position: 'absolute', top: 28, px: 2, left: -4 }}>
+                        <Typography variant='caption' color={'#fff'}>
+                            {status}
+                        </Typography>
+                    </Box>}
             </Link>
             <Stack direction={'row'} spacing={1} pt={1}>
                 <Link href={'/parduodami/' + object?.attributes?.slug} passHref>

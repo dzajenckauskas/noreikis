@@ -73,6 +73,7 @@ export type ObjectAtributesType = {
     objectState: EntityDataType;
     objectPurpose: EntityDataType;
     heatingType: EntityDataType;
+    statusType: EntityDataType;
     //     {
     //         type: string;
     //         children: [
