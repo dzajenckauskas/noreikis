@@ -1,15 +1,18 @@
+import { ObjectsType } from '@/app/types/ObjectsType'
 import { RecommendationsType } from '@/app/types/RecommendationsType'
-import { ServicesSection } from '@/components/ServicesSection'
 import { ReccomendationsSection } from '@/components/ReccomendationsSection'
+import { ServicesSection } from '@/components/ServicesSection'
 import Layout from '@/components/layout/Layout'
 import { HeadComponent } from '../../layout/HeadComponent'
+import { ForSaleSection } from './ForSaleSection'
 import { HeroSection } from './HeroSection'
 import { PriceInquirySection } from './PriceInquirySection'
 
 type Props = {
     recommendations: RecommendationsType;
+    objects?: ObjectsType | null;
 }
-export const HomePage = ({ recommendations }: Props) => {
+export const HomePage = ({ recommendations, objects }: Props) => {
     return (
         <>
             <HeadComponent
@@ -19,6 +22,7 @@ export const HomePage = ({ recommendations }: Props) => {
                 <HeroSection />
                 <ServicesSection />
                 <ReccomendationsSection recommendations={recommendations} />
+                <ForSaleSection objects={objects} />
                 <PriceInquirySection />
             </Layout>
         </>

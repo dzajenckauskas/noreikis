@@ -1,19 +1,17 @@
+import { RecommendationsType } from '@/app/types/RecommendationsType';
+import EastIcon from '@mui/icons-material/East';
+import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
+import StarIcon from '@mui/icons-material/Star';
+import SubdirectoryArrowRightIcon from '@mui/icons-material/SubdirectoryArrowRight';
+import WestIcon from '@mui/icons-material/West';
+import { Box, Grid } from '@mui/material';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
+import Image from 'next/legacy/image';
+import Link from 'next/link';
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
-import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
-import Image from 'next/legacy/image';
-import { Box, Grid } from '@mui/material';
-import { RecommendationsType } from '@/app/types/RecommendationsType';
 import { getTheme } from './layout/Theme';
-import Link from 'next/link';
-import SubdirectoryArrowRightIcon from '@mui/icons-material/SubdirectoryArrowRight'
-import StarIcon from '@mui/icons-material/Star';
-import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
-import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
-import EastIcon from '@mui/icons-material/East';
-import WestIcon from '@mui/icons-material/West';
 
 const handleDragStart = (e: any) => e.preventDefault();
 const responsive = {
