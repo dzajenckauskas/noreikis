@@ -6,7 +6,7 @@ import { theme } from '@/components/layout/Theme'
 import { Box, Stack, Typography } from '@mui/material'
 import { GetServerSideProps } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
+import Image from "next/legacy/image"
 import Link from 'next/link'
 
 type Props = {

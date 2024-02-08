@@ -80,7 +80,7 @@ export const ContactsPage = ({ }: Props) => {
                                     </Stack>
                                     <Stack direction={'row'} spacing={1} sx={{ alignItems: 'center' }}>
                                         <PinDropIcon sx={{ color: theme.palette.primary.main, fontSize: 20 }} />
-                                        <Link passHref href={`mailto:${process.env.NEXT_PUBLIC_CONTACT_ADDRESS}`}>
+                                        <Link passHref target='blank_' href={`${process.env.NEXT_PUBLIC_GOOGLE_MAPS_URL}`}>
                                             <Typography variant='body2' color={theme.palette.primary.main}>
                                                 {process.env.NEXT_PUBLIC_CONTACT_ADDRESS}
                                             </Typography>

@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography'
 import { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
-import Image from 'next/image'
+import Image from "next/legacy/image"
 
 type Props = {
   blogPosts: any
@@ -65,7 +65,7 @@ export default function UsefulInformation({ blogPosts }: Props) {
   )
 }
 export const getServerSideProps: GetServerSideProps = async () => {
-  const blogPosts = await getItems('blog-posts', 'populate=deep') ?? null
+  const blogPosts = (await getItems('blog-posts', 'populate=deep')) ?? null
 
   return {
     props: {

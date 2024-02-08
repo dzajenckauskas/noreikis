@@ -3,7 +3,7 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Link from 'next/link';
 import React from 'react'
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import Box from '@mui/material/Box';
 import { getActionTypeText, getStatusTypeText } from '@/pages/parduodami/[slug]';
 import { theme } from '../layout/Theme';
