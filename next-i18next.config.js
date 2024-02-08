@@ -1,11 +1,9 @@
 const { initReactI18next } = require('react-i18next');
-const localeDetection = false
 
 module.exports = {
   i18n: {
     defaultLocale: 'lt',
-    locales: ['en', 'lt'],
-    localeDetection
+    locales: ['lt'],
   },
   serializeConfig: false,
   use: [initReactI18next],
