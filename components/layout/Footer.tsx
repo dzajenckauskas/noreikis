@@ -109,7 +109,6 @@ const Footer = () => {
                                         </Typography>
                                     </Link>
                                 </Stack>
-
                             </Stack>
                         </Stack>
 
@@ -141,11 +140,12 @@ const Footer = () => {
                     backgroundColor: theme.palette.primary.main,
                     minHeight: 28, justifyContent: 'center',
                 }}>
-                    <Stack direction={{ md: 'row', xs: 'column-reverse' }} spacing={{ md: 0, xs: 2 }}
+                    <Stack direction={{ md: 'row', xs: 'column-reverse' }}
+                        spacing={{ md: 0, xs: 2 }}
                         sx={{
                             py: 2,
                             borderTop: '1px solid #fff',
-                            px: { xl: 2, md: 4, xs: 2 }, alignItems: { md: 'center', xs: 'center' },
+                            px: { xl: 2, md: 4, xs: 2 }, alignItems: 'center',
                             justifyContent: 'space-between',
                             width: '100%', maxWidth: 'xl', mx: 'auto',
                         }}>
