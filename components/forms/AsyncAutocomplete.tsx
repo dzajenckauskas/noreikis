@@ -13,7 +13,7 @@ type Props = {
 }
 
 export const AsyncAutocomplete = ({ form, url, name, label, required }: Props) => {
-    const [{ data, loading, error: optionsError }, get] = useAxios<ActionType>(
+    const [{ data, loading, error: listError }, get] = useAxios<ActionType>(
         {
             method: 'GET',
             url: `${process.env.NEXT_PUBLIC_API_URL}/api/${url}`
@@ -32,7 +32,7 @@ export const AsyncAutocomplete = ({ form, url, name, label, required }: Props) =
         <Controller
             name={name}
             control={form.control}
-            defaultValue={form.getValues()}
+            defaultValue={form.getValues(name)}
             render={({ field: { ref, ...field }, fieldState: { error } }) => (
                 <Autocomplete
                     {...field}
@@ -43,6 +43,7 @@ export const AsyncAutocomplete = ({ form, url, name, label, required }: Props) =
                     noOptionsText={"Pasirinkimų nėra"}
                     loadingText={"Kraunama..."}
                     disablePortal
+                    value={form.getValues(name)}
                     getOptionLabel={(o) => `${o.attributes?.singularTitle ?? o.attributes?.title ?? ''}`}
                     onChange={(_event, value) => field.onChange(value)}
                     isOptionEqualToValue={(option, value) => option?.attributes?.value === value?.attributes?.value}
@@ -51,7 +52,7 @@ export const AsyncAutocomplete = ({ form, url, name, label, required }: Props) =
                         <TextField
                             required={required}
                             error={!!error}
-                            helperText={error?.message ?? optionsError?.message}
+                            helperText={error?.message ?? listError?.message}
                             label={label}
                             name={name}
                             inputRef={ref}

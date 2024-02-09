@@ -50,12 +50,12 @@ const PriceInquiryForm = () => {
         }
         let url = `${process.env.NEXT_PUBLIC_API_URL}/api/price-inquiry-forms`
         await axios.post(url, inputData)
-            .catch((error: any) => {
+            .catch((error) => {
                 console.log(error);
                 if (error?.message) {
                 }
             })
-            .then((response: any) => {
+            .then((response) => {
                 console.log(response);
                 if (response?.data) {
                     setSent(true)
@@ -70,9 +70,8 @@ const PriceInquiryForm = () => {
         email: yup.string().nullable().email(`${'Įveskite teisingą el. paštą'}`).required(`${'El. pašto adresas yra privalomas'}`),
         city: yup.string().required(`${'Įveskite NT objekto miestą'}`),
         address: yup.string().required(`${'Įveskite NT objekto adresą'}`),
-        category: yup.object()
-            .required(`${'Pasirinkite objekto kategoriją'}`)
-            .typeError(`${'Pasirinkite objekto kategoriją'}`),
+        category: yup.object().required(`${'Pasirinkite objekto kategoriją'}`),
+        // .typeError(`${'Pasirinkite objekto kategoriją'}`),
         objectPurpose: yup.object().when("category.attributes.value", {
             is: (value: string) => (value !== "flats"),
             then: () => yup.object()
