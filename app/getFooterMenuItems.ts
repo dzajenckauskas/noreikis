@@ -1,17 +1,18 @@
 export const getFooterMenuItems = () => {
     return [
+        { slug: '', name: 'Pradinis' },
         { slug: 'parduodami', name: 'Parduodami' },
-        { slug: 'parduoti', name: 'Parduoti' },
         { slug: 'naujienos', name: 'NT naujienos' },
+        { slug: '#rekomendacijos', name: 'Rekomendacijos' },
         { slug: 'kontaktai', name: 'Kontaktai' },
         // { slug: 'privatumo-politika', name: 'Privatumo politika' },
     ]
 }
 export const getServicesMenuItems = () => {
     return [
-        { slug: 'pirkimas', name: 'Pirkimas' },
-        { slug: 'pardavimas', name: 'Pardavimas' },
-        { slug: 'nuoma', name: 'Nuoma' },
-        { slug: 'dokumentacija', name: 'Dokumentacija' },
+        { slug: '#paslaugos', name: 'Pirkimas' },
+        { slug: '#paslaugos', name: 'Pardavimas' },
+        { slug: '#paslaugos', name: 'Nuoma' },
+        { slug: '#paslaugos', name: 'Dokumentacija' },
     ]
 }

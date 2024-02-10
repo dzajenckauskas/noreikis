@@ -1,5 +1,4 @@
 import { getFooterMenuItems, getServicesMenuItems } from '@/app/getFooterMenuItems'
-import { getHeaderMenuItems } from '@/app/getHeaderMenuItems'
 import EmailIcon from '@mui/icons-material/Email'
 import FacebookIcon from '@mui/icons-material/Facebook'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
@@ -13,17 +12,9 @@ import { theme } from './Theme'
 const Footer = () => {
     const dateNow = new Date()
 
-    const headerMenuItems = getHeaderMenuItems()
     const footerMenuItems = getFooterMenuItems()
     const servicesMenuItems = getServicesMenuItems()
 
-    const renderNavLinks = headerMenuItems?.map(link =>
-        <Link href={`/${link.slug}`} key={link.name}>
-            <Typography variant='body2' color={theme.palette.info.main}>
-                {link.name}
-            </Typography>
-        </Link>
-    )
     const renderFooterLinks = footerMenuItems?.map(link =>
         <Link href={`/${link.slug}`} key={link.name}>
             <Typography variant='body2' color={theme.palette.info.main}>
@@ -112,12 +103,6 @@ const Footer = () => {
                         </Stack>
 
                         <Stack direction={{ sm: 'row', xs: 'column' }} spacing={{ md: 2, xs: 8 }} justifyContent={'space-evenly'} width={'100%'}>
-                            {/* <Stack spacing={2} pt={1} width={'100%'}>
-                                <Typography variant='subtitle1' letterSpacing={4} fontWeight={700} component={'p'} color={theme.palette.info.main}>
-                                    {'Paslaugos'.toUpperCase()}
-                                </Typography>
-                                {renderServicesLinks}
-                            </Stack> */}
                             <Stack spacing={2} pt={1} width={'100%'}>
                                 <Typography variant='subtitle1' letterSpacing={4} fontWeight={700} component={'p'} color={theme.palette.info.main}>
                                     {'Paslaugos'.toUpperCase()}
@@ -126,7 +111,7 @@ const Footer = () => {
                             </Stack>
                             <Stack spacing={2} pt={1} width={'100%'}>
                                 <Typography variant='subtitle1' letterSpacing={4} fontWeight={700} component={'p'} color={theme.palette.info.main}>
-                                    {'Kita'.toUpperCase()}
+                                    {'Nuorodos'.toUpperCase()}
                                 </Typography>
                                 {renderFooterLinks}
                             </Stack>
