@@ -308,7 +308,6 @@ const PriceInquiryForm = () => {
                             label={<Typography component={FormLabel} sx={{ cursor: 'pointer' }}
                                 onClick={() => form.setValue('renovatedHouse', !renovatedHouse)}
                                 textAlign={'left'} color={errors.renovatedHouse?.message ? 'error' : theme.palette.primary.dark} >
-                                {/* {t('form.renovatedHouse', { ns: 'auditPriceForm' })} */}
                                 Namas renovuotas
                             </Typography>}
                             htmlFor={'renovatedHouse'}

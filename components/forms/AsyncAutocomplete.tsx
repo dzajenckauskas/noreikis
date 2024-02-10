@@ -2,7 +2,6 @@ import { ActionType } from '@/app/types/ActionType';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import useAxios from 'axios-hooks';
-import { useEffect } from 'react';
 import { Controller, UseFormReturn } from 'react-hook-form';
 
 type Props = {
@@ -17,20 +16,20 @@ export const AsyncAutocomplete = ({ form, url, name, label, required }: Props) =
     const [{ data, loading, error: listError }, get] = useAxios<ActionType>(
         {
             method: 'GET',
-            url: `${process.env.NEXT_PUBLIC_API_URL}/api/${url}`
+            url: `${process.env.NEXT_PUBLIC_API_URL}/api/${url}`,
+
         },
+        { manual: true }
     );
 
-    useEffect(() => {
-        async function fetchData() {
-            try {
-                await get();
-            } catch (err) {
-                console.log(err);
-            }
+    const asyncGet = async () => {
+        try {
+            const response = await get();
+            return response
+        } catch (err) {
+            console.log(err)
         }
-        fetchData();
-    }, [get]);
+    }
 
     return (
         <Controller
@@ -46,6 +45,7 @@ export const AsyncAutocomplete = ({ form, url, name, label, required }: Props) =
                     noOptionsText={"Pasirinkimų nėra"}
                     loadingText={"Kraunama..."}
                     disablePortal
+                    onBlur={() => asyncGet()}
                     value={form.getValues(name)}
                     getOptionLabel={(o) => `${o.attributes?.singularTitle ?? o.attributes?.title ?? ''}`}
                     onChange={(_event, value) => field.onChange(value)}
