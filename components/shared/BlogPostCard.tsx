@@ -20,7 +20,7 @@ const BlogPostCard = ({ blogPost, color }: Props) => {
                 minWidth: { xs: '100%', md: '50%' }, minHeight: '350px', height: '100%'
             }}>
                 <Image priority alt={image?.alternativeText ?? ''}
-                    layout='fill' objectFit='cover' width={300} height={100} src={imageSrc} />
+                    layout='fill' objectFit='cover' src={imageSrc} />
             </Stack>
             <Stack height={'100%'}>
                 <Link passHref href={'/naujienos/' + blogPost.attributes?.slug}>

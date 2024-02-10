@@ -22,6 +22,7 @@ export const AsyncAutocomplete = ({ form, url, name, label, required }: Props) =
         { manual: true }
     );
 
+
     const asyncGet = async () => {
         try {
             const response = await get();
@@ -30,7 +31,6 @@ export const AsyncAutocomplete = ({ form, url, name, label, required }: Props) =
             console.log(err)
         }
     }
-
     return (
         <Controller
             name={name}
@@ -45,7 +45,7 @@ export const AsyncAutocomplete = ({ form, url, name, label, required }: Props) =
                     noOptionsText={"Pasirinkimų nėra"}
                     loadingText={"Kraunama..."}
                     disablePortal
-                    onClick={() => asyncGet()}
+                    onOpen={() => !data && asyncGet()}
                     value={form.getValues(name)}
                     getOptionLabel={(o) => `${o.attributes?.singularTitle ?? o.attributes?.title ?? ''}`}
                     onChange={(_event, value) => field.onChange(value)}
@@ -65,6 +65,6 @@ export const AsyncAutocomplete = ({ form, url, name, label, required }: Props) =
                 />
             )}
         />
-    );
+    )
 };
 
