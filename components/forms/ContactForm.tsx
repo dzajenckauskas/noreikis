@@ -7,8 +7,8 @@ import axios from "axios";
 import { useState } from 'react';
 import { SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form";
 import * as yup from "yup";
-import ErrorBox from "../ErrorBox";
 import { FormTextField } from "./FormTextField";
+import ErrorBox from "../layout/ErrorBox";
 
 type ContactFormInputType = {
     name: string;
