@@ -41,9 +41,8 @@ const ObjectCard = ({ object }: Props) => {
             </Link>
             <Stack direction={'row'} spacing={1} pt={1}>
                 <Link href={'/parduodami/' + object?.attributes?.slug} passHref>
-                    <Typography variant='h6' fontWeight={500} lineHeight={1.2}>
+                    <Typography variant='h6' fontWeight={500} lineHeight={1.2} component={'h2'}>
                         {object?.attributes?.region},&nbsp;
-                        {/* {object?.attributes?.district}&nbsp; */}
                         {object?.attributes?.quartal},&nbsp;
                         {object?.attributes?.street}
                     </Typography>

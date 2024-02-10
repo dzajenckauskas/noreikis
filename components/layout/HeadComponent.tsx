@@ -9,9 +9,18 @@ type Props = {
 
 export const HeadComponent = ({ title, description, keywords }: Props) => (
     <Head>
-        <title>{title}</title>
-        <meta name="description" content={description} />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        {title &&
+            <title>{title}</title>}
+        {description &&
+            <meta
+                name="description"
+                content={description}
+                key="desc"
+            />}
+        {keywords &&
+            <meta
+                name="keywords"
+                content={keywords}
+            />}
     </Head>
 )

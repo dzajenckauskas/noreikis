@@ -106,7 +106,7 @@ export const ReccomendationsSection = ({ recommendations }: Props) => {
                         <Stack direction={'row'} justifyContent={"space-between"} >
                             <Stack sx={{ width: { xs: '100%', md: '50%' } }}>
                                 <Typography variant='h3'
-                                    sx={{ fontWeight: 600 }}
+                                    sx={{ fontWeight: 600 }} component={'h2'}
                                 >
                                     Mano   klientai yra mano<br />
                                     {/* &nbsp; */}

@@ -7,8 +7,8 @@ import PhoneIcon from '@mui/icons-material/Phone'
 import PinDropIcon from '@mui/icons-material/PinDrop'
 import { Stack, Typography } from '@mui/material'
 import Link from 'next/link'
-import { theme } from './Theme'
 import { AruodasIcon } from '../AruodasIcon'
+import { theme } from './Theme'
 
 const Footer = () => {
     const dateNow = new Date()
@@ -58,7 +58,6 @@ const Footer = () => {
                                 <Stack spacing={3} maxWidth={250} height={'100%'}>
                                     <Link href={'/'} >
                                         <Stack direction={'row'} spacing={1.5} sx={{ alignItems: 'center' }}>
-                                            {/* <Image src={'/assets/images/logo.svg'} width={40} height={40} alt={process.env.NEXT_PUBLIC_COMPANY_NAME?} /> */}
                                             <Typography variant='h5' component={'p'} color={theme.palette.info.main} sx={{ letterSpacing: 2, fontSize: 22, fontWeight: 600, }}>
                                                 {"E."}
                                             </Typography>

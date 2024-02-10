@@ -1,13 +1,12 @@
 import { ObjectType } from '@/app/types/ObjectsType'
 import { getItemBySlug } from '@/app/utils'
 import { BlocksRendererComponent } from '@/components/BlocksRendererComponent'
+import { HeadComponent } from '@/components/layout/HeadComponent'
 import Layout from '@/components/layout/Layout'
 import { theme } from '@/components/layout/Theme'
 import { Box, Stack, Typography } from '@mui/material'
 import { GetServerSideProps } from 'next'
-import Head from 'next/head'
 import Image from "next/legacy/image"
-import Link from 'next/link'
 
 type Props = {
   object?: ObjectType;
@@ -28,8 +27,6 @@ export default function Home({ object }: Props) {
   const image = object?.attributes?.images?.data?.[0]?.attributes?.formats
   const imageSrc = `${process.env.NEXT_PUBLIC_API_URL}${image?.large?.url ?? image?.medium?.url}`
 
-
-
   const pricePerSqM = ((Number(object?.attributes?.discountPrice) || Number(object?.attributes?.price)) / Number(object?.attributes?.areaSqM))
 
   const action = getActionTypeText(object)
@@ -38,19 +35,14 @@ export default function Home({ object }: Props) {
   const title = `${object?.attributes?.category?.data.attributes.singularTitle ?? ''} ${object?.attributes?.region ?? ''} ${object?.attributes?.district ?? ''} ${object?.attributes?.quartal ?? ''} ${object?.attributes?.street ?? ''} ${object?.attributes?.roomsNumber ? `${object?.attributes.roomsNumber} k.` : ''} `
   return (
     <>
-      <Head>
-        <title>{title}</title>
-        <meta name="description" content={title} />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <HeadComponent title={title} description={title} />
+
       <Layout>
 
         <Stack key={object?.id} sx={{
           px: { xl: 2, md: 4, xs: 2 }, pt: 4,
           width: '100%', maxWidth: 'xl', mx: 'auto'
         }}>
-          {/* <Link href={'/parduodami/' + object?.attributes?.slug} passHref> */}
           <Stack sx={{ position: 'relative', width: { xs: '100%', sm: '100%', md: '100%', xl: '100%' }, height: 600 }}>
             <Image priority alt={object?.attributes?.images?.data?.[0]?.attributes?.alternativeText ?? ''}
               layout='fill' objectFit='cover' src={imageSrc ?? '/'} />
@@ -158,7 +150,6 @@ export default function Home({ object }: Props) {
 
               </Stack>
             </Stack>
-            {/* </Link> */}
             <Stack width={{ md: '60%', xs: "100%" }} >
               <BlocksRendererComponent content={object?.attributes?.description} />
             </Stack>
