@@ -34,14 +34,14 @@ export const HeroSection = () => {
                             <Button variant='contained' size='large' color='secondary' href='#priceInquiryForm'>
                                 Nemokamas turto vertinimas
                             </Button>
-                            <Stack direction={'row'} spacing={{ md: 1, xs: .5 }} pt={.3} sx={{ alignItems: 'center' }}>
-                                <Link passHref href={`${process.env.NEXT_PUBLIC_ARUODAS_URL}`} aria-label="aruodas">
+                            <Stack direction={'row'} spacing={2} pt={.3} sx={{ alignItems: 'center' }}>
+                                <Link style={{ padding: 0 }} passHref href={`${process.env.NEXT_PUBLIC_ARUODAS_URL}`} aria-label="aruodas">
                                     <AruodasIcon />
                                 </Link>
-                                <Link passHref href={`${process.env.NEXT_PUBLIC_FACEBOOK_URL}`} aria-label="facebook">
+                                <Link style={{ padding: 0 }} passHref href={`${process.env.NEXT_PUBLIC_FACEBOOK_URL}`} aria-label="facebook">
                                     <FacebookIcon sx={{ color: theme.palette.primary.dark, fontSize: 22 }} />
                                 </Link>
-                                <Link passHref href={`${process.env.NEXT_PUBLIC_LINKEDIN_URL}`} aria-label="linkedin">
+                                <Link style={{ padding: 0 }} passHref href={`${process.env.NEXT_PUBLIC_LINKEDIN_URL}`} aria-label="linkedin">
                                     <LinkedInIcon sx={{ color: theme.palette.primary.dark, fontSize: 22 }} />
                                 </Link>
                             </Stack>

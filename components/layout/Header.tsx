@@ -1,4 +1,3 @@
-// import { usePathname } from '@/navigation'
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded'
 import EmailIcon from '@mui/icons-material/Email'
 import FacebookIcon from '@mui/icons-material/Facebook'
@@ -12,7 +11,6 @@ import { theme } from './Theme'
 import Link from 'next/link'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
-// import LocaleSwitcher from './LocaleSwitcher'
 import { getHeaderMenuItems } from '@/app/getHeaderMenuItems'
 import { useRouter } from 'next/router'
 import { getFooterMenuItems } from '@/app/getFooterMenuItems'
@@ -64,7 +62,6 @@ const Header = () => {
                 <Stack sx={{ position: 'relative' }}>
                     <Stack sx={{
                         backgroundColor: theme.palette.secondary.main,
-                        // backgroundColor: '#fafafa',
                         height: 28, justifyContent: 'center',
                     }}>
                         <Stack direction={'row'}
@@ -110,14 +107,12 @@ const Header = () => {
                         sx={{
                             minHeight: 74,
                             backgroundColor: '#fff',
-                            // backgroundColor: '#fafafa',
                             zIndex: 20,
                             px: { xl: 2, md: 4, xs: 2 }, alignItems: 'center', justifyContent: 'space-between',
                             width: '100%', maxWidth: 'xl', mx: 'auto', py: 2
                         }}>
                         <Link href={'/'} style={{ position: 'relative', zIndex: 20, cursor: 'pointer' }}>
                             <Stack direction={'row'} spacing={0} sx={{ alignItems: 'center' }}>
-                                {/* <Image src={'/assets/images/mentorfm-icon-colorful-filled.svg'} width={40} height={40} alt='mentorfm logo' /> */}
                                 <Typography variant='h5' component={'p'} color={theme.palette.secondary.main} sx={{ letterSpacing: 2, fontSize: 22, fontWeight: 600, }}>
                                     {"E."}
                                 </Typography>
@@ -128,31 +123,21 @@ const Header = () => {
                         </Link>
                         <Stack direction={'row'} spacing={6} sx={{ textTransform: 'uppercase', alignItems: 'center', display: { md: 'flex', xs: 'none' } }}>
                             {renderNavLinks}
-                            {/* <Stack direction={'row'} spacing={2} pl={2}>
-                                <LocaleSwitcher />
-                            </Stack> */}
                             <Link href={`/${'kontaktai'}`}>
                                 <Button variant='contained' size="large">
-                                    <Typography variant='body2'
-                                        sx={{
-                                            // color: router.pathname === link.slug ? theme.palette.secondary.main : theme.palette.text.secondary,
-                                            // fontWeight: router.pathname === link.slug ? 600 : 'inherit',
-                                            // ":hover": {
-                                            // color: theme.palette.secondary.main,
-                                            // }
-                                        }}>
+                                    <Typography variant='body2'>
                                         {'Kontaktai'}
                                     </Typography>
                                 </Button>
                             </Link>
                         </Stack>
                         {!openMobileMenu && <Stack direction={'row'} spacing={3} sx={{ textTransform: 'uppercase', alignItems: 'center', display: { md: 'none', xs: 'flex' } }}>
-                            <Button size='small' variant='outlined' color='secondary' sx={{ p: .5, minWidth: 0 }} onClick={toggleMobileMenu}>
+                            <Button aria-label="open mobile menu" size='small' variant='outlined' color='secondary' sx={{ p: .5, minWidth: 0 }} onClick={toggleMobileMenu}>
                                 <MenuRoundedIcon sx={{ color: theme.palette.secondary.main }} />
                             </Button>
                         </Stack>}
                         {openMobileMenu && <Stack direction={'row'} spacing={3} sx={{ textTransform: 'uppercase', alignItems: 'center', display: { md: 'none', xs: 'flex' } }}>
-                            <Button size='small' variant='outlined' color='secondary' sx={{ p: .5, minWidth: 0 }} onClick={toggleMobileMenu}>
+                            <Button aria-label="close mobile menu" size='small' variant='outlined' color='secondary' sx={{ p: .5, minWidth: 0 }} onClick={toggleMobileMenu}>
                                 <CloseRoundedIcon sx={{ color: theme.palette.secondary.main }} />
                             </Button>
                         </Stack>}
@@ -172,9 +157,6 @@ const Header = () => {
                     }}>
                         <Stack spacing={3} sx={{ position: 'fixed', textTransform: 'uppercase', pl: { sm: 4, xs: 2 }, pr: { md: 4, xs: 2 }, py: 4 }}>
                             {renderNavLinks}
-                            {/* <Stack pt={3}>
-                                <LocaleSwitcher />
-                            </Stack> */}
                             <Stack spacing={2} pt={2}>
                                 {renderFooterLinks}
                             </Stack>
