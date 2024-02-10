@@ -12,12 +12,11 @@ import Link from 'next/link'
 export const HeroSection = () => {
     return (
         <Stack sx={{ backgroundColor: '#fafafa', width: '100%' }}>
-
             <Stack sx={{
                 position: 'relative',
                 px: { xl: 2, md: 4, xs: 2 },
                 width: '100%', maxWidth: 'xl', mx: 'auto',
-                backgroundColor: '#fafafa',
+                backgroundColor: '#f5f5f5',
                 pb: 5
             }}>
                 <Stack direction={{ xs: 'column', md: 'row' }} justifyContent={'space-between'}

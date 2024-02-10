@@ -19,7 +19,7 @@ export const BlogPostsSection = ({ blogPosts }: Props) => {
         )
     })
     return (
-        <Stack sx={{ backgroundColor: 'divider', pb: 4 }}>
+        <Stack sx={{ backgroundColor: '#f5f5f5', pb: 4 }}>
             <Stack sx={{ width: '100%', maxWidth: 'xl', mx: 'auto', px: { xl: 2, md: 4, xs: 2 }, pt: { xl: 2, md: 4, xs: 2 }, pb: 8 }}>
                 <Stack pt={6} sx={{ width: { xs: '100%', md: '50%' } }}>
                     <Typography variant='h3' component={'h2'}

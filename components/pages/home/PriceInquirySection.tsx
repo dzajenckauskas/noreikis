@@ -4,17 +4,15 @@ import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 
 export const PriceInquirySection = () => {
-
     return (
         <Stack sx={{
-            backgroundColor: '#fafafa',
+            backgroundColor: '#ffffff',
             position: 'relative', mt: '-1px', zIndex: 3
         }}>
             <Stack spacing={1} py={10} sx={{
                 justifyContent: 'space-between', width: '100%',
                 maxWidth: 'xl', mx: 'auto', position: 'relative',
                 px: { xl: 2, md: 4, xs: 2 },
-                backgroundColor: '#fafafa',
                 overflow: 'hidden'
             }}>
                 <Stack direction={'row'} justifyContent={"space-between"}
