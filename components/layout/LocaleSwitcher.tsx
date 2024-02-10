@@ -6,17 +6,14 @@ import { useRouter } from 'next/router';
 import React from 'react';
 
 export default function LocaleSwitcher() {
-  // const [isPending, startTransition] = useTransition();
   const router = useRouter();
   const { i18n } = useTranslation()
 
   function onSelectChange(newLocale: string) {
-    // startTransition(() => {
     const { pathname, asPath, query } = router
     newLocale = newLocale.toLocaleLowerCase()
     i18n.changeLanguage(newLocale)
     router.push({ pathname, query }, asPath, { locale: newLocale })
-    // });
   }
   const locale = i18n.language
   const locales = ['lt', 'en']
@@ -92,7 +89,6 @@ export default function LocaleSwitcher() {
         color={'primary'}
         disableElevation
         onClick={handleClick}
-        // disabled={isPending}
         endIcon={<KeyboardArrowDownIcon />}
       >
         {locale}

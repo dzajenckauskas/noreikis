@@ -41,7 +41,6 @@ export const theme = createTheme({
                 paper: ({ theme }) => theme.unstable_sx({
                     borderRadius: 0,
 
-                    // textTransform: 'none',
                 })
             }
         }
@@ -53,7 +52,6 @@ export const theme = createTheme({
         },
         h2: {
             fontFamily: rubik.style.fontFamily,
-            // fontSize: 52
         },
         h3: {
             fontFamily: rubik.style.fontFamily,
@@ -83,15 +81,9 @@ export const theme = createTheme({
     palette: {
         primary: {
             main: '#000'
-            // light: '#606CBD',
-            // main: '#3A4AB0',
-            // dark: '#2B3996'
         },
         secondary: {
             main: '#00F'
-            // light: '#E14385',
-            // main: '#E70E69',
-            // dark: '#D50B5F'
         },
         info: {
             main: '#ffffff'
@@ -102,11 +94,8 @@ export const theme = createTheme({
             disabled: '#7d7c83',
         },
         error: {
-            // main: '#ff4857',
             main: '#00F'
         }
-        // yellow: '#ffc808',
-        // green: '#5bbb58'
     }
 })
 
