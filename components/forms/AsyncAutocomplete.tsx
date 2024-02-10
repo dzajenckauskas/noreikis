@@ -45,7 +45,7 @@ export const AsyncAutocomplete = ({ form, url, name, label, required }: Props) =
                     noOptionsText={"Pasirinkimų nėra"}
                     loadingText={"Kraunama..."}
                     disablePortal
-                    onBlur={() => asyncGet()}
+                    onClick={() => asyncGet()}
                     value={form.getValues(name)}
                     getOptionLabel={(o) => `${o.attributes?.singularTitle ?? o.attributes?.title ?? ''}`}
                     onChange={(_event, value) => field.onChange(value)}
