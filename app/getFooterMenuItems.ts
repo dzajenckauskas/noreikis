@@ -5,7 +5,7 @@ export const getFooterMenuItems = () => {
         { slug: 'naujienos', name: 'NT naujienos' },
         { slug: '#rekomendacijos', name: 'Rekomendacijos' },
         { slug: 'kontaktai', name: 'Kontaktai' },
-        // { slug: 'privatumo-politika', name: 'Privatumo politika' },
+        { slug: 'privatumo-politika', name: 'Privatumo politika' },
     ]
 }
 export const getServicesMenuItems = () => {
