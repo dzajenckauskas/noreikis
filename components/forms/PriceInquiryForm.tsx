@@ -25,21 +25,17 @@ type PriceInquiryFormInputType = {
     areaSqM: string;
     houseBuildYear: string;
     landArea: string;
-    category: ActionDataType;
-    objectPurpose: ActionDataType;
-    objectState: ActionDataType;
-    houseType: ActionDataType;
-    comment: string;
+    category: ActionDataType | null;
+    objectPurpose: ActionDataType | null;
+    objectState: ActionDataType | null;
+    houseType: ActionDataType | null;
+    comment?: string;
     contents: string;
-    renovatedHouse: boolean;
+    renovatedHouse?: boolean;
 }
 const PriceInquiryForm = () => {
-
-
-
     const theme = useTheme()
     const [sent, setSent] = useState(false)
-    // const [error, setError] = useState<string | undefined>()
 
     const submit: SubmitHandler<PriceInquiryFormInputType> = async (data) => {
         const inputData = {
@@ -71,7 +67,6 @@ const PriceInquiryForm = () => {
         city: yup.string().required(`${'Įveskite NT objekto miestą'}`),
         address: yup.string().required(`${'Įveskite NT objekto adresą'}`),
         category: yup.object().required(`${'Pasirinkite objekto kategoriją'}`),
-        // .typeError(`${'Pasirinkite objekto kategoriją'}`),
         objectPurpose: yup.object().when("category.attributes.value", {
             is: (value: string) => (value !== "flats"),
             then: () => yup.object()
@@ -89,15 +84,7 @@ const PriceInquiryForm = () => {
                 .required(`${'Pasirinkite objekto būseną'}`)
                 .typeError(`${'Pasirinkite objekto būseną'}`),
         }),
-        comment: yup.string(),
-        // floorNumber: yup.string()
-        //     .transform((value) => Number.isNaN(value) ? null : value)
-        //     .when("category.attributes.value", {
-        //         is: (value: string) => (value === "flat"),
-        //         then: () => yup.string()
-        //             .transform((value) => Number.isNaN(value) ? null : value)
-        //             .required(`${'Nurodykite buto aukštą'}`),
-        //     }),
+        comment: yup.string().nullable(),
         floorNumber: yup.string()
             .transform((value) => Number.isNaN(value) ? null : value)
             .when("category.attributes.value", {
@@ -144,13 +131,19 @@ const PriceInquiryForm = () => {
                 .required(`${'Nurodykite pastato statybos metus'}`)
                 .typeError(`${'Nurodykite pastato statybos metus'}`),
         }),
-        renovatedHouse: yup.boolean()
+        renovatedHouse: yup.boolean().nullable()
 
     }).required();
 
     const form = useForm<PriceInquiryFormInputType>({
         mode: 'all',
         resolver: yupResolver(priceInquiryFormSchema as any),
+        defaultValues: {
+            category: null,
+            objectPurpose: null,
+            houseType: null,
+            objectState: null,
+        }
     });
 
     const { reset, register, handleSubmit, formState: { errors }, control } = form

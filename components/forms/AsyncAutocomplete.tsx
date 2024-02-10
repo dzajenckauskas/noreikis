@@ -2,6 +2,7 @@ import { ActionType } from '@/app/types/ActionType';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import useAxios from 'axios-hooks';
+import { useEffect } from 'react';
 import { Controller, UseFormReturn } from 'react-hook-form';
 
 type Props = {
@@ -18,16 +19,19 @@ export const AsyncAutocomplete = ({ form, url, name, label, required }: Props) =
             method: 'GET',
             url: `${process.env.NEXT_PUBLIC_API_URL}/api/${url}`
         },
-    )
+    );
 
-    const asyncGet = async () => {
-        try {
-            const response = await get();
-            return response
-        } catch (err) {
-            console.log(err)
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                await get();
+            } catch (err) {
+                console.log(err);
+            }
         }
-    }
+        fetchData();
+    }, [get]);
+
     return (
         <Controller
             name={name}
@@ -37,7 +41,6 @@ export const AsyncAutocomplete = ({ form, url, name, label, required }: Props) =
                 <Autocomplete
                     {...field}
                     fullWidth
-                    onClick={() => asyncGet()}
                     size='medium'
                     loading={loading}
                     noOptionsText={"Pasirinkimų nėra"}
@@ -62,5 +65,6 @@ export const AsyncAutocomplete = ({ form, url, name, label, required }: Props) =
                 />
             )}
         />
-    )
-}
+    );
+};
+
