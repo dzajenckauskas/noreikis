@@ -17,32 +17,36 @@ export const PriceInquirySection = () => {
                 backgroundColor: '#fafafa',
                 overflow: 'hidden'
             }}>
-                <Stack direction={'row'} justifyContent={"space-between"} id={'priceInquiryForm'} sx={{
-                    scrollMarginTop: 400
-                }}>
+                <Stack direction={'row'} justifyContent={"space-between"}
+                    id={'priceInquiryForm'} sx={{
+                        scrollMarginTop: 400
+                    }}>
                     <Stack sx={{ width: { xs: '90%', md: '50%' } }}>
-                        <Typography variant='h3'
-                            sx={{ fontWeight: 600 }}
-                        >
+                        <Typography variant='h3' sx={{ fontWeight: 600 }}>
                             <span style={{ color: theme.palette.secondary.main }}>
                                 Nemokamas
                             </span>
                             &nbsp;turto kainos įvertinimas
                         </Typography>
-                        <Typography pt={2} variant='body1' width={{ xs: '80%', sm: '60%' }}>
+                        <Typography pt={2} variant='body1' width={{ xs: '80%', sm: '80%' }}>
                             Užpildykite turto kainos vertinimo užklausą ir sužinokite savo nekilnojamojo turto vertę
                         </Typography>
-
                     </Stack>
                 </Stack>
-                <Stack py={4} width={'100%'} direction={{ xs: 'column-reverse', md: 'row' }} justifyContent={'space-between'}>
-                    <Stack direction={'row'} spacing={{ md: 1, xs: .5 }} sx={{ pt: 4, alignSelf: { xs: 'flex-start', md: 'flex-end' } }}>
+                <Stack py={4} spacing={8} width={'100%'}
+                    direction={{ xs: 'column-reverse', md: 'row' }}
+                    justifyContent={'space-between'}>
+                    <Stack alignContent={'space-between'}
+                        sx={{ position: 'relative', width: '100%' }}>
+                        <Typography color={theme.palette.secondary.main}
+                            sx={{ position: 'absolute', bottom: 0, pt: 2, width: { xs: '90%', sm: '60%' } }}
+                            variant='body1'>
+                            Įvertinęs užpildytą informaciją susisieksiu su geriausiu pasiulymu!
+                        </Typography>
                     </Stack>
-                    <Stack pb={{ xs: 6 }} width={{ xs: '100%', md: '50%' }}>
-                        <PriceInquiryForm />
-                    </Stack>
+                    <PriceInquiryForm />
                 </Stack>
             </Stack>
-        </Stack >
+        </Stack>
     )
 }
