@@ -104,7 +104,7 @@ const PriceInquiryForm = () => {
                 is: (value: string) => (value === "flats"),
                 then: () => yup.string()
                     .transform((value) => Number.isNaN(value) ? null : value)
-                    .required(`${'Nurodykite namo aukštų skaičių'}`),
+                    .required(`${'Nurodykite buto aukštą'}`),
             }),
         floorsTotal: yup.string()
             .transform((value) => Number.isNaN(value) ? null : value)
@@ -216,7 +216,7 @@ const PriceInquiryForm = () => {
                 <Grid item xs={12} sm={6}>
                     <FormTextField
                         disabled={sent}
-                        name={"city"}
+                        name={"address"}
                         lable={"Tikslus adresas"}
                         fullWidth
                         required
@@ -237,6 +237,7 @@ const PriceInquiryForm = () => {
                                 disabled={sent}
                                 name={"areaSqM"}
                                 lable={`Plotas, m2`}
+                                required
                                 type={"number"}
                                 form={form}
                                 fullWidth
@@ -245,8 +246,9 @@ const PriceInquiryForm = () => {
                         <Grid item xs={12} sm={6}>
                             <FormTextField
                                 disabled={sent}
-                                name={"areaSqM"}
+                                name={"roomsNumber"}
                                 lable={`Kambarių skaičius`}
+                                required
                                 type={"number"}
                                 form={form}
                                 fullWidth

@@ -25,7 +25,7 @@ export const FormTextField = ({ multiline, rows, fullWidth, disabled, size = "me
             label={<Typography component={FormLabel}
                 required={required}
                 variant='body1'
-                color={errors?.name?.message ? 'error' : theme.palette.primary.dark}>
+                color={errors?.[name]?.message ? 'error' : theme.palette.primary.dark}>
                 {lable}
             </Typography>}
             rows={rows}
