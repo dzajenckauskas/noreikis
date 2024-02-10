@@ -5,7 +5,7 @@ import { HeadComponent } from '@/components/layout/HeadComponent'
 import Layout from '@/components/layout/Layout'
 import { theme } from '@/components/layout/Theme'
 import { Box, Stack, Typography } from '@mui/material'
-import { GetServerSideProps } from 'next'
+import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 import Image from "next/legacy/image"
 
 type Props = {
@@ -161,8 +161,15 @@ export default function Home({ object }: Props) {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async (context: any) => {
-  const { slug } = context.params
+
+export const getServerSideProps: GetServerSideProps = async (context: GetServerSidePropsContext) => {
+  const { slug } = context.params ?? {};
+
+  if (!slug || typeof slug !== 'string') {
+    return {
+      notFound: true,
+    };
+  }
 
   const object = await getItemBySlug('objects', slug, undefined, 'populate=deep')
 
@@ -170,5 +177,5 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
     props: {
       object: object?.data?.[0] ?? null,
     }
-  }
+  };
 }

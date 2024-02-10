@@ -1,3 +1,4 @@
+import { BlogPostsType } from '@/app/types/BlogPostsTypes'
 import { getItems } from '@/app/utils'
 import { HeadComponent } from '@/components/layout/HeadComponent'
 import Layout from '@/components/layout/Layout'
@@ -9,13 +10,11 @@ import Image from "next/legacy/image"
 import Link from 'next/link'
 
 type Props = {
-  blogPosts: any
+  blogPosts: BlogPostsType;
 }
 
 export default function UsefulInformation({ blogPosts }: Props) {
-  console.log(blogPosts, "blogPosts");
-
-  const renderPosts = blogPosts.data.map((post: any) => {
+  const renderPosts = blogPosts.data.map((post) => {
     const image = post?.attributes?.images?.data?.[0]?.attributes?.formats
     const imageSrc = `${process.env.NEXT_PUBLIC_API_URL}${image?.medium.url}`
 
@@ -26,16 +25,16 @@ export default function UsefulInformation({ blogPosts }: Props) {
             layout='fill' objectFit='cover' src={imageSrc} />
         </Stack>
         <Stack>
-          <Link passHref href={'/naujienos/' + post.attributes.slug}>
+          <Link passHref href={'/naujienos/' + post.attributes?.slug}>
             <Typography variant='h6'>
-              {post.attributes.title}
+              {post.attributes?.title}
             </Typography>
           </Link>
           <Typography>
-            {post.attributes.shortContent}
+            {post.attributes?.shortContent}
           </Typography>
           <Stack pt={2}>
-            <Link passHref href={'/naujienos/' + post.attributes.slug}>
+            <Link passHref href={'/naujienos/' + post.attributes?.slug}>
               <Button variant='contained' >
                 Skaityti straipsnį
               </Button>
