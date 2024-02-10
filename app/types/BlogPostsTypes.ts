@@ -1,3 +1,4 @@
+import { BlocksContent } from '@strapi/blocks-react-renderer';
 import { ImagesType } from './ImageTypes'
 import { MetaType } from './MetaTypes'
 
@@ -17,7 +18,7 @@ export type BlogPostAtributesType = {
     updatedAt: Date | string;
     publishedAt: Date | string;
     locale: string;
-    content: any;
+    content: BlocksContent;
     slug: string;
     title: string;
     shortContent: string;

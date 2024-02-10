@@ -13,7 +13,6 @@ import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import { getTheme } from '../../layout/Theme';
 
-const handleDragStart = (e: any) => e.preventDefault();
 const responsive = {
     0: { items: 1 },
     600: { items: 1 },
@@ -27,6 +26,9 @@ type Props = {
 
 
 export const ReccomendationsSection = ({ recommendations }: Props) => {
+    const handleDragStart: React.DragEventHandler<HTMLDivElement> = (e) => {
+        e.preventDefault();
+    };
     const theme = getTheme()
 
     const items = recommendations?.data?.map((item) => {
@@ -39,11 +41,9 @@ export const ReccomendationsSection = ({ recommendations }: Props) => {
                     mx={'auto'}
                     onDragStart={handleDragStart} sx={{ width: '100%' }} spacing={1}
                     alignItems={'center'} p={4}
-                //  px={{ lg: 5, sm: 4, xs: 8 }}
                 >
                     <Stack alignSelf={'flex-end'} position={'relative'}>
                         <FormatQuoteIcon sx={{
-                            // width: 200,
                             position: 'absolute', top: 18, right: -8, zIndex: 2, color: theme.palette.secondary.dark,
                             transform: 'scale(4)'
                         }} />
@@ -58,13 +58,10 @@ export const ReccomendationsSection = ({ recommendations }: Props) => {
                             <Typography position={'relative'}
                                 variant='body1' fontWeight={300} textAlign={'right'}
                                 lineHeight={1.5} color={theme.palette.primary.dark}>
-                                {/* <FormatQuoteIcon sx={{ position: 'relative', top: -8, color: theme.palette.secondary.dark, transform: 'scale(2)' }} /> */}
                                 {item.attributes?.text}
-                                {/* <FormatQuoteIcon sx={{ position: 'absolute', right: 0, mt: -.25, color: theme.palette.secondary.dark, transform: 'scale(2)', alignSelf: 'flex-end' }} /> */}
                             </Typography>
                         </Stack>
                         <Stack pt={6}>
-                            {/* <FormatQuoteIcon sx={{ position: 'relative', mb: 2, color: theme.palette.secondary.dark, transform: 'scale(2)', alignSelf: 'flex-end' }} /> */}
                             <Typography variant='caption' fontWeight={200} letterSpacing={2}
                                 textAlign={'right'} color={theme.palette.primary.dark}>
                                 {item.attributes?.action.data?.attributes.title.toUpperCase()}
@@ -93,7 +90,6 @@ export const ReccomendationsSection = ({ recommendations }: Props) => {
                 <Stack id={'rekomendacijos'} sx={{
                     backgroundColor: '#f5f5f5',
                     scrollMarginTop: 50,
-                    // boxShadow: '0px 0px 20px #1E2F9729',
                     position: 'relative', mt: '-1px', zIndex: 3
                 }}>
                     <Stack spacing={1} pt={10} pb={6} sx={{
@@ -106,10 +102,8 @@ export const ReccomendationsSection = ({ recommendations }: Props) => {
                         <Stack direction={'row'} justifyContent={"space-between"} >
                             <Stack sx={{ width: { xs: '100%', md: '50%' } }}>
                                 <Typography variant='h3'
-                                    sx={{ fontWeight: 600 }} component={'h2'}
-                                >
+                                    sx={{ fontWeight: 600 }} component={'h2'}>
                                     Mano   klientai yra mano<br />
-                                    {/* &nbsp; */}
                                     <span style={{ color: theme.palette.secondary.main }}>
                                         partneriai.
                                     </span>
@@ -137,10 +131,6 @@ export const ReccomendationsSection = ({ recommendations }: Props) => {
                                 </Typography>
                             </Link>
                         </Stack>
-
-                        {/* <Grid container direction={'row'} sx={{ display: { lg: 'flex', xs: 'none' } }}>
-                            {items}
-                        </Grid> */}
                     </Stack>
                 </Stack >}
         </>

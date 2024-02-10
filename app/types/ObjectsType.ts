@@ -1,3 +1,4 @@
+import { BlocksContent } from '@strapi/blocks-react-renderer';
 import { ImagesType } from './ImageTypes'
 import { MetaType } from './MetaTypes'
 
@@ -9,34 +10,6 @@ export type ObjectsType = {
 export type ObjectType = {
     id: number;
     attributes?: ObjectAtributesType
-}
-
-export type Type = {
-    bodyType: string;
-    color: string;
-    createdAt: string;
-    damage: string | null;
-    description: any[];
-    discountPrice: string;
-    engineCapacityCC: string
-    firstRegDate: string;
-    fuelType: string;
-    gearbox: string;
-    images?: ImagesType;
-    instalmentPriceFrom: number;
-    locale: string;
-    make: string;
-    mileageKM: string;
-    model: string;
-    numberOfDoors: string;
-    powerKW: string;
-    price: string;
-    publishedAt: string;
-    slug: string;
-    steeringWheel: string;
-    updatedAt: string;
-    vin: string;
-
 }
 
 export type ObjectAtributesType = {
@@ -66,7 +39,7 @@ export type ObjectAtributesType = {
     updatedAt: Date | string;
     publishedAt: Date | string;
     locale: string;
-    description: any;
+    description: BlocksContent;
     landArea: string;
     category: EntityDataType;
     actionType: EntityDataType;
@@ -74,15 +47,6 @@ export type ObjectAtributesType = {
     objectPurpose: EntityDataType;
     heatingType: EntityDataType;
     statusType: EntityDataType;
-    //     {
-    //         type: string;
-    //         children: [
-    //             {
-    //                 text: string;
-    //                 type: string;
-    //             ]
-    //     }
-    // ],
     discountPrice: string;
     slug: string;
     price: string;

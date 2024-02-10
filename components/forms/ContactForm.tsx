@@ -37,13 +37,13 @@ const ContactForm = () => {
         }
         let url = `${process.env.NEXT_PUBLIC_API_URL}/api/contact-forms`
         await axios.post(url, inputData)
-            .catch((error: any) => {
+            .catch((error) => {
                 console.log(error);
                 if (error?.message) {
                     setError(error.message)
                 }
             })
-            .then((response: any) => {
+            .then((response) => {
                 console.log(response);
                 if (response?.data) {
                     setError(undefined)

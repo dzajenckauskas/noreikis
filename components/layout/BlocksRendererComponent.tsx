@@ -1,16 +1,15 @@
 import Typography from '@mui/material/Typography';
-import { BlocksRenderer } from '@strapi/blocks-react-renderer'
+import { BlocksContent, BlocksRenderer } from '@strapi/blocks-react-renderer';
 import Link from 'next/link';
-import React from 'react'
 
 type Props = {
-    content: any[];
+    content?: BlocksContent;
 }
 
 export const BlocksRendererComponent = ({ content }: Props) => {
     return (
         <BlocksRenderer
-            content={content}
+            content={content ?? []}
             blocks={{
                 paragraph: ({ children }) => <Typography variant="body1">{children}</Typography>,
                 heading: ({ children, level }) => {
