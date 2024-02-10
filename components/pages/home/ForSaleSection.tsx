@@ -1,6 +1,6 @@
 import { ObjectsType } from '@/app/types/ObjectsType';
 import { getTheme } from '@/components/layout/Theme';
-import ObjectCard from '@/components/objects/ObjectCard';
+import ObjectCard from '@/components/shared/ObjectCard';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';

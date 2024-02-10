@@ -1,9 +1,11 @@
+import { BlogPostsType } from '@/app/types/BlogPostsTypes'
 import { ObjectsType } from '@/app/types/ObjectsType'
 import { RecommendationsType } from '@/app/types/RecommendationsType'
+import Layout from '@/components/layout/Layout'
 import { ReccomendationsSection } from '@/components/pages/home/ReccomendationsSection'
 import { ServicesSection } from '@/components/pages/home/services/ServicesSection'
-import Layout from '@/components/layout/Layout'
 import { HeadComponent } from '../../layout/HeadComponent'
+import { BlogPostsSection } from './BlogPostsSection'
 import { ForSaleSection } from './ForSaleSection'
 import { HeroSection } from './HeroSection'
 import { PriceInquirySection } from './PriceInquirySection'
@@ -11,8 +13,9 @@ import { PriceInquirySection } from './PriceInquirySection'
 type Props = {
     recommendations: RecommendationsType;
     objects?: ObjectsType | null;
+    blogPosts?: BlogPostsType | null;
 }
-export const HomePage = ({ recommendations, objects }: Props) => {
+export const HomePage = ({ recommendations, objects, blogPosts }: Props) => {
     return (
         <>
             <HeadComponent
@@ -23,6 +26,7 @@ export const HomePage = ({ recommendations, objects }: Props) => {
                 <ServicesSection />
                 <ReccomendationsSection recommendations={recommendations} />
                 <ForSaleSection objects={objects} />
+                <BlogPostsSection blogPosts={blogPosts} />
                 <PriceInquirySection />
             </Layout>
         </>

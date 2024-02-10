@@ -1,0 +1,42 @@
+import { BlogPostsType } from '@/app/types/BlogPostsTypes';
+import { getTheme } from '@/components/layout/Theme';
+import BlogPostCard from '@/components/shared/BlogPostCard';
+import Grid from '@mui/material/Grid';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
+
+type Props = {
+    blogPosts?: BlogPostsType | null;
+}
+
+export const BlogPostsSection = ({ blogPosts }: Props) => {
+    const theme = getTheme()
+    const renderBlogPosts = blogPosts?.data?.map((blogPost) => {
+        return (
+            <Grid key={blogPost.id} item xs={12} sm={12} lg={12}>
+                <BlogPostCard blogPost={blogPost} color={theme.palette.primary.main} />
+            </Grid>
+        )
+    })
+    return (
+        <Stack sx={{ backgroundColor: 'divider', pb: 4 }}>
+            <Stack sx={{ width: '100%', maxWidth: 'xl', mx: 'auto', px: { xl: 2, md: 4, xs: 2 }, pt: { xl: 2, md: 4, xs: 2 }, pb: 8 }}>
+                <Stack pt={6} sx={{ width: { xs: '100%', md: '50%' } }}>
+                    <Typography variant='h3' component={'h2'}
+                        sx={{ fontWeight: 600 }}>
+                        Nekilnojamojo turto&nbsp;<br />
+                        <span style={{ color: theme.palette.secondary.main }}>
+                            naujienos
+                        </span>
+                    </Typography>
+                    <Typography pt={2} variant='body1' width={'80%'}>
+                        Mano asmeninės įžvalgos ir Nekilnojamojo turto rinkos naujienos bei aktualijos:&nbsp;
+                    </Typography>
+                </Stack>
+                <Grid container direction={'row'} spacing={4} sx={{ my: 4 }}>
+                    {renderBlogPosts}
+                </Grid>
+            </Stack>
+        </Stack>
+    )
+}
