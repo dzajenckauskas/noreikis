@@ -41,7 +41,7 @@ function Cookies() {
                     position={'fixed'} bottom={0} left={0} zIndex={999} width={{ sm: '50%', xs: '100%' }}
                     sx={{ backgroundColor: theme.palette.primary.main, opacity: .9 }}>
                     <Stack width={'100%'} mb={4}>
-                        <Typography color={'#fff'} fontWeight={600} variant='h6' pb={2}>
+                        <Typography color={'#fff'} fontWeight={600} variant='h6' pb={2} component={'p'}>
                             {"Sutikimas su privatumo politika"}
                         </Typography>
                         <Stack direction={'row'} justifyContent={'flex-start'} alignItems={'top'} pr={{ lg: 4, md: 4, sm: 0, xs: 0 }}>
