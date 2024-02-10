@@ -24,7 +24,7 @@ const BlogPostCard = ({ blogPost, color }: Props) => {
             </Stack>
             <Stack height={'100%'}>
                 <Link passHref href={'/naujienos/' + blogPost.attributes?.slug}>
-                    <Typography variant='h5' fontWeight={600} width={'70%'} pb={2} color={color}>
+                    <Typography variant='h5' component={'h2'} fontWeight={600} width={'70%'} pb={2} color={color}>
                         {blogPost.attributes?.title}
                     </Typography>
                 </Link>
