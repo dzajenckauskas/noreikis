@@ -17,7 +17,7 @@ export const ServicesSection = () => {
             backgroundColor: '#fff',
             width: '100%', pt: 8, pb: 12,
             position: 'relative', zIndex: 0, top: '-1px', alignContent: 'center',
-            px: { xl: 2, md: 4, xs: 0 }
+            px: { xl: 2, md: 2, xs: 0 }
         }}>
             <Stack direction={'row'} justifyContent={"space-between"} pb={6} id={'paslaugos'} sx={{
                 scrollMarginTop: 120,

@@ -4,6 +4,7 @@ import React from 'react'
 import Footer from './Footer'
 import Header from './Header'
 import { theme } from './Theme'
+import Cookies from './Cookies'
 
 type Props = {
     children?: React.ReactNode;
@@ -21,13 +22,12 @@ const Layout = ({ children, }: Props) => {
                 <Stack
                     sx={{
                         height: '100%',
-                        // px: { xl: 2, md: 4, xs: 2 },
-                        // width: '100%', maxWidth: 'xl', mx: 'auto'
                     }}>
                     {children}
                 </Stack>
             </Stack>
             <Footer />
+            <Cookies />
         </>
     )
 }
