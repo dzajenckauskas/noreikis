@@ -1,6 +1,6 @@
 import { ObjectType } from '@/app/types/ObjectsType'
 import { getItemBySlug } from '@/app/utils'
-import { BlocksRendererComponent } from '@/components/BlocksRendererComponent'
+import { BlocksRendererComponent } from '@/components/layout/BlocksRendererComponent'
 import { HeadComponent } from '@/components/layout/HeadComponent'
 import Layout from '@/components/layout/Layout'
 import { theme } from '@/components/layout/Theme'

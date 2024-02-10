@@ -1,12 +1,11 @@
-import { getCompanyAge } from '@/app/getCompanyAge';
 import ApartmentIcon from '@mui/icons-material/Apartment';
 import FeedIcon from '@mui/icons-material/Feed';
 import FindInPageIcon from '@mui/icons-material/FindInPage';
 import HomeWorkIcon from '@mui/icons-material/HomeWork';
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import CountUp from "react-countup";
-import { getTheme } from "./layout/Theme";
+import { getTheme } from "../../../layout/Theme";
+import { Counter } from './Counter';
 
 export const ServicesSection = () => {
     const theme = getTheme()
@@ -40,47 +39,9 @@ export const ServicesSection = () => {
             </Stack>
 
             <Stack direction={{ xs: 'column', md: 'row' }} justifyContent={'space-between'}>
-                <Stack direction={{ xs: 'column', sm: 'row', md: 'column' }} alignItems={{ xs: 'space-between', sm: 'flex-start' }}
-                    spacing={{ md: 8, sm: 8, xs: 4 }} sx={{ width: { xs: '100%', sm: '70%', md: '33%' }, pt: 8, px: { xs: 2 } }}>
-
-                    <Stack alignItems={'flex-start'} maxWidth={{ xs: '60%', sm: '100%', md: '180px' }}>
-                        <Stack direction={'row'} spacing={1} pb={1}>
-                            <Typography component={'p'} fontSize={{ xs: 40, sm: 50 }} lineHeight={1} color={theme.palette.secondary.main} fontWeight={700}>
-                                <CountUp enableScrollSpy duration={3} end={98} />%
-                            </Typography>
-                        </Stack>
-                        <Typography component={'p'} variant="body2" color={theme.palette.primary.main} fontWeight={400}>
-                            Klientų rekomenduoja
-                        </Typography>
-                    </Stack>
-
-
-                    <Stack alignItems={'flex-start'} maxWidth={{ xs: '60%', sm: '100%', md: '180px' }}>
-                        <Stack direction={'row'} spacing={1} pb={1}>
-                            <Typography component={'p'} fontSize={{ xs: 40, sm: 50 }} lineHeight={1} color={theme.palette.secondary.main} fontWeight={700}>
-                                <CountUp enableScrollSpy duration={3} end={85} />%
-                            </Typography>
-                        </Stack>
-                        <Typography component={'p'} variant="body2" color={theme.palette.primary.main} fontWeight={400}>
-                            NT objektų parduodama per 3 savaites
-                        </Typography>
-                    </Stack>
-
-
-                    <Stack alignItems={'flex-start'} maxWidth={{ xs: '60%', sm: '100%', md: '180px' }}>
-                        <Stack direction={'row'} spacing={1} pb={1}>
-                            <Typography component={'p'} fontSize={{ xs: 40, sm: 50 }} lineHeight={1} color={theme.palette.secondary.main} fontWeight={700}>
-                                <CountUp enableScrollSpy duration={3} end={getCompanyAge()} />+
-                            </Typography>
-                        </Stack>
-                        <Typography component={'p'} variant="body2" color={theme.palette.primary.main} fontWeight={400}>
-                            Metai patirties
-                        </Typography>
-                    </Stack>
-                </Stack>
+                <Counter />
 
                 <Stack pt={{ md: 0, xs: 10 }} width={{ xs: '100%', md: '70%' }} direction={{ sm: 'row', xs: 'column' }}
-
                     justifyContent={'space-between'} spacing={{ xs: 0, md: 0 }}>
                     <Stack width={'100%'}>
                         <Stack spacing={2} width={'100%'} minHeight={{ xs: 'none', sm: 550 }} pb={8}

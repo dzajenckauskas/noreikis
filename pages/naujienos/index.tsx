@@ -13,6 +13,8 @@ type Props = {
 }
 
 export default function UsefulInformation({ blogPosts }: Props) {
+  console.log(blogPosts, "blogPosts");
+
   const renderPosts = blogPosts.data.map((post: any) => {
     const image = post?.attributes?.images?.data?.[0]?.attributes?.formats
     const imageSrc = `${process.env.NEXT_PUBLIC_API_URL}${image?.medium.url}`

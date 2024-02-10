@@ -9,7 +9,7 @@ import PinDropIcon from '@mui/icons-material/PinDrop'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import Link from 'next/link'
-import { AruodasIcon } from '../../AruodasIcon'
+import { AruodasIcon } from '../../layout/AruodasIcon'
 import { HeadComponent } from '../../layout/HeadComponent'
 
 type Props = {

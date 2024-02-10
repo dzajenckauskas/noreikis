@@ -11,7 +11,7 @@ import Image from 'next/legacy/image';
 import Link from 'next/link';
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
-import { getTheme } from './layout/Theme';
+import { getTheme } from '../../layout/Theme';
 
 const handleDragStart = (e: any) => e.preventDefault();
 const responsive = {

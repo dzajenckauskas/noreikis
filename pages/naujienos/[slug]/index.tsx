@@ -1,5 +1,5 @@
 import { getItemBySlug } from '@/app/utils'
-import { BlocksRendererComponent } from '@/components/BlocksRendererComponent'
+import { BlocksRendererComponent } from '@/components/layout/BlocksRendererComponent'
 import { HeadComponent } from '@/components/layout/HeadComponent'
 import Layout from '@/components/layout/Layout'
 import Stack from '@mui/material/Stack'
@@ -25,7 +25,6 @@ export default function UsefulInformation({ blogPost }: Props) {
               layout='fill' objectFit='cover' src={imageSrc} />
           </Stack>
           <Stack sx={{ px: { xl: 2, md: 4, xs: 2 }, }}>
-
             <Typography variant='h4' py={4} fontWeight={600}>
               {blogPost.attributes.title}
             </Typography>

@@ -1,4 +1,4 @@
-import { AruodasIcon } from '@/components/AruodasIcon'
+import { AruodasIcon } from '@/components/layout/AruodasIcon'
 import { theme } from '@/components/layout/Theme'
 import FacebookIcon from '@mui/icons-material/Facebook'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'

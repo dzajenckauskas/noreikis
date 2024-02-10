@@ -1,7 +1,6 @@
 import { HeadComponent } from '@/components/layout/HeadComponent'
 import Layout from '@/components/layout/Layout'
 import Typography from '@mui/material/Typography'
-import Head from 'next/head'
 
 
 export default function PrivacyPolicy() {

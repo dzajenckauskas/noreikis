@@ -7,7 +7,7 @@ import PhoneIcon from '@mui/icons-material/Phone'
 import PinDropIcon from '@mui/icons-material/PinDrop'
 import { Stack, Typography } from '@mui/material'
 import Link from 'next/link'
-import { AruodasIcon } from '../AruodasIcon'
+import { AruodasIcon } from './AruodasIcon'
 import { theme } from './Theme'
 
 const Footer = () => {

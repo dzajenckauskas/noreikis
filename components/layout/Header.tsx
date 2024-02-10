@@ -14,7 +14,7 @@ import Button from '@mui/material/Button'
 import { getHeaderMenuItems } from '@/app/getHeaderMenuItems'
 import { useRouter } from 'next/router'
 import { getFooterMenuItems } from '@/app/getFooterMenuItems'
-import { AruodasIcon } from '../AruodasIcon'
+import { AruodasIcon } from './AruodasIcon'
 
 const Header = () => {
     const [openMobileMenu, setOpenMobileMenu] = useState(false)
