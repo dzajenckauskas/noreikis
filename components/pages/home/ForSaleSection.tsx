@@ -10,9 +10,10 @@ import SubdirectoryArrowRightIcon from '@mui/icons-material/SubdirectoryArrowRig
 
 type Props = {
     objects?: ObjectsType | null;
+    bgColor?: string;
 }
 
-export const ForSaleSection = ({ objects }: Props) => {
+export const ForSaleSection = ({ objects, bgColor }: Props) => {
     const theme = getTheme()
     const renderObjects = objects?.data?.map((object) => {
         return (
@@ -22,36 +23,39 @@ export const ForSaleSection = ({ objects }: Props) => {
         )
     })
     return (
-        <Stack sx={{ width: '100%', maxWidth: 'xl', mx: 'auto', px: { xl: 2, md: 4, xs: 2 }, pt: { xl: 2, md: 4, xs: 2 }, pb: 8 }}>
+        <Stack sx={{ backgroundColor: bgColor ?? '#fff' }} py={4}>
 
-            <Stack pt={4} sx={{ width: { xs: '100%', md: '50%' } }}>
-                <Typography variant='h3' component={'h2'}
-                    sx={{ fontWeight: 600 }}
-                >
-                    Šiuo metu&nbsp;
-                    <span style={{ color: theme.palette.secondary.main }}>
-                        parduodama
-                    </span>
-                </Typography>
-                <Typography pt={2} variant='body1' width={'60%'}>
-                    Mano klientų parduodami nekilnojamojo turto objektai. Ieškote kažko kito?&nbsp;
-                    <Link passHref href={'kontaktai'}>
-                        <Typography component={'span'} sx={{ color: theme.palette.secondary.main, ":hover": { textDecoration: 'underline' } }}>
-                            Susisiekime!
+            <Stack sx={{ width: '100%', maxWidth: 'xl', mx: 'auto', px: { xl: 2, md: 4, xs: 2 }, pt: { xl: 2, md: 4, xs: 2 }, pb: 8 }}>
+
+                <Stack pt={4} sx={{ width: { xs: '100%', md: '50%' } }}>
+                    <Typography variant='h3' component={'h2'}
+                        sx={{ fontWeight: 600 }}
+                    >
+                        Šiuo metu&nbsp;
+                        <span style={{ color: theme.palette.secondary.main }}>
+                            parduodama
+                        </span>
+                    </Typography>
+                    <Typography pt={2} variant='body1' width={'60%'}>
+                        Mano klientų parduodami nekilnojamojo turto objektai. Ieškote kažko kito?&nbsp;
+                        <Link passHref href={'kontaktai'}>
+                            <Typography component={'span'} sx={{ color: theme.palette.secondary.main, ":hover": { textDecoration: 'underline' } }}>
+                                Susisiekime!
+                            </Typography>
+                        </Link>
+                    </Typography>
+                </Stack>
+                <Grid container direction={'row'} spacing={4} sx={{ my: 10 }}>
+                    {renderObjects}
+                </Grid>
+                <Stack direction={'row'} spacing={{ md: 1, xs: .5 }} sx={{ pt: 6, alignSelf: 'flex-end' }}>
+                    <SubdirectoryArrowRightIcon sx={{ color: theme.palette.secondary.main, fontSize: 18, }} />
+                    <Link passHref target='_blank' href={`https://m.aruodas.lt/ernestas-noreikis/?obj_type=0#searchFilterBrokerPage`}>
+                        <Typography variant='body1' color={theme.palette.secondary.main} sx={{ ":hover": { textDecoration: 'underline' } }}>
+                            {'Visi objektai'}
                         </Typography>
                     </Link>
-                </Typography>
-            </Stack>
-            <Grid container direction={'row'} spacing={4} sx={{ my: 10 }}>
-                {renderObjects}
-            </Grid>
-            <Stack direction={'row'} spacing={{ md: 1, xs: .5 }} sx={{ pt: 6, alignSelf: 'flex-end' }}>
-                <SubdirectoryArrowRightIcon sx={{ color: theme.palette.secondary.main, fontSize: 18, }} />
-                <Link passHref target='_blank' href={`https://m.aruodas.lt/ernestas-noreikis/?obj_type=0#searchFilterBrokerPage`}>
-                    <Typography variant='body1' color={theme.palette.secondary.main} sx={{ ":hover": { textDecoration: 'underline' } }}>
-                        {'Visi objektai'}
-                    </Typography>
-                </Link>
+                </Stack>
             </Stack>
         </Stack>
     )

@@ -1,8 +1,10 @@
 import { BlogPostType } from '@/app/types/BlogPostsTypes'
-import { getItemBySlug } from '@/app/utils'
+import { ObjectsType } from '@/app/types/ObjectsType'
+import { getItemBySlug, getItems } from '@/app/utils'
 import { BlocksRendererComponent } from '@/components/layout/BlocksRendererComponent'
 import { HeadComponent } from '@/components/layout/HeadComponent'
 import Layout from '@/components/layout/Layout'
+import { ForSaleSection } from '@/components/pages/home/ForSaleSection'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import { GetServerSideProps, GetServerSidePropsContext } from 'next'
@@ -10,9 +12,10 @@ import Image from "next/legacy/image"
 
 type Props = {
   blogPost: BlogPostType;
+  objects?: ObjectsType | null;
 }
 
-export default function UsefulInformation({ blogPost }: Props) {
+export default function UsefulInformation({ blogPost, objects }: Props) {
   const image = blogPost?.attributes?.images?.data?.[0]?.attributes?.formats
   const imageSrc = `${process.env.NEXT_PUBLIC_API_URL}${image?.medium?.url}`
 
@@ -20,7 +23,7 @@ export default function UsefulInformation({ blogPost }: Props) {
     <>
       <HeadComponent title={blogPost.attributes?.title} description={blogPost.attributes?.shortContent} />
       <Layout>
-        <Stack key={blogPost.id} pb={8}>
+        <Stack sx={{ maxWidth: 'xl', mx: 'auto', px: { xl: 2, md: 4, xs: 2 }, pb: 14 }}>
           <Stack sx={{ position: 'relative', width: { xs: '100%', sm: '100%', md: '100%', xl: '100%' }, height: 600 }}>
             <Image priority alt={blogPost?.attributes?.images?.data?.[0]?.attributes?.alternativeText ?? ''}
               layout='fill' objectFit='cover' src={imageSrc} />
@@ -34,6 +37,7 @@ export default function UsefulInformation({ blogPost }: Props) {
             </Typography>
           </Stack>
         </Stack>
+        <ForSaleSection objects={objects} bgColor={'#f5f5f5'} />
       </Layout>
     </>
   )
@@ -49,10 +53,12 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
   }
 
   const blogPost = await getItemBySlug('blog-posts', slug, undefined, 'populate=deep');
+  const objects = (await getItems('objects', 'populate=deep')) ?? null
 
   return {
     props: {
       blogPost: blogPost?.data?.[0] ?? null,
+      objects: objects ?? null,
     }
   };
 }
