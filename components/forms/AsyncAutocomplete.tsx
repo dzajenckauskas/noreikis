@@ -53,6 +53,9 @@ export const AsyncAutocomplete = ({ form, url, name, label, required }: Props) =
                     options={data?.data ?? []}
                     renderInput={(params) => (
                         <TextField
+                            className={!!error?.message ?
+                                "animate__animated animate__headShake"
+                                : ""}
                             required={required}
                             error={!!error}
                             helperText={error?.message ?? listError?.message}

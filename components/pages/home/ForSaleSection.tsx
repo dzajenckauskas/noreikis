@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography';
 import Link from 'next/link';
 import React from 'react'
 import SubdirectoryArrowRightIcon from '@mui/icons-material/SubdirectoryArrowRight'
+import { SectionTitle } from '@/components/layout/SectionTitle';
 
 type Props = {
     objects?: ObjectsType | null;
@@ -24,18 +25,12 @@ export const ForSaleSection = ({ objects, bgColor }: Props) => {
     })
     return (
         <Stack sx={{ backgroundColor: bgColor ?? '#fff' }} py={4}>
-
             <Stack sx={{ width: '100%', maxWidth: 'xl', mx: 'auto', px: { xl: 2, md: 4, xs: 2 }, pt: { xl: 2, md: 4, xs: 2 }, pb: 8 }}>
-
                 <Stack pt={4} sx={{ width: { xs: '100%', md: '50%' } }}>
-                    <Typography variant='h3' component={'h2'}
-                        sx={{ fontWeight: 600 }}
-                    >
-                        Šiuo metu&nbsp;
+                    <SectionTitle title={<>Šiuo metu&nbsp;
                         <span style={{ color: theme.palette.secondary.main }}>
                             parduodama
-                        </span>
-                    </Typography>
+                        </span></>} />
                     <Typography pt={2} variant='body1' width={'60%'}>
                         Mano klientų parduodami nekilnojamojo turto objektai. Ieškote kažko kito?&nbsp;
                         <Link passHref href={'kontaktai'}>

@@ -1,9 +1,11 @@
 import { BlogPostType } from '@/app/types/BlogPostsTypes';
+import useIntersectionObserver from '@/app/useIntersectionObserver';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Image from "next/legacy/image";
 import Link from 'next/link';
+import { useRef } from 'react';
 
 type Props = {
     blogPost: BlogPostType;
@@ -11,10 +13,12 @@ type Props = {
 }
 
 const BlogPostCard = ({ blogPost, color }: Props) => {
+    const elementRef = useRef<HTMLDivElement>(null);
+    useIntersectionObserver(elementRef, 'animate__animated animate__fadeIn');
     const image = blogPost.attributes?.images?.data?.[0]?.attributes
     const imageSrc = `${process.env.NEXT_PUBLIC_API_URL}${image?.formats?.small?.url ?? image?.formats?.medium?.url}`
     return (
-        <Stack key={blogPost.id} direction={{ xs: 'column', md: 'row' }} spacing={4}>
+        <Stack ref={elementRef} key={blogPost.id} direction={{ xs: 'column', md: 'row' }} spacing={4}>
             <Stack sx={{
                 position: 'relative',
                 minWidth: { xs: '100%', md: '50%' }, minHeight: '350px', height: '100%'

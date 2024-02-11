@@ -1,4 +1,5 @@
 import { BlogPostsType } from '@/app/types/BlogPostsTypes';
+import { SectionTitle } from '@/components/layout/SectionTitle';
 import { getTheme } from '@/components/layout/Theme';
 import BlogPostCard from '@/components/shared/BlogPostCard';
 import Grid from '@mui/material/Grid';
@@ -22,13 +23,10 @@ export const BlogPostsSection = ({ blogPosts }: Props) => {
         <Stack sx={{ backgroundColor: '#f5f5f5', pb: 4 }}>
             <Stack sx={{ width: '100%', maxWidth: 'xl', mx: 'auto', px: { xl: 2, md: 4, xs: 2 }, pt: { xl: 2, md: 4, xs: 2 }, pb: 8 }}>
                 <Stack pt={6} sx={{ width: { xs: '100%', md: '50%' } }}>
-                    <Typography variant='h3' component={'h2'}
-                        sx={{ fontWeight: 600 }}>
-                        Nekilnojamojo turto&nbsp;<br />
+                    <SectionTitle title={<>Nekilnojamojo turto&nbsp;<br />
                         <span style={{ color: theme.palette.secondary.main }}>
                             naujienos
-                        </span>
-                    </Typography>
+                        </span></>} />
                     <Typography pt={2} variant='body1' width={'80%'}>
                         Mano asmeninės įžvalgos ir Nekilnojamojo turto rinkos naujienos bei aktualijos:&nbsp;
                     </Typography>

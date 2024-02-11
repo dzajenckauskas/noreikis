@@ -1,4 +1,5 @@
 import { BlogPostsType } from '@/app/types/BlogPostsTypes'
+import useIntersectionObserver from '@/app/useIntersectionObserver'
 import { getItems } from '@/app/utils'
 import { HeadComponent } from '@/components/layout/HeadComponent'
 import Layout from '@/components/layout/Layout'
@@ -8,16 +9,18 @@ import Typography from '@mui/material/Typography'
 import { GetServerSideProps } from 'next'
 import Image from "next/legacy/image"
 import Link from 'next/link'
+import { useRef } from 'react'
 
 type Props = {
   blogPosts: BlogPostsType;
 }
 
 export default function UsefulInformation({ blogPosts }: Props) {
+  const elementRef = useRef<HTMLDivElement>(null);
+  useIntersectionObserver(elementRef, 'animate__animated animate__fadeIn');
   const renderPosts = blogPosts.data.map((post) => {
     const image = post?.attributes?.images?.data?.[0]?.attributes?.formats
     const imageSrc = `${process.env.NEXT_PUBLIC_API_URL}${image?.medium.url}`
-
     return (
       <Stack key={post.id} pt={4} direction={{ xs: 'column', md: 'row' }} spacing={2}>
         <Stack sx={{ position: 'relative', minWidth: { xs: '100%', md: 300 }, height: { xs: 300, md: 300 } }}>
@@ -52,7 +55,7 @@ export default function UsefulInformation({ blogPosts }: Props) {
           <Typography variant='h4' fontWeight={600}>
             NAUDINGA ŽINOTI
           </Typography>
-          <Stack>
+          <Stack ref={elementRef}>
             {renderPosts}
           </Stack>
         </Stack>

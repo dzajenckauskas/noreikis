@@ -11,6 +11,7 @@ import Typography from '@mui/material/Typography'
 import Link from 'next/link'
 import { AruodasIcon } from '../../layout/AruodasIcon'
 import { HeadComponent } from '../../layout/HeadComponent'
+import { SectionTitle } from '@/components/layout/SectionTitle'
 
 type Props = {
 }
@@ -34,14 +35,10 @@ export const ContactsPage = ({ }: Props) => {
                     }}>
                         <Stack direction={'row'} justifyContent={"space-between"} >
                             <Stack sx={{ width: { xs: '100%', md: '50%' } }}>
-                                <Typography variant='h3'
-                                    sx={{ fontWeight: 600 }}
-                                >
-                                    <span style={{ color: theme.palette.secondary.main }}>
-                                        Susisiekite
-                                    </span>
-                                    &nbsp;su manimi
-                                </Typography>
+                                <SectionTitle title={<> <span style={{ color: theme.palette.secondary.main }}>
+                                    Susisiekite
+                                </span>
+                                    &nbsp;su manimi</>} />
                                 <Typography pt={2} variant='body1' width={'60%'}>
                                     Susisiekite nurodytais kontaktais arba palikite žinutę ir as su jumis susisieksiu
                                 </Typography>

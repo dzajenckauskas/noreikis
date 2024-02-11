@@ -1,4 +1,5 @@
 import { ObjectType } from '@/app/types/ObjectsType'
+import useIntersectionObserver from '@/app/useIntersectionObserver'
 import { getItemBySlug } from '@/app/utils'
 import { BlocksRendererComponent } from '@/components/layout/BlocksRendererComponent'
 import { HeadComponent } from '@/components/layout/HeadComponent'
@@ -7,6 +8,7 @@ import { theme } from '@/components/layout/Theme'
 import { Box, Stack, Typography } from '@mui/material'
 import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 import Image from "next/legacy/image"
+import { useRef } from 'react'
 
 type Props = {
   object?: ObjectType;
@@ -33,17 +35,19 @@ export default function Home({ object }: Props) {
   const status = getStatusTypeText(object)
 
   const title = `${object?.attributes?.category?.data.attributes.singularTitle ?? ''} ${object?.attributes?.region ?? ''} ${object?.attributes?.district ?? ''} ${object?.attributes?.quartal ?? ''} ${object?.attributes?.street ?? ''} ${object?.attributes?.roomsNumber ? `${object?.attributes.roomsNumber} k.` : ''} `
+
+  const imgRef = useRef<HTMLDivElement>(null);
+  useIntersectionObserver(imgRef, 'animate__animated animate__fadeIn');
+
   return (
     <>
       <HeadComponent title={title} description={title} />
-
       <Layout>
-
         <Stack key={object?.id} sx={{
-          px: { xl: 2, md: 4, xs: 2 }, pt: 4,
+          px: { xl: 2, md: 4, xs: 2 }, pt: 0,
           width: '100%', maxWidth: 'xl', mx: 'auto'
         }}>
-          <Stack sx={{ position: 'relative', width: { xs: '100%', sm: '100%', md: '100%', xl: '100%' }, height: 600 }}>
+          <Stack ref={imgRef} sx={{ position: 'relative', width: { xs: '100%', sm: '100%', md: '100%', xl: '100%' }, height: 600 }}>
             <Image priority alt={object?.attributes?.images?.data?.[0]?.attributes?.alternativeText ?? ''}
               layout='fill' objectFit='cover' src={imageSrc ?? '/'} />
             <Box sx={{ backgroundColor: '#000', width: 'max-content', position: 'absolute', bottom: 4, px: 2, left: -4 }}>
@@ -62,15 +66,15 @@ export default function Home({ object }: Props) {
           <Stack sx={{ pt: { xl: 2, md: 4, xs: 2 }, pb: 8 }} direction={{ md: 'row', xs: 'column' }} spacing={4}>
             <Stack width={{ md: '40%', xs: "100%" }} >
               <Stack direction={'row'} spacing={1} pt={1}>
-                <Typography variant='h6'>
+                <Typography variant='h4' fontWeight={600} component={'h1'}>
                   {object?.attributes?.region},&nbsp;
                   {object?.attributes?.district}&nbsp;
                   {object?.attributes?.quartal},&nbsp;
                   {object?.attributes?.street}
                 </Typography>
               </Stack>
-              <Stack direction={'row'} spacing={1}>
-                <Typography variant='caption'>
+              <Stack direction={'row'} py={1}>
+                <Typography variant='body1'>
                   {object?.attributes?.category?.data.attributes.singularTitle} |   {object?.attributes?.roomsNumber} k. | {object?.attributes?.areaSqM} m²
                 </Typography>
               </Stack>

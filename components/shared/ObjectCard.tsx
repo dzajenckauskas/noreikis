@@ -2,18 +2,20 @@ import { ObjectType } from '@/app/types/ObjectsType'
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Link from 'next/link';
-import React from 'react'
+import React, { useRef } from 'react'
 import Image from "next/legacy/image";
 import Box from '@mui/material/Box';
 import { getActionTypeText, getStatusTypeText } from '@/pages/parduodami/[slug]';
 import { theme } from '../layout/Theme';
+import useIntersectionObserver from '@/app/useIntersectionObserver';
 
 type Props = {
     object?: ObjectType;
 }
 
 const ObjectCard = ({ object }: Props) => {
-
+    const elementRef = useRef<HTMLDivElement>(null);
+    useIntersectionObserver(elementRef, 'animate__animated animate__fadeIn');
     const action = getActionTypeText(object)
     const status = getStatusTypeText(object)
 
@@ -21,7 +23,7 @@ const ObjectCard = ({ object }: Props) => {
     const image = object?.attributes?.images?.data?.[0]?.attributes?.formats
     const imageSrc = `${process.env.NEXT_PUBLIC_API_URL}${image?.small?.url ?? image?.medium?.url}`
     return (
-        <Stack key={object?.id} >
+        <Stack key={object?.id} ref={elementRef}>
             <Link href={'/parduodami/' + object?.attributes?.slug} passHref style={{ position: 'relative' }}>
                 <Stack sx={{ position: 'relative', width: '100%', height: 300 }}>
                     <Image priority alt={object?.attributes?.images?.data?.[0]?.attributes?.alternativeText ?? ''}

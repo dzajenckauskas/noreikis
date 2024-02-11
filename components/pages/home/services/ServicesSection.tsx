@@ -1,14 +1,20 @@
+import useIntersectionObserver from '@/app/useIntersectionObserver';
 import ApartmentIcon from '@mui/icons-material/Apartment';
 import FeedIcon from '@mui/icons-material/Feed';
 import FindInPageIcon from '@mui/icons-material/FindInPage';
 import HomeWorkIcon from '@mui/icons-material/HomeWork';
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
+import { useRef } from 'react';
 import { getTheme } from "../../../layout/Theme";
 import { Counter } from './Counter';
+import { ServiceCard } from './ServiceCard';
+import { SectionTitle } from '@/components/layout/SectionTitle';
 
 export const ServicesSection = () => {
     const theme = getTheme()
+    const elementRef = useRef<HTMLDivElement>(null);
+    useIntersectionObserver(elementRef, 'animate__animated animate__fadeInUp');
     return (
         <Stack sx={{
             mt: 6,
@@ -24,17 +30,13 @@ export const ServicesSection = () => {
                 px: { xs: 2 }
             }}>
                 <Stack sx={{ width: { xs: '100%', md: '50%' } }}>
-                    <Typography variant='h3' component={'h2'}
-                        sx={{ fontWeight: 600 }}
-                    >
-                        Padėsiu&nbsp;
+                    <SectionTitle title={<>Padėsiu&nbsp;
                         <span style={{ color: theme.palette.secondary.main }}>
                             visais
                         </span>
                         &nbsp;NT
                         <br />
-                        klausimais
-                    </Typography>
+                        klausimais</>} />
                 </Stack>
             </Stack>
 
@@ -44,56 +46,28 @@ export const ServicesSection = () => {
                 <Stack pt={{ md: 0, xs: 10 }} width={{ xs: '100%', md: '70%' }} direction={{ sm: 'row', xs: 'column' }}
                     justifyContent={'space-between'} spacing={{ xs: 0, md: 0 }}>
                     <Stack width={'100%'}>
-                        <Stack spacing={2} width={'100%'} minHeight={{ xs: 'none', sm: 550 }} pb={8}
-                            position={'relative'}
-                            alignSelf={'flex-start'}
-                            sx={{ p: { xs: 2, sm: 4, lg: 8 }, py: { xs: 4, sm: 4, lg: 8 }, ':hover': { boxShadow: 'rgba(17, 12, 46, 0.05) 0px 48px 100px 0px;' } }}>
-                            <HomeWorkIcon sx={{ color: theme.palette.secondary.main, fontSize: 40, position: 'relative' }} />
-                            <Typography color={theme.palette.primary.main} fontWeight={600} variant='h5' component={'h2'}>
-                                Atstovavimas <span style={{ color: theme.palette.secondary.main }}>parduodant</span> nekilnojamąjį turtą
-                            </Typography>
-                            <Typography color={theme.palette.primary.main} variant='body1'>
-                                Procesas apima rinkos analizę, turto vertinimą, potencialių klientų paiešką bei intensyvias derybas dėl kainos ir sąlygų. Mano vaidmuo yra užtikrinti sėkmingą sandorio sudarymą, pasitelkiant gerus tarpininkavimo, pardavimų ir derybų įgūdžius. Esminis aspektas - suprasti klientų poreikius ir tinkamai juos atitikti, siekiant užtikrinti patenkinamą rezultatą visoms šalims.
-                            </Typography>
-                        </Stack>
-                        <Stack spacing={2} width={'100%'} minHeight={{ xs: 'none', sm: 400 }} pb={8}
-                            position={'relative'}
-                            alignSelf={'flex-start'}
-                            sx={{ p: { xs: 2, sm: 4, lg: 8 }, py: { xs: 4, sm: 4, lg: 8 }, ':hover': { boxShadow: 'rgba(17, 12, 46, 0.05) 0px 48px 100px 0px;' } }}>
-                            <FeedIcon sx={{ color: theme.palette.secondary.main, fontSize: 40, position: 'relative' }} />
-                            <Typography color={theme.palette.primary.main} fontWeight={600} variant='h5' component={'h2'}>
-                                Nekilnojamojo turto <span style={{ color: theme.palette.secondary.main }}>dokumentacija</span>
-                            </Typography>
-                            <Typography color={theme.palette.primary.main} variant='body1'>
-                                Suteiksiu greitą ir kokybišką nekilnojamojo turto dokumentacijos paruošimą, apimančią pardavimo, pirkimo bei nuomos procesus. Be to, teiksiu nemokamą konsultaciją dėl visų susijusių klausimų, siekiant Jums suteikti visapusišką pagalbą.
-                            </Typography>
-                        </Stack>
+
+                        <ServiceCard minHeight={550}
+                            title={<>Atstovavimas <span style={{ color: theme.palette.secondary.main }}>parduodant</span> nekilnojamąjį turtą</>}
+                            icon={<HomeWorkIcon sx={{ color: theme.palette.secondary.main, fontSize: 40, position: 'relative' }} />}
+                            text={"Procesas apima rinkos analizę, turto vertinimą, potencialių klientų paiešką bei intensyvias derybas dėl kainos ir sąlygų. Mano vaidmuo yra užtikrinti sėkmingą sandorio sudarymą, pasitelkiant gerus tarpininkavimo, pardavimų ir derybų įgūdžius. Esminis aspektas - suprasti klientų poreikius ir tinkamai juos atitikti, siekiant užtikrinti patenkinamą rezultatą visoms šalims."} />
+
+                        <ServiceCard minHeight={400}
+                            title={<>Nekilnojamojo turto <span style={{ color: theme.palette.secondary.main }}>dokumentacija</span></>}
+                            icon={<FeedIcon sx={{ color: theme.palette.secondary.main, fontSize: 40, position: 'relative' }} />}
+                            text={"Suteiksiu greitą ir kokybišką nekilnojamojo turto dokumentacijos paruošimą, apimančią pardavimo, pirkimo bei nuomos procesus. Be to, teiksiu nemokamą konsultaciją dėl visų susijusių klausimų, siekiant Jums suteikti visapusišką pagalbą."} />
+
                     </Stack>
                     <Stack width={'100%'}>
-                        <Stack spacing={2} width={'100%'} minHeight={{ xs: 'none', sm: 550 }} pb={8}
-                            position={'relative'}
-                            alignSelf={'flex-start'}
-                            sx={{ p: { xs: 2, sm: 4, lg: 8 }, py: { xs: 4, sm: 4, lg: 8 }, ':hover': { boxShadow: 'rgba(17, 12, 46, 0.05) 0px 48px 100px 0px;' } }}>
-                            <ApartmentIcon sx={{ color: theme.palette.secondary.main, fontSize: 40, position: 'relative' }} />
-                            <Typography color={theme.palette.primary.main} fontWeight={600} variant='h5' component={'h2'}>
-                                Pagalba <span style={{ color: theme.palette.secondary.main }}>nuomojant</span> nekilnojamąjį turtą
-                            </Typography>
-                            <Typography color={theme.palette.primary.main} variant='body1'>
-                                Nekilnojamojo turto nuoma prasideda nuodugnia rinkos analize, įvertinant esamų objektų kainodarą. Svarbu nustatyti maksimalią nuomos kainą, atsižvelgiant į rinkos tendencijas. Objekto pristatymui potencialiems nuomininkams reikia skirti ypatingą dėmesį, užtikrinant profesionalumą ir patrauklų pristatymą. Be to, būtina sudaryti aiškią nuomos sutartį ir paruošti visus reikiamus dokumentus, siekiant užtikrinti sklandų ir sėkmingą sandorį.
-                            </Typography>
-                        </Stack>
-                        <Stack spacing={2} width={'100%'} minHeight={{ xs: 'none', sm: 400 }} pb={8}
-                            position={'relative'}
-                            alignSelf={'flex-start'}
-                            sx={{ p: { xs: 2, sm: 4, lg: 8 }, py: { xs: 4, sm: 4, lg: 8 }, ':hover': { boxShadow: 'rgba(17, 12, 46, 0.05) 0px 48px 100px 0px;' } }}>
-                            <FindInPageIcon sx={{ color: theme.palette.secondary.main, fontSize: 40, position: 'relative' }} />
-                            <Typography color={theme.palette.primary.main} fontWeight={600} variant='h5' component={'h2'}>
-                                Nekilnojamojo turto <span style={{ color: theme.palette.secondary.main }}>paieška</span>
-                            </Typography>
-                            <Typography color={theme.palette.primary.main} variant='body1'>
-                                Mano vaidmuo - rasti tinkamą nekilnojamąjį turtą pagal kliento poreikius, vykdyti derybas dėl kainos ir sąlygų bei užtikrinti sėkmingą sandorio sudarymą. Procesas apima nuodugnų rinkos tyrimą, turto vertinimą ir aktyvų bendradarbiavimą su klientais, siekiant pasiekti geriausius rezultatus pirkimo metu.
-                            </Typography>
-                        </Stack>
+                        <ServiceCard minHeight={550}
+                            title={<>Atstovavimas <span style={{ color: theme.palette.secondary.main }}>parduodant</span> nekilnojamąjį turtą</>}
+                            icon={<ApartmentIcon sx={{ color: theme.palette.secondary.main, fontSize: 40, position: 'relative' }} />}
+                            text={"Nekilnojamojo turto nuoma prasideda nuodugnia rinkos analize, įvertinant esamų objektų kainodarą. Svarbu nustatyti maksimalią nuomos kainą, atsižvelgiant į rinkos tendencijas. Objekto pristatymui potencialiems nuomininkams reikia skirti ypatingą dėmesį, užtikrinant profesionalumą ir patrauklų pristatymą. Be to, būtina sudaryti aiškią nuomos sutartį ir paruošti visus reikiamus dokumentus, siekiant užtikrinti sklandų ir sėkmingą sandorį."} />
+
+                        <ServiceCard minHeight={400}
+                            title={<>Nekilnojamojo turto <span style={{ color: theme.palette.secondary.main }}>paieška</span></>}
+                            icon={<FindInPageIcon sx={{ color: theme.palette.secondary.main, fontSize: 40, position: 'relative' }} />}
+                            text={"Mano vaidmuo - rasti tinkamą nekilnojamąjį turtą pagal kliento poreikius, vykdyti derybas dėl kainos ir sąlygų bei užtikrinti sėkmingą sandorio sudarymą. Procesas apima nuodugnų rinkos tyrimą, turto vertinimą ir aktyvų bendradarbiavimą su klientais, siekiant pasiekti geriausius rezultatus pirkimo metu."} />
                     </Stack>
                 </Stack>
             </Stack>

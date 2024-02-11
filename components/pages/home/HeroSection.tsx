@@ -1,3 +1,4 @@
+import useIntersectionObserver from '@/app/useIntersectionObserver'
 import { AruodasIcon } from '@/components/layout/AruodasIcon'
 import { theme } from '@/components/layout/Theme'
 import FacebookIcon from '@mui/icons-material/Facebook'
@@ -8,8 +9,14 @@ import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import Image from 'next/legacy/image'
 import Link from 'next/link'
+import { useRef } from 'react'
 
 export const HeroSection = () => {
+    const imgRef = useRef<HTMLDivElement>(null);
+    useIntersectionObserver(imgRef, 'animate__animated animate__fadeIn');
+
+    const titleRef = useRef<HTMLDivElement>(null);
+    useIntersectionObserver(titleRef, 'animate__animated animate__fadeIn');
     return (
         <Stack sx={{ backgroundColor: '#f5f5f5', width: '100%' }}>
             <Stack sx={{
@@ -23,7 +30,7 @@ export const HeroSection = () => {
                     <Stack width={{ xs: '100%', md: '50%' }} pt={{ xs: 15, md: 10 }}>
                         <Stack spacing={4} height={'100%'} alignItems={'flex-start'} position={'relative'}
                             justifyContent={'center'} alignContent={'flex-start'}>
-                            <Typography variant='h1' fontWeight={600}>
+                            <Typography variant='h1' fontWeight={600} ref={titleRef}>
                                 <span style={{ color: theme.palette.secondary.main }}>Kiekvienus</span> namus parduodu kaip savus
                             </Typography>
                             <Typography variant='body1'>
@@ -57,7 +64,7 @@ export const HeroSection = () => {
                         </Stack>
                     </Stack>
                     <Stack width={{ xs: '100%', sm: '60%', md: '40%' }} position={'relative'} zIndex={2}>
-                        <Stack sx={{ position: 'relative', width: '100%', height: { xs: 500, md: 800 }, positon: 'relative', top: { xs: 50, md: 150 } }}>
+                        <Stack ref={imgRef} sx={{ position: 'relative', width: '100%', height: { xs: 500, md: 800 }, positon: 'relative', top: { xs: 50, md: 150 } }}>
                             <Image priority alt={"Ernestas Noreikis NT nekilnojamas turtas brokeris"}
                                 layout='fill' objectFit='cover' objectPosition='top' src={'/assets/images/ernestas-noreikis-NT-brokeris.avif'} />
                         </Stack>
