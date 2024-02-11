@@ -27,7 +27,7 @@ const Header = () => {
     const footerMenuItems = getFooterMenuItems()
     const renderNavLinks = headerMenuItems?.map(link => {
         return (
-            <Link href={`/${link.slug}`} key={link.name}>
+            <Link href={`/${link.slug}`} key={link.name} onClick={toggleMobileMenu}>
                 <Typography variant='body1'
                     sx={{
                         color: router.pathname === link.slug ? theme.palette.secondary.main : theme.palette.text.primary,
