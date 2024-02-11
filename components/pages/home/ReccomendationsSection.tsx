@@ -1,5 +1,6 @@
 import { RecommendationsType } from '@/app/types/RecommendationsType';
 import { RecommendationCarouselItem } from '@/components/layout/RecommendationCarouselItem';
+import { SectionSubtitle } from '@/components/layout/SectionSubtitle';
 import { SectionTitle } from '@/components/layout/SectionTitle';
 import { theme } from '@/components/layout/Theme';
 import EastIcon from '@mui/icons-material/East';
@@ -35,7 +36,7 @@ export const ReccomendationsSection = ({ recommendations }: Props) => {
                     scrollMarginTop: 50,
                     position: 'relative', mt: '-1px', zIndex: 3
                 }}>
-                    <Stack spacing={1} pt={10} pb={6} sx={{
+                    <Stack pt={10} pb={6} sx={{
                         justifyContent: 'space-between', width: '100%',
                         maxWidth: 'xl', mx: 'auto', position: 'relative',
                         px: { xl: 2, md: 4, xs: 2 },
@@ -44,16 +45,19 @@ export const ReccomendationsSection = ({ recommendations }: Props) => {
                     }}>
                         <Stack direction={'row'} justifyContent={"space-between"} >
                             <Stack sx={{ width: { xs: '100%', md: '50%' } }}>
-                                <SectionTitle title={<>Mano   klientai yra mano<br />
-                                    <span style={{ color: theme.palette.secondary.main }}>
-                                        partneriai.
-                                    </span></>} />
-                                <Typography pt={2} variant='body1' width={'60%'}>
-                                    Klientų mintys ir atsiliepimai apie kartu nuveiktus darbus ir pasiekimus:
-                                </Typography>
+                                <SectionTitle title={
+                                    <>
+                                        Mano klientai yra mano<br />
+                                        <span style={{ color: theme.palette.secondary.main }}>
+                                            partneriai.
+                                        </span>
+                                    </>
+                                } />
+                                <SectionSubtitle
+                                    text={"Klientų mintys ir atsiliepimai apie kartu nuveiktus darbus ir pasiekimus:"} />
                             </Stack>
                         </Stack>
-                        <Stack pt={0} className='animate__animated animate__fadeInRight animate__fadeIn'>
+                        <Stack>
                             <AliceCarousel
                                 renderPrevButton={() => { return <WestIcon sx={{ cursor: 'pointer' }} /> }}
                                 renderNextButton={() => { return <EastIcon sx={{ cursor: 'pointer' }} /> }}

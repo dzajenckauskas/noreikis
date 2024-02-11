@@ -1,10 +1,10 @@
 import { BlogPostsType } from '@/app/types/BlogPostsTypes';
+import { SectionSubtitle } from '@/components/layout/SectionSubtitle';
 import { SectionTitle } from '@/components/layout/SectionTitle';
 import { getTheme } from '@/components/layout/Theme';
 import BlogPostCard from '@/components/shared/BlogPostCard';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
-import Typography from '@mui/material/Typography';
 
 type Props = {
     blogPosts?: BlogPostsType | null;
@@ -27,9 +27,7 @@ export const BlogPostsSection = ({ blogPosts }: Props) => {
                         <span style={{ color: theme.palette.secondary.main }}>
                             naujienos
                         </span></>} />
-                    <Typography pt={2} variant='body1' width={'80%'}>
-                        Mano asmeninės įžvalgos ir Nekilnojamojo turto rinkos naujienos bei aktualijos:&nbsp;
-                    </Typography>
+                    <SectionSubtitle text={"Mano asmeninės įžvalgos ir Nekilnojamojo turto rinkos naujienos bei aktualijos:"} />
                 </Stack>
                 <Grid container direction={'row'} spacing={4} sx={{ my: 4 }}>
                     {renderBlogPosts}

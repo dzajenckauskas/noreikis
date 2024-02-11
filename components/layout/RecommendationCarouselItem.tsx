@@ -7,7 +7,7 @@ import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Image from 'next/legacy/image';
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import { theme } from './Theme';
 
@@ -16,31 +16,27 @@ type Props = {
 }
 
 export const RecommendationCarouselItem = ({ item }: Props) => {
-    const handleDragStart: React.DragEventHandler<HTMLDivElement> = (e) => {
-        e.preventDefault();
-    };
     const image = item?.attributes?.image?.data?.attributes
     const src = `${process.env.NEXT_PUBLIC_API_URL}${image?.url}`
     const elementRef = useRef<HTMLDivElement>(null);
-    useIntersectionObserver(elementRef, 'animate__animated animate__fadeInRight animate__fadeIn');
+    useIntersectionObserver(elementRef, 'animate__animated animate__fadeIn animate__slow');
     return (
         <Grid item lg={3} md={3} sm={6} xs={12}>
             <Stack
-                ref={elementRef}
+                className='animate__animated animate__fadeIn animate__slower'
                 maxWidth={'sm'}
                 mx={'auto'}
-                onDragStart={handleDragStart} sx={{ width: '100%' }} spacing={1}
-                alignItems={'center'} p={4}
-            >
+                sx={{ width: '100%' }} spacing={1}
+                alignItems={'center'} p={4}>
                 <Stack alignSelf={'flex-end'} position={'relative'}>
                     <FormatQuoteIcon sx={{
                         position: 'absolute', top: 18, right: -8, zIndex: 2, color: theme.palette.secondary.dark,
                         transform: 'scale(4)'
                     }} />
-
-                    {src &&
+                    {src && <div ref={elementRef}>
                         <Image style={{ borderRadius: '0%' }} priority objectFit='cover'
-                            src={src} alt={item.attributes?.text} width={150} height={150} />}
+                            src={src} alt={item.attributes?.text} width={150} height={150} />
+                    </div>}
                     {!src && <Box width={100} height={100}></Box>}
                 </Stack>
                 <Stack spacing={0} pt={4}>

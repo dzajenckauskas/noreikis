@@ -1,4 +1,5 @@
 import PriceInquiryForm from '@/components/forms/PriceInquiryForm'
+import { SectionSubtitle } from '@/components/layout/SectionSubtitle'
 import { SectionTitle } from '@/components/layout/SectionTitle'
 import { theme } from '@/components/layout/Theme'
 import Stack from '@mui/material/Stack'
@@ -25,9 +26,8 @@ export const PriceInquirySection = () => {
                             Nemokamas
                         </span>
                             &nbsp;turto kainos įvertinimas</>} />
-                        <Typography pt={2} variant='body1' width={{ xs: '80%', sm: '80%' }}>
-                            Užpildykite turto kainos vertinimo užklausą ir sužinokite savo nekilnojamojo turto vertę
-                        </Typography>
+                        <SectionSubtitle
+                            text={"Užpildykite turto kainos vertinimo užklausą ir sužinokite savo nekilnojamojo turto vertę"} />
                     </Stack>
                 </Stack>
                 <Stack py={4} spacing={8} width={'100%'}

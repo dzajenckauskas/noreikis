@@ -8,6 +8,7 @@ import Link from 'next/link';
 import React from 'react'
 import SubdirectoryArrowRightIcon from '@mui/icons-material/SubdirectoryArrowRight'
 import { SectionTitle } from '@/components/layout/SectionTitle';
+import { SectionSubtitle } from '@/components/layout/SectionSubtitle';
 
 type Props = {
     objects?: ObjectsType | null;
@@ -31,16 +32,16 @@ export const ForSaleSection = ({ objects, bgColor }: Props) => {
                         <span style={{ color: theme.palette.secondary.main }}>
                             parduodama
                         </span></>} />
-                    <Typography pt={2} variant='body1' width={'60%'}>
+                    <SectionSubtitle text={<>
                         Mano klientų parduodami nekilnojamojo turto objektai. Ieškote kažko kito?&nbsp;
                         <Link passHref href={'kontaktai'}>
                             <Typography component={'span'} sx={{ color: theme.palette.secondary.main, ":hover": { textDecoration: 'underline' } }}>
                                 Susisiekime!
                             </Typography>
                         </Link>
-                    </Typography>
+                    </>} />
                 </Stack>
-                <Grid container direction={'row'} spacing={4} sx={{ my: 10 }}>
+                <Grid container direction={'row'} spacing={4} sx={{ my: 6 }}>
                     {renderObjects}
                 </Grid>
                 <Stack direction={'row'} spacing={{ md: 1, xs: .5 }} sx={{ pt: 6, alignSelf: 'flex-end' }}>

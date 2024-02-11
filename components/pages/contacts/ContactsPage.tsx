@@ -12,6 +12,7 @@ import Link from 'next/link'
 import { AruodasIcon } from '../../layout/AruodasIcon'
 import { HeadComponent } from '../../layout/HeadComponent'
 import { SectionTitle } from '@/components/layout/SectionTitle'
+import { SectionSubtitle } from '@/components/layout/SectionSubtitle'
 
 type Props = {
 }
@@ -39,9 +40,7 @@ export const ContactsPage = ({ }: Props) => {
                                     Susisiekite
                                 </span>
                                     &nbsp;su manimi</>} />
-                                <Typography pt={2} variant='body1' width={'60%'}>
-                                    Susisiekite nurodytais kontaktais arba palikite žinutę ir as su jumis susisieksiu
-                                </Typography>
+                                <SectionSubtitle text={"Susisiekite nurodytais kontaktais arba palikite žinutę ir as su jumis susisieksiu"} />
                             </Stack>
 
                         </Stack>
