@@ -32,9 +32,7 @@ export default function UsefulInformation({ blogPost, objects }: Props) {
             <Typography variant='h4' py={4} fontWeight={600}>
               {blogPost.attributes?.title}
             </Typography>
-            <Typography>
-              <BlocksRendererComponent content={blogPost.attributes?.content} />
-            </Typography>
+            <BlocksRendererComponent content={blogPost.attributes?.content} />
           </Stack>
         </Stack>
         <ForSaleSection objects={objects} bgColor={'#f5f5f5'} />
