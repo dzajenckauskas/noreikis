@@ -25,7 +25,7 @@ export const BlocksRendererComponent = ({ content }: Props) => {
                         case 5:
                             return <Typography variant="h5">{children}</Typography>
                         case 6:
-                            return <Typography variant="h6" pt={2} fontWeight={500}>{children}</Typography>
+                            return <Typography variant="h6" component={'p'} pt={2} fontWeight={500}>{children}</Typography>
                         default:
                             return <Typography variant="h1">{children}</Typography>
                     }
