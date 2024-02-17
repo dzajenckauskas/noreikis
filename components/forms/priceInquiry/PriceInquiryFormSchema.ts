@@ -8,19 +8,23 @@ export const getPriceInquiryFormSchema = () => {
         city: yup.string().required(`${'Įveskite NT objekto miestą'}`),
         address: yup.string().required(`${'Įveskite NT objekto adresą'}`),
         category: yup.object().required(`${'Pasirinkite objekto kategoriją'}`),
-        objectPurpose: yup.object().when("category.attributes.value", {
-            is: (value: string) => (value !== "flats"),
+        objectPurpose: yup.object().nullable().when("category.attributes.value", {
+            is: (value: string) => {
+                return (value == "land" || value == 'house')
+            },
             then: () => yup.object()
                 .required(`${'Pasirinkite objekto paskirtį'}`)
                 .typeError(`${'Pasirinkite objekto paskirtį'}`),
         }),
-        houseType: yup.object().when("category.attributes.value", {
+        houseType: yup.object().nullable().when("category.attributes.value", {
             is: (value: string) => (value !== "land"),
             then: () => yup.object().required(`${'Pasirinkite namo tipą'}`)
                 .typeError(`${'Pasirinkite namo tipą'}`),
         }),
-        objectState: yup.object().when("category.attributes.value", {
-            is: (value: string) => (value !== "land"),
+        objectState: yup.object().nullable().when("category.attributes.value", {
+            is: (value: string) => {
+                return (value == "flats" || value == "house")
+            },
             then: () => yup.object()
                 .required(`${'Pasirinkite objekto būseną'}`)
                 .typeError(`${'Pasirinkite objekto būseną'}`),
