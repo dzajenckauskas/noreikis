@@ -13,15 +13,20 @@ import { AruodasIcon } from '../../layout/AruodasIcon'
 import { HeadComponent } from '../../layout/HeadComponent'
 import { SectionTitle } from '@/components/layout/SectionTitle'
 import { SectionSubtitle } from '@/components/layout/SectionSubtitle'
+import { PageType } from '@/app/types/PageType'
 
 type Props = {
+    page?: PageType;
 }
-export const ContactsPage = ({ }: Props) => {
+
+export const ContactsPage = ({ page }: Props) => {
     return (
         <>
             <HeadComponent
-                title={"Ernestas Noreikis - Jūsų patikimas NT brokeris Vilniuje, Kaune, Palangoje"}
-                description={"Nekilnojamojo turto brokeris Ernestas Noreikis. Atstovauju Jūsų NT objektus perkant, parduodant ar nuomojant NT objektus Vilniuje, Kaune ir Palangoje. Dėl nemokamo turto vertinimo ar konsultacijos, susisiekime telefonu +37062429709 arba palikite žinutę info@noreikis.com"} />
+                title={page?.attributes.seo.seoTitle}
+                description={page?.attributes.seo.seoDescription}
+                keywords={page?.attributes.seo.seoKeywords}
+            />
             <Layout>
                 <Stack sx={{
                     backgroundColor: '#fafafa',

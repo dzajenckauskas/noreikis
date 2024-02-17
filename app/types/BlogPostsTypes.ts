@@ -1,6 +1,7 @@
 import { BlocksContent } from '@strapi/blocks-react-renderer';
 import { ImagesType } from './ImageTypes'
 import { MetaType } from './MetaTypes'
+import { SeoType } from './PageType';
 
 export type BlogPostsType = {
     data: BlogPostType[];
@@ -23,4 +24,5 @@ export type BlogPostAtributesType = {
     title: string;
     shortContent: string;
     images: ImagesType;
+    seo?: SeoType;
 }

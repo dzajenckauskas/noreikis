@@ -1,6 +1,7 @@
 import { BlocksContent } from '@strapi/blocks-react-renderer';
 import { ImagesType } from './ImageTypes'
 import { MetaType } from './MetaTypes'
+import { SeoType } from './PageType';
 
 export type ObjectsType = {
     data: ObjectType[];
@@ -51,6 +52,7 @@ export type ObjectAtributesType = {
     slug: string;
     price: string;
     images: ImagesType;
+    seo?: SeoType;
 }
 
 

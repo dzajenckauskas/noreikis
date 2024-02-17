@@ -1,5 +1,11 @@
 import axios from 'axios'
 
+export const getPage = async (name: string, populate?: string) => {
+    let url = `${process.env.NEXT_PUBLIC_API_URL}/api/${name}?${populate}`
+    url = `${url}`
+    const item = await axios.get(url)
+    return item?.data ?? null
+}
 export const getItem = async (name: string, id: string, populate?: string) => {
     let url = `${process.env.NEXT_PUBLIC_API_URL}/api/${name}/${Number(id)}/?${populate}`
     url = `${url}`

@@ -41,7 +41,10 @@ export default function Home({ object }: Props) {
 
   return (
     <>
-      <HeadComponent title={title} description={title} />
+      <HeadComponent title={object?.attributes?.seo?.seoTitle ?? title}
+        description={object?.attributes?.seo?.seoDescription}
+        keywords={object?.attributes?.seo?.seoKeywords}
+      />
       <Layout>
         <Stack key={object?.id} sx={{
           px: { xl: 2, md: 4, xs: 2 }, pt: 0,

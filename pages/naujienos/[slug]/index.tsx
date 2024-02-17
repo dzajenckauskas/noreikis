@@ -25,7 +25,10 @@ export default function UsefulInformation({ blogPost, objects }: Props) {
 
   return (
     <>
-      <HeadComponent title={blogPost.attributes?.title} description={blogPost.attributes?.shortContent} />
+      <HeadComponent title={blogPost.attributes?.seo?.seoTitle ?? blogPost.attributes?.title}
+        description={blogPost.attributes?.seo?.seoDescription ?? blogPost.attributes?.shortContent}
+        keywords={blogPost.attributes?.seo?.seoKeywords}
+      />
       <Layout>
         <Stack sx={{ maxWidth: 'xl', mx: 'auto', px: { xl: 2, md: 4, xs: 2 }, pb: 14 }}>
           <Stack ref={imgRef} sx={{ position: 'relative', width: { xs: '100%', sm: '100%', md: '100%', xl: '100%' }, height: 600 }}>
