@@ -50,17 +50,17 @@ export default function Home({ object }: Props) {
     1000: { items: 1 },
     1200: { items: 1 },
   };
-  const items = object?.attributes?.images.data?.filter((img) => img.attributes?.formats.large)?.map((item) => {
-    const imageSrc = item.attributes?.formats.large?.url ? `${process.env.NEXT_PUBLIC_API_URL}${item.attributes?.formats.large?.url}` : undefined
-    return (
-      <Stack ref={imgRef} sx={{ position: 'relative', width: { xs: '100%', sm: '100%', md: '100%', xl: '100%' }, height: 600 }}>
+  // const items = object?.attributes?.images.data?.filter((img) => img.attributes?.formats.large)?.map((item) => {
+  //   const imageSrc = item.attributes?.formats.large?.url ? `${process.env.NEXT_PUBLIC_API_URL}${item.attributes?.formats.large?.url}` : undefined
+  //   return (
+  //     <Stack ref={imgRef} sx={{ position: 'relative', width: { xs: '100%', sm: '100%', md: '100%', xl: '100%' }, height: 600 }}>
 
-        <Image priority alt={item?.attributes?.alternativeText ?? ''}
-          layout='fill' objectFit='cover' src={imageSrc ?? '/'} />
-      </Stack>
-    )
-  }
-  )
+  //       <Image priority alt={item?.attributes?.alternativeText ?? ''}
+  //         layout='fill' objectFit='cover' src={imageSrc ?? '/'} />
+  //     </Stack>
+  //   )
+  // }
+  // )
   return (
     <>
       <HeadComponent title={object?.attributes?.seo?.seoTitle ?? title}
