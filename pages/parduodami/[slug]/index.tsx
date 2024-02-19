@@ -9,10 +9,13 @@ import { Box, Stack, Typography } from '@mui/material'
 import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 import Image from "next/legacy/image"
 import { useRef } from 'react'
-
-type Props = {
-  object?: ObjectType;
-}
+import AliceCarousel from 'react-alice-carousel';
+import 'react-alice-carousel/lib/alice-carousel.css';
+import EastIcon from '@mui/icons-material/East';
+import WestIcon from '@mui/icons-material/West';
+import { ImageCarousel } from '@/components/layout/ImageGallery'
+import ImageCarousel2 from '@/components/layout/ImageCarousel2'
+import ImageCarousel3 from '@/components/layout/ImageCarousel3'
 
 export const getActionTypeText = (object?: ObjectType) => {
   if (object?.attributes?.actionType.data.attributes.value == 'sale') return 'Parduodama'
@@ -25,9 +28,11 @@ export const getStatusTypeText = (object?: ObjectType) => {
   else return null
 }
 
+type Props = {
+  object?: ObjectType;
+}
+
 export default function Home({ object }: Props) {
-  const image = object?.attributes?.images?.data?.[0]?.attributes?.formats
-  const imageSrc = `${process.env.NEXT_PUBLIC_API_URL}${image?.large?.url ?? image?.medium?.url}`
 
   const pricePerSqM = ((Number(object?.attributes?.discountPrice) || Number(object?.attributes?.price)) / Number(object?.attributes?.areaSqM))
 
@@ -39,6 +44,23 @@ export default function Home({ object }: Props) {
   const imgRef = useRef<HTMLDivElement>(null);
   useIntersectionObserver(imgRef, 'animate__animated animate__fadeIn');
 
+  const responsive = {
+    0: { items: 1 },
+    600: { items: 1 },
+    1000: { items: 1 },
+    1200: { items: 1 },
+  };
+  const items = object?.attributes?.images.data?.filter((img) => img.attributes?.formats.large)?.map((item) => {
+    const imageSrc = item.attributes?.formats.large?.url ? `${process.env.NEXT_PUBLIC_API_URL}${item.attributes?.formats.large?.url}` : undefined
+    return (
+      <Stack ref={imgRef} sx={{ position: 'relative', width: { xs: '100%', sm: '100%', md: '100%', xl: '100%' }, height: 600 }}>
+
+        <Image priority alt={item?.attributes?.alternativeText ?? ''}
+          layout='fill' objectFit='cover' src={imageSrc ?? '/'} />
+      </Stack>
+    )
+  }
+  )
   return (
     <>
       <HeadComponent title={object?.attributes?.seo?.seoTitle ?? title}
@@ -51,16 +73,22 @@ export default function Home({ object }: Props) {
           width: '100%', maxWidth: 'xl', mx: 'auto'
         }}>
           <Stack ref={imgRef} sx={{ position: 'relative', width: { xs: '100%', sm: '100%', md: '100%', xl: '100%' }, height: 600 }}>
-            <Image priority alt={object?.attributes?.images?.data?.[0]?.attributes?.alternativeText ?? ''}
-              layout='fill' objectFit='cover' src={imageSrc ?? '/'} />
-            <Box sx={{ backgroundColor: '#000', width: 'max-content', position: 'absolute', bottom: 4, px: 2, left: -4 }}>
-              <Typography variant='caption' color={'#fff'}>
+            {/* <Image priority alt={object?.attributes?.images?.data?.[0]?.attributes?.alternativeText ?? ''}
+              layout='fill' objectFit='cover' src={imageSrc ?? '/'} /> */}
+
+            {object?.attributes?.images.data &&
+              <ImageCarousel images={object?.attributes?.images.data.filter((img) => img.attributes?.formats.large)} />}
+            {/* {object?.attributes?.images.data &&
+              <ImageCarousel images={object?.attributes?.images.data.filter((img) => img.attributes?.formats.large)} />} */}
+
+            <Box sx={{ backgroundColor: '#000', width: 'max-content', position: 'absolute', top: 14, px: 2, left: -4 }}>
+              <Typography variant='body1' color={'#fff'}>
                 {action}
               </Typography>
             </Box>
             {status &&
-              <Box sx={{ backgroundColor: theme.palette.secondary.main, width: 'max-content', position: 'absolute', bottom: 28, px: 2, left: -4 }}>
-                <Typography variant='caption' color={'#fff'}>
+              <Box sx={{ backgroundColor: theme.palette.secondary.main, width: 'max-content', position: 'absolute', top: 42, px: 2, left: -4 }}>
+                <Typography variant='body1' color={'#fff'}>
                   {status}
                 </Typography>
               </Box>}
