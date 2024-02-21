@@ -10,6 +10,7 @@ import Image from "next/legacy/image";
 import { useEffect, useRef, useState } from 'react';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import { theme } from './Theme';
+import Button from '@mui/material/Button';
 
 type Props = {
     images: ImageType[]
@@ -75,7 +76,7 @@ export const ImageCarousel = ({ images }: Props) => {
     useIntersectionObserver(imgRef, 'animate__animated animate__fadeIn');
 
     const thumbs = images?.map((item, i) => {
-        const imageSrc = item.attributes?.formats.large?.url ? `${process.env.NEXT_PUBLIC_API_URL}${item.attributes?.formats.large?.url}` : undefined
+        const imageSrc = item.attributes?.formats.thumbnail?.url ? `${process.env.NEXT_PUBLIC_API_URL}${item.attributes?.formats.thumbnail?.url}` : undefined
         return (
             <Stack key={i} id={i.toString()}
                 sx={{ position: 'relative', width: 100, height: 100, ':hover': { opacity: .9 }, opacity: activeImage === i ? .9 : .6, cursor: 'pointer' }}>
@@ -97,29 +98,32 @@ export const ImageCarousel = ({ images }: Props) => {
             </Stack>
 
             {images.length > 1 && <>
-                <Stack direction={'row'} onClick={toPreviousImage} sx={{
-                    cursor: 'pointer',
-                    backgroundColor: '#fff', width: 40, height: 40, position: 'absolute', opacity: .6,
-                    ':hover': { opacity: .9 }, left: 0, bottom: 0, pt: 1, pr: 1
-                }} justifyContent={'flex-end'}>
+                <Button color={'info'} variant='contained' onClick={toPreviousImage} sx={{
+                    minWidth: '40px', boxShadow: 'none !important ',
+                    opacity: .6, ':hover': { opacity: .9, backgroundColor: '#fff' },
+                    width: 40, height: 40, position: 'absolute',
+                    left: 0, bottom: 0
+                }}>
                     <WestIcon sx={{ color: theme.palette.primary.main }} />
-                </Stack>
+                </Button>
 
-                <Stack direction={'row'} onClick={toNextImage} sx={{
-                    cursor: 'pointer',
-                    backgroundColor: '#fff', width: 40, height: 40, position: 'absolute', opacity: .6,
-                    ':hover': { opacity: .9 }, left: 42, bottom: 0, pt: 1, pl: 1
-                }} justifyContent={'flex-start'}>
+                <Button color={'info'} variant='contained' onClick={toNextImage} sx={{
+                    minWidth: '40px', boxShadow: 'none !important ',
+                    opacity: .6, ':hover': { opacity: .9, backgroundColor: '#fff' },
+                    width: 40, height: 40, position: 'absolute',
+                    left: 42, bottom: 0
+                }}>
                     <EastIcon sx={{ color: theme.palette.primary.main }} />
-                </Stack>
+                </Button>
             </>}
-            <Stack direction={'row'} onClick={handleToggle} sx={{
-                cursor: 'pointer', justifyContent: 'center', alignItems: 'center',
-                backgroundColor: '#fff', width: 40, height: 40, position: 'absolute', opacity: .6,
-                ':hover': { opacity: .9 }, right: 0, bottom: 0
-            }} justifyContent={'space-between'}>
+            <Button color={'info'} variant='contained' onClick={handleToggle} sx={{
+                minWidth: '40px', boxShadow: 'none !important ',
+                opacity: .6, ':hover': { opacity: .9, backgroundColor: '#fff' },
+                width: 40, height: 40, position: 'absolute',
+                right: 0, bottom: 0
+            }}>
                 <FullscreenIcon sx={{ color: theme.palette.primary.main, fontSize: 27 }} />
-            </Stack>
+            </Button>
 
             {images.length > 1 &&
                 <Stack direction={'row'} mt={2}>
@@ -145,31 +149,33 @@ export const ImageCarousel = ({ images }: Props) => {
                         onTouchMove={(e) => { handleTouchMove(e) }}
                     />
 
-                    <Stack direction={'row'} sx={{ mx: 'auto', position: 'relative', bottom: -20 }}>
-                        {images.length > 1 && <Stack direction={'row'} onClick={toPreviousImage} sx={{
-                            cursor: 'pointer',
-                            backgroundColor: '#fff', width: 40, height: 40, opacity: .6,
-                            bottom: 0,
-                            ':hover': { opacity: .9 }, pt: 1, pr: 1
-                        }} justifyContent={'flex-end'}>
-                            <WestIcon sx={{ color: theme.palette.primary.main }} />
-                        </Stack>}
-                        <Stack direction={'row'} onClick={handleClose} sx={{
-                            justifyContent: 'center', alignItems: 'center',
-                            cursor: 'pointer', mx: '2px',
-                            backgroundColor: '#fff', width: 40, height: 40, opacity: .6,
-                            ':hover': { opacity: .9 }, zIndex: 999
-                        }} justifyContent={'flex-end'}>
-                            <CloseIcon sx={{ color: theme.palette.primary.main }} />
-                        </Stack>
+                    <Stack direction={'row'} spacing={.3} sx={{ mx: 'auto', position: 'relative', bottom: -20 }}>
                         {images.length > 1 &&
-                            <Stack direction={'row'} onClick={toNextImage} sx={{
-                                cursor: 'pointer',
-                                backgroundColor: '#fff', width: 40, height: 40, opacity: .6,
-                                ':hover': { opacity: .9 }, pt: 1, pl: 1
-                            }} justifyContent={'flex-start'}>
+                            <Button color={'info'} onClick={toPreviousImage} sx={{
+                                minWidth: '40px', boxShadow: 'none !important ',
+                                backgroundColor: '#fff',
+                                opacity: .9, ':hover': { opacity: .6, backgroundColor: '#fff' },
+                                width: 40, height: 40, zIndex: 999
+                            }}>
+                                <WestIcon sx={{ color: theme.palette.primary.main }} />
+                            </Button>}
+                        <Button color={'info'} onClick={handleClose} sx={{
+                            minWidth: '40px', boxShadow: 'none !important ',
+                            backgroundColor: '#fff',
+                            opacity: .9, ':hover': { opacity: .6, backgroundColor: '#fff' },
+                            width: 40, height: 40, zIndex: 999
+                        }}>
+                            <CloseIcon sx={{ color: theme.palette.primary.main }} />
+                        </Button>
+                        {images.length > 1 &&
+                            <Button color={'info'} onClick={toNextImage} sx={{
+                                minWidth: '40px', boxShadow: 'none !important ',
+                                backgroundColor: '#fff',
+                                opacity: .9, ':hover': { opacity: .6, backgroundColor: '#fff' },
+                                width: 40, height: 40, zIndex: 999
+                            }}>
                                 <EastIcon sx={{ color: theme.palette.primary.main }} />
-                            </Stack>}
+                            </Button>}
                     </Stack>
                 </Stack>
             </Backdrop>
