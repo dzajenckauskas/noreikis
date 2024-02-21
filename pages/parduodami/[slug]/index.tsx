@@ -3,19 +3,13 @@ import useIntersectionObserver from '@/app/useIntersectionObserver'
 import { getItemBySlug } from '@/app/utils'
 import { BlocksRendererComponent } from '@/components/layout/BlocksRendererComponent'
 import { HeadComponent } from '@/components/layout/HeadComponent'
+import { ImageCarousel } from '@/components/layout/ImageGallery'
 import Layout from '@/components/layout/Layout'
 import { theme } from '@/components/layout/Theme'
 import { Box, Stack, Typography } from '@mui/material'
 import { GetServerSideProps, GetServerSidePropsContext } from 'next'
-import Image from "next/legacy/image"
 import { useRef } from 'react'
-import AliceCarousel from 'react-alice-carousel';
-import 'react-alice-carousel/lib/alice-carousel.css';
-import EastIcon from '@mui/icons-material/East';
-import WestIcon from '@mui/icons-material/West';
-import { ImageCarousel } from '@/components/layout/ImageGallery'
-import ImageCarousel2 from '@/components/layout/ImageCarousel2'
-import ImageCarousel3 from '@/components/layout/ImageCarousel3'
+import 'react-alice-carousel/lib/alice-carousel.css'
 
 export const getActionTypeText = (object?: ObjectType) => {
   if (object?.attributes?.actionType.data.attributes.value == 'sale') return 'Parduodama'
@@ -43,24 +37,7 @@ export default function Home({ object }: Props) {
 
   const imgRef = useRef<HTMLDivElement>(null);
   useIntersectionObserver(imgRef, 'animate__animated animate__fadeIn');
-
-  const responsive = {
-    0: { items: 1 },
-    600: { items: 1 },
-    1000: { items: 1 },
-    1200: { items: 1 },
-  };
-  // const items = object?.attributes?.images.data?.filter((img) => img.attributes?.formats.large)?.map((item) => {
-  //   const imageSrc = item.attributes?.formats.large?.url ? `${process.env.NEXT_PUBLIC_API_URL}${item.attributes?.formats.large?.url}` : undefined
-  //   return (
-  //     <Stack ref={imgRef} sx={{ position: 'relative', width: { xs: '100%', sm: '100%', md: '100%', xl: '100%' }, height: 600 }}>
-
-  //       <Image priority alt={item?.attributes?.alternativeText ?? ''}
-  //         layout='fill' objectFit='cover' src={imageSrc ?? '/'} />
-  //     </Stack>
-  //   )
-  // }
-  // )
+  const images = object?.attributes?.images?.data?.filter((img) => img.attributes?.formats.large)
   return (
     <>
       <HeadComponent title={object?.attributes?.seo?.seoTitle ?? title}
@@ -72,14 +49,12 @@ export default function Home({ object }: Props) {
           px: { xl: 2, md: 4, xs: 2 }, pt: 0,
           width: '100%', maxWidth: 'xl', mx: 'auto'
         }}>
-          <Stack ref={imgRef} sx={{ position: 'relative', width: { xs: '100%', sm: '100%', md: '100%', xl: '100%' }, height: 600 }}>
-            {/* <Image priority alt={object?.attributes?.images?.data?.[0]?.attributes?.alternativeText ?? ''}
-              layout='fill' objectFit='cover' src={imageSrc ?? '/'} /> */}
-
-            {object?.attributes?.images.data &&
-              <ImageCarousel images={object?.attributes?.images.data.filter((img) => img.attributes?.formats.large)} />}
-            {/* {object?.attributes?.images.data &&
-              <ImageCarousel images={object?.attributes?.images.data.filter((img) => img.attributes?.formats.large)} />} */}
+          <Stack ref={imgRef} sx={{
+            position: 'relative', width: { xs: '100%', sm: '100%', md: '100%', xl: '100%' }, height: 600,
+            mb: (images && images?.length > 1) ? '140px' : '20px'
+          }}>
+            {images &&
+              <ImageCarousel images={images} />}
 
             <Box sx={{ backgroundColor: '#000', width: 'max-content', position: 'absolute', top: 14, px: 2, left: -4 }}>
               <Typography variant='body1' color={'#fff'}>
