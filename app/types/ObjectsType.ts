@@ -14,6 +14,7 @@ export type ObjectType = {
 }
 
 export type ObjectAtributesType = {
+    topbroker: TopbrokerType;
     region: string;
     district: string;
     quartal: string;
@@ -68,4 +69,64 @@ export type EntityType = {
     singularTitle?: string;
     locale: string;
     value: string;
+}
+
+export type TopbrokerType = {
+    logo: string;
+    comment: null,
+    language: string;
+    attachments: null,
+    list: [
+        {
+            id: number;
+            slug: string;
+            description: string;
+            token: number;
+            location: {
+                formated_address: string;
+                position: string[];
+            },
+            estate_type: string;
+            operation: string;
+            main_parameters: [
+                {
+                    title: string;
+                    value: string;
+                    icon: string;
+                    name: string;
+                    unit: string;
+                    secondary: string;
+                    secondary_unit: string;
+                }
+            ],
+            parameters: [
+                {
+                    title: string;
+                    value: string | string[];
+                    unit: null
+                }
+            ];
+
+            medias: [];
+            title: string;
+            title_en: null;
+            description_en: null;
+            photos: string[]
+        }
+    ],
+    user: TopbrokerUserType;
+    date: Date | string;
+}
+
+export type TopbrokerUserType = {
+    id: number;
+    name: string;
+    email: string;
+    phone: string;
+    custom_fields: {};
+    created_at: Date;
+    updated_at: Date;
+    archived_at: null;
+    image_url: string;
+    full_image_url: string;
 }

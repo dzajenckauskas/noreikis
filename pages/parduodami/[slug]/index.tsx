@@ -1,7 +1,6 @@
-import { ObjectType } from '@/app/types/ObjectsType'
+import { ObjectType, TopbrokerType } from '@/app/types/ObjectsType'
 import useIntersectionObserver from '@/app/useIntersectionObserver'
-import { getItemBySlug } from '@/app/utils'
-import { BlocksRendererComponent } from '@/components/layout/BlocksRendererComponent'
+import { getItem } from '@/app/utils'
 import { HeadComponent } from '@/components/layout/HeadComponent'
 import { ImageCarousel } from '@/components/layout/ImageGallery'
 import Layout from '@/components/layout/Layout'
@@ -11,14 +10,14 @@ import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 import { useRef } from 'react'
 import 'react-alice-carousel/lib/alice-carousel.css'
 
-export const getActionTypeText = (object?: ObjectType) => {
-  if (object?.attributes?.actionType.data.attributes.value == 'sale') return 'Parduodama'
-  if (object?.attributes?.actionType.data.attributes.value == 'rent') return 'Nuomojama'
+export const getActionTypeText = (topbroker: TopbrokerType | undefined) => {
+  if (topbroker?.list?.[0].operation == 'sale') return 'Parduodama'
+  if (topbroker?.list?.[0].operation == 'rent') return 'Nuomojama'
   else return null
 }
 
-export const getStatusTypeText = (object?: ObjectType) => {
-  if (object?.attributes?.statusType.data.attributes.value == 'reserved') return 'Rezervuota'
+export const getStatusTypeText = (topbroker: TopbrokerType | undefined) => {
+  if (topbroker?.list?.[0].operation == 'reserved') return 'Rezervuota'
   else return null
 }
 
@@ -27,21 +26,48 @@ type Props = {
 }
 
 export default function Home({ object }: Props) {
+  const topbroker = object?.attributes?.topbroker
+  console.log(object);
+
+  function replacePlusWithBreak(description: string): string {
+    return description.replace(/\+/g, '</br>');
+  }
+  const renderDescription = (description: string): JSX.Element[] => {
+    const sections = description.split('\n\n');
+    return sections.map((section, index) => {
+      const lines = section.split('\n');
+      if (index === 0) {
+        return <h3 key={index}>{lines[0]}</h3>;
+      } else {
+        return (
+          <div key={index} style={{ marginTop: 10 }}>
+            <h3>{lines[0]}</h3>
+            <ul>
+              {lines.slice(1).map((line, idx) => (
+                <li key={idx} style={{ listStyle: 'none' }}>{line}</li>
+              ))}
+            </ul>
+          </div>
+        );
+      }
+    });
+  };
+  const photos = topbroker?.list[0]?.photos
 
   const pricePerSqM = ((Number(object?.attributes?.discountPrice) || Number(object?.attributes?.price)) / Number(object?.attributes?.areaSqM))
 
-  const action = getActionTypeText(object)
-  const status = getStatusTypeText(object)
+  const action = getActionTypeText(topbroker)
+  const status = getStatusTypeText(topbroker)
 
-  const title = `${object?.attributes?.category?.data.attributes.singularTitle ?? ''} ${object?.attributes?.region ?? ''} ${object?.attributes?.district ?? ''} ${object?.attributes?.quartal ?? ''} ${object?.attributes?.street ?? ''} ${object?.attributes?.roomsNumber ? `${object?.attributes.roomsNumber} k.` : ''} `
+  const title = `${object?.attributes?.category?.data?.attributes.singularTitle ?? ''} ${object?.attributes?.region ?? ''} ${object?.attributes?.district ?? ''} ${object?.attributes?.quartal ?? ''} ${object?.attributes?.street ?? ''} ${object?.attributes?.roomsNumber ? `${object?.attributes.roomsNumber} k.` : ''} `
 
   const imgRef = useRef<HTMLDivElement>(null);
   useIntersectionObserver(imgRef, 'animate__animated animate__fadeIn');
   const images = object?.attributes?.images?.data?.filter((img) => img.attributes?.formats.large)
   return (
     <>
-      <HeadComponent title={object?.attributes?.seo?.seoTitle ?? title}
-        description={object?.attributes?.seo?.seoDescription}
+      <HeadComponent title={topbroker?.list[0].title ?? object?.attributes?.seo?.seoTitle ?? title}
+        description={topbroker?.list[0].description}
         keywords={object?.attributes?.seo?.seoKeywords}
       />
       <Layout>
@@ -53,8 +79,8 @@ export default function Home({ object }: Props) {
             position: 'relative', width: { xs: '100%', sm: '100%', md: '100%', xl: '100%' }, height: 600,
             mb: (images && images?.length > 1) ? '140px' : '20px'
           }}>
-            {images &&
-              <ImageCarousel images={images} />}
+            {photos &&
+              <ImageCarousel photos={photos} />}
 
             <Box sx={{ backgroundColor: '#000', width: 'max-content', position: 'absolute', top: 14, px: 2, left: -4 }}>
               <Typography variant='body1' color={'#fff'}>
@@ -73,15 +99,16 @@ export default function Home({ object }: Props) {
             <Stack width={{ md: '40%', xs: "100%" }} >
               <Stack direction={'row'} spacing={1} pt={1}>
                 <Typography variant='h4' fontWeight={600} component={'h1'}>
-                  {object?.attributes?.region},&nbsp;
+                  {/* {object?.attributes?.region},&nbsp;
                   {object?.attributes?.district}&nbsp;
                   {object?.attributes?.quartal},&nbsp;
-                  {object?.attributes?.street}
+                  {object?.attributes?.street} */}
+                  {topbroker?.list[0]?.location?.formated_address}
                 </Typography>
               </Stack>
               <Stack direction={'row'} py={1}>
                 <Typography variant='body1'>
-                  {object?.attributes?.category?.data.attributes.singularTitle} |   {object?.attributes?.roomsNumber} k. | {object?.attributes?.areaSqM} m²
+                  {object?.attributes?.category?.data?.attributes.singularTitle} |   {object?.attributes?.roomsNumber} k. | {object?.attributes?.areaSqM} m²
                 </Typography>
               </Stack>
               <Stack direction={'row'} spacing={1}>
@@ -135,7 +162,7 @@ export default function Home({ object }: Props) {
                     {'Įrengimas'}:
                   </Typography>
                   <Typography lineHeight={1} variant='body1' fontWeight={600}>
-                    {object?.attributes?.objectState.data.attributes.title}
+                    {object?.attributes?.objectState?.data?.attributes.title}
                   </Typography>
                 </Stack>
                 <Stack direction={{ xs: 'row', md: 'column' }} spacing={{ xs: 1, md: 0 }}>
@@ -143,7 +170,7 @@ export default function Home({ object }: Props) {
                     {'Šildymas'}:
                   </Typography>
                   <Typography lineHeight={1} variant='body1' fontWeight={600}>
-                    {object?.attributes?.heatingType.data.attributes.title}
+                    {object?.attributes?.heatingType?.data?.attributes.title}
                   </Typography>
                 </Stack>
 
@@ -161,7 +188,14 @@ export default function Home({ object }: Props) {
               </Stack>
             </Stack>
             <Stack width={{ md: '60%', xs: "100%" }} >
-              <BlocksRendererComponent content={object?.attributes?.description} />
+              {/* <Typography fontWeight={300}
+                mt={-1} mb={0} color={'primary.main'} fontSize={'14px'} lineHeight={'18px'} dangerouslySetInnerHTML={{ __html: topbroker.list[0].description ?? "" }}>
+              </Typography> */}
+              <Typography component={'div'}>
+                {topbroker?.list[0]?.description && renderDescription(topbroker?.list[0]?.description)}
+                {/* {} */}
+              </Typography>
+              {/* <BlocksRendererComponent content={object?.attributes?.description} /> */}
             </Stack>
           </Stack>
         </Stack>
@@ -181,11 +215,11 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
     };
   }
 
-  const object = await getItemBySlug('objects', slug, undefined, 'populate=deep')
+  const object = await getItem('objects', slug, 'populate=deep')
 
   return {
     props: {
-      object: object?.data?.[0] ?? null,
+      object: object?.data ?? null,
     }
   };
 }

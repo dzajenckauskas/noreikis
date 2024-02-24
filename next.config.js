@@ -8,6 +8,11 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
+        hostname: 'c1.topbroker.lt',
+        pathname: '**',
+      },
+      {
+        protocol: 'https',
         hostname: 'www.api.noreikis.com',
         pathname: '**',
       },

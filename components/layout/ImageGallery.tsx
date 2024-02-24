@@ -13,9 +13,10 @@ import { theme } from './Theme';
 import Button from '@mui/material/Button';
 
 type Props = {
-    images: ImageType[]
+    images?: ImageType[];
+    photos: string[];
 }
-export const ImageCarousel = ({ images }: Props) => {
+export const ImageCarousel = ({ images, photos }: Props) => {
     const [openFullscreen, setOpenFullscreen] = useState(false);
     const [activeImage, setActiveImage] = useState<number>(0)
     const [touchStart, setTouchStart] = useState(0);
@@ -47,20 +48,20 @@ export const ImageCarousel = ({ images }: Props) => {
     }
 
     const toNextImage = () => {
-        if (images) {
-            const max = images && images.length - 1
+        if (photos) {
+            const max = photos.length - 1
             setActiveImage((activeImage + 1) > max ? 0 : activeImage + 1)
         }
     }
     const toPreviousImage = () => {
-        if (images) {
-            const max = images && images.length - 1
+        if (photos) {
+            const max = photos.length - 1
             setActiveImage((activeImage - 1) < 0 ? max : activeImage - 1)
         }
     }
 
     function handleTouchEnd() {
-        if (images)
+        if (photos)
             if (touchStart - touchEnd > 100) {
                 toNextImage()
             }
@@ -75,14 +76,14 @@ export const ImageCarousel = ({ images }: Props) => {
     const imgRef = useRef<HTMLDivElement>(null);
     useIntersectionObserver(imgRef, 'animate__animated animate__fadeIn');
 
-    const thumbs = images?.map((item, i) => {
-        const imageSrc = item.attributes?.formats.thumbnail?.url ? `${process.env.NEXT_PUBLIC_API_URL}${item.attributes?.formats.thumbnail?.url}` : undefined
+    const thumbs = photos?.map((item, i) => {
+        // const imageSrc = item.attributes?.formats.thumbnail?.url ? `${process.env.NEXT_PUBLIC_API_URL}${item.attributes?.formats.thumbnail?.url}` : undefined
         return (
             <Stack key={i} id={i.toString()}
                 sx={{ position: 'relative', width: 100, height: 100, ':hover': { opacity: .9 }, opacity: activeImage === i ? .9 : .6, cursor: 'pointer' }}>
                 <Image onClick={() => handleSelectImage(i)}
-                    priority alt={item?.attributes?.alternativeText ?? ''}
-                    layout='responsive' width={100} height={100} objectFit='cover' src={imageSrc ?? '/'} />
+                    priority alt={''}
+                    layout='responsive' width={100} height={100} objectFit='cover' src={item ?? '/'} />
             </Stack>
         )
     })
@@ -92,12 +93,12 @@ export const ImageCarousel = ({ images }: Props) => {
         <>
             <Stack ref={imgRef}
                 sx={{ position: 'relative', width: { xs: '100%', sm: '100%', md: '100%', xl: '100%' }, height: 600 }}>
-                <Image priority alt={images[activeImage]?.attributes?.alternativeText ?? ''}
-                    layout='responsive' objectFit='cover' height={images[activeImage].attributes?.height} width={100}
-                    src={`${process.env.NEXT_PUBLIC_API_URL}` + images[activeImage]?.attributes?.url ?? "/assets/images/fallback-img.jpeg"} />
+                <Image priority alt={photos[activeImage] ?? ''}
+                    layout='fill' objectFit='cover'
+                    src={photos[activeImage] ?? "/assets/images/fallback-img.jpeg"} />
             </Stack>
 
-            {images.length > 1 && <>
+            {photos.length > 1 && <>
                 <Button color={'info'} variant='contained' onClick={toPreviousImage} sx={{
                     minWidth: '40px', boxShadow: 'none !important ',
                     opacity: .6, ':hover': { opacity: .9, backgroundColor: '#fff' },
@@ -125,12 +126,12 @@ export const ImageCarousel = ({ images }: Props) => {
                 <FullscreenIcon sx={{ color: theme.palette.primary.main, fontSize: 27 }} />
             </Button>
 
-            {images.length > 1 &&
+            {/* {photos.length > 1 &&
                 <Stack direction={'row'} mt={2}>
                     {thumbs}
-                </Stack>}
+                </Stack>} */}
 
-            <Backdrop
+            {/* <Backdrop
                 sx={{ backgroundColor: 'rgba(0, 0, 0, 0.9)', zIndex: (theme: { zIndex: { drawer: number } }) => theme.zIndex.drawer + 1 }}
                 open={openFullscreen}>
                 <Stack position={'relative'} sx={{
@@ -178,7 +179,7 @@ export const ImageCarousel = ({ images }: Props) => {
                             </Button>}
                     </Stack>
                 </Stack>
-            </Backdrop>
+            </Backdrop> */}
         </>
     )
 };
