@@ -20,6 +20,11 @@ export const getStatusTypeText = (topbroker: TopbrokerType | undefined) => {
   if (topbroker?.list?.[0].operation == 'reserved') return 'Rezervuota'
   else return null
 }
+export const getEstateTypeText = (topbroker: TopbrokerType | undefined) => {
+  if (topbroker?.list?.[0].estate_type == 'house') return 'Namas'
+  if (topbroker?.list?.[0].estate_type == 'flat') return 'Butas'
+  else return null
+}
 
 type Props = {
   object?: ObjectType;
