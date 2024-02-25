@@ -102,7 +102,7 @@ export type TopbrokerType = {
             parameters: [
                 {
                     title: string;
-                    value: string | string[];
+                    value: any[];
                     unit: null
                 }
             ];

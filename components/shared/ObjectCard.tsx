@@ -1,34 +1,16 @@
-import { ObjectType, TopbrokerType } from '@/app/types/ObjectsType'
+import { transformTopbrokerData } from '@/app/estate/getEstate';
+import { ObjectType } from '@/app/types/ObjectsType';
+import useIntersectionObserver from '@/app/useIntersectionObserver';
+import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import Link from 'next/link';
-import React, { useRef, useState } from 'react'
 import Image from "next/legacy/image";
-import Box from '@mui/material/Box';
-import { getActionTypeText, getEstateTypeText, getStatusTypeText } from '@/pages/parduodami/[slug]';
+import Link from 'next/link';
+import { useRef, useState } from 'react';
 import { theme } from '../layout/Theme';
-import useIntersectionObserver from '@/app/useIntersectionObserver';
 
 type Props = {
     object?: ObjectType;
-}
-
-export const transformTopbrokerData = (topbroker: TopbrokerType) => {
-    const action = getActionTypeText(topbroker)
-    const status = getStatusTypeText(topbroker)
-    const estateType = getEstateTypeText(topbroker)
-    let data = {
-        images: topbroker.list?.[0].photos,
-        action: action,
-        status: status,
-        estateType: estateType,
-        formattedLocation: topbroker.list?.[0].location.formated_address,
-        price: topbroker.list?.[0].main_parameters?.find((mp) => mp.title === 'estate.sale_price'),
-        area: topbroker.list?.[0].main_parameters.find((p) => p.title === 'estate.area'),
-        roomCount: topbroker.list?.[0].parameters.find((p) => p.title === 'estate.room_count')?.value,
-
-    }
-    return data
 }
 
 const ObjectCard = ({ object }: Props) => {
@@ -72,7 +54,7 @@ const ObjectCard = ({ object }: Props) => {
             </Stack>
             <Stack direction={'row'} spacing={1}>
                 <Typography variant='caption'>
-                    {estate?.estateType} | {estate?.roomCount} k. | {estate?.area?.value} m²
+                    {estate?.estateType} | {estate?.roomCount?.value} k. | {estate?.area?.value} m²
                 </Typography>
             </Stack>
             <Stack direction={'row'} spacing={1} alignItems={'baseline'} justifyContent={'space-between'}>
