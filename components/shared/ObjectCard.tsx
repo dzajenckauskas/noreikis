@@ -24,8 +24,8 @@ const ObjectCard = ({ object }: Props) => {
         <Stack key={object?.id} >
             <Link href={'/parduodami/' + object?.attributes?.slug} passHref style={{ position: 'relative' }}>
                 <Stack ref={elementRef} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} sx={{ position: 'relative', width: '100%', height: 300 }}>
-                    <Image priority alt={object?.attributes?.topbroker.list?.[0].title ?? ''}
-                        layout='fill' objectFit='cover' objectPosition={'left'} src={estate?.images[hovered ? 1 : 0] ?? '/assets/images/img-placeholder.png'} />
+                    <Image priority sizes='50vw' alt={object?.attributes?.topbroker.list?.[0].title ?? ''}
+                        layout='fill' objectFit='cover' style={{ objectPosition: 'top' }} src={estate?.images[hovered ? 1 : 0] ?? '/assets/images/img-placeholder.png'} />
                 </Stack>
                 {/* <Box sx={{ backgroundColor: '#000', width: 'max-content', position: 'absolute', top: 4, px: 2, left: -4 }}>
                     <Typography variant='caption' color={'#fff'}>

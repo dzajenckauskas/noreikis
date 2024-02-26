@@ -80,10 +80,10 @@ export const ImageCarousel = ({ images, photos }: Props) => {
         // const imageSrc = item.attributes?.formats.thumbnail?.url ? `${process.env.NEXT_PUBLIC_API_URL}${item.attributes?.formats.thumbnail?.url}` : undefined
         return (
             <Stack key={i} id={i.toString()}
-                sx={{ position: 'relative', width: 100, height: 100, ':hover': { opacity: .9 }, opacity: activeImage === i ? .9 : .6, cursor: 'pointer' }}>
+                sx={{ position: 'relative', width: 50, height: 50, ':hover': { opacity: .9 }, opacity: activeImage === i ? .9 : .6, cursor: 'pointer' }}>
                 <Image onClick={() => handleSelectImage(i)}
-                    priority alt={''} sizes='25vw'
-                    width={100} height={100} objectFit='cover' src={item ?? '/'} />
+                    priority alt={''} sizes='10vw'
+                    width={50} height={50} objectFit='cover' src={item ?? '/'} />
             </Stack>
         )
     })
@@ -126,10 +126,10 @@ export const ImageCarousel = ({ images, photos }: Props) => {
                 <FullscreenIcon sx={{ color: theme.palette.primary.main, fontSize: 27 }} />
             </Button>
 
-            {/* {photos.length > 1 &&
-                <Stack direction={'row'} mt={2}>
+            {photos.length > 1 &&
+                <Stack direction={'row'} mt={2} flexWrap={'wrap'}>
                     {thumbs}
-                </Stack>} */}
+                </Stack>}
 
             <Backdrop
                 sx={{ flexDirection: 'column', backgroundColor: 'rgba(0, 0, 0, 0.9)', zIndex: (theme: { zIndex: { drawer: number } }) => theme.zIndex.drawer + 1 }}
