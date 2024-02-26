@@ -167,7 +167,7 @@ const EstatePage = ({ object }: Props) => {
                                             )}
                                         </Typography> */}
                                         <Stack spacing={1}>
-                                            {estate?.features.value.length > 1 && estate?.features.value?.map((v: string) => <Typography lineHeight={1} variant='body1' fontWeight={600}>
+                                            {estate?.features.value.length > 1 && estate?.features.value?.map((v: string) => <Typography key={v} lineHeight={1} variant='body1' fontWeight={600}>
                                                 {t(v)}
                                             </Typography>)}
                                         </Stack>
