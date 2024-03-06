@@ -18,7 +18,7 @@ type Props = {
 const BackdropGallery = ({ images, open, onClose }: Props) => {
 
     const items = images.map((url, i) => {
-        return (<Stack position={'relative'} alignItems={'center'}
+        return (<Stack key={i} position={'relative'} alignItems={'center'}
             onClick={() => carousel?.current?.slideTo(i)}
             sx={{
                 mt: '40px',
