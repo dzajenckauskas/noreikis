@@ -2,7 +2,7 @@ import { getActionTypeText, getStatusTypeText, transformTopbrokerData } from '@/
 import { ObjectType } from '@/app/types/ObjectsType';
 import useIntersectionObserver from '@/app/useIntersectionObserver';
 import { HeadComponent } from '@/components/layout/HeadComponent';
-import { ImageCarousel } from '@/components/layout/ImageGallery';
+import { ImageCarousel } from '@/components/layout/gallery/ImageGallery';
 import Layout from '@/components/layout/Layout';
 import { theme } from '@/components/layout/Theme';
 import { Box, Stack, Typography } from '@mui/material';
@@ -58,7 +58,8 @@ const EstatePage = ({ object }: Props) => {
                     width: '100%', maxWidth: 'xl', mx: 'auto'
                 }}>
                     <Stack ref={imgRef} sx={{
-                        position: 'relative', width: { xs: '100%', sm: '100%', md: '100%', xl: '100%' }, height: 800,
+                        position: 'relative', width: { xs: '100%', sm: '100%', md: '100%', xl: '100%' },
+                        height: 800,
                         mb: (images && images?.length > 1) ? '140px' : '20px'
                     }}>
                         {photos &&
@@ -78,7 +79,9 @@ const EstatePage = ({ object }: Props) => {
                     </Stack>
 
                     <Stack sx={{ pt: { xl: 2, md: 4, xs: 2 }, pb: 8 }} direction={{ md: 'row', xs: 'column' }} spacing={4}>
-                        <Stack width={{ md: '40%', xs: "100%" }} >
+                        <Stack width={{ md: '50%', xs: "100%" }} >
+                            {/* {photos &&
+                                <ImageCarousel photos={photos} />} */}
                             <Stack direction={'row'} spacing={1} pt={1}>
                                 <Typography variant='h4' fontWeight={600} component={'h1'}>
                                     {/* {object?.attributes?.region},&nbsp;
@@ -186,7 +189,7 @@ const EstatePage = ({ object }: Props) => {
 
                             </Stack>
                         </Stack>
-                        <Stack width={{ md: '60%', xs: "100%" }} >
+                        <Stack width={{ md: '50%', xs: "100%" }} >
                             {/* <Typography fontWeight={300}
                 mt={-1} mb={0} color={'primary.main'} fontSize={'14px'} lineHeight={'18px'} dangerouslySetInnerHTML={{ __html: topbroker.list[0].description ?? "" }}>
               </Typography> */}
