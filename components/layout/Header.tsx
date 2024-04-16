@@ -6,7 +6,7 @@ import MenuRoundedIcon from '@mui/icons-material/MenuRounded'
 import PhoneIcon from '@mui/icons-material/Phone'
 import { ClickAwayListener } from '@mui/material'
 import Stack from '@mui/material/Stack'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { theme } from './Theme'
 import Link from 'next/link'
 import Typography from '@mui/material/Typography'
@@ -16,9 +16,30 @@ import { useRouter } from 'next/router'
 import { getFooterMenuItems } from '@/app/getFooterMenuItems'
 import { AruodasIcon } from './AruodasIcon'
 
-const Header = () => {
-    const [openMobileMenu, setOpenMobileMenu] = useState(false)
-    const router = useRouter()
+type Props = {
+    startDefault?: boolean;
+}
+
+const Header = ({ startDefault }: Props) => {
+    const [openMobileMenu, setOpenMobileMenu] = useState(false);
+    const [prevScrollPos, setPrevScrollPos] = useState(0);
+    const [visible, setVisible] = useState(true);
+    const router = useRouter();
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentScrollPos = window.pageYOffset;
+            // console.log(currentScrollPos);
+
+            setVisible(80 > currentScrollPos);
+            setPrevScrollPos(currentScrollPos);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+
+    }, [prevScrollPos, visible]);
+
 
     const toggleMobileMenu = () => {
         setOpenMobileMenu(!openMobileMenu)
@@ -30,11 +51,11 @@ const Header = () => {
             <Link href={`/${link.slug}`} key={link.name} onClick={toggleMobileMenu}>
                 <Typography variant='body1'
                     sx={{
-                        color: router.pathname === link.slug ? theme.palette.secondary.main : theme.palette.text.primary,
-                        fontWeight: router.pathname === link.slug ? 600 : 'inherit',
+                        color: (router.pathname === link.slug) ? (theme.palette.secondary.main) : ((!startDefault && visible) ? '#fff' : '#000'),
+                        fontWeight: (router.pathname === link.slug) ? 600 : 'inherit',
                         textTransform: 'none',
                         ":hover": {
-                            color: theme.palette.secondary.main,
+                            color: (((!startDefault && visible) ? '#fff99' : theme.palette.secondary.main)),
                         }
                     }}>
                     {link.name}
@@ -55,9 +76,14 @@ const Header = () => {
     return (
         <>
             <Stack sx={{
-                position: 'sticky', top: -28, width: '100%', zIndex: 20,
-                backgroundColor: '#fff',
-                boxShadow: 'rgba(0, 0, 0, 0.08) 0px 4px 12px;'
+                position: 'sticky', top: -32, width: '100%', zIndex: 20,
+                mb: startDefault ? 0 : '-100px',
+                // backgroundColor: '#fff',
+                backgroundColor: (!startDefault && visible) ? 'transparent' : '#ffffff',
+                // backgroundColor: (!startDefault && visible) ? '#fff' : 'transparent',
+                transition: 'background-color .4s ease-in-out',
+                // animation: (!startDefault && visible) ? 'fadeIn .6s ease-in-out' : 'none',
+                boxShadow: (!startDefault && visible) ? '' : 'rgba(0, 0, 0, 0.08) 0px 4px 12px;'
             }}>
                 <Stack sx={{ position: 'relative' }}>
                     <Stack sx={{
@@ -106,17 +132,18 @@ const Header = () => {
                     <Stack direction={'row'}
                         sx={{
                             minHeight: 74,
-                            backgroundColor: '#fff',
+                            backgroundColor: 'transparent',
+                            //  backgroundColor: 'rgba(0, 0, 0, 0.8)'
                             zIndex: 20,
                             px: { xl: 2, md: 4, xs: 2 }, alignItems: 'center', justifyContent: 'space-between',
                             width: '100%', maxWidth: 'xl', mx: 'auto', py: 2
                         }}>
                         <Link href={'/'} style={{ position: 'relative', zIndex: 20, cursor: 'pointer' }}>
                             <Stack direction={'row'} spacing={0} sx={{ alignItems: 'center' }}>
-                                <Typography variant='h5' component={'p'} color={theme.palette.secondary.main} sx={{ letterSpacing: 2, fontSize: 22, fontWeight: 600, }}>
+                                <Typography variant='h5' component={'p'} color={(!startDefault && visible) ? '#fff' : theme.palette.secondary.main} sx={{ letterSpacing: 2, fontSize: 22, fontWeight: 600, }}>
                                     {"E."}
                                 </Typography>
-                                <Typography variant='h5' component={'p'} color={theme.palette.primary.main} sx={{ letterSpacing: 2, fontSize: 22, fontWeight: 600, }}>
+                                <Typography variant='h5' component={'p'} color={(!startDefault && visible) ? '#fff' : '#000'} sx={{ letterSpacing: 2, fontSize: 22, fontWeight: 600, }}>
                                     {process.env.NEXT_PUBLIC_COMPANY_NAME?.toUpperCase()}
                                 </Typography>
                             </Stack>
@@ -124,8 +151,8 @@ const Header = () => {
                         <Stack direction={'row'} spacing={6} sx={{ textTransform: 'uppercase', alignItems: 'center', display: { md: 'flex', xs: 'none' } }}>
                             {renderNavLinks}
                             <Link href={`/${'kontaktai'}`}>
-                                <Button variant='contained' size="large">
-                                    <Typography variant='body2'>
+                                <Button variant='contained' color={(!startDefault && visible) ? 'info' : 'secondary'} size="large">
+                                    <Typography variant='body2' fontWeight={500}>
                                         {'Kontaktai'}
                                     </Typography>
                                 </Button>

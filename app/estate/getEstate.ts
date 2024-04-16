@@ -13,6 +13,7 @@ export const getStatusTypeText = (topbroker: TopbrokerType | undefined) => {
 export const getEstateTypeText = (topbroker: TopbrokerType | undefined) => {
     if (topbroker?.list?.[0].estate_type == 'house') return 'Namas'
     if (topbroker?.list?.[0].estate_type == 'flat') return 'Butas'
+    if (topbroker?.list?.[0].estate_type == 'site') return 'Sklypas'
     else return null
 }
 

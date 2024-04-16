@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography'
 export const PriceInquirySection = () => {
     return (
         <Stack sx={{
-            backgroundColor: '#ffffff',
+            backgroundColor: '#fff',
             position: 'relative', mt: '-1px', zIndex: 3
         }}>
             <Stack spacing={1} py={10} sx={{
@@ -17,7 +17,7 @@ export const PriceInquirySection = () => {
                 px: { xl: 2, md: 4, xs: 2 },
                 overflow: 'hidden'
             }}>
-                <Stack direction={'row'} justifyContent={"space-between"}
+                <Stack direction={'row'} justifyContent={"center"}
                     id={'priceInquiryForm'} sx={{
                         scrollMarginTop: 400
                     }}>
@@ -30,9 +30,14 @@ export const PriceInquirySection = () => {
                             text={"Užpildykite turto kainos vertinimo užklausą ir sužinokite savo nekilnojamojo turto vertę"} />
                     </Stack>
                 </Stack>
-                <Stack py={4} spacing={8} width={'100%'}
-                    direction={{ xs: 'column-reverse', md: 'row' }}
+
+                <Stack py={4} spacing={8} width={{ xs: '90%', md: '50%' }}
+                    alignSelf={'center'}
+                    direction={{ xs: 'column', md: 'column' }}
                     justifyContent={'space-between'}>
+                    <Stack sx={{ p: 0 }}>
+                        <PriceInquiryForm />
+                    </Stack>
                     <Stack alignContent={'space-between'}
                         sx={{ position: 'relative', width: '100%' }}>
                         <Typography color={theme.palette.secondary.main}
@@ -41,7 +46,6 @@ export const PriceInquirySection = () => {
                             Įvertinęs užpildytą informaciją susisieksiu su geriausiu pasiulymu!
                         </Typography>
                     </Stack>
-                    <PriceInquiryForm />
                 </Stack>
             </Stack>
         </Stack>

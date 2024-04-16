@@ -27,7 +27,7 @@ export const ContactsPage = ({ page }: Props) => {
                 description={page?.attributes.seo.seoDescription}
                 keywords={page?.attributes.seo.seoKeywords}
             />
-            <Layout>
+            <Layout startDefault>
                 <Stack sx={{
                     backgroundColor: '#fafafa',
                     position: 'relative', zIndex: 3

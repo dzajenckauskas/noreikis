@@ -52,7 +52,7 @@ const EstatePage = ({ object }: Props) => {
                 description={topbroker?.list[0].description}
                 keywords={object?.attributes?.seo?.seoKeywords}
             />
-            <Layout>
+            <Layout startDefault>
                 <Stack key={object?.id} sx={{
                     px: { xl: 2, md: 4, xs: 2 }, pt: 0,
                     width: '100%', maxWidth: 'xl', mx: 'auto'

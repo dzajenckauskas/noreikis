@@ -28,7 +28,7 @@ export const RecommendationCarouselItem = ({ item }: Props) => {
                 mx={'auto'}
                 sx={{ width: '100%' }} spacing={1}
                 alignItems={'center'} p={4}>
-                <Stack alignSelf={'flex-end'} position={'relative'}>
+                <Stack alignSelf={'center'} position={'relative'}>
                     <FormatQuoteIcon sx={{
                         position: 'absolute', top: 18, right: -8, zIndex: 2, color: theme.palette.secondary.dark,
                         transform: 'scale(4)'
@@ -42,8 +42,8 @@ export const RecommendationCarouselItem = ({ item }: Props) => {
                 <Stack spacing={0} pt={4}>
                     <Stack direction={'row'}>
                         <Typography position={'relative'}
-                            variant='body1' fontWeight={300} textAlign={'right'}
-                            lineHeight={1.5} color={theme.palette.primary.dark}>
+                            variant='body1' fontWeight={300} textAlign={'center'}
+                            color={theme.palette.primary.dark} >
                             {item.attributes?.text}
                         </Typography>
                     </Stack>

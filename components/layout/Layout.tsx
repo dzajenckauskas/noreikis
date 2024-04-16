@@ -8,12 +8,13 @@ import Cookies from './Cookies'
 
 type Props = {
     children?: React.ReactNode;
+    startDefault?: boolean;
 }
 
-const Layout = ({ children, }: Props) => {
+const Layout = ({ children, startDefault }: Props) => {
     return (
         <>
-            <Header />
+            <Header startDefault={startDefault} />
             <Stack minHeight={'70vh'} sx={{
                 backgroundColor: theme.palette.info.main + 'A0',
                 justifyContent: 'space-between',

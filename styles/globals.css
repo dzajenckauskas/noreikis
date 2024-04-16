@@ -21,6 +21,7 @@ a:hover {
   opacity: .8;
 }
 
+/* carousel */
 .alice-carousel__prev-btn {
   padding-left: 25px !important;
   padding-right: 25px !important;
@@ -29,4 +30,75 @@ a:hover {
 .alice-carousel__next-btn {
   padding-left: 25px !important;
   padding-right: 25px !important;
+}
+
+
+/* animation */
+.bg {
+  animation: slide 3s ease-in-out infinite alternate;
+  background-image: linear-gradient(60deg, #322ad4 50%, rgba(14, 12, 12, 0.25) 50%);
+  bottom: 0;
+  left: -50%;
+  opacity: 0.05;
+  position: fixed;
+  right: -50%;
+  top: 0;
+  z-index: 0;
+  filter: blur(20px);
+  animation-duration: 60s;
+}
+
+.bg2 {
+  animation-direction: alternate-reverse;
+  animation-duration: 80s;
+  background-image: linear-gradient(50deg, #3e5d9f 50%, rgba(4, 4, 6, 0.25) 50%);
+
+}
+
+.bg3 {
+  background-image: linear-gradient(70deg, #322ad4 50%, rgba(0, 0, 0, 0.25) 50%);
+  animation-duration: 15s;
+}
+
+.bg4 {
+  background-image: linear-gradient(60deg, #1217af 50%, rgba(211, 16, 16, 0.25) 50%);
+  animation-duration: 20s;
+  filter: blur(200px);
+  transform: rotate(180deg);
+
+  /* transform: rotate(180); */
+}
+
+.bg5 {
+  background-image: linear-gradient(60deg, #1217af3e 50%, rgba(34, 41, 175, 0.032) 50%);
+  animation-duration: 20s;
+  filter: blur(200px);
+  transform: rotate(90deg);
+  animation: slide2 50s ease-in-out infinite alternate;
+  opacity: 1;
+  /* transform: rotate(180); */
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0%);
+    /* transform: translateY(-25%); */
+  }
+
+  100% {
+    transform: translateX(25%);
+    /* transform: translateY(-25%); */
+  }
+}
+
+@keyframes slide2 {
+  0% {
+    transform: translateX(-50%);
+    /* transform: translateY(-25%); */
+  }
+
+  100% {
+    transform: translateX(125%);
+    /* transform: translateY(-25%); */
+  }
 }

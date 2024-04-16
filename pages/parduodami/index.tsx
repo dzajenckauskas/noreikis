@@ -2,7 +2,7 @@ import { ObjectsType } from '@/app/types/ObjectsType'
 import { getItems } from '@/app/utils'
 import { HeadComponent } from '@/components/layout/HeadComponent'
 import Layout from '@/components/layout/Layout'
-import { ForSaleSection } from '@/components/pages/home/ForSaleSection'
+import { ForSalePage } from '@/components/pages/for-sale/ForSalePage'
 import { GetServerSideProps } from 'next'
 
 type Props = {
@@ -12,9 +12,9 @@ export default function Objects({ objects }: Props) {
     return (
         <>
             <HeadComponent title={'Parduodami NT objektai'} description={'Brokerio Ernesto Noreikio parduodami Nekilnojamojo Turto NT objektai Vilniuje, Kaune, Palangoje'} />
-            <Layout>
-                <ForSaleSection objects={objects} />
-            </Layout >
+            <Layout startDefault>
+                <ForSalePage objects={objects} />
+            </Layout>
         </>
     )
 }

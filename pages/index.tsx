@@ -20,7 +20,7 @@ export default function Home({ homePage, recommendations, objects, blogPosts }: 
 }
 export const getServerSideProps: GetServerSideProps = async () => {
   const recommendations = (await getItems('recommendations', 'populate=deep')) ?? null
-  const objects = (await getItems('objects', 'populate=deep')) ?? null
+  const objects = (await getItems('objects', 'populate=deep&pagination[limit]=4')) ?? null
   const blogPosts = (await getItems('blog-posts', 'populate=deep')) ?? null
   const homePage = (await getPage('home-page', 'populate=deep')) ?? null
 

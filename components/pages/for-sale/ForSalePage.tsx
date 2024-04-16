@@ -5,19 +5,22 @@ import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Link from 'next/link';
-import React from 'react'
+import React, { useState } from 'react'
 import SubdirectoryArrowRightIcon from '@mui/icons-material/SubdirectoryArrowRight'
 import { SectionTitle } from '@/components/layout/SectionTitle';
 import { SectionSubtitle } from '@/components/layout/SectionSubtitle';
+import Button from '@mui/material/Button';
 
 type Props = {
     objects?: ObjectsType | null;
     bgColor?: string;
 }
 
-export const ForSaleSection = ({ objects, bgColor }: Props) => {
+export const ForSalePage = ({ objects, bgColor }: Props) => {
     const theme = getTheme()
-    const renderObjects = objects?.data?.map((object) => {
+
+    const [filter, setFilter] = useState<string>('all')
+    const renderObjects = objects?.data.filter((o) => filter === 'all' ? o : o.attributes?.topbroker.list?.[0].estate_type === filter)?.map((object) => {
         return (
             <Grid key={object.id} item xs={12} sm={6} lg={3}>
                 <ObjectCard object={object} />
@@ -41,14 +44,25 @@ export const ForSaleSection = ({ objects, bgColor }: Props) => {
                         </Link>
                     </>} />
                 </Stack>
-                <Grid container direction={'row'} spacing={4} sx={{ my: 6 }}>
+                <Stack direction={'row'} mt={6} mb={4} spacing={1} justifyContent={'center'}>
+                    <Button onClick={() => setFilter('all')} variant={filter === 'all' ? 'contained' : 'outlined'}>
+                        Visi
+                    </Button>
+                    <Button onClick={() => setFilter('flat')} variant={filter === 'flat' ? 'contained' : 'outlined'}>
+                        Butai
+                    </Button>
+                    <Button onClick={() => setFilter('house')} variant={filter === 'house' ? 'contained' : 'outlined'}>
+                        Namai
+                    </Button>
+                </Stack>
+                <Grid container direction={'row'} spacing={4} sx={{ mb: 6 }}>
                     {renderObjects}
                 </Grid>
                 <Stack direction={'row'} spacing={{ md: 1, xs: .5 }} sx={{ pt: 6, alignSelf: 'flex-end' }}>
                     <SubdirectoryArrowRightIcon sx={{ color: theme.palette.secondary.main, fontSize: 18, }} />
-                    <Link passHref href={`/parduodami`}>
+                    <Link passHref target='_blank' href={`https://m.aruodas.lt/ernestas-noreikis/?obj_type=0#searchFilterBrokerPage`}>
                         <Typography variant='body1' color={theme.palette.secondary.main} sx={{ ":hover": { textDecoration: 'underline' } }}>
-                            {'Parduodami objektai'}
+                            {'Kiti skelbimai'}
                         </Typography>
                     </Link>
                 </Stack>
