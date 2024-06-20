@@ -65,7 +65,7 @@ export const ServicesSection = () => {
                         </Stack>
                         <Stack width={'100%'}>
                             <ServiceCard minHeight={550}
-                                title={<>Atstovavimas <span style={{ color: theme.palette.secondary.main }}>parduodant</span> nekilnojamąjį turtą</>}
+                                title={<>Atstovavimas <span style={{ color: theme.palette.secondary.main }}>nuomojant</span> nekilnojamąjį turtą</>}
                                 icon={<ApartmentIcon sx={{ color: theme.palette.secondary.main, fontSize: 40, position: 'relative' }} />}
                                 text={"Nekilnojamojo turto nuoma prasideda nuodugnia rinkos analize, įvertinant esamų objektų kainodarą. Svarbu nustatyti maksimalią nuomos kainą, atsižvelgiant į rinkos tendencijas. Objekto pristatymui potencialiems nuomininkams reikia skirti ypatingą dėmesį, užtikrinant profesionalumą ir patrauklų pristatymą. Be to, būtina sudaryti aiškią nuomos sutartį ir paruošti visus reikiamus dokumentus, siekiant užtikrinti sklandų ir sėkmingą sandorį."} />
 
