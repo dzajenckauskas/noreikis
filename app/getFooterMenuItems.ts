@@ -10,9 +10,9 @@ export const getFooterMenuItems = () => {
 }
 export const getServicesMenuItems = () => {
     return [
-        { slug: '#paslaugos', name: 'Pirkimas' },
-        { slug: '#paslaugos', name: 'Pardavimas' },
-        { slug: '#paslaugos', name: 'Nuoma' },
-        { slug: '#paslaugos', name: 'Dokumentacija' },
+        { slug: '#paslaugos-pardavimas', name: 'Pardavimas' },
+        { slug: '#paslaugos-nuoma', name: 'Nuoma' },
+        { slug: '#paslaugos-pirkimas', name: 'Pirkimas' },
+        { slug: '#paslaugos-dokumentacija', name: 'Dokumentacija' },
     ]
 }

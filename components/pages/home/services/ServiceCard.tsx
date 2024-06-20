@@ -9,13 +9,14 @@ type Props = {
     icon: ReactNode;
     text: string;
     minHeight: number;
+    id: string;
 }
 
-export const ServiceCard = ({ title, icon, text, minHeight }: Props) => {
+export const ServiceCard = ({ title, icon, text, minHeight, id }: Props) => {
     const elementRef = useRef<HTMLDivElement>(null);
     useIntersectionObserver(elementRef, 'animate__animated animate__fadeIn');
     return (
-        <Stack spacing={2} ref={elementRef}
+        <Stack spacing={2} ref={elementRef} id={id}
             width={'100%'} minHeight={{ xs: 'none', sm: minHeight }} pb={8}
             position={'relative'}
             alignSelf={'flex-start'}
