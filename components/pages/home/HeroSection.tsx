@@ -81,14 +81,14 @@ export const HeroSection = () => {
                             </Stack>
                         </Stack>
                     </Stack>
-                    <Stack width={{ xs: '100%', sm: '60%', md: '55%' }} position={'relative'} zIndex={2}>
+                    <Stack width={{ xs: '100%', sm: '100%', md: '70%' }} position={'relative'} zIndex={2}>
                         <Stack ref={imgRef} sx={{
                             mt: 4,
-                            position: 'relative', width: '100%', height: { xs: 500, md: 800 }, positon: 'relative',
+                            position: 'relative', width: '100%', height: { xs: 600, md: 700, lg: 800 }, positon: 'relative',
                             top: { xs: 5, md: 40 }
                         }}>
-                            {/* <Image priority alt={"Ernestas Noreikis NT nekilnojamas turtas brokeris"}
-                                layout='fill' objectFit='cover' objectPosition='top' src={'/assets/images/ernestas-noreikis-NT-brokeris-no-bg.png'} /> */}
+                            <Image priority alt={"Ernestas Noreikis NT nekilnojamas turto brokeris"}
+                                layout='fill' objectFit='contain' objectPosition='bottom' src={'/assets/images/ernestas-noreikis-NT-brokeris-no-bg.png'} />
                         </Stack>
                     </Stack>
                 </Stack>

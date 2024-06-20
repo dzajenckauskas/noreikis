@@ -29,19 +29,19 @@ const ObjectCard = ({ object }: Props) => {
                     <Image priority sizes='25vw' alt={object?.attributes?.topbroker.list?.[0].title ?? ''}
                         layout='fill' objectFit='cover' objectPosition={'left'} src={estate?.images[hovered ? 1 : 0] ?? '/assets/images/img-placeholder.png'} />
                 </Stack>
-                {/* <Box sx={{ backgroundColor: '#000', width: 'max-content', position: 'absolute', top: 4, px: 2, left: -4 }}>
+                <Box sx={{ backgroundColor: '#000', width: 'max-content', position: 'absolute', top: 4, px: 2, right: -4 }}>
                     <Typography variant='caption' color={'#fff'}>
                         {estate?.action}
                     </Typography>
-                </Box> */}
-                {/* {estate?.estateType &&
-                    <Box sx={{ backgroundColor: theme.palette.secondary.main, width: 'max-content', position: 'absolute', top: 28, px: 2, left: -4 }}>
+                </Box>
+                {estate?.estateType &&
+                    <Box sx={{ backgroundColor: theme.palette.secondary.main, width: 'max-content', position: 'absolute', top: 28, px: 2, right: -4 }}>
                         <Typography variant='caption' color={'#fff'}>
                             {estate?.estateType}
                         </Typography>
-                    </Box>} */}
+                    </Box>}
                 {estate?.status &&
-                    <Box sx={{ backgroundColor: theme.palette.secondary.main, width: 'max-content', position: 'absolute', top: 28, px: 2, left: -4 }}>
+                    <Box sx={{ backgroundColor: theme.palette.secondary.main, width: 'max-content', position: 'absolute', top: 28, px: 2, right: -4 }}>
                         <Typography variant='caption' color={'#fff'}>
                             {estate?.status}
                         </Typography>

@@ -51,11 +51,11 @@ const Header = ({ startDefault }: Props) => {
             <Link href={`/${link.slug}`} key={link.name} onClick={toggleMobileMenu}>
                 <Typography variant='body1'
                     sx={{
-                        color: (router.pathname === link.slug) ? (theme.palette.secondary.main) : ((!startDefault && visible) ? '#fff' : '#000'),
+                        color: (router.pathname === link.slug) ? (theme.palette.secondary.main) : ((!startDefault && visible && !openMobileMenu) ? '#fff' : '#000'),
                         fontWeight: (router.pathname === link.slug) ? 600 : 'inherit',
                         textTransform: 'none',
                         ":hover": {
-                            color: (((!startDefault && visible) ? '#fff99' : theme.palette.secondary.main)),
+                            color: (((!startDefault && visible && !openMobileMenu) ? '#fff99' : theme.palette.secondary.main)),
                         }
                     }}>
                     {link.name}
@@ -79,11 +79,11 @@ const Header = ({ startDefault }: Props) => {
                 position: 'sticky', top: -32, width: '100%', zIndex: 20,
                 mb: startDefault ? 0 : '-100px',
                 // backgroundColor: '#fff',
-                backgroundColor: (!startDefault && visible) ? 'transparent' : '#ffffff',
-                // backgroundColor: (!startDefault && visible) ? '#fff' : 'transparent',
-                transition: 'background-color .4s ease-in-out',
-                // animation: (!startDefault && visible) ? 'fadeIn .6s ease-in-out' : 'none',
-                boxShadow: (!startDefault && visible) ? '' : 'rgba(0, 0, 0, 0.08) 0px 4px 12px;'
+                backgroundColor: (!startDefault && visible && !openMobileMenu) ? 'transparent' : '#ffffff',
+                // backgroundColor: (!startDefault && visible&& !openMobileMenu) ? '#fff' : 'transparent',
+                transition: !openMobileMenu ? 'background-color .4s ease-in-out' : '',
+                // animation: (!startDefault && visible&& !openMobileMenu) ? 'fadeIn .6s ease-in-out' : 'none',
+                boxShadow: (!startDefault && visible && !openMobileMenu) ? '' : 'rgba(0, 0, 0, 0.08) 0px 4px 12px;'
             }}>
                 <Stack sx={{ position: 'relative' }}>
                     <Stack sx={{
@@ -140,10 +140,10 @@ const Header = ({ startDefault }: Props) => {
                         }}>
                         <Link href={'/'} style={{ position: 'relative', zIndex: 20, cursor: 'pointer' }}>
                             <Stack direction={'row'} spacing={0} sx={{ alignItems: 'center' }}>
-                                <Typography variant='h5' component={'p'} color={(!startDefault && visible) ? '#fff' : theme.palette.secondary.main} sx={{ letterSpacing: 2, fontSize: 22, fontWeight: 600, }}>
+                                <Typography variant='h5' component={'p'} color={(!startDefault && visible && !openMobileMenu) ? '#fff' : theme.palette.secondary.main} sx={{ letterSpacing: 2, fontSize: 22, fontWeight: 600, }}>
                                     {"E."}
                                 </Typography>
-                                <Typography variant='h5' component={'p'} color={(!startDefault && visible) ? '#fff' : '#000'} sx={{ letterSpacing: 2, fontSize: 22, fontWeight: 600, }}>
+                                <Typography variant='h5' component={'p'} color={(!startDefault && visible && !openMobileMenu) ? '#fff' : '#000'} sx={{ letterSpacing: 2, fontSize: 22, fontWeight: 600, }}>
                                     {process.env.NEXT_PUBLIC_COMPANY_NAME?.toUpperCase()}
                                 </Typography>
                             </Stack>
@@ -151,7 +151,7 @@ const Header = ({ startDefault }: Props) => {
                         <Stack direction={'row'} spacing={6} sx={{ textTransform: 'uppercase', alignItems: 'center', display: { md: 'flex', xs: 'none' } }}>
                             {renderNavLinks}
                             <Link href={`/${'kontaktai'}`}>
-                                <Button variant='contained' color={(!startDefault && visible) ? 'info' : 'secondary'} size="large">
+                                <Button variant='contained' color={(!startDefault && visible && !openMobileMenu) ? 'info' : 'secondary'} size="large">
                                     <Typography variant='body2' fontWeight={500}>
                                         {'Kontaktai'}
                                     </Typography>
@@ -159,13 +159,13 @@ const Header = ({ startDefault }: Props) => {
                             </Link>
                         </Stack>
                         {!openMobileMenu && <Stack direction={'row'} spacing={3} sx={{ textTransform: 'uppercase', alignItems: 'center', display: { md: 'none', xs: 'flex' } }}>
-                            <Button aria-label="open mobile menu" size='small' variant='outlined' color='secondary' sx={{ p: .5, minWidth: 0 }} onClick={toggleMobileMenu}>
-                                <MenuRoundedIcon sx={{ color: theme.palette.secondary.main }} />
+                            <Button aria-label="open mobile menu" size='small' variant={'outlined'} color={(!startDefault && visible && !openMobileMenu) ? 'info' : 'secondary'} sx={{ p: .5, minWidth: 0 }} onClick={toggleMobileMenu}>
+                                <MenuRoundedIcon sx={{ color: (!startDefault && visible && !openMobileMenu) ? '#fff' : theme.palette.secondary.main }} />
                             </Button>
                         </Stack>}
                         {openMobileMenu && <Stack direction={'row'} spacing={3} sx={{ textTransform: 'uppercase', alignItems: 'center', display: { md: 'none', xs: 'flex' } }}>
                             <Button aria-label="close mobile menu" size='small' variant='outlined' color='secondary' sx={{ p: .5, minWidth: 0 }} onClick={toggleMobileMenu}>
-                                <CloseRoundedIcon sx={{ color: theme.palette.secondary.main }} />
+                                <CloseRoundedIcon sx={{ color: (!startDefault && visible && !openMobileMenu) ? '#fff' : theme.palette.secondary.main }} />
                             </Button>
                         </Stack>}
                     </Stack>
@@ -176,7 +176,7 @@ const Header = ({ startDefault }: Props) => {
                 <ClickAwayListener onClickAway={toggleMobileMenu}>
                     <Stack sx={{
                         display: { md: 'none', xs: 'flex' }, position: 'fixed', zIndex: 12,
-                        top: 74, width: { md: 500, sm: 400, xs: '100% ' }, right: 0,
+                        top: 70, width: { md: 500, sm: 400, xs: '100% ' }, right: 0,
                         pt: 4,
                         backgroundColor: '#fff',
                         height: 'calc(100vh - 28px)',

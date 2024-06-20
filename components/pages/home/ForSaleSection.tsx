@@ -48,7 +48,7 @@ export const ForSaleSection = ({ objects, bgColor }: Props) => {
                     <SubdirectoryArrowRightIcon sx={{ color: theme.palette.secondary.main, fontSize: 18, }} />
                     <Link passHref href={`/parduodami`}>
                         <Typography variant='body1' color={theme.palette.secondary.main} sx={{ ":hover": { textDecoration: 'underline' } }}>
-                            {'Parduodami objektai'}
+                            {'Visi objektai'}
                         </Typography>
                     </Link>
                 </Stack>

@@ -42,7 +42,12 @@ const BackdropGallery = ({ images, open, onClose }: Props) => {
 
     return (
         <Backdrop
-            sx={{ flexDirection: 'column', p: 4, backgroundColor: 'rgba(0, 0, 0, 0.9)', zIndex: (theme: { zIndex: { drawer: number } }) => theme.zIndex.drawer + 1 }}
+            sx={{
+                flexDirection: 'column', p: 4, backgroundColor: 'rgba(0, 0, 0, 0.9)',
+                position: 'fixed',
+                zIndex: 999
+                // zIndex: (theme: { zIndex: { drawer: number } }) => theme.zIndex.drawer + 10
+            }}
             open={open}>
             <AliceCarousel
                 ref={carousel}

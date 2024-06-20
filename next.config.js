@@ -13,6 +13,11 @@ const nextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'cdn.topbroker.lt',
+        pathname: '**',
+      },
+      {
+        protocol: 'https',
         hostname: 'www.api.noreikis.com',
         pathname: '**',
       },
