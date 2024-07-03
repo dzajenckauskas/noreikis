@@ -57,7 +57,7 @@ export const HeroSection = () => {
                             <Button variant='contained' size='large' color='secondary' href='#priceInquiryForm'>
                                 Nemokamas turto vertinimas
                             </Button>
-                            <Stack direction={'row'} spacing={2} pt={.3} sx={{ alignItems: 'center' }}>
+                            {/* <Stack direction={'row'} spacing={2} pt={.3} sx={{ alignItems: 'center' }}>
                                 <Link style={{ padding: 0, transform: 'scale(1.42)', marginLeft: '4px', marginRight: '4px' }} passHref href={`${process.env.NEXT_PUBLIC_ARUODAS_URL}`} aria-label="aruodas">
                                     <AruodasIcon bgColor='#fff' />
                                 </Link>
@@ -67,7 +67,7 @@ export const HeroSection = () => {
                                 <Link style={{ padding: 0 }} passHref href={`${process.env.NEXT_PUBLIC_LINKEDIN_URL}`} aria-label="linkedin">
                                     <LinkedInIcon sx={{ color: theme.palette.info.main, fontSize: 30 }} />
                                 </Link>
-                            </Stack>
+                            </Stack> */}
                             {/* <Stack direction={'row'} spacing={{ md: 1, xs: .5 }} sx={{
                                 pb: { lg: 5, md: 0 },
                                 pt: 4, position: 'absolute',

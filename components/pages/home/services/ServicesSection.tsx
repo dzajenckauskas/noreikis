@@ -22,6 +22,7 @@ export const ServicesSection = () => {
 
     return (
         <Stack sx={{
+            zIndex: 0,
             // backgroundColor: '#000',
             backgroundImage: `url(${url})`,
             backgroundSize: 'cover',

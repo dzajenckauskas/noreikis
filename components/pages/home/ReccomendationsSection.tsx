@@ -1,4 +1,5 @@
 import { RecommendationsType } from '@/app/types/RecommendationsType';
+import MainAnimation from '@/components/layout/MainAnimation';
 import { RecommendationCarouselItem } from '@/components/layout/RecommendationCarouselItem';
 import { SectionSubtitle } from '@/components/layout/SectionSubtitle';
 import { SectionTitle } from '@/components/layout/SectionTitle';
