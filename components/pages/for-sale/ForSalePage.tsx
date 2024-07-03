@@ -18,9 +18,14 @@ type Props = {
 
 export const ForSalePage = ({ objects, bgColor }: Props) => {
     const theme = getTheme()
+    const filteredObjects = objects?.data?.sort((a, b) => {
+        const updatedAtA = a.attributes?.updatedAt ? new Date(a.attributes.updatedAt) : new Date(0); // Epoch fallback
+        const updatedAtB = b.attributes?.updatedAt ? new Date(b.attributes.updatedAt) : new Date(0);
+        return updatedAtB.getTime() - updatedAtA.getTime(); // Ascending order
+    });
 
     const [filter, setFilter] = useState<string>('all')
-    const renderObjects = objects?.data.filter((o) => filter === 'all' ? o : o.attributes?.topbroker.list?.[0].estate_type === filter)?.map((object) => {
+    const renderObjects = filteredObjects?.filter((o) => filter === 'all' ? o : o.attributes?.topbroker.list?.[0].estate_type === filter)?.map((object) => {
         return (
             <Grid key={object.id} item xs={12} sm={6} lg={3}>
                 <ObjectCard object={object} />

@@ -25,12 +25,10 @@ export const HeroSection = () => {
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             width: '100%',
-
         }}>
             <Stack sx={{
                 // top: -100,
                 position: 'relative',
-
                 // width: '100%', maxWidth: 'xl', mx: 'auto',
                 '::before': {
                     content: '""',
@@ -48,7 +46,7 @@ export const HeroSection = () => {
                     <Stack width={{ xs: '100%', md: '60%' }} pt={{ xs: 15, lg: 5 }}>
                         <Stack spacing={4} height={'100%'} alignItems={'flex-start'} position={'relative'}
                             justifyContent={'center'} alignContent={'flex-start'}>
-                            <Typography variant='h1' color={theme.palette.info.main} fontWeight={600} ref={titleRef}>
+                            <Typography lineHeight={1} variant='h1' color={theme.palette.info.main} fontWeight={600} ref={titleRef}>
                                 <span style={{ color: theme.palette.secondary.main }}>Kiekvienus</span> namus parduodu kaip savus
                             </Typography>
                             <Typography variant='body1' color={theme.palette.info.main}>
