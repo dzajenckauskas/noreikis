@@ -36,7 +36,7 @@ export const HomePage = ({ page, recommendations, objects, blogPosts }: Props) =
                 <ServicesSection />
                 <ReccomendationsSection recommendations={recommendations} />
                 <ForSaleSection objects={objects} />
-                <BlogPostsSection blogPosts={blogPosts} />
+                {/* <BlogPostsSection blogPosts={blogPosts} /> */}
             </Layout>
         </>
     )

@@ -41,7 +41,7 @@ a:hover {
   left: -50%;
   opacity: 0.05;
   position: fixed;
-  right: -50%;
+  right: -70%;
   top: 0;
   z-index: 0;
   filter: blur(60px);
@@ -63,7 +63,7 @@ a:hover {
 .bg4 {
   background-image: linear-gradient(60deg, #84786c 50%, rgba(211, 16, 16, 0.25) 50%);
   animation-duration: 20s;
-  filter: blur(200px);
+  filter: blur(150px);
   transform: rotate(180deg);
 
   /* transform: rotate(180); */

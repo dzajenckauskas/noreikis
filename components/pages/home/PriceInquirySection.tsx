@@ -11,7 +11,7 @@ export const PriceInquirySection = () => {
             backgroundColor: '#fff',
             position: 'relative', mt: '-1px', zIndex: 3
         }}>
-            <Stack direction={'row'} spacing={10} py={10} sx={{
+            <Stack direction={{ xs: 'column', md: 'row' }} spacing={6} py={10} sx={{
                 pt: 12,
                 justifyContent: 'space-between', width: '100%',
                 maxWidth: 'xl', mx: 'auto', position: 'relative',
@@ -34,7 +34,7 @@ export const PriceInquirySection = () => {
                 </Stack>
 
 
-                <Stack>
+                <Stack maxWidth={{ xs: '100%', md: '50%' }}>
                     <Stack direction={'row'} justifyContent={"center"}
                         id={'priceInquiryForm'} sx={{
                             scrollMarginTop: 400

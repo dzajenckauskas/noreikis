@@ -1,8 +1,8 @@
 import { createTheme } from '@mui/material/styles';
-import { Work_Sans, Rubik } from "next/font/google";
+import { Source_Sans_3, Merriweather_Sans } from "next/font/google";
 
-const rubik = Rubik({ weight: ["300", "400", "500", "600"], subsets: ['latin-ext'] })
-const workSans = Work_Sans({ weight: ["300", "400", "500", "600", "700", "800"], subsets: ['latin-ext'] })
+const headings = Merriweather_Sans({ weight: ["400", "500", "600"], subsets: ['latin-ext'] })
+const text = Source_Sans_3({ weight: ["400", "500", "600", "700"], subsets: ['latin-ext'] })
 
 export const theme = createTheme({
     components: {
@@ -47,34 +47,34 @@ export const theme = createTheme({
     },
     typography: {
         h1: {
-            fontFamily: rubik.style.fontFamily,
+            fontFamily: headings.style.fontFamily,
             fontSize: 72,
         },
         h2: {
-            fontFamily: rubik.style.fontFamily,
+            fontFamily: headings.style.fontFamily,
         },
         h3: {
-            fontFamily: rubik.style.fontFamily,
+            fontFamily: headings.style.fontFamily,
         },
         h4: {
-            fontFamily: rubik.style.fontFamily,
+            fontFamily: headings.style.fontFamily,
         },
         h5: {
-            fontFamily: rubik.style.fontFamily,
+            fontFamily: headings.style.fontFamily,
         },
         h6: {
-            fontFamily: rubik.style.fontFamily,
+            fontFamily: headings.style.fontFamily,
         },
         body1: {
-            fontFamily: workSans.style.fontFamily,
+            fontFamily: text.style.fontFamily,
 
         },
         body2: {
-            fontFamily: workSans.style.fontFamily,
+            fontFamily: text.style.fontFamily,
 
         },
         caption: {
-            fontFamily: workSans.style.fontFamily,
+            fontFamily: text.style.fontFamily,
 
         }
     },
@@ -95,7 +95,7 @@ export const theme = createTheme({
             disabled: '#7d7c83',
         },
         error: {
-            main: '#00F'
+            main: '#BBA591',
         }
     }
 })

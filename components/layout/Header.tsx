@@ -15,7 +15,7 @@ import { getHeaderMenuItems } from '@/app/getHeaderMenuItems'
 import { useRouter } from 'next/router'
 import { getFooterMenuItems } from '@/app/getFooterMenuItems'
 import { AruodasIcon } from './AruodasIcon'
-
+import Image from 'next/image'
 type Props = {
     startDefault?: boolean;
 }
@@ -139,10 +139,11 @@ const Header = ({ startDefault }: Props) => {
                             width: '100%', maxWidth: 'xl', mx: 'auto', py: 2
                         }}>
                         <Link href={'/'} style={{ position: 'relative', zIndex: 20, cursor: 'pointer' }}>
-                            <Stack direction={'row'} spacing={0} sx={{ alignItems: 'center' }}>
-                                <Typography variant='h5' component={'p'} color={(!startDefault && visible && !openMobileMenu) ? '#fff' : theme.palette.secondary.main} sx={{ letterSpacing: 2, fontSize: 22, fontWeight: 600, }}>
+                            <Stack direction={'row'} spacing={1} sx={{ alignItems: 'center' }}>
+                                {/* <Typography variant='h5' component={'p'} color={(!startDefault && visible && !openMobileMenu) ? '#fff' : theme.palette.secondary.main} sx={{ letterSpacing: 2, fontSize: 22, fontWeight: 600, }}>
                                     {"E."}
-                                </Typography>
+                                </Typography> */}
+                                <Image src={'/assets/images/logo.png'} width={40} height={40} alt='mentorfm logo' />
                                 <Typography variant='h5' component={'p'} color={(!startDefault && visible && !openMobileMenu) ? '#fff' : '#000'} sx={{ letterSpacing: 2, fontSize: 22, fontWeight: 600, }}>
                                     {process.env.NEXT_PUBLIC_COMPANY_NAME?.toUpperCase()}
                                 </Typography>
