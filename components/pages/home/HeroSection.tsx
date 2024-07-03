@@ -17,7 +17,7 @@ export const HeroSection = () => {
 
     const titleRef = useRef<HTMLDivElement>(null);
     useIntersectionObserver(titleRef, 'animate__animated animate__fadeIn');
-    const url = 'https://aruodas-img.dgn.lt/object_62_116084319/vilniaus-r-sav-antezeriu-k-gaisu-g-3.jpg'
+    const url = '/assets/images/photo-008.jpg'
     return (
         <Stack sx={{
             backgroundColor: '#000',
@@ -42,9 +42,10 @@ export const HeroSection = () => {
                     backgroundColor: 'rgba(0, 0, 0, 0.89)'
                 }
             }}>
-                <Stack sx={{ px: { xl: 2, md: 4, xs: 2 }, width: '100%', maxWidth: 'xl', mx: 'auto', position: 'relative', zIndex: 1 }} direction={{ xs: 'column', md: 'row' }} justifyContent={'space-between'}
+                <Stack sx={{ px: { xl: 2, md: 4, xs: 2 }, width: '100%', maxWidth: 'xl', mx: 'auto', position: 'relative', zIndex: 1, mb: 0 }}
+                    direction={{ xs: 'column', lg: 'row' }} justifyContent={'space-between'}
                     width={'100%'} spacing={4} my={5} >
-                    <Stack width={{ xs: '100%', md: '60%' }} pt={{ xs: 15, md: 5 }}>
+                    <Stack width={{ xs: '100%', md: '60%' }} pt={{ xs: 15, lg: 5 }}>
                         <Stack spacing={4} height={'100%'} alignItems={'flex-start'} position={'relative'}
                             justifyContent={'center'} alignContent={'flex-start'}>
                             <Typography variant='h1' color={theme.palette.info.main} fontWeight={600} ref={titleRef}>
@@ -67,10 +68,12 @@ export const HeroSection = () => {
                                     <LinkedInIcon sx={{ color: theme.palette.info.main, fontSize: 30 }} />
                                 </Link>
                             </Stack>
-                            <Stack direction={'row'} spacing={{ md: 1, xs: .5 }} sx={{
-                                pb: 5,
+                            {/* <Stack direction={'row'} spacing={{ md: 1, xs: .5 }} sx={{
+                                pb: { lg: 5, md: 0 },
                                 pt: 4, position: 'absolute',
-                                bottom: 0, right: { xs: 0, md: 'auto' }
+                                bottom: 0,
+                                left: { lg: 0 },
+                                // right: { lg: 0 },
                             }}>
                                 <SubdirectoryArrowRightIcon sx={{ color: theme.palette.info.main, fontSize: 18, }} />
                                 <Link passHref href={`/parduodami`}>
@@ -78,17 +81,17 @@ export const HeroSection = () => {
                                         {'Parduodami objektai'}
                                     </Typography>
                                 </Link>
-                            </Stack>
+                            </Stack> */}
                         </Stack>
                     </Stack>
-                    <Stack width={{ xs: '100%', sm: '100%', md: '70%' }} position={'relative'} zIndex={2}>
+                    <Stack width={{ xs: '100%', sm: '100%', lg: '70%' }} position={'relative'} zIndex={2}>
                         <Stack ref={imgRef} sx={{
-                            mt: 4,
+                            mt: { lg: 10, md: -5 },
                             position: 'relative', width: '100%', height: { xs: 600, md: 700, lg: 800 }, positon: 'relative',
-                            top: { xs: 5, md: 40 }
+                            // top: { xs: 5, md: 40 }
                         }}>
                             <Image priority alt={"Ernestas Noreikis NT nekilnojamas turto brokeris"}
-                                layout='fill' objectFit='contain' objectPosition='bottom' src={'/assets/images/ernestas-noreikis-NT-brokeris-no-bg.png'} />
+                                layout='fill' objectFit='contain' objectPosition='bottom' src={'/assets/images/bg.png'} />
                         </Stack>
                     </Stack>
                 </Stack>

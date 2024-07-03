@@ -83,7 +83,8 @@ export const theme = createTheme({
             main: '#000'
         },
         secondary: {
-            main: '#00F'
+            main: '#BBA591'
+            // main: '#00F'
         },
         info: {
             main: '#ffffff'

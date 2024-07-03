@@ -36,7 +36,7 @@ a:hover {
 /* animation */
 .bg {
   animation: slide 3s ease-in-out infinite alternate;
-  background-image: linear-gradient(60deg, #322ad4 50%, rgba(14, 12, 12, 0.25) 50%);
+  background-image: linear-gradient(60deg, #BBA591 50%, rgba(14, 12, 12, 0.25) 50%);
   bottom: 0;
   left: -50%;
   opacity: 0.05;
@@ -51,17 +51,17 @@ a:hover {
 .bg2 {
   animation-direction: alternate-reverse;
   animation-duration: 80s;
-  background-image: linear-gradient(50deg, #3e5d9f 50%, rgba(4, 4, 6, 0.25) 50%);
+  background-image: linear-gradient(50deg, #f3efe8 50%, rgba(4, 4, 6, 0.25) 50%);
 
 }
 
 .bg3 {
-  background-image: linear-gradient(70deg, #322ad4 50%, rgba(0, 0, 0, 0.25) 50%);
+  background-image: linear-gradient(70deg, #BBA591 50%, rgba(0, 0, 0, 0.25) 50%);
   animation-duration: 15s;
 }
 
 .bg4 {
-  background-image: linear-gradient(60deg, #1217af 50%, rgba(211, 16, 16, 0.25) 50%);
+  background-image: linear-gradient(60deg, #84786c 50%, rgba(211, 16, 16, 0.25) 50%);
   animation-duration: 20s;
   filter: blur(200px);
   transform: rotate(180deg);
