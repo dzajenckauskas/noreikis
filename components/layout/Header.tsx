@@ -143,7 +143,8 @@ const Header = ({ startDefault }: Props) => {
                                 {/* <Typography variant='h5' component={'p'} color={(!startDefault && visible && !openMobileMenu) ? '#fff' : theme.palette.secondary.main} sx={{ letterSpacing: 2, fontSize: 22, fontWeight: 600, }}>
                                     {"E."}
                                 </Typography> */}
-                                <Image src={'/assets/images/logo.png'} width={40} height={40} alt='mentorfm logo' />
+                                {(!startDefault && visible && !openMobileMenu) && <Image src={'/assets/images/logo-white.svg'} width={40} height={40} alt='noreikis logo' />}
+                                {!(!startDefault && visible && !openMobileMenu) && <Image src={'/assets/images/logo-black.svg'} width={40} height={40} alt='noreikis logo' />}
                                 <Typography variant='h5' component={'p'} color={(!startDefault && visible && !openMobileMenu) ? '#fff' : '#000'} sx={{ letterSpacing: 2, fontSize: 22, fontWeight: 600, }}>
                                     {process.env.NEXT_PUBLIC_COMPANY_NAME?.toUpperCase()}
                                 </Typography>
