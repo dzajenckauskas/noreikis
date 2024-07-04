@@ -20,10 +20,12 @@ export const BlogPostsSection = ({ blogPosts }: Props) => {
         )
     })
     return (
-        <Stack sx={{ backgroundColor: '#f5f5f5', pb: 4 }}>
+        <Stack sx={{ backgroundColor: '#f5f5f5', position: 'relative', zIndex: 0 }}>
             <Stack sx={{
+                pb: 12,
+                backgroundColor: '#f5f5f5',
                 width: '100%', maxWidth: 'xl', mx: 'auto',
-                px: { xl: 2, md: 4, xs: 2 }, pt: { xl: 2, md: 4, xs: 2 }, pb: 8
+                px: { xl: 2, md: 4, xs: 2 }, pt: { xl: 2, md: 4, xs: 2 },
             }}>
                 <Stack pt={6} sx={{ width: { xs: '100%', md: '50%' } }}>
                     <SectionTitle title={<>Nekilnojamojo turto&nbsp;<br />

@@ -2,6 +2,7 @@ import PriceInquiryForm from '@/components/forms/PriceInquiryForm'
 import { SectionSubtitle } from '@/components/layout/SectionSubtitle'
 import { SectionTitle } from '@/components/layout/SectionTitle'
 import { theme } from '@/components/layout/Theme'
+import { InfoOutlined } from '@mui/icons-material'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import Image from 'next/image'
@@ -11,7 +12,7 @@ export const PriceInquirySection = () => {
             backgroundColor: '#fff',
             position: 'relative', mt: '-1px', zIndex: 3
         }}>
-            <Stack direction={{ xs: 'column', md: 'row' }} spacing={6} py={10} sx={{
+            <Stack direction={{ xs: 'column-reverse', md: 'row' }} spacing={6} py={10} sx={{
                 pt: 12,
                 justifyContent: 'space-between', width: '100%',
                 maxWidth: 'xl', mx: 'auto', position: 'relative',
@@ -56,14 +57,7 @@ export const PriceInquirySection = () => {
                         <Stack sx={{ p: 0 }}>
                             <PriceInquiryForm />
                         </Stack>
-                        <Stack alignContent={'space-between'}
-                            sx={{ position: 'relative', width: '100%' }}>
-                            <Typography color={theme.palette.secondary.main}
-                                sx={{ position: 'absolute', bottom: 0, pt: 2, width: { xs: '90%', sm: '60%' } }}
-                                variant='body1'>
-                                Įvertinęs užpildytą informaciją susisieksiu su geriausiu pasiulymu!
-                            </Typography>
-                        </Stack>
+
                     </Stack>
                 </Stack>
             </Stack>

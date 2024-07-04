@@ -43,14 +43,15 @@ export const HeroSection = () => {
                 <Stack sx={{ px: { xl: 2, md: 4, xs: 2 }, width: '100%', maxWidth: 'xl', mx: 'auto', position: 'relative', zIndex: 1, mb: 0 }}
                     direction={{ xs: 'column', lg: 'row' }} justifyContent={'space-between'}
                     width={'100%'} spacing={4} my={5} >
-                    <Stack width={{ xs: '100%', md: '60%' }} pt={{ xs: 15, lg: 5 }}>
+
+                    <Stack width={{ xs: '100%', md: '60%', lg: '70%' }} pt={{ xs: 15, lg: 5 }}>
                         <Stack spacing={4} height={'100%'} alignItems={'flex-start'} position={'relative'}
                             justifyContent={'center'} alignContent={'flex-start'}>
                             <Typography lineHeight={1} variant='h1' color={theme.palette.info.main} fontWeight={600} ref={titleRef}>
                                 <span style={{ color: theme.palette.secondary.main }}>Kiekvienus</span> namus parduodu kaip savus
                             </Typography>
-                            <Typography variant='body1' color={theme.palette.info.main}>
-                                Jūsų atstovas visais nekilnojamojo turto klausimais. Susisiekime jūsų poreikių ir turto įvertinimui, ir kartu ieškokime geriausios sprendimo dėl jūsų nekilnojamojo turto.
+                            <Typography variant='subtitle1' color={theme.palette.info.main}>
+                                Susisiekime jūsų poreikių ir turto įvertinimui, ir kartu ieškokime geriausios sprendimo dėl jūsų nekilnojamojo turto.
                             </Typography>
                             <Button variant='contained' size='large' color='secondary' href='#priceInquiryForm'>
                                 Nemokamas turto vertinimas
@@ -82,7 +83,7 @@ export const HeroSection = () => {
                             </Stack> */}
                         </Stack>
                     </Stack>
-                    <Stack width={{ xs: '100%', sm: '100%', lg: '70%' }} position={'relative'} zIndex={2}>
+                    <Stack width={{ xs: '100%', sm: '100%', lg: '60%' }} position={'relative'} zIndex={2}>
                         <Stack ref={imgRef} sx={{
                             mt: { lg: 10, md: -5 },
                             position: 'relative', width: '100%', height: { xs: 600, md: 700, lg: 800 }, positon: 'relative',

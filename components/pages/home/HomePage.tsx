@@ -11,6 +11,8 @@ import { BlogPostsSection } from './BlogPostsSection'
 import { ForSaleSection } from './ForSaleSection'
 import { HeroSection } from './HeroSection'
 import { PriceInquirySection } from './PriceInquirySection'
+import { AboutSection } from './services/AboutSection'
+import { QuickContactSection } from './services/QuickContactSection'
 // import "./styless.css";
 
 type Props = {
@@ -31,12 +33,16 @@ export const HomePage = ({ page, recommendations, objects, blogPosts }: Props) =
             <Layout>
                 <HeroSection />
                 <MainAnimation />
-                <PriceInquirySection />
                 {/* <AboutSection /> */}
-                <ServicesSection />
+
+                {/* <QuickContactSection /> */}
+                {/* <MainAnimation /> */}
+
                 <ReccomendationsSection recommendations={recommendations} />
                 <ForSaleSection objects={objects} />
-                {/* <BlogPostsSection blogPosts={blogPosts} /> */}
+                <ServicesSection />
+                <PriceInquirySection />
+                <BlogPostsSection blogPosts={blogPosts} />
             </Layout>
         </>
     )

@@ -78,18 +78,18 @@ export const ServicesSection = () => {
                             </Stack>
                         </Stack>
 
-                        <Stack spacing={10} direction={{ xs: 'column', md: 'row' }} justifyContent={'space-between'}>
+                        <Stack spacing={10} mr={2} direction={{ xs: 'column', md: 'row' }} justifyContent={'space-between'}>
                             <Counter />
 
                             <Stack px={{ md: 0, xs: 0 }} width={{ xs: '100%', md: '100%' }}
-                                direction={{ sm: 'row', xs: 'column' }} sx={{ backgroundColor: '#ffffff93' }}
+                                direction={{ sm: 'row', xs: 'column' }} sx={{ backgroundColor: '#ffffffCC' }}
                                 justifyContent={'space-between'} ref={ref}>
                                 <Stack width={'100%'}>
 
                                     <ServiceCard minHeight={460} id={'paslaugos-pardavimas'}
                                         title={<>Atstovavimas <span style={{ color: theme.palette.secondary.main }}>parduodant</span> nekilnojamąjį turtą</>}
                                         icon={<HomeWorkIcon sx={{ color: theme.palette.secondary.main, fontSize: 40, position: 'relative' }} />}
-                                        text={"Procesas apima rinkos analizę, turto vertinimą, potencialių klientų paiešką bei intensyvias derybas dėl kainos ir sąlygų. Mano vaidmuo yra užtikrinti sėkmingą sandorio sudarymą, pasitelkiant gerus tarpininkavimo, pardavimų ir derybų įgūdžius. Esminis aspektas - suprasti klientų poreikius ir tinkamai juos atitikti, siekiant užtikrinti patenkinamą rezultatą visoms šalims."} />
+                                        text={"Procesas apima rinkos analizę, turto vertinimą, potencialių klientų paiešką bei intensyvias derybas dėl kainos ir sąlygų. Mano vaidmuo yra užtikrinti sėkmingą sandorio sudarymą, pasitelkiant gerus tarpininkavimo, pardavimų ir derybų įgūdžius. Esminis aspektas - suprasti klientų poreikius ir tinkamai juos atitikti, siekiant užtikrinti geriausią rezultatą visoms šalims."} />
 
                                     <ServiceCard minHeight={400} id={'paslaugos-dokumentacija'}
                                         title={<>Nekilnojamojo turto <span style={{ color: theme.palette.secondary.main }}>dokumentacija</span></>}

@@ -25,7 +25,7 @@ export const ForSaleSection = ({ objects, bgColor }: Props) => {
         )
     })
     return (
-        <Stack sx={{ backgroundColor: bgColor ?? '#fff', position: 'relative' }} py={4}>
+        <Stack sx={{ backgroundColor: bgColor ?? '#fff', position: 'relative', zIndex: 11 }} py={4}>
             <Stack sx={{ width: '100%', maxWidth: 'xl', mx: 'auto', px: { xl: 2, md: 4, xs: 2 }, pt: { xl: 2, md: 4, xs: 2 }, pb: 8 }}>
                 <Stack pt={4} sx={{ width: { xs: '100%', md: '50%' } }}>
                     <SectionTitle title={<>Šiuo metu&nbsp;

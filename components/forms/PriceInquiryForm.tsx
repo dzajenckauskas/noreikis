@@ -11,6 +11,7 @@ import { AsyncAutocomplete } from "./AsyncAutocomplete";
 import FormCheckbox from "./FormCheckbox";
 import { FormTextField } from "./FormTextField";
 import { getPriceInquiryFormSchema } from "./priceInquiry/PriceInquiryFormSchema";
+import { InfoOutlined } from "@mui/icons-material";
 
 const PriceInquiryForm = () => {
     const theme = useTheme()
@@ -232,13 +233,30 @@ const PriceInquiryForm = () => {
                     </Stack>}
                 <Stack width={sent ? '50%' : '100%'}>
                     {!sent &&
-                        <Button size="large" variant="contained" color="secondary" type={'submit'}>
+                        <Button size="large"
+                            //  sx={{ textTransform: 'uppercase', color: '#fff', fontWeight: 500 }}
+                            variant="contained" color="secondary" type={'submit'}>
                             Siųsti užklausą
                         </Button>}
                     {sent &&
-                        <Button size="large" variant="outlined" color="secondary" onClick={() => { setSent(false) }}>
+                        <Button size="large"
+                            //  sx={{ textTransform: 'uppercase', color: '#fff', fontWeight: 500 }}
+                            variant="outlined" color="secondary" onClick={() => { setSent(false) }}>
                             Siųsti dar kartą
                         </Button>}
+                </Stack>
+                <Stack direction={'row'} pt={2}
+                    sx={{ position: 'relative', width: '100%' }}>
+                    <Typography color={theme.palette.secondary.main}
+                        sx={{
+                            position: 'relative', alignContent: 'center', bottom: 0,
+                            alignItems: 'center', justifyContent: 'center'
+                            // width: { xs: '90%', sm: '60%' }
+                        }}
+                        variant='body1'>
+                        <InfoOutlined fontSize='small' sx={{ mr: .6, position: 'relative', top: '6px' }} />
+                        Įvertinęs užpildytą informaciją susisieksiu su geriausiu pasiūlymu!
+                    </Typography>
                 </Stack>
             </Stack>
         </form >

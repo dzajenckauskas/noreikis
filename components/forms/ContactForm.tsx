@@ -19,7 +19,7 @@ type ContactFormInputType = {
     contents: string;
 }
 
-const ContactForm = () => {
+const ContactForm = ({ buttonVariant }: any) => {
     const theme = useTheme()
     const [sent, setSent] = useState(false)
     const [error, setError] = useState<string | undefined>()
@@ -121,11 +121,11 @@ const ContactForm = () => {
                             </Typography>
                         </Stack>}
                     {!sent &&
-                        <Button size="large" variant="contained" color="secondary" type={'submit'}>
+                        <Button size="large" variant="contained" color={buttonVariant ?? "secondary"} type={'submit'}>
                             Siųsti žinutę
                         </Button>}
                     {sent &&
-                        <Button size="large" variant="outlined" color="secondary" onClick={() => { setSent(false) }}>
+                        <Button size="large" variant="outlined" color={buttonVariant ?? "secondary"} onClick={() => { setSent(false) }}>
                             Siųsti dar kartą
                         </Button>}
                 </Stack>

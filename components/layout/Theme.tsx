@@ -32,7 +32,10 @@ export const theme = createTheme({
             styleOverrides: {
                 root: ({ theme }) => theme.unstable_sx({
                     borderRadius: 0,
-                    textTransform: 'none',
+                    // textTransform: 'none',
+                    letterSpacing: .5,
+                    px: 4,
+                    fontFamily: headings.style.fontFamily,
                 })
             }
         },
@@ -49,17 +52,20 @@ export const theme = createTheme({
         h1: {
             fontFamily: headings.style.fontFamily,
             fontSize: 72,
+            letterSpacing: 1,
         },
         h2: {
             fontFamily: headings.style.fontFamily,
         },
         h3: {
+            letterSpacing: 1,
             fontFamily: headings.style.fontFamily,
         },
         h4: {
             fontFamily: headings.style.fontFamily,
         },
         h5: {
+            letterSpacing: 1,
             fontFamily: headings.style.fontFamily,
         },
         h6: {
@@ -67,15 +73,16 @@ export const theme = createTheme({
         },
         body1: {
             fontFamily: text.style.fontFamily,
-
         },
         body2: {
             fontFamily: text.style.fontFamily,
-
+        },
+        subtitle2: {
+            fontSize: 18,
+            fontFamily: text.style.fontFamily,
         },
         caption: {
             fontFamily: text.style.fontFamily,
-
         }
     },
     palette: {

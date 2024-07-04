@@ -16,7 +16,7 @@ const BlogPostCard = ({ blogPost, color }: Props) => {
     const elementRef = useRef<HTMLDivElement>(null);
     useIntersectionObserver(elementRef, 'animate__animated animate__fadeIn');
     const image = blogPost.attributes?.images?.data?.[0]?.attributes
-    const imageSrc = `${process.env.NEXT_PUBLIC_API_URL}${image?.formats?.small?.url ?? image?.formats?.medium?.url}`
+    const imageSrc = `${process.env.NEXT_PUBLIC_API_URL}${image?.formats?.large?.url ?? image?.formats?.medium?.url}`
     return (
         <Stack ref={elementRef} key={blogPost.id} direction={{ xs: 'column', md: 'row' }} spacing={4}>
             <Stack sx={{
@@ -24,7 +24,7 @@ const BlogPostCard = ({ blogPost, color }: Props) => {
                 minWidth: { xs: '100%', md: '50%' }, minHeight: '350px', height: '100%'
             }}>
                 <Image priority alt={image?.alternativeText ?? ''}
-                    layout='fill' objectFit='cover' src={imageSrc} />
+                    layout='fill' objectFit='cover' objectPosition={'top'} src={imageSrc} />
             </Stack>
             <Stack height={'100%'}>
                 <Link passHref href={'/naujienos/' + blogPost.attributes?.slug}>

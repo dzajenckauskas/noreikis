@@ -9,33 +9,31 @@ import { useRef } from 'react';
 import { getTheme } from "../../../layout/Theme";
 import { Counter } from './Counter';
 import { ServiceCard } from './ServiceCard';
-import { Button, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import Image from 'next/image';
 import ContactForm from '@/components/forms/ContactForm';
-import MainAnimation from '@/components/layout/MainAnimation';
-import Link from 'next/link';
-export const AboutSection = () => {
+
+export const QuickContactSection = () => {
     const theme = getTheme()
     const elementRef = useRef<HTMLDivElement>(null);
     useIntersectionObserver(elementRef, 'animate__animated animate__fadeInUp');
     return (
         <Stack sx={{
-            overflow: 'hidden',
             backgroundColor: theme.palette.secondary.main,
             position: 'relative',
-            zIndex: 1,
+            zIndex: 11,
         }}>
-            {/* <MainAnimation /> */}
+
             <Stack direction={'row'} sx={{
                 mb: '-1px',
                 // pt: 6,
                 maxWidth: 'xl',
                 mx: 'auto',
-                // backgroundColor: theme.palette.secondary.main,
+                // backgroundColor: theme.palette.primary.main,
                 width: '100%',
                 // pt: 10, pb: 10,
-                pt: 8,
-                pb: 10,
+                pt: 10,
+                pb: 8,
                 justifyContent: 'center',
                 position: 'relative',
                 top: '-1px', alignContent: 'center',
@@ -50,30 +48,26 @@ export const AboutSection = () => {
                         scrollMarginTop: 120,
                         px: { xs: 2 }
                     }}>
-                    {<Image src={'/assets/images/logo-white.svg'} width={160} height={160} alt='noreikis logo' />}
+                    {/* {<Image src={'/assets/images/logo-black.svg'} width={160} height={160} alt='noreikis logo' />} */}
                     <Stack spacing={1} sx={{ width: { xs: '100%', md: '100%' } }}>
-                        {/* <SectionTitle title={<span style={{ color: '#fff' }}>
+                        <SectionTitle title={<span style={{ color: '#fff' }}>
                             Ernestas Noreikis
-                        </span>} /> */}
-                        <Typography variant='h2' sx={{ fontWeight: 500, textAlign: 'center', color: theme.palette.info.main }}>
+                        </span>} />
+                        {/* <Typography variant='h2' sx={{ fontWeight: 500, textAlign: 'center', color: theme.palette.primary.main }}>
                             Ernestas Noreikis
                         </Typography>
-                        <Typography variant='subtitle2' sx={{ textAlign: 'center', color: theme.palette.info.main }}>
+                        <Typography variant='subtitle2' sx={{ textAlign: 'center', color: theme.palette.primary.main }}>
                             Jūsų atstovas visais nekilnojamojo turto klausimais
-                        </Typography>
+                        </Typography> */}
                     </Stack>
-                    {/* <Link href={`/${'kontaktai'}`}>
-                        <Button variant='contained' color={'info'} size="large">
-                            <Typography variant='body2' fontWeight={500}>
-                                {'KONTAKTAI'}
-                            </Typography>
-                        </Button>
-                    </Link> */}
                 </Stack>
 
 
             </Stack>
 
+            <Stack direction={{ xs: 'column', md: 'row' }} pb={20} mx={'auto'} maxWidth={'sm'} justifyContent={'space-between'}>
+                <ContactForm buttonVariant={'primary'} />
+            </Stack>
         </Stack>
     )
 }
