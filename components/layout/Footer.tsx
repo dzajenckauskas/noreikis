@@ -17,14 +17,14 @@ const Footer = () => {
 
     const renderFooterLinks = footerMenuItems?.map(link =>
         <Link href={`/${link.slug}`} key={link.name}>
-            <Typography variant='body2' color={theme.palette.info.main}>
+            <Typography variant='body1' color={theme.palette.info.main}>
                 {link.name}
             </Typography>
         </Link>
     )
     const renderServicesLinks = servicesMenuItems?.map(link =>
         <Link href={`/${link.slug}`} key={link.name}>
-            <Typography variant='body2' color={theme.palette.info.main}>
+            <Typography variant='body1' color={theme.palette.info.main}>
                 {link.name}
             </Typography>
         </Link>
@@ -60,10 +60,10 @@ const Footer = () => {
                                                 </Stack>
                                             </Link>
                                             <Stack>
-                                                <Typography variant='h4' sx={{ fontWeight: 500, color: theme.palette.info.main }}>
+                                                <Typography variant='h4' sx={{ fontWeight: 500, color: theme.palette.secondary.main }}>
                                                     Ernestas Noreikis
                                                 </Typography>
-                                                <Typography variant='body2' sx={{ color: theme.palette.info.main }}>
+                                                <Typography variant='body1' sx={{ color: theme.palette.info.main }}>
                                                     Jūsų atstovas visais nekilnojamojo turto klausimais
                                                 </Typography>
                                             </Stack>
@@ -97,7 +97,7 @@ const Footer = () => {
                                         <Stack direction={'row'} spacing={1} sx={{ alignItems: 'center' }}>
                                             <PhoneIcon sx={{ color: theme.palette.secondary.main, fontSize: 20 }} />
                                             <Link passHref href={`tel:${process.env.NEXT_PUBLIC_CONTACT_PHONE}`}>
-                                                <Typography variant='body2' color={theme.palette.info.main}>
+                                                <Typography variant='body1' color={theme.palette.info.main}>
                                                     {process.env.NEXT_PUBLIC_CONTACT_PHONE}
                                                 </Typography>
                                             </Link>
@@ -105,7 +105,7 @@ const Footer = () => {
                                         <Stack direction={'row'} spacing={1} sx={{ alignItems: 'center' }}>
                                             <EmailIcon sx={{ color: theme.palette.secondary.main, fontSize: 20 }} />
                                             <Link passHref href={`mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL}`}>
-                                                <Typography variant='body2' color={theme.palette.info.main}>
+                                                <Typography variant='body1' color={theme.palette.info.main}>
                                                     {process.env.NEXT_PUBLIC_CONTACT_EMAIL}
                                                 </Typography>
                                             </Link>
@@ -113,7 +113,7 @@ const Footer = () => {
                                         <Stack direction={'row'} spacing={1} sx={{ alignItems: 'center' }}>
                                             <PinDropIcon sx={{ color: theme.palette.secondary.main, fontSize: 20 }} />
                                             <Link passHref target='blank_' href={`${process.env.NEXT_PUBLIC_GOOGLE_MAPS_URL}`}>
-                                                <Typography variant='body2' color={theme.palette.info.main}>
+                                                <Typography variant='body1' color={theme.palette.info.main}>
                                                     {process.env.NEXT_PUBLIC_CONTACT_ADDRESS}
                                                 </Typography>
                                             </Link>

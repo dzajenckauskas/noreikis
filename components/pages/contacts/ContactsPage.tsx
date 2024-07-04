@@ -67,7 +67,7 @@ export const ContactsPage = ({ page }: Props) => {
                                     <Stack direction={'row'} spacing={1} sx={{ alignItems: 'center' }}>
                                         <PhoneIcon sx={{ color: theme.palette.secondary.main, fontSize: 20 }} />
                                         <Link passHref href={`tel:${process.env.NEXT_PUBLIC_CONTACT_PHONE}`}>
-                                            <Typography variant='body2' color={theme.palette.primary.main}>
+                                            <Typography variant='body1' color={theme.palette.primary.main}>
                                                 {process.env.NEXT_PUBLIC_CONTACT_PHONE}
                                             </Typography>
                                         </Link>
@@ -75,7 +75,7 @@ export const ContactsPage = ({ page }: Props) => {
                                     <Stack direction={'row'} spacing={1} sx={{ alignItems: 'center' }}>
                                         <EmailIcon sx={{ color: theme.palette.secondary.main, fontSize: 20 }} />
                                         <Link passHref href={`mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL}`}>
-                                            <Typography variant='body2' color={theme.palette.primary.main}>
+                                            <Typography variant='body1' color={theme.palette.primary.main}>
                                                 {process.env.NEXT_PUBLIC_CONTACT_EMAIL}
                                             </Typography>
                                         </Link>
@@ -83,7 +83,7 @@ export const ContactsPage = ({ page }: Props) => {
                                     <Stack direction={'row'} spacing={1} sx={{ alignItems: 'center' }}>
                                         <PinDropIcon sx={{ color: theme.palette.secondary.main, fontSize: 20 }} />
                                         <Link passHref target='blank_' href={`${process.env.NEXT_PUBLIC_GOOGLE_MAPS_URL}`}>
-                                            <Typography variant='body2' color={theme.palette.primary.main}>
+                                            <Typography variant='body1' color={theme.palette.primary.main}>
                                                 {process.env.NEXT_PUBLIC_CONTACT_ADDRESS}
                                             </Typography>
                                         </Link>

@@ -99,7 +99,7 @@ const Header = ({ startDefault }: Props) => {
                                 <Stack direction={'row'} spacing={{ md: 1, xs: .5 }} sx={{ alignItems: 'center' }}>
                                     <EmailIcon sx={{ color: "#fff", fontSize: 18 }} />
                                     <Link passHref href={`mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL}`}>
-                                        <Typography variant='caption' color={'#fff'}>
+                                        <Typography variant='body2' color={'#fff'}>
                                             {process.env.NEXT_PUBLIC_CONTACT_EMAIL}
                                         </Typography>
                                     </Link>
@@ -107,7 +107,7 @@ const Header = ({ startDefault }: Props) => {
                                 <Stack direction={'row'} spacing={{ md: 1, xs: .5 }} sx={{ alignItems: 'center' }}>
                                     <PhoneIcon sx={{ color: "#fff", fontSize: 18 }} />
                                     <Link passHref href={`tel:${process.env.NEXT_PUBLIC_CONTACT_PHONE}`}>
-                                        <Typography variant='caption' color={'#fff'}>
+                                        <Typography variant='body2' color={'#fff'}>
                                             {process.env.NEXT_PUBLIC_CONTACT_PHONE}
                                         </Typography>
                                     </Link>
