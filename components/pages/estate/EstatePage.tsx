@@ -1,5 +1,5 @@
 import { getActionTypeText, getStatusTypeText, transformTopbrokerData } from '@/app/estate/getEstate';
-import { ObjectType } from '@/app/types/ObjectsType';
+import { ObjectType, ObjectsType } from '@/app/types/ObjectsType';
 import useIntersectionObserver from '@/app/useIntersectionObserver';
 import { HeadComponent } from '@/components/layout/HeadComponent';
 import { ImageCarousel } from '@/components/layout/gallery/ImageGallery';
@@ -8,12 +8,17 @@ import { theme } from '@/components/layout/Theme';
 import { Box, Stack, Typography } from '@mui/material';
 import { useTranslation } from 'next-i18next';
 import { useRef } from 'react';
+import MainAnimation from '@/components/layout/MainAnimation';
+import { BlogPostsSection } from '../home/BlogPostsSection';
+import { BlogPostsType } from '@/app/types/BlogPostsTypes';
+import { ForSaleSection } from '../home/ForSaleSection';
 
 type Props = {
     object?: ObjectType;
+    objects?: ObjectsType | null;
+    blogPosts?: BlogPostsType | null;
 }
-
-const EstatePage = ({ object }: Props) => {
+const EstatePage = ({ object, objects, blogPosts }: Props) => {
     const { t } = useTranslation('common')
     const estate = object?.attributes?.topbroker && transformTopbrokerData(object?.attributes?.topbroker)
     const topbroker = object?.attributes?.topbroker
@@ -54,6 +59,7 @@ const EstatePage = ({ object }: Props) => {
             />
             <Layout startDefault>
                 <Stack key={object?.id} sx={{
+                    backgroundColor: '#fff', zIndex: 1,
                     px: { xl: 2, md: 4, xs: 2 }, pt: 0,
                     width: '100%', maxWidth: 'xl', mx: 'auto'
                 }}>
@@ -201,8 +207,13 @@ const EstatePage = ({ object }: Props) => {
                         </Stack>
                     </Stack>
                 </Stack>
+                <MainAnimation />
+                {/* <ForSaleSection bgColor={'#fff'} objects={objects} /> */}
+                <BlogPostsSection blogPosts={blogPosts} />
 
-            </Layout >
+
+
+            </Layout>
         </>
     )
 }

@@ -29,7 +29,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
       blogPosts: blogPosts ?? null,
       objects: objects ?? null,
       recommendations: recommendations ?? null,
-      homePage: homePage ?? null
+      homePage: homePage ?? null,
     }
   }
 }
