@@ -32,8 +32,8 @@ export const HomePage = ({ page, recommendations, objects, blogPosts }: Props) =
             />
             <Layout>
                 <HeroSection />
+                <AboutSection />
                 <MainAnimation />
-                {/* <AboutSection /> */}
 
                 {/* <QuickContactSection /> */}
                 {/* <MainAnimation /> */}

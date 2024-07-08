@@ -33,45 +33,49 @@ export const ForSalePage = ({ objects, bgColor }: Props) => {
         )
     })
     return (
-        <Stack sx={{ backgroundColor: bgColor ?? '#fff', position: 'relative' }} py={4}>
-            <Stack sx={{ width: '100%', maxWidth: 'xl', mx: 'auto', px: { xl: 2, md: 4, xs: 2 }, pt: { xl: 2, md: 4, xs: 2 }, pb: 8 }}>
-                <Stack pt={4} sx={{ width: { xs: '100%', md: '50%' } }}>
-                    <SectionTitle title={<>Šiuo metu&nbsp;
-                        <span style={{ color: theme.palette.secondary.main }}>
-                            parduodama
-                        </span></>} />
-                    <SectionSubtitle text={<>
-                        Mano klientų parduodami nekilnojamojo turto objektai. Ieškote kažko kito?&nbsp;
-                        <Link passHref href={'kontaktai'}>
-                            <Typography component={'span'} sx={{ color: theme.palette.secondary.main, ":hover": { textDecoration: 'underline' } }}>
-                                Susisiekime!
+        <Stack sx={{ backgroundColor: bgColor ?? '#fff' }}>
+
+            <Stack sx={{ backgroundColor: bgColor ?? '#fff', position: 'relative' }} py={4}>
+                <Stack sx={{ width: '100%', maxWidth: 'xl', mx: 'auto', px: { xl: 2, md: 4, xs: 2 }, pt: { xl: 2, md: 4, xs: 2 }, pb: 8 }}>
+                    <Stack pt={4} sx={{ width: { xs: '100%', md: '50%' } }}>
+                        <SectionTitle title={<>Šiuo metu&nbsp;
+                            <span style={{ color: theme.palette.secondary.main }}>
+                                parduodama
+                            </span></>} />
+                        <SectionSubtitle text={<>
+                            Mano klientų parduodami nekilnojamojo turto objektai. Ieškote kažko kito?&nbsp;
+                            <Link passHref href={'kontaktai'}>
+                                <Typography component={'span'} sx={{ color: theme.palette.secondary.main, ":hover": { textDecoration: 'underline' } }}>
+                                    Susisiekime!
+                                </Typography>
+                            </Link>
+                        </>} />
+                    </Stack>
+                    <Stack direction={'row'} mt={6} mb={4} spacing={1} justifyContent={'center'}>
+                        <Button onClick={() => setFilter('all')} variant={filter === 'all' ? 'contained' : 'outlined'}>
+                            Visi
+                        </Button>
+                        <Button onClick={() => setFilter('flat')} variant={filter === 'flat' ? 'contained' : 'outlined'}>
+                            Butai
+                        </Button>
+                        <Button onClick={() => setFilter('house')} variant={filter === 'house' ? 'contained' : 'outlined'}>
+                            Namai
+                        </Button>
+                    </Stack>
+                    <Grid container direction={'row'} spacing={4} sx={{ mb: 6 }}>
+                        {renderObjects}
+                    </Grid>
+                    <Stack direction={'row'} spacing={{ md: 1, xs: .5 }} sx={{ pt: 6, alignSelf: 'flex-end' }}>
+                        <SubdirectoryArrowRightIcon sx={{ color: theme.palette.secondary.main, fontSize: 18, }} />
+                        <Link passHref target='_blank' href={`https://m.aruodas.lt/ernestas-noreikis/?obj_type=0#searchFilterBrokerPage`}>
+                            <Typography variant='body1' color={theme.palette.secondary.main} sx={{ ":hover": { textDecoration: 'underline' } }}>
+                                {'Kiti skelbimai'}
                             </Typography>
                         </Link>
-                    </>} />
-                </Stack>
-                <Stack direction={'row'} mt={6} mb={4} spacing={1} justifyContent={'center'}>
-                    <Button onClick={() => setFilter('all')} variant={filter === 'all' ? 'contained' : 'outlined'}>
-                        Visi
-                    </Button>
-                    <Button onClick={() => setFilter('flat')} variant={filter === 'flat' ? 'contained' : 'outlined'}>
-                        Butai
-                    </Button>
-                    <Button onClick={() => setFilter('house')} variant={filter === 'house' ? 'contained' : 'outlined'}>
-                        Namai
-                    </Button>
-                </Stack>
-                <Grid container direction={'row'} spacing={4} sx={{ mb: 6 }}>
-                    {renderObjects}
-                </Grid>
-                <Stack direction={'row'} spacing={{ md: 1, xs: .5 }} sx={{ pt: 6, alignSelf: 'flex-end' }}>
-                    <SubdirectoryArrowRightIcon sx={{ color: theme.palette.secondary.main, fontSize: 18, }} />
-                    <Link passHref target='_blank' href={`https://m.aruodas.lt/ernestas-noreikis/?obj_type=0#searchFilterBrokerPage`}>
-                        <Typography variant='body1' color={theme.palette.secondary.main} sx={{ ":hover": { textDecoration: 'underline' } }}>
-                            {'Kiti skelbimai'}
-                        </Typography>
-                    </Link>
+                    </Stack>
                 </Stack>
             </Stack>
         </Stack>
+
     )
 }
