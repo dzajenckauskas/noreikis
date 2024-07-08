@@ -13,9 +13,9 @@ export const AboutSection = () => {
         <Stack
             sx={{
                 overflow: 'hidden',
-                backgroundColor: theme.palette.secondary.main,
+                // backgroundColor: theme.palette.secondary.main,
                 position: 'relative',
-                zIndex: 0,
+                zIndex: 1,
             }}
         >
             <Stack

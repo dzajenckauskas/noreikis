@@ -78,7 +78,7 @@ export const ServicesSection = () => {
                             </Stack>
                         </Stack>
 
-                        <Stack spacing={10} mr={2} direction={{ xs: 'column', md: 'row' }} justifyContent={'space-between'}>
+                        <Stack spacing={10} mr={{ xs: 0, md: 2 }} direction={{ xs: 'column', md: 'row' }} justifyContent={'space-between'}>
                             <Counter />
 
                             <Stack px={{ md: 0, xs: 0 }} width={{ xs: '100%', md: '100%' }}

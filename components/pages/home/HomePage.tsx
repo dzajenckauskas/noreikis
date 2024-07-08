@@ -13,6 +13,8 @@ import { HeroSection } from './HeroSection'
 import { PriceInquirySection } from './PriceInquirySection'
 import { AboutSection } from './services/AboutSection'
 import { QuickContactSection } from './services/QuickContactSection'
+import Stack from '@mui/material/Stack'
+import { theme } from '@/components/layout/Theme'
 // import "./styless.css";
 
 type Props = {
@@ -31,9 +33,11 @@ export const HomePage = ({ page, recommendations, objects, blogPosts }: Props) =
                 keywords={page?.attributes.seo.seoKeywords}
             />
             <Layout>
-                <HeroSection />
-                <AboutSection />
-                <MainAnimation />
+                <Stack sx={{ backgroundColor: theme.palette.secondary.main, }}>
+                    <HeroSection />
+                    <AboutSection />
+                    <MainAnimation />
+                </Stack>
 
                 {/* <QuickContactSection /> */}
                 {/* <MainAnimation /> */}
