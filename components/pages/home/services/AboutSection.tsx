@@ -39,7 +39,7 @@ export const AboutSection = () => {
                     width={{ xs: '100%', sm: '100%', lg: '40%' }}
                     direction={'row'}
                     id={'apie-mane'}
-                    justifyContent={'center'}
+                    justifyContent={'flex-start'}
                     sx={{
                         scrollMarginTop: 120,
                         px: { xs: 2 }
