@@ -17,6 +17,17 @@ export default function Document() {
                         gtag('config', '${gaId}');
                     `}
         </Script>
+
+        <link
+          href={"favicon-white.ico"}
+          rel="icon"
+          media="(prefers-color-scheme: dark)"
+        />
+        <link
+          href={"favicon-black.ico"}
+          rel="icon"
+          media="(prefers-color-scheme: light)"
+        />
       </Head>
       <body>
         <Main />

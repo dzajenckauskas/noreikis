@@ -113,7 +113,7 @@ export const ImageCarousel = ({ images, photos }: Props) => {
                         width: 40, height: 40, position: 'absolute',
                         left: 0, bottom: 0
                     }}>
-                        <WestIcon sx={{ color: theme.palette.info.main }} />
+                        <WestIcon sx={{ width: 20, color: theme.palette.info.main }} />
                     </Button>
 
                     <Button variant='contained' onClick={toNextImage} sx={{

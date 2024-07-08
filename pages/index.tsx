@@ -23,7 +23,6 @@ export const getServerSideProps: GetServerSideProps = async () => {
   const objects = (await getItems('objects', 'populate=deep&pagination[limit]=4')) ?? null
   const blogPosts = (await getItems('blog-posts', 'populate=deep')) ?? null
   const homePage = (await getPage('home-page', 'populate=deep')) ?? null
-
   return {
     props: {
       blogPosts: blogPosts ?? null,

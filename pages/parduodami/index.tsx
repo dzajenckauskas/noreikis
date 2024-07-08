@@ -23,7 +23,7 @@ export default function Objects({ objects }: Props) {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-    const objects = (await getItems('objects', 'orderBy=createdAt&populate=deep')) ?? null
+    const objects = (await getItems('objects', 'orderBy=createdAt&populate=deep&pagination[limit]=100')) ?? null
     return {
         props: {
             objects: objects ?? null,

@@ -21,12 +21,13 @@ const BackdropGallery = ({ images, open, onClose }: Props) => {
         return (<Stack key={i} position={'relative'} alignItems={'center'}
             onClick={() => carousel?.current?.slideTo(i)}
             sx={{
-                mt: '40px',
-                mb: '20px',
-                position: 'relative',
-                maxWidth: '1500px',
+                // mt: '50px',
+                // mb: '20px',
+                // position: 'relative',
+                // maxWidth: '1500px',
                 mx: 'auto',
-                width: '100%', height: 'calc(100vh - 140px)'
+                width: '100%',
+                height: 'calc(100vh - 40px)'
             }}>
             <Image
                 priority
@@ -45,12 +46,13 @@ const BackdropGallery = ({ images, open, onClose }: Props) => {
             sx={{
                 flexDirection: 'column', p: 4, backgroundColor: 'rgba(0, 0, 0, 0.9)',
                 position: 'fixed',
-                zIndex: 999
+                zIndex: 999,
                 // zIndex: (theme: { zIndex: { drawer: number } }) => theme.zIndex.drawer + 10
             }}
             open={open}>
             <AliceCarousel
                 ref={carousel}
+                disableButtonsControls
                 animationType="slide"
                 autoPlayInterval={2000}
                 animationDuration={800}
@@ -63,8 +65,8 @@ const BackdropGallery = ({ images, open, onClose }: Props) => {
             />
 
             <Stack position={'relative'} alignItems={'center'} sx={{
-                mt: 0,
-                mb: '40px',
+                mt: -10,
+                // mb: '40px',
                 position: 'relative', maxWidth: '1500px',
                 width: '100%', height: '100%'
             }}>
