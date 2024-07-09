@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography'
 export default function PrivacyPolicy() {
   return (
     <>
-      <HeadComponent title='Privatumo politika' description='Noreikis.com privatumo politika' />
+      <HeadComponent slug='privatumo-politika' title='Privatumo politika' description='Noreikis.com privatumo politika' />
       <Layout>
         <Stack spacing={1} sx={{ width: '100%', maxWidth: 'xl', mx: 'auto', px: { xl: 2, md: 4, xs: 2 }, pt: { xl: 2, md: 4, xs: 2 }, pb: 8 }}>
           <Typography variant='h4' fontWeight={600} pt={4}>

@@ -23,17 +23,20 @@ export default function UsefulInformation({ blogPost, objects }: Props) {
   const imgRef = useRef<HTMLDivElement>(null);
   useIntersectionObserver(imgRef, 'animate__animated animate__fadeIn');
 
+  // const image = blogPost?.attributes
+  // const imageSrc = `${process.env.NEXT_PUBLIC_API_URL}${image?.medium.url}`
+
   return (
     <>
-      <HeadComponent title={blogPost.attributes?.seo?.seoTitle ?? blogPost.attributes?.title}
-        description={blogPost.attributes?.seo?.seoDescription ?? blogPost.attributes?.shortContent}
-        keywords={blogPost.attributes?.seo?.seoKeywords}
+      <HeadComponent slug={`naujienos/${blogPost?.attributes?.slug}`} title={blogPost?.attributes?.seo?.seoTitle ?? blogPost?.attributes?.title}
+        description={blogPost?.attributes?.seo?.seoDescription ?? blogPost?.attributes?.shortContent}
+        keywords={blogPost?.attributes?.seo?.seoKeywords}
       />
       <Layout>
         <Stack sx={{ maxWidth: 'xl', mx: 'auto', px: { xl: 2, md: 4, xs: 2 }, pb: 14 }}>
           <Stack ref={imgRef} sx={{ position: 'relative', width: { xs: '100%', sm: '100%', md: '100%', xl: '100%' }, height: 600 }}>
-            <Image priority alt={blogPost?.attributes?.images?.data?.[0]?.attributes?.alternativeText ?? ''}
-              layout='fill' objectFit='cover' src={imageSrc} />
+            {/* {imageSrc && <Image priority alt={blogPost?.attributes?.images?.data?.[0]?.attributes?.alternativeText ?? ''}
+              layout='fill' objectFit='cover' src={imageSrc} />} */}
           </Stack>
           <Stack sx={{ px: { xl: 2, md: 4, xs: 2 }, }}>
             <Typography variant='h3' component={'h1'} py={4} fontWeight={600}>

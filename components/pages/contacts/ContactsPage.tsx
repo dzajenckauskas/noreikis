@@ -26,6 +26,7 @@ export const ContactsPage = ({ page }: Props) => {
     return (
         <>
             <HeadComponent
+                slug={`kontaktai`}
                 title={page?.attributes.seo.seoTitle}
                 description={page?.attributes.seo.seoDescription}
                 keywords={page?.attributes.seo.seoKeywords}

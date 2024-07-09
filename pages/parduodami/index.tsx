@@ -12,7 +12,7 @@ type Props = {
 export default function Objects({ objects }: Props) {
     return (
         <>
-            <HeadComponent title={'Parduodami NT objektai'} description={'Brokerio Ernesto Noreikio parduodami Nekilnojamojo Turto NT objektai Vilniuje, Kaune, Palangoje'} />
+            <HeadComponent slug='parduodami' title={'Parduodami NT objektai'} description={'Brokerio Ernesto Noreikio parduodami Nekilnojamojo Turto NT objektai Vilniuje, Kaune, Palangoje'} />
             <Layout startDefault>
                 <MainAnimation />
 

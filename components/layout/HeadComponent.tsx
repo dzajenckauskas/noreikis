@@ -5,9 +5,10 @@ type Props = {
     title?: string;
     description?: string;
     keywords?: string;
+    slug?: string;
 }
 
-export const HeadComponent = ({ title, description, keywords }: Props) => (
+export const HeadComponent = ({ title, description, keywords, slug }: Props) => (
     <Head>
         {title &&
             <title>{title}</title>}
@@ -22,5 +23,6 @@ export const HeadComponent = ({ title, description, keywords }: Props) => (
                 name="keywords"
                 content={keywords}
             />}
+        <link rel="canonical" href={slug ? `${process.env.NEXT_PUBLIC_URL}/${slug}` : `${process.env.NEXT_PUBLIC_URL}`}></link>
     </Head>
 )

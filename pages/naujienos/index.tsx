@@ -49,7 +49,7 @@ export default function UsefulInformation({ blogPosts }: Props) {
   })
   return (
     <>
-      <HeadComponent title='Naudinga žinoti' description='Nekilnojamojo turto naujienos' />
+      <HeadComponent slug='naujienos' title='Naudinga žinoti' description='Nekilnojamojo turto naujienos' />
       <Layout>
         <Stack sx={{ px: { xl: 2, md: 4, xs: 2 }, pt: { xl: 2, md: 4, xs: 2 }, pb: 8 }}>
           <Typography variant='h4' fontWeight={600}>

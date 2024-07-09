@@ -53,7 +53,7 @@ const EstatePage = ({ object, objects, blogPosts }: Props) => {
 
     return (
         <>
-            <HeadComponent title={topbroker?.list[0].title}
+            <HeadComponent slug={`parduodami/${object?.attributes?.slug}`} title={topbroker?.list[0].title}
                 description={topbroker?.list[0].description}
                 keywords={object?.attributes?.seo?.seoKeywords}
             />
