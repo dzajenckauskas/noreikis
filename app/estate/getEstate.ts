@@ -30,6 +30,7 @@ export const transformTopbrokerData = (topbroker: TopbrokerType) => {
         estateType: estateType,
         formattedLocation: topbroker.list?.[0].location.formated_address,
         price: topbroker.list?.[0].main_parameters?.find((mp) => mp.title === 'estate.sale_price'),
+        rentPrice: topbroker.list?.[0].main_parameters?.find((mp) => mp.title === 'estate.rent_price'),
         area: topbroker.list?.[0].main_parameters.find((p) => p.title === 'estate.area'),
         roomCount: topbroker.list?.[0].parameters.find((p) => p.title === 'estate.room_count'),
         floor: topbroker.list?.[0].parameters.find((p) => p.title === 'estate.floor'),

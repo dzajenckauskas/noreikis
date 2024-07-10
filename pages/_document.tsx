@@ -17,7 +17,6 @@ export default function Document() {
                         gtag('config', '${gaId}');
                     `}
         </Script>
-
         <link
           href={"favicon-white.ico"}
           rel="icon"

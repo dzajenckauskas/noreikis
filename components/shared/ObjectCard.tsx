@@ -19,7 +19,6 @@ const ObjectCard = ({ object }: Props) => {
     useIntersectionObserver(elementRef, 'animate__animated animate__fadeIn');
 
     const [hovered, setHovered] = useState(false)
-
     return (
         <Stack key={object?.id} >
             <Link href={'/parduodami/' + object?.attributes?.slug} passHref style={{ position: 'relative' }}>
@@ -30,19 +29,19 @@ const ObjectCard = ({ object }: Props) => {
                         layout='fill' objectFit='cover' objectPosition={'left'} src={estate?.images[hovered ? 1 : 0] ?? '/assets/images/img-placeholder.png'} />
                 </Stack>
                 <Box sx={{ backgroundColor: '#000', width: 'max-content', position: 'absolute', top: 4, px: 2, right: -4 }}>
-                    <Typography variant='caption' color={'#fff'}>
+                    <Typography variant='body1' color={'#fff'}>
                         {estate?.action}
                     </Typography>
                 </Box>
                 {estate?.estateType &&
                     <Box sx={{ backgroundColor: theme.palette.secondary.main, width: 'max-content', position: 'absolute', top: 28, px: 2, right: -4 }}>
-                        <Typography variant='caption' color={'#fff'}>
+                        <Typography variant='body1' color={'#fff'}>
                             {estate?.estateType}
                         </Typography>
                     </Box>}
                 {estate?.status &&
                     <Box sx={{ backgroundColor: theme.palette.secondary.main, width: 'max-content', position: 'absolute', top: 28, px: 2, right: -4 }}>
-                        <Typography variant='caption' color={'#fff'}>
+                        <Typography variant='body1' color={'#fff'}>
                             {estate?.status}
                         </Typography>
                     </Box>}
@@ -55,17 +54,17 @@ const ObjectCard = ({ object }: Props) => {
                 </Link>
             </Stack>
             <Stack direction={'row'} spacing={1}>
-                <Typography variant='caption'>
+                <Typography variant='body2'>
                     {estate?.estateType} | {estate?.roomCount?.value} k. | {estate?.area?.value} m²
                 </Typography>
             </Stack>
             <Stack direction={'row'} spacing={1} alignItems={'baseline'} justifyContent={'space-between'}>
                 <Typography variant='body1' fontWeight={600}>
-                    {estate?.price?.value} {process.env.NEXT_PUBLIC_DEFAULT_CURRENCY}
+                    {estate?.price?.value ?? `${estate?.rentPrice?.value}`} {process.env.NEXT_PUBLIC_DEFAULT_CURRENCY} {estate?.rentPrice?.value && '/MĖN.'}
                 </Typography>
-                <Typography variant='caption' textTransform={'uppercase'}>
+                {estate?.price?.secondary && <Typography variant='body2' textTransform={'uppercase'}>
                     {estate?.price?.secondary} {process.env.NEXT_PUBLIC_DEFAULT_CURRENCY}/m²
-                </Typography>
+                </Typography>}
             </Stack>
         </Stack>
     )

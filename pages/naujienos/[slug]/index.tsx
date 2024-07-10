@@ -1,7 +1,7 @@
 import { BlogPostType } from '@/app/types/BlogPostsTypes'
 import { ObjectsType } from '@/app/types/ObjectsType'
 import useIntersectionObserver from '@/app/useIntersectionObserver'
-import { getItemBySlug, getItems } from '@/app/utils'
+import { getItem, getItemBySlug, getItems } from '@/app/utils'
 import { BlocksRendererComponent } from '@/components/layout/BlocksRendererComponent'
 import { HeadComponent } from '@/components/layout/HeadComponent'
 import Layout from '@/components/layout/Layout'
@@ -25,6 +25,7 @@ export default function UsefulInformation({ blogPost, objects }: Props) {
 
   // const image = blogPost?.attributes
   // const imageSrc = `${process.env.NEXT_PUBLIC_API_URL}${image?.medium.url}`
+  console.log(blogPost, "blogPost");
 
   return (
     <>
@@ -32,17 +33,17 @@ export default function UsefulInformation({ blogPost, objects }: Props) {
         description={blogPost?.attributes?.seo?.seoDescription ?? blogPost?.attributes?.shortContent}
         keywords={blogPost?.attributes?.seo?.seoKeywords}
       />
-      <Layout>
+      <Layout startDefault>
         <Stack sx={{ maxWidth: 'xl', mx: 'auto', px: { xl: 2, md: 4, xs: 2 }, pb: 14 }}>
           <Stack ref={imgRef} sx={{ position: 'relative', width: { xs: '100%', sm: '100%', md: '100%', xl: '100%' }, height: 600 }}>
-            {/* {imageSrc && <Image priority alt={blogPost?.attributes?.images?.data?.[0]?.attributes?.alternativeText ?? ''}
-              layout='fill' objectFit='cover' src={imageSrc} />} */}
+            {imageSrc && <Image priority alt={blogPost?.attributes?.images?.data?.[0]?.attributes?.alternativeText ?? ''}
+              layout='fill' objectFit='cover' src={imageSrc} />}
           </Stack>
           <Stack sx={{ px: { xl: 2, md: 4, xs: 2 }, }}>
             <Typography variant='h3' component={'h1'} py={4} fontWeight={600}>
-              {blogPost.attributes?.title}
+              {blogPost?.attributes?.title}
             </Typography>
-            <BlocksRendererComponent content={blogPost.attributes?.content} />
+            <BlocksRendererComponent content={blogPost?.attributes?.content} />
           </Stack>
         </Stack>
         <ForSaleSection objects={objects} bgColor={'#f5f5f5'} />
@@ -60,12 +61,12 @@ export const getServerSideProps: GetServerSideProps = async (context: GetServerS
     };
   }
 
-  const blogPost = await getItemBySlug('blog-posts', slug, undefined, 'populate=deep');
-  const objects = (await getItems('objects', 'populate=deep')) ?? null
+  const blogPost = await getItem('blog-posts', slug, 'populate=deep');
+  const objects = (await getItems('objects', 'populate=deep&pagination[limit]=8')) ?? null
 
   return {
     props: {
-      blogPost: blogPost?.data?.[0] ?? null,
+      blogPost: blogPost?.data ?? null,
       objects: objects ?? null,
     }
   };

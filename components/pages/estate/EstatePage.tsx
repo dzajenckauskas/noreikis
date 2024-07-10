@@ -1,17 +1,16 @@
-import { getActionTypeText, getStatusTypeText, transformTopbrokerData } from '@/app/estate/getEstate';
+import { transformTopbrokerData } from '@/app/estate/getEstate';
+import { BlogPostsType } from '@/app/types/BlogPostsTypes';
 import { ObjectType, ObjectsType } from '@/app/types/ObjectsType';
 import useIntersectionObserver from '@/app/useIntersectionObserver';
 import { HeadComponent } from '@/components/layout/HeadComponent';
-import { ImageCarousel } from '@/components/layout/gallery/ImageGallery';
 import Layout from '@/components/layout/Layout';
-import { theme } from '@/components/layout/Theme';
+import MainAnimation from '@/components/layout/MainAnimation';
+import { ImageCarousel } from '@/components/layout/gallery/ImageGallery';
 import { Box, Stack, Typography } from '@mui/material';
 import { useTranslation } from 'next-i18next';
 import { useRef } from 'react';
-import MainAnimation from '@/components/layout/MainAnimation';
 import { BlogPostsSection } from '../home/BlogPostsSection';
-import { BlogPostsType } from '@/app/types/BlogPostsTypes';
-import { ForSaleSection } from '../home/ForSaleSection';
+import { theme } from '@/components/layout/Theme';
 
 type Props = {
     object?: ObjectType;
@@ -22,6 +21,7 @@ const EstatePage = ({ object, objects, blogPosts }: Props) => {
     const { t } = useTranslation('common')
     const estate = object?.attributes?.topbroker && transformTopbrokerData(object?.attributes?.topbroker)
     const topbroker = object?.attributes?.topbroker
+    console.log(estate?.estateType);
 
     const renderDescription = (description: string): JSX.Element[] => {
         const sections = description.split('\n\n');
@@ -45,6 +45,7 @@ const EstatePage = ({ object, objects, blogPosts }: Props) => {
     };
     const photos = estate?.images
 
+    console.log(estate);
 
 
     const imgRef = useRef<HTMLDivElement>(null);
@@ -71,29 +72,31 @@ const EstatePage = ({ object, objects, blogPosts }: Props) => {
                         {photos &&
                             <ImageCarousel photos={photos} />}
 
-                        {/* <Box sx={{ backgroundColor: '#000', width: 'max-content', position: 'absolute', top: 14, px: 2, left: -4 }}>
+                        <Box sx={{ backgroundColor: '#000', width: 'max-content', top: 14, px: 2, left: -4 }}>
                             <Typography variant='body1' color={'#fff'}>
                                 {estate?.action}
                             </Typography>
                         </Box>
                         {estate?.status &&
-                            <Box sx={{ backgroundColor: theme.palette.secondary.main, width: 'max-content', position: 'absolute', top: 42, px: 2, left: -4 }}>
+                            <Box sx={{ backgroundColor: theme.palette.secondary.main, width: 'max-content', top: 42, px: 2, left: -4 }}>
                                 <Typography variant='body1' color={'#fff'}>
                                     {estate?.status}
                                 </Typography>
-                            </Box>} */}
-                    </Stack>
+                            </Box>}
+                        {estate?.estateType &&
+                            <Box sx={{ backgroundColor: theme.palette.secondary.main, width: 'max-content', top: 28, px: 2, right: -4 }}>
+                                <Typography variant='body1' color={'#fff'}>
+                                    {estate?.estateType}
+                                </Typography>
+                            </Box>}
+                        <Stack sx={{ pt: { xl: 2, md: 4, xs: 2 }, }}>
 
-                    <Stack sx={{ pt: { xl: 2, md: 4, xs: 2 }, pb: 8 }} direction={{ md: 'row', xs: 'column' }} spacing={4}>
-                        <Stack width={{ md: '50%', xs: "100%" }} >
-                            {/* {photos &&
-                                <ImageCarousel photos={photos} />} */}
                             <Stack direction={'row'} spacing={1} pt={1}>
                                 <Typography variant='h4' fontWeight={600} component={'h1'}>
                                     {/* {object?.attributes?.region},&nbsp;
-                  {object?.attributes?.district}&nbsp;
-                  {object?.attributes?.quartal},&nbsp;
-                  {object?.attributes?.street} */}
+                                    {object?.attributes?.district}&nbsp;
+                                    {object?.attributes?.quartal},&nbsp;
+                                    {object?.attributes?.street} */}
                                     {topbroker?.list[0]?.location?.formated_address}
                                 </Typography>
                             </Stack>
@@ -106,6 +109,15 @@ const EstatePage = ({ object, objects, blogPosts }: Props) => {
                                     {estate?.price?.value} {process.env.NEXT_PUBLIC_DEFAULT_CURRENCY}
                                 </Typography>
                             </Stack>
+                        </Stack>
+
+                    </Stack>
+
+                    <Stack sx={{ pb: 8 }} direction={{ md: 'row', xs: 'column' }} spacing={4}>
+                        <Stack width={{ md: '50%', xs: "100%" }} >
+                            {/* {photos &&
+                                <ImageCarousel photos={photos} />} */}
+
                             <Stack pt={4} spacing={2}>
                                 <Stack direction={{ xs: 'row', md: 'column' }} spacing={{ xs: 1, md: 0 }}>
                                     <Typography variant='caption'>
