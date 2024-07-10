@@ -23,10 +23,6 @@ export default function UsefulInformation({ blogPost, objects }: Props) {
   const imgRef = useRef<HTMLDivElement>(null);
   useIntersectionObserver(imgRef, 'animate__animated animate__fadeIn');
 
-  // const image = blogPost?.attributes
-  // const imageSrc = `${process.env.NEXT_PUBLIC_API_URL}${image?.medium.url}`
-  console.log(blogPost, "blogPost");
-
   return (
     <>
       <HeadComponent slug={`naujienos/${blogPost?.attributes?.slug}`} title={blogPost?.attributes?.seo?.seoTitle ?? blogPost?.attributes?.title}

@@ -32,7 +32,6 @@ const PriceInquiryForm = () => {
                 }
             })
             .then((response) => {
-                console.log(response);
                 if (response?.data) {
                     setSent(true)
                     reset()

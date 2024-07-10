@@ -18,7 +18,6 @@ export const getEstateTypeText = (topbroker: TopbrokerType | undefined) => {
 }
 
 export const transformTopbrokerData = (topbroker: TopbrokerType) => {
-    // console.log(topbroker, "topbroker");
     const action = getActionTypeText(topbroker)
     const status = getStatusTypeText(topbroker)
     const estateType = getEstateTypeText(topbroker)

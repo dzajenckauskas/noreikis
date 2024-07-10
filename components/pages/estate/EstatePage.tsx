@@ -21,7 +21,6 @@ const EstatePage = ({ object, objects, blogPosts }: Props) => {
     const { t } = useTranslation('common')
     const estate = object?.attributes?.topbroker && transformTopbrokerData(object?.attributes?.topbroker)
     const topbroker = object?.attributes?.topbroker
-    console.log(estate?.estateType);
 
     const renderDescription = (description: string): JSX.Element[] => {
         const sections = description.split('\n\n');
@@ -44,9 +43,6 @@ const EstatePage = ({ object, objects, blogPosts }: Props) => {
         });
     };
     const photos = estate?.images
-
-    console.log(estate);
-
 
     const imgRef = useRef<HTMLDivElement>(null);
     useIntersectionObserver(imgRef, 'animate__animated animate__fadeIn');

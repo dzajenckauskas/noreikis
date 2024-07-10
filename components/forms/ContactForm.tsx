@@ -44,7 +44,6 @@ const ContactForm = ({ buttonVariant }: any) => {
                 }
             })
             .then((response) => {
-                console.log(response);
                 if (response?.data) {
                     setError(undefined)
                     setSent(true)

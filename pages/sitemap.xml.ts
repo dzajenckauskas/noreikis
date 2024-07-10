@@ -52,7 +52,6 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
     const objects = (await getItems('objects', '&pagination[limit]=100')) ?? null
     const blogPosts = (await getItems('blog-posts')) ?? null
     const homePage = (await getPage('home-page')) ?? null
-    // console.log(objects, "objectsobjects");
 
     const sitemap = generateSiteMap({ objects, homePage, blogPosts });
 
