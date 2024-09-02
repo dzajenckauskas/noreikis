@@ -51,7 +51,7 @@ export const HeroSection = () => {
                                 <span style={{ color: theme.palette.secondary.main }}>Kiekvienus</span> namus parduodu kaip savus
                             </Typography>
                             <Typography variant='subtitle1' color={theme.palette.info.main}>
-                                Susisiekime jūsų poreikių ir turto įvertinimui, ir kartu ieškokime geriausios sprendimo dėl jūsų nekilnojamojo turto.
+                                Susisiekime ir kartu ieškokime geriausio sprendimo Jūsų nekilnojamam turtui.
                             </Typography>
                             <Button variant='contained' size='large' color='secondary' href='#priceInquiryForm'>
                                 Nemokamas turto vertinimas
