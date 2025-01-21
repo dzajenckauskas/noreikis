@@ -54,5 +54,16 @@
     "estate.features.estate_features.has_city_plumbing": "Miesto kanalizacija",
     "estate.features.estate_features.has_outdoor_terrace": "Balkonas/Terasa",
     "estate.features.estate_features.has_water": "Vandentiekis",
-    "estate.features.estate_features.has_basement": "Rūsys"
+    "estate.features.estate_features.has_basement": "Rūsys",
+    "estate.features.estate_features.has_cable_tv": "Kabelinė televizija",
+    "estate.features.estate_features.has_detail_plan": "Detalus planas",
+    "estate.features.estate_features.has_high_ceiling": "Aukštos lubos",
+    "estate.features.estate_features.has_internet": "Internetas",
+    "estate.features.estate_features.has_phone": "Kodinė laiptinės spyna",
+    "estate.features.estate_features.has_guard": "Budintis sargas",
+    "estate.features.estate_features.has_video_cameras": "Vaizdo kameros",
+    "estate.features.estate_features.has_recuperation": "Rekuperacinė sistema",
+    "estate.features.estate_features.has_heated_floors": "Šildomos grindys",
+    "estate.features.estate_features.has_tv": "Televizorius",
+    "estate.building_heating.aerothermal": "Dujos"
 }

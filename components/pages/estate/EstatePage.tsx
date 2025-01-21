@@ -144,7 +144,7 @@ const EstatePage = ({ object, objects, blogPosts }: Props) => {
                                         {'Aukštas'}:
                                     </Typography>
                                     <Typography lineHeight={1} variant='body1' fontWeight={600}>
-                                        {estate?.floor?.unit} iš {estate?.floorCount?.value}
+                                        {estate?.floor?.unit} {estate?.floor?.unit && 'iš'} {estate?.floorCount?.value}
                                     </Typography>
                                 </Stack>
                                 <Stack direction={{ xs: 'row', md: 'column' }} spacing={{ xs: 1, md: 0 }}>
