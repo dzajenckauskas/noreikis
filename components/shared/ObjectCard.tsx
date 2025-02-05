@@ -25,7 +25,7 @@ const ObjectCard = ({ object }: Props) => {
                 <Stack ref={elementRef} onMouseEnter={() => setHovered(true)}
                     onMouseLeave={() => setHovered(false)}
                     sx={{ position: 'relative', width: '100%', height: 300 }}>
-                    <Image priority sizes='25vw' alt={object?.attributes?.topbroker.list?.[0].title ?? ''}
+                    <Image priority sizes='25vw' alt={object?.attributes?.topbroker?.list?.[0].title ?? ''}
                         layout='fill' objectFit='cover' objectPosition={'left'} src={estate?.images[hovered ? 1 : 0] ?? '/assets/images/img-placeholder.png'} />
                 </Stack>
                 <Box sx={{ backgroundColor: '#000', width: 'max-content', position: 'absolute', top: 4, px: 2, right: -4 }}>
