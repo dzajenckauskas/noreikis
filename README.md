@@ -1,40 +1,63 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Noreikis - Real Estate Broker Page
 
-## Getting Started
+## Overview
+Noreikis is a real estate broker website designed to showcase estate listings and generate leads through optimized search engine visibility. The platform provides a user-friendly experience for browsing real estate advertisements while ensuring high performance and scalability.
 
-First, run the development server:
+## Tech Stack
+- **Frontend:** React, Next.js, TypeScript
+- **Backend:** Strapi CMS (Headless CMS)
+- **Database:** PostgreSQL
+- **Deployment:** VPS (Linux-based)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features
+- **Real estate listings** dynamically managed via Strapi CMS.
+- **SEO-optimized architecture** with Next.js for improved search rankings.
+- **Lead generation system** to capture potential clients from Google searches.
+- **Responsive design** for seamless browsing on all devices.
+- **Fast-loading pages** with server-side rendering and caching optimizations.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Setup & Installation
+### Prerequisites
+Ensure you have the following installed:
+- Node.js (>= 16.x)
+- npm or yarn
+- PostgreSQL
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+### Installation Steps
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/dzajenckauskas/noreikis.git
+   cd noreikis
+   ```
+2. Install dependencies:
+   ```sh
+   npm install  # or yarn install
+   ```
+3. Set up environment variables:
+   - Create a `.env.local` file in the root directory.
+   - Add necessary environment variables (e.g., Strapi API keys, database connection).
+4. Start the development server:
+   ```sh
+   npm run dev  # or yarn dev
+   ```
+5. Access the app at `http://localhost:3000`.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Deployment
+- The project is deployed on a VPS with Nginx as a reverse proxy.
+- Uses **PM2** for process management.
+- CI/CD automation with **GitHub Actions**.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Future Improvements
+- Implement **advanced filtering and search** for real estate listings.
+- Improve **UI/UX** with refined design and better lead capture forms.
+- Add **multi-language support** to reach a broader audience.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Contributing
+Contributions are welcome! Feel free to fork the repo, submit issues, or suggest improvements.
 
-## Learn More
+## License
+This project is licensed under the MIT License.
 
-To learn more about Next.js, take a look at the following resources:
+---
+For any inquiries or collaborations, reach out via [GitHub](https://github.com/dzajenckauskas/).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
