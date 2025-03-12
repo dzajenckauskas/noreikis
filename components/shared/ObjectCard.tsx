@@ -19,32 +19,37 @@ const ObjectCard = ({ object }: Props) => {
     useIntersectionObserver(elementRef, 'animate__animated animate__fadeIn');
 
     const [hovered, setHovered] = useState(false)
+    const status = object?.attributes?.status?.data?.attributes?.title
+    const statusValue = object?.attributes?.status?.data?.attributes?.value
+    console.log(statusValue === 'sold', "statusValue");
+
     return (
         <Stack key={object?.id} >
             <Link href={'/parduodami/' + object?.attributes?.slug} passHref style={{ position: 'relative' }}>
                 <Stack ref={elementRef} onMouseEnter={() => setHovered(true)}
                     onMouseLeave={() => setHovered(false)}
-                    sx={{ position: 'relative', width: '100%', height: 300 }}>
-                    <Image priority sizes='25vw' alt={object?.attributes?.topbroker?.list?.[0].title ?? ''}
+                    sx={{ position: 'relative', width: '100%', height: 300, }}>
+                    <Image style={{ opacity: statusValue ? 0.5 : 1 }} priority sizes='25vw' alt={object?.attributes?.topbroker?.list?.[0].title ?? ''}
                         layout='fill' objectFit='cover' objectPosition={'left'} src={estate?.images[hovered ? 1 : 0] ?? '/assets/images/img-placeholder.png'} />
                 </Stack>
-                <Box sx={{ backgroundColor: '#000', width: 'max-content', position: 'absolute', top: 4, px: 2, right: -4 }}>
+                {!status && <Box sx={{ backgroundColor: '#000', width: 'max-content', position: 'absolute', top: 4, px: 2, right: -4 }}>
                     <Typography variant='body1' color={'#fff'}>
                         {estate?.action}
                     </Typography>
-                </Box>
+                </Box>}
+                {status &&
+                    <Box sx={{ backgroundColor: theme.palette.error.dark, width: 'max-content', position: 'absolute', top: 4, px: 2, right: -4 }}>
+                        <Typography variant='body1' color={'#fff'}>
+                            {status}
+                        </Typography>
+                    </Box>}
                 {estate?.estateType &&
                     <Box sx={{ backgroundColor: theme.palette.secondary.main, width: 'max-content', position: 'absolute', top: 28, px: 2, right: -4 }}>
                         <Typography variant='body1' color={'#fff'}>
                             {estate?.estateType}
                         </Typography>
                     </Box>}
-                {estate?.status &&
-                    <Box sx={{ backgroundColor: theme.palette.secondary.main, width: 'max-content', position: 'absolute', top: 28, px: 2, right: -4 }}>
-                        <Typography variant='body1' color={'#fff'}>
-                            {estate?.status}
-                        </Typography>
-                    </Box>}
+
             </Link>
             <Stack direction={'row'} spacing={1} pt={1}>
                 <Link href={'/parduodami/' + object?.attributes?.slug} passHref>

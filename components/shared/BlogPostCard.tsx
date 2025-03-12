@@ -16,8 +16,10 @@ type Props = {
 const BlogPostCard = ({ blogPost, color, reversed }: Props) => {
     const elementRef = useRef<HTMLDivElement>(null);
     useIntersectionObserver(elementRef, 'animate__animated animate__fadeIn');
-    const image = blogPost.attributes?.images?.data?.[0]?.attributes
-    const imageSrc = `${process.env.NEXT_PUBLIC_API_URL}${image?.formats?.large?.url ?? image?.formats?.medium?.url}`
+    const image = blogPost?.attributes?.images?.data?.[0]?.attributes
+    const imageSrc = image ? `${process.env.NEXT_PUBLIC_API_URL}${image?.formats?.large?.url ?? image?.formats?.medium?.url}` : '/assets/images/img-placeholder.png'
+    console.log(imageSrc, "imageSrc");
+
     return (
         <Stack ref={elementRef} key={blogPost.id}
             direction={{ xs: 'column', md: (reversed ? 'row-reverse' : 'row') }} spacing={4}>

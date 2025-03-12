@@ -1,20 +1,14 @@
 import { ImageType } from '@/app/types/ImageTypes';
 import useIntersectionObserver from '@/app/useIntersectionObserver';
-import CloseIcon from '@mui/icons-material/Close';
 import EastIcon from '@mui/icons-material/East';
 import FullscreenIcon from '@mui/icons-material/Fullscreen';
 import WestIcon from '@mui/icons-material/West';
-import Backdrop from '@mui/material/Backdrop';
+import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import Image from "next/image";
 import { useEffect, useRef, useState } from 'react';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import { theme } from '../Theme';
-import Button from '@mui/material/Button';
-import AliceCarousel from 'react-alice-carousel';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import PlayArrowOutlinedIcon from '@mui/icons-material/PlayArrowOutlined';
 import BackdropGallery from './BackdropGallery';
 type Props = {
     images?: ImageType[];

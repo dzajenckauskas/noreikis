@@ -47,6 +47,9 @@ const EstatePage = ({ object, objects, blogPosts }: Props) => {
     const imgRef = useRef<HTMLDivElement>(null);
     useIntersectionObserver(imgRef, 'animate__animated animate__fadeIn');
     const images = object?.attributes?.images?.data?.filter((img) => img.attributes?.formats.large)
+    const status = object?.attributes?.status?.data?.attributes?.title
+    console.log(status, 'STATUS');
+
 
     return (
         <>
@@ -68,19 +71,19 @@ const EstatePage = ({ object, objects, blogPosts }: Props) => {
                         {photos &&
                             <ImageCarousel photos={photos} />}
 
-                        <Box sx={{ backgroundColor: '#000', width: 'max-content', top: 14, px: 2, left: -4 }}>
+                        {!status && <Box sx={{ backgroundColor: '#000', width: 'max-content', top: 14, px: 2, left: -4 }}>
                             <Typography variant='body1' color={'#fff'}>
                                 {estate?.action}
                             </Typography>
-                        </Box>
-                        {estate?.status &&
+                        </Box>}
+                        {status &&
                             <Box sx={{ backgroundColor: theme.palette.secondary.main, width: 'max-content', top: 42, px: 2, left: -4 }}>
                                 <Typography variant='body1' color={'#fff'}>
-                                    {estate?.status}
+                                    {status}
                                 </Typography>
                             </Box>}
                         {estate?.estateType &&
-                            <Box sx={{ backgroundColor: theme.palette.secondary.main, width: 'max-content', top: 28, px: 2, right: -4 }}>
+                            <Box sx={{ backgroundColor: status ? '#000' : theme.palette.secondary.main, width: 'max-content', top: 28, px: 2, right: -4 }}>
                                 <Typography variant='body1' color={'#fff'}>
                                     {estate?.estateType}
                                 </Typography>

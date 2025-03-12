@@ -103,6 +103,7 @@ export const theme = createTheme({
         },
         error: {
             main: '#BBA591',
+            dark: '#cd1f1f',
         }
     }
 })

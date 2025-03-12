@@ -48,6 +48,7 @@ export type ObjectAtributesType = {
     objectState: EntityDataType;
     objectPurpose: EntityDataType;
     heatingType: EntityDataType;
+    status: EntityDataType;
     statusType: EntityDataType;
     discountPrice: string;
     slug: string;
@@ -55,7 +56,6 @@ export type ObjectAtributesType = {
     images: ImagesType;
     seo?: SeoType;
 }
-
 
 export type EntityDataType = {
     data: EntityAttributesType;

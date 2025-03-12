@@ -19,7 +19,8 @@ type Props = {
 
 export default function UsefulInformation({ blogPost, objects }: Props) {
   const image = blogPost?.attributes?.images?.data?.[0]?.attributes?.formats
-  const imageSrc = `${process.env.NEXT_PUBLIC_API_URL}${image?.medium?.url}`
+  const imageSrc = image?.medium?.url ? `${process.env.NEXT_PUBLIC_API_URL}${image?.medium?.url}` : '/assets/images/img-placeholder.png'
+
   const imgRef = useRef<HTMLDivElement>(null);
   useIntersectionObserver(imgRef, 'animate__animated animate__fadeIn');
 
@@ -30,7 +31,7 @@ export default function UsefulInformation({ blogPost, objects }: Props) {
         keywords={blogPost?.attributes?.seo?.seoKeywords}
       />
       <Layout startDefault>
-        <Stack sx={{ maxWidth: 'xl', mx: 'auto', px: { xl: 2, md: 4, xs: 2 }, pb: 14 }}>
+        <Stack sx={{ maxWidth: 'lg', mx: 'auto', px: { xl: 2, md: 4, xs: 2 }, pb: 14 }}>
           <Stack ref={imgRef} sx={{ position: 'relative', width: { xs: '100%', sm: '100%', md: '100%', xl: '100%' }, height: 600 }}>
             {imageSrc && <Image priority alt={blogPost?.attributes?.images?.data?.[0]?.attributes?.alternativeText ?? ''}
               layout='fill' objectFit='cover' src={imageSrc} />}
