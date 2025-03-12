@@ -48,8 +48,7 @@ const EstatePage = ({ object, objects, blogPosts }: Props) => {
     useIntersectionObserver(imgRef, 'animate__animated animate__fadeIn');
     const images = object?.attributes?.images?.data?.filter((img) => img.attributes?.formats.large)
     const status = object?.attributes?.status?.data?.attributes?.title
-    console.log(status, 'STATUS');
-
+    console.log(topbroker, "lala");
 
     return (
         <>
@@ -71,34 +70,31 @@ const EstatePage = ({ object, objects, blogPosts }: Props) => {
                         {photos &&
                             <ImageCarousel photos={photos} />}
 
-                        {!status && <Box sx={{ backgroundColor: '#000', width: 'max-content', top: 14, px: 2, left: -4 }}>
-                            <Typography variant='body1' color={'#fff'}>
-                                {estate?.action}
-                            </Typography>
-                        </Box>}
-                        {status &&
-                            <Box sx={{ backgroundColor: theme.palette.secondary.main, width: 'max-content', top: 42, px: 2, left: -4 }}>
-                                <Typography variant='body1' color={'#fff'}>
-                                    {status}
-                                </Typography>
-                            </Box>}
-                        {estate?.estateType &&
-                            <Box sx={{ backgroundColor: status ? '#000' : theme.palette.secondary.main, width: 'max-content', top: 28, px: 2, right: -4 }}>
-                                <Typography variant='body1' color={'#fff'}>
-                                    {estate?.estateType}
-                                </Typography>
-                            </Box>}
+
                         <Stack sx={{ pt: { xl: 2, md: 4, xs: 2 }, }}>
 
-                            <Stack direction={'row'} spacing={1} pt={1}>
-                                <Typography variant='h4' fontWeight={600} component={'h1'}>
-                                    {/* {object?.attributes?.region},&nbsp;
-                                    {object?.attributes?.district}&nbsp;
-                                    {object?.attributes?.quartal},&nbsp;
-                                    {object?.attributes?.street} */}
-                                    {topbroker?.list[0]?.location?.formated_address}
+                            <Stack direction={'row'} spacing={1} pt={1} pb={2}>
+                                <Typography variant='h4' fontWeight={600} component={'h1'} maxWidth={'md'}>
+                                    {topbroker?.list[0]?.title}
                                 </Typography>
                             </Stack>
+                            {!status && <Box sx={{ backgroundColor: '#000', width: 'max-content', top: 14, px: 2, left: -4 }}>
+                                <Typography variant='body1' color={'#fff'}>
+                                    {estate?.action}
+                                </Typography>
+                            </Box>}
+                            {status &&
+                                <Box sx={{ backgroundColor: theme.palette.secondary.main, width: 'max-content', top: 42, px: 2, left: -4 }}>
+                                    <Typography variant='body1' color={'#fff'}>
+                                        {status}
+                                    </Typography>
+                                </Box>}
+                            {/* {estate?.estateType &&
+                                <Box sx={{ backgroundColor: status ? '#000' : theme.palette.secondary.main, width: 'max-content', top: 28, px: 2, right: -4 }}>
+                                    <Typography variant='body1' color={'#fff'}>
+                                        {estate?.estateType}
+                                    </Typography>
+                                </Box>} */}
                             <Stack direction={'row'} py={1}>
                                 <Typography variant='body1'>
                                     {estate?.estateType} | {estate?.roomCount?.value} k. | {estate?.area?.value} m²                                </Typography>

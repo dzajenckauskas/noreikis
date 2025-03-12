@@ -1,135 +1,93 @@
 import { ImageType } from '@/app/types/ImageTypes';
 import useIntersectionObserver from '@/app/useIntersectionObserver';
-import EastIcon from '@mui/icons-material/East';
-import FullscreenIcon from '@mui/icons-material/Fullscreen';
-import WestIcon from '@mui/icons-material/West';
-import Button from '@mui/material/Button';
-import Stack from '@mui/material/Stack';
+import { East, West, Fullscreen, Close } from '@mui/icons-material';
+import { Button, Stack, Backdrop } from '@mui/material';
 import Image from "next/image";
-import { useEffect, useRef, useState } from 'react';
-import 'react-alice-carousel/lib/alice-carousel.css';
+import { useEffect, useRef, useState, KeyboardEvent } from 'react';
+import AliceCarousel from 'react-alice-carousel';
 import { theme } from '../Theme';
-import BackdropGallery from './BackdropGallery';
+
 type Props = {
     images?: ImageType[];
     photos: string[];
-}
+};
+
 export const ImageCarousel = ({ images, photos }: Props) => {
     const [openFullscreen, setOpenFullscreen] = useState(false);
-    const [activeImage, setActiveImage] = useState<number>(0)
-    const [touchStart, setTouchStart] = useState(0);
-    const [touchEnd, setTouchEnd] = useState(0);
-
-    const handleClose = () => {
-        setOpenFullscreen(false);
-    };
-    const handleToggle = () => {
-        setActiveImage(activeImage)
-        setOpenFullscreen(!openFullscreen);
-    };
-
-    useEffect(() => {
-        if (openFullscreen) {
-            document.body.style.overflow = "hidden";
-        } else {
-            document.body.style.overflow = "scroll";
-        }
-    }, [openFullscreen]);
-
-
-    function handleTouchStart(e: any) {
-        setTouchStart(e.targetTouches[0].clientX);
-    }
-
-    function handleTouchMove(e: any) {
-        setTouchEnd(e.targetTouches[0].clientX);
-    }
-
-    const toNextImage = () => {
-        if (photos) {
-            const max = photos.length - 1
-            setActiveImage((activeImage + 1) > max ? 0 : activeImage + 1)
-        }
-    }
-    const toPreviousImage = () => {
-        if (photos) {
-            const max = photos.length - 1
-            setActiveImage((activeImage - 1) < 0 ? max : activeImage - 1)
-        }
-    }
-
-    function handleTouchEnd() {
-        if (photos)
-            if (touchStart - touchEnd > 100) {
-                toNextImage()
-            }
-        if (touchStart - touchEnd < -100) {
-            toPreviousImage()
-        }
-    }
-
-    const handleSelectImage = (id: number) => {
-        setActiveImage(id);
-    }
-    // const imgRef = useRef(null);
+    const [activeImage, setActiveImage] = useState<number>(0);
     const imgRef = useRef<HTMLImageElement>(null);
 
     useIntersectionObserver(imgRef, 'animate__animated animate__fadeIn');
 
-    // const thumbs = photos?.map((item, i) => {
-    //     // const imageSrc = item.attributes?.formats.thumbnail?.url ? `${process.env.NEXT_PUBLIC_API_URL}${item.attributes?.formats.thumbnail?.url}` : undefined
-    //     return (
-    //         <Stack key={i} id={i.toString()}
-    //             sx={{ position: 'relative', width: 50, height: 50, ':hover': { opacity: .9 }, opacity: activeImage === i ? .9 : .6, cursor: 'pointer' }}>
-    //             <Image onClick={() => handleSelectImage(i)}
-    //                 priority alt={''} sizes='10vw'
-    //                 width={50} height={50} style={{
-    //                     objectFit: 'cover'
-    //                 }} src={item ?? '/'} />
-    //         </Stack>
-    //     )
-    // })
-    // console.log(imgRef, imgRef.current?.naturalWidth);
+    useEffect(() => {
+        document.body.style.overflow = openFullscreen ? "hidden" : "auto";
+    }, [openFullscreen]);
+
+    const toNextImage = () => setActiveImage((prev) => (prev + 1) % photos.length);
+    const toPreviousImage = () => setActiveImage((prev) => (prev - 1 + photos.length) % photos.length);
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === "ArrowRight") toNextImage();
+        if (e.key === "ArrowLeft") toPreviousImage();
+        if (e.key === "Escape" && openFullscreen) setOpenFullscreen(false);
+    };
 
     return (
-        <>
-            {/* TODO: add img alt text from estate data */}
-
-            <Stack ref={imgRef}
-                sx={{ position: 'relative', width: { xs: '100%', sm: '100%', md: '100%', xl: '100%' }, height: '100%' }}>
-                <Image priority alt={photos[activeImage] ?? ''}
-                    fill style={{ objectFit: "cover", objectPosition: 'top ' }}
-                    src={photos[activeImage] ?? "/assets/images/fallback-img.jpeg"} />
-                {photos.length > 1 && <>
-                    <Button variant='contained' color={'primary'} onClick={toPreviousImage} sx={{
-                        minWidth: '40px', boxShadow: 'none !important ',
-                        opacity: .6, ':hover': { opacity: .9, backgroundColor: '#000 !important' },
-                        width: 40, height: 40, position: 'absolute',
-                        left: 0, bottom: 0
-                    }}>
-                        <WestIcon sx={{ width: 20, color: theme.palette.info.main }} />
+        <Stack ref={imgRef} sx={{ position: 'relative', width: '100%', height: '100%' }}>
+            <Image priority alt="Image" fill style={{ objectFit: "cover" }} src={photos[activeImage] ?? "/fallback-img.jpeg"} />
+            {photos.length > 1 && (
+                <>
+                    <Button onClick={toPreviousImage} sx={{ ...navButtonStyle, left: 10 }}>
+                        <West sx={{ color: theme.palette.info.main }} />
                     </Button>
-
-                    <Button variant='contained' onClick={toNextImage} sx={{
-                        minWidth: '40px', boxShadow: 'none !important ',
-                        opacity: .6, ':hover': { opacity: .9, backgroundColor: '#000 !important' },
-                        width: 40, height: 40, position: 'absolute',
-                        left: 42, bottom: 0
-                    }}>
-                        <EastIcon sx={{ color: theme.palette.info.main }} />
+                    <Button onClick={toNextImage} sx={{ ...navButtonStyle, left: 76 }}>
+                        <East sx={{ color: theme.palette.info.main }} />
                     </Button>
-                </>}
-                <Button variant='contained' onClick={handleToggle} sx={{
-                    minWidth: '40px', boxShadow: 'none !important ',
-                    opacity: .6, ':hover': { opacity: .9, backgroundColor: '#000 !important' },
-                    width: 40, height: 40, position: 'absolute',
-                    right: 0, bottom: 0
-                }}>
-                    <FullscreenIcon sx={{ color: theme.palette.info.main, fontSize: 27 }} />
+                </>
+            )}
+            <Button onClick={() => setOpenFullscreen(true)} sx={{ ...navButtonStyle, right: 10 }}>
+                <Fullscreen sx={{ color: theme.palette.info.main, fontSize: 27 }} />
+            </Button>
+            {openFullscreen && <BackdropGallery images={photos} open={openFullscreen} onClose={() => setOpenFullscreen(false)} />}
+        </Stack>
+    );
+};
+
+const BackdropGallery = ({ images, open, onClose }: { images: string[], open: boolean, onClose: () => void }) => {
+    const carousel = useRef<AliceCarousel>(null);
+    return (
+        <Backdrop sx={{ ...backdropStyle }} open={open} onClick={onClose}>
+            <AliceCarousel ref={carousel} disableButtonsControls animationType="fadeout" disableDotsControls infinite items={images.map((url) => (
+                <Stack key={url} alignItems={'center'} sx={{ width: '100%', height: '100vh' }}>
+                    <Image priority objectFit="contain" fill src={url ?? "/fallback-img.jpeg"} alt={'Gallery image'} />
+                </Stack>
+            ))} />
+            <Stack direction={'row'} spacing={0.25} sx={{ position: 'absolute', bottom: 20 }}>
+                <Button sx={controlButtonStyle} onClick={(e) => { e.stopPropagation(); carousel?.current?.slidePrev(); }}>
+                    <West sx={{ color: theme.palette.primary.main }} />
+                </Button>
+                <Button sx={controlButtonStyle} onClick={onClose}>
+                    <Close sx={{ color: theme.palette.primary.main }} />
+                </Button>
+                <Button sx={controlButtonStyle} onClick={(e) => { e.stopPropagation(); carousel?.current?.slideNext(); }}>
+                    <East sx={{ color: theme.palette.primary.main }} />
                 </Button>
             </Stack>
+        </Backdrop>
+    );
+};
 
-            <BackdropGallery images={photos} onClose={handleClose} open={openFullscreen} />
-        </>
-    )
+const navButtonStyle = {
+    position: 'absolute', bottom: 10, zIndex: 10, opacity: 0.7, backgroundColor: 'rgba(0, 0, 0, 0.9)',
+    width: 40, height: 40, ':hover': { opacity: 1, backgroundColor: '#000' }
+};
+
+const backdropStyle = {
+    flexDirection: 'column', backgroundColor: 'rgba(0, 0, 0, 0.9)',
+    position: 'fixed', zIndex: 999, width: '100%', height: '100vh'
+};
+
+const controlButtonStyle = {
+    backgroundColor: '#fff', opacity: 0.9, width: 40, height: 40,
+    ':hover': { opacity: 0.6, backgroundColor: '#fff' }
 };
