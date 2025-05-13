@@ -18,7 +18,7 @@ const BlogPostCard = ({ blogPost, color, reversed }: Props) => {
     useIntersectionObserver(elementRef, 'animate__animated animate__fadeIn');
     const image = blogPost?.attributes?.images?.data?.[0]?.attributes
     const imageSrc = image ? `${process.env.NEXT_PUBLIC_API_URL}${image?.formats?.large?.url ?? image?.formats?.medium?.url}` : '/assets/images/img-placeholder.png'
-    console.log(imageSrc, "imageSrc");
+    // console.log(imageSrc, "imageSrc");
 
     return (
         <Stack ref={elementRef} key={blogPost.id}

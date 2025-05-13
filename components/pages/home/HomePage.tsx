@@ -15,16 +15,19 @@ import { AboutSection } from './services/AboutSection'
 import { QuickContactSection } from './services/QuickContactSection'
 import Stack from '@mui/material/Stack'
 import { theme } from '@/components/layout/Theme'
+import FaqList from '@/components/faqs/FaqList'
+import { FaqsType } from '@/app/types/FaqsType'
 // import "./styless.css";
 
 type Props = {
     recommendations: RecommendationsType;
+    faqs?: FaqsType;
     objects?: ObjectsType | null;
     blogPosts?: BlogPostsType | null;
     page?: PageType;
 }
 
-export const HomePage = ({ page, recommendations, objects, blogPosts }: Props) => {
+export const HomePage = ({ page, recommendations, objects, blogPosts, faqs }: Props) => {
     return (
         <>
             <HeadComponent
@@ -35,14 +38,14 @@ export const HomePage = ({ page, recommendations, objects, blogPosts }: Props) =
             <Layout>
                 <Stack sx={{ backgroundColor: theme.palette.secondary.main, }}>
                     <HeroSection />
-                    <AboutSection />
                     <MainAnimation />
+                    <ReccomendationsSection recommendations={recommendations} />
                 </Stack>
+                <FaqList faqs={faqs} />
 
                 {/* <QuickContactSection /> */}
                 {/* <MainAnimation /> */}
-
-                <ReccomendationsSection recommendations={recommendations} />
+                <AboutSection />
                 <ForSaleSection objects={objects} />
                 <ServicesSection />
                 <PriceInquirySection />

@@ -21,7 +21,7 @@ const ObjectCard = ({ object }: Props) => {
     const [hovered, setHovered] = useState(false)
     const status = object?.attributes?.status?.data?.attributes?.title
     const statusValue = object?.attributes?.status?.data?.attributes?.value
-    console.log(statusValue === 'sold', "statusValue");
+    // console.log(statusValue === 'sold', "statusValue");
 
     return (
         <Stack key={object?.id} >
