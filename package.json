@@ -21,6 +21,7 @@
     "axios-hooks": "^5.0.2",
     "cheerio": "^1.0.0-rc.12",
     "date-fns": "^3.0.6",
+    "framer-motion": "^12.11.0",
     "lodash": "^4.17.21",
     "next": "14.0.4",
     "next-i18next": "^15.1.1",

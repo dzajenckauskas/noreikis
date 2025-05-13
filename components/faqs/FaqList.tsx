@@ -41,7 +41,7 @@ export const FaqList = ({ faqs }: Props) => {
                     <SectionTitle title={<>D.U.K.</>} />
                 </Stack>
 
-                <Stack spacing={0} pt={5}>
+                <Stack spacing={2} pt={5}>
                     {faqItems.map((faq) => {
                         const isOpen = openIds.includes(faq.id);
 
@@ -52,8 +52,8 @@ export const FaqList = ({ faqs }: Props) => {
                                 sx={{
                                     cursor: 'pointer',
                                     p: 3,
-                                    backgroundColor: isOpen ? theme.palette.grey[50] : theme.palette.background.paper,
                                     transition: 'background-color 0.3s ease',
+                                    backgroundColor: isOpen ? theme.palette.grey[50] : theme.palette.grey[50],
                                     '&:hover': {
                                         backgroundColor: theme.palette.grey[50],
                                     },
@@ -86,7 +86,7 @@ export const FaqList = ({ faqs }: Props) => {
                                     <Typography
                                         variant="body1"
                                         component="div"
-                                        sx={{ mt: 2 }}
+                                        sx={{ mt: 1 }}
                                         dangerouslySetInnerHTML={{ __html: faq.answer }}
                                     />
                                 </Collapse>

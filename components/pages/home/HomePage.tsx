@@ -39,16 +39,16 @@ export const HomePage = ({ page, recommendations, objects, blogPosts, faqs }: Pr
                 <Stack sx={{ backgroundColor: theme.palette.secondary.main, }}>
                     <HeroSection />
                     <MainAnimation />
-                    <ReccomendationsSection recommendations={recommendations} />
+                    <ForSaleSection objects={objects} />
+                    <ServicesSection />
                 </Stack>
-                <FaqList faqs={faqs} />
+                <PriceInquirySection />
+                <AboutSection />
+                <ReccomendationsSection recommendations={recommendations} />
 
                 {/* <QuickContactSection /> */}
                 {/* <MainAnimation /> */}
-                <AboutSection />
-                <ForSaleSection objects={objects} />
-                <ServicesSection />
-                <PriceInquirySection />
+                <FaqList faqs={faqs} />
                 <BlogPostsSection blogPosts={blogPosts} />
             </Layout>
         </>
