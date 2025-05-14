@@ -23,7 +23,7 @@ export default function UsefulInformation({ blogPost, objects }: Props) {
 
   const imgRef = useRef<HTMLDivElement>(null);
   useIntersectionObserver(imgRef, 'animate__animated animate__fadeIn');
-
+  const fullContent = blogPost?.attributes?.fullContent
   return (
     <>
       <HeadComponent slug={`naujienos/${blogPost?.attributes?.slug}`} title={blogPost?.attributes?.seo?.seoTitle ?? blogPost?.attributes?.title}
@@ -40,7 +40,12 @@ export default function UsefulInformation({ blogPost, objects }: Props) {
             <Typography variant='h3' component={'h1'} py={4} fontWeight={600}>
               {blogPost?.attributes?.title}
             </Typography>
-            <BlocksRendererComponent content={blogPost?.attributes?.content} />
+            {fullContent &&
+              <Typography
+                component="div"
+                dangerouslySetInnerHTML={{ __html: fullContent }}
+                sx={{ '& p': { marginBottom: 2 }, '& h2': { marginTop: 4 } }} // optional styling
+              />}
           </Stack>
         </Stack>
         <ForSaleSection objects={objects} bgColor={'#f5f5f5'} />

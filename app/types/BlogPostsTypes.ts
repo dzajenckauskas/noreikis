@@ -20,6 +20,7 @@ export type BlogPostAtributesType = {
     publishedAt: Date | string;
     locale: string;
     content: BlocksContent;
+    fullContent: string;
     slug: string;
     title: string;
     shortContent: string;
