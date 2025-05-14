@@ -20,10 +20,11 @@ export default function UsefulInformation({ blogPosts }: Props) {
   useIntersectionObserver(elementRef, 'animate__animated animate__fadeIn');
   const renderPosts = blogPosts.data.map((post) => {
     const image = post?.attributes?.images?.data?.[0]?.attributes?.formats
-    const imageSrc = `${process.env.NEXT_PUBLIC_API_URL}${image?.medium.url}`
+    const imageSrc = image?.large?.url ? `${process.env.NEXT_PUBLIC_API_URL}${image?.large?.url ?? image?.medium?.url}` : '/assets/images/img-placeholder.png'
+
     return (
       <Stack key={post.id} pt={4} direction={{ xs: 'column', md: 'row' }} spacing={2}>
-        <Stack sx={{ position: 'relative', minWidth: { xs: '100%', md: 300 }, height: { xs: 300, md: 300 } }}>
+        <Stack sx={{ position: 'relative', minWidth: { xs: '100%', md: 600 }, height: { xs: 300, md: 400 } }}>
           <Image priority alt={post?.attributes?.images?.data?.[0]?.attributes?.alternativeText ?? ''}
             layout='fill' objectFit='cover' src={imageSrc} />
         </Stack>
@@ -50,7 +51,7 @@ export default function UsefulInformation({ blogPosts }: Props) {
   return (
     <>
       <HeadComponent slug='naujienos' title='Naudinga žinoti' description='Nekilnojamojo turto naujienos' />
-      <Layout>
+      <Layout startDefault>
         <Stack sx={{ px: { xl: 2, md: 4, xs: 2 }, pt: { xl: 2, md: 4, xs: 2 }, pb: 8 }}>
           <Typography variant='h4' fontWeight={600}>
             NAUDINGA ŽINOTI

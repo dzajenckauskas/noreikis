@@ -37,14 +37,14 @@ export default function UsefulInformation({ blogPost, objects }: Props) {
               layout='fill' objectFit='cover' src={imageSrc} />}
           </Stack>
           <Stack sx={{ px: { xl: 2, md: 4, xs: 2 }, }}>
-            <Typography variant='h3' component={'h1'} py={4} fontWeight={600}>
+            <Typography variant='h3' component={'h1'} py={4} mt={2} fontWeight={600}>
               {blogPost?.attributes?.title}
             </Typography>
             {fullContent &&
               <Typography
                 component="div"
                 dangerouslySetInnerHTML={{ __html: fullContent }}
-                sx={{ '& p': { marginBottom: 2 }, '& h2': { marginTop: 4 } }} // optional styling
+                sx={{ '& p': { marginBottom: 2 }, '& h2': { marginTop: 4, marginBottom: 2 } }} // optional styling
               />}
           </Stack>
         </Stack>
